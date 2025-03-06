@@ -1,0 +1,6 @@
+@DMCheckSheetAPI_HostAddress = http://localhost:5118
+
+GET {{DMCheckSheetAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
