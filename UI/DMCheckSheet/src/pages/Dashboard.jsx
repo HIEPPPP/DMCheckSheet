@@ -1,12 +1,13 @@
 import React from "react";
 import Sidebar from "../components/Sidebar";
 import MainLayout from "../layouts/MainLayout";
+import Devices from "../components/Devices";
 
 const DashBoard = () => {
   return (
-    <MainLayout>
-      <h1>Chào mừng bạn đến với...</h1>
-    </MainLayout>
+    <>
+      <Devices />
+    </>
   );
 };
 

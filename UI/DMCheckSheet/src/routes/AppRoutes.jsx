@@ -4,13 +4,23 @@ import Login from "../pages/Login";
 import Dashboard from "../pages/Dashboard";
 import NotFound from "../pages/NotFound";
 import CheckListItem from "../pages/CheckListItem";
+import MainLayout from "../layouts/MainLayout";
+import Users from "../components/Admin/Users";
+import DeviceMaster from "../components/Admin/DeviceMST";
 
 const AppRoutes = () => (
   <BrowserRouter>
     <Routes>
-      <Route path="/" element={<Dashboard />} />
-      <Route path="/dashboard" element={<Dashboard />} />
-      <Route path="/checklist" element={<CheckListItem />} />
+      {/* Routes có Sidebar */}
+      <Route element={<MainLayout />}>
+        <Route path="/" element={<Dashboard />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/checklist" element={<CheckListItem />} />
+        <Route path="/users" element={<Users />} />
+        <Route path="/deviceMst" element={<DeviceMaster />} />
+      </Route>
+
+      {/* Routes không có Sidebar */}
       <Route path="/login" element={<Login />} />
       <Route path="*" element={<NotFound />} />
     </Routes>

@@ -1,52 +1,128 @@
-import { useState, useEffect } from "react";
-import { FaBars, FaHome, FaClipboardList, FaSignOutAlt } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
+import {
+  FiHome,
+  FiList,
+  FiLogIn,
+  FiSettings,
+  FiUsers,
+  FiChevronLeft,
+  FiChevronRight,
+} from "react-icons/fi";
+
+import logo from "../assets/img/settings.png"; // Kiểm tra lại đường dẫn
+import { FcMultipleDevices } from "react-icons/fc";
 
 const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(true);
-  const [isTablet, setIsTablet] = useState(window.innerWidth <= 1024); // Tablet < 1024px
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIsTablet(window.innerWidth <= 1024);
-    };
-
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
-  const toggleSidebar = () => {
-    setIsOpen(!isOpen);
-  };
+  const isAdmin = true; // Giả định user là Admin (Thay đổi theo logic của bạn)
 
   const menuItems = [
-    { name: "Trang chủ", icon: <FaHome />, path: "/" },
-    { name: "Check thiết bị", icon: <FaClipboardList />, path: "/checklist" },
-    { name: "Đăng xuất", icon: <FaSignOutAlt />, path: "/logout" },
+    { name: "Devices", path: "/dashboard", icon: <FiHome size={22} /> },
+    { name: "Check List", path: "/checklist", icon: <FiList size={22} /> },
+    { name: "Login", path: "/login", icon: <FiLogIn size={22} /> },
+  ];
+
+  const adminItems = [
+    { name: "User Management", path: "/users", icon: <FiUsers size={22} /> },
+    {
+      name: "Device",
+      path: "/deviceMst",
+      icon: <FcMultipleDevices size={22} />,
+    },
+    { name: "Settings", path: "/settings", icon: <FiSettings size={22} /> },
   ];
 
   return (
-    <div
-      className={`fixed top-0 left-0 h-full bg-gray-800 p-5 transition-all duration-300 ${
-        isOpen ? "w-64" : "w-16"
-      } ${isTablet ? "absolute z-50" : ""}`}
-    >
-      <button onClick={toggleSidebar} className="text-white text-2xl mb-5">
-        <FaBars />
-      </button>
-      {/* Danh sách Menu */}
-      <nav className="flex flex-col gap-4">
-        {menuItems.map((item, index) => (
-          <Link
-            key={index}
-            to={item.path}
-            className="flex items-center gap-4 text-white p-2 rounded-md hover:bg-gray-700"
+    <div className="relative flex">
+      {/* Sidebar */}
+      <div
+        className={`h-screen bg-[#F5F5F5] text-[#333] transition-all duration-300 flex flex-col shadow-lg ${
+          isOpen ? "w-64" : "w-16"
+        }`}
+      >
+        {/* Logo + Title */}
+        <div className="flex items-center p-4">
+          <img
+            src={logo}
+            alt="Logo"
+            className="w-8 h-8 cursor-pointer"
+            onClick={() => setIsOpen(!isOpen)}
+          />
+          <span
+            className={`text-xl font-bold ml-3 transition-all duration-300 overflow-hidden whitespace-nowrap cursor-pointer ${
+              isOpen ? "opacity-100" : "opacity-0"
+            }`}
+            onClick={() => setIsOpen(!isOpen)}
           >
-            <span className="text-xl">{item.icon}</span>
-            {isOpen && <span>{item.name}</span>}
-          </Link>
-        ))}
-      </nav>
+            Die Maintenance
+          </span>
+        </div>
+
+        {/* Menu chính */}
+        <ul className="mt-4 space-y-2">
+          {menuItems.map((item) => (
+            <li key={item.name}>
+              <NavLink
+                to={item.path}
+                className={({ isActive }) =>
+                  `flex items-center p-3 rounded-lg transition-all duration-300 ease-in-out ${
+                    isActive
+                      ? "bg-[#009DDC] text-white"
+                      : "hover:bg-[#E0E0E0] text-[#333]"
+                  }`
+                }
+              >
+                <div className="w-10 flex justify-center flex-shrink-0">
+                  {item.icon}
+                </div>
+                <span
+                  className={`ml-2 transition-all duration-300 overflow-hidden whitespace-nowrap ${
+                    isOpen ? "opacity-100" : "opacity-0"
+                  }`}
+                >
+                  {item.name}
+                </span>
+              </NavLink>
+            </li>
+          ))}
+        </ul>
+
+        {/* Khoảng cách để tách phần Admin */}
+        {isAdmin && (
+          <>
+            <hr className="my-4 mx-3 border-t border-gray-300" />{" "}
+            {/* Đường kẻ */}
+            <ul className="space-y-2">
+              {adminItems.map((item) => (
+                <li key={item.name}>
+                  <NavLink
+                    to={item.path}
+                    className={({ isActive }) =>
+                      `flex items-center p-3 rounded-lg transition-all duration-300 ease-in-out ${
+                        isActive
+                          ? "bg-[#009DDC] text-white"
+                          : "hover:bg-[#E0E0E0] text-[#333]"
+                      }`
+                    }
+                  >
+                    <div className="w-10 flex justify-center flex-shrink-0">
+                      {item.icon}
+                    </div>
+                    <span
+                      className={`ml-2 transition-all duration-300 overflow-hidden whitespace-nowrap ${
+                        isOpen ? "opacity-100" : "opacity-0"
+                      }`}
+                    >
+                      {item.name}
+                    </span>
+                  </NavLink>
+                </li>
+              ))}
+            </ul>
+          </>
+        )}
+      </div>
     </div>
   );
 };
