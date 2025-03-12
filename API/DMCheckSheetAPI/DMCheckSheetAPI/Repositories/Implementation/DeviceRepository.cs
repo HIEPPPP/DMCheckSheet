@@ -1,4 +1,5 @@
-﻿using DMCheckSheetAPI.Data;
+﻿using DMCheckSheetAPI.Constants;
+using DMCheckSheetAPI.Data;
 using DMCheckSheetAPI.Models.Domain;
 using DMCheckSheetAPI.Repositories.Interface;
 using Microsoft.EntityFrameworkCore;
@@ -14,14 +15,14 @@ namespace DMCheckSheetAPI.Repositories.Implementation
             this.context = context;
         }
 
-        public async Task<Device> CreateAsync(Device device)
+        public async Task<DeviceMST> CreateAsync(DeviceMST device)
         {
             await context.AddAsync(device);
             await context.SaveChangesAsync();
             return device;
         }
 
-        public async Task<Device?> DeleteAsync(int id)
+        public async Task<DeviceMST?> DeleteAsync(int id)
         {
             var existDevice = await context.Devices.FindAsync(id);
             if(existDevice == null) return null;
@@ -30,19 +31,19 @@ namespace DMCheckSheetAPI.Repositories.Implementation
             return existDevice;
         }
 
-        public async Task<List<Device>> GetAllAsync()
+        public async Task<List<DeviceMST>> GetAllAsync()
         {
             return await context.Devices.AsNoTracking().ToListAsync();
         }
 
-        public async Task<Device?> GetAsync(int id)
+        public async Task<DeviceMST?> GetAsync(int id)
         {
             var existDevice = await context.Devices.FindAsync(id);
             if (existDevice == null) return null;
             return existDevice;
         }
 
-        public async Task<Device?> UpdateAsync(int id, Device device)
+        public async Task<DeviceMST?> UpdateAsync(int id, DeviceMST device)
         {
             var existDevice = await context.Devices.FindAsync(id);
             if (existDevice == null) return null;
@@ -51,6 +52,8 @@ namespace DMCheckSheetAPI.Repositories.Implementation
             existDevice.DeviceName = device.DeviceName;
             existDevice.DeviceCode = device.DeviceCode;
             existDevice.FormNO = device.FormNO;
+            existDevice.UpdateAt = DateTime.Now;
+            existDevice.UpdateBy = CheckSheet_Constants.userCode;
             await context.SaveChangesAsync();
             return existDevice;
         }

@@ -4,10 +4,10 @@ namespace DMCheckSheetAPI.Repositories.Interface
 {
     public interface ICheckListItemRepository
     {
-        Task<List<CheckListItem>> GetAllAsync();
-        Task<CheckListItem?> GetAsync(int id);
-        Task<CheckListItem> CreateAsync(CheckListItem item);
-        Task<CheckListItem?> UpdateAsync(int id, CheckListItem item);
-        Task<CheckListItem?> DeleteAsync(int id);
+        Task<List<CheckListItemMST>> GetAllAsync();
+        Task<CheckListItemMST?> GetAsync(int id);
+        Task<CheckListItemMST> CreateAsync(CheckListItemMST item);
+        Task<CheckListItemMST?> UpdateAsync(int id, CheckListItemMST item);
+        Task<CheckListItemMST?> DeleteAsync(int id);
     }
 }

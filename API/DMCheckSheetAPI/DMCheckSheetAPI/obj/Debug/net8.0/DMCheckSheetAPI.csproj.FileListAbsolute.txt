@@ -173,3 +173,4 @@ D:\IT-03-Code\01-MAIN\02.DM-CheckSheet\API\DMCheckSheetAPI\DMCheckSheetAPI\bin\D
 D:\IT-03-Code\01-MAIN\02.DM-CheckSheet\API\DMCheckSheetAPI\DMCheckSheetAPI\bin\Debug\net8.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
 D:\IT-03-Code\01-MAIN\02.DM-CheckSheet\API\DMCheckSheetAPI\DMCheckSheetAPI\bin\Debug\net8.0\Microsoft.Extensions.Identity.Core.dll
 D:\IT-03-Code\01-MAIN\02.DM-CheckSheet\API\DMCheckSheetAPI\DMCheckSheetAPI\bin\Debug\net8.0\Microsoft.Extensions.Identity.Stores.dll
+D:\IT-03-Code\01-MAIN\02.DM-CheckSheet\API\DMCheckSheetAPI\DMCheckSheetAPI\obj\Debug\net8.0\DMCheckSheetAPI.sourcelink.json

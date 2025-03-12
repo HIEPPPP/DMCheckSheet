@@ -1,5 +1,6 @@
 ﻿using DMCheckSheetAPI.Data;
 using DMCheckSheetAPI.Models.Domain;
+using DMCheckSheetAPI.Models.DTO;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -18,7 +19,7 @@ namespace DMCheckSheetAPI.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Login([FromBody] UserLogin request)
+        public async Task<IActionResult> Login([FromBody] UserLoginDTO request)
         {
             if (request == null || string.IsNullOrWhiteSpace(request.Username) || string.IsNullOrWhiteSpace(request.Password))
             {

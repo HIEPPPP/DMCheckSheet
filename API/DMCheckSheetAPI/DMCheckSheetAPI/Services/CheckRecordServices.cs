@@ -28,19 +28,19 @@ namespace DMCheckSheetAPI.Services
             return existCheck;
         }
 
-        public async Task<CreateUpdateCheckDTO?> CreateCheck(CreateDeviceDTO checkDto)
+        public async Task<CreateCheckDTO?> CreateCheck(CreateDeviceDTO checkDto)
         {
             var checkDomain = mapper.Map<CheckRecord>(checkDto);
             checkDomain = await checkRecordRepository.CreateAsync(checkDomain);
-            return mapper.Map<CreateUpdateCheckDTO>(checkDomain);
+            return mapper.Map<CreateCheckDTO>(checkDomain);
         }
 
-        public async Task<CreateUpdateCheckDTO?> UpdateCheck(int id, CreateUpdateCheckDTO checkDto)
+        public async Task<CreateCheckDTO?> UpdateCheck(int id, CreateCheckDTO checkDto)
         {
             var checkDomain = mapper.Map<CheckRecord>(checkDto);
             var existCheck = await checkRecordRepository.UpdateAsync(id, checkDomain);
             if (existCheck == null) return null;
-            return mapper.Map<CreateUpdateCheckDTO?>(existCheck);   
+            return mapper.Map<CreateCheckDTO?>(existCheck);   
         }
     }
 }

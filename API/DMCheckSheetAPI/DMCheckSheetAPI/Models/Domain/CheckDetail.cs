@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace DMCheckSheetAPI.Models.Domain
 {
     [Table("CheckDetail")]
-    public class CheckDetail
+    public class CheckDetail : ClassBase
     {
         [Key]
         public int DetailId { get; set; }
@@ -15,6 +15,6 @@ namespace DMCheckSheetAPI.Models.Domain
         public bool Status { get; set; } // BoolData
         public int IntData { get; set; }
         public string StringData { get; set; } = null!;
-        public string Note { get; set; } = null!;
+        public string Note { get; set; } = null!;        
     }
 }

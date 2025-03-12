@@ -9,12 +9,12 @@ namespace Ecommerce.API.Mapping
     {
         public AutoMapperProfile() 
         {
-            CreateMap<Device, CreateDeviceDTO>().ReverseMap();
-            CreateMap<Device, UpdateDeviceDTO>().ReverseMap();
-            CreateMap<DeviceType, CreateUpdateTypeDTO>().ReverseMap();
-            CreateMap<CheckDetail, CreateUpdateDetailDTO>().ReverseMap();
-            CreateMap<CheckListItem, CreateUpdateItemDTO>().ReverseMap();
-            CreateMap<CheckRecord, CreateUpdateCheckDTO>().ReverseMap();
+            CreateMap<DeviceMST, CreateDeviceDTO>().ReverseMap();
+            CreateMap<DeviceMST, UpdateDeviceDTO>().ReverseMap();
+            CreateMap<DeviceTypeMST, CreateDeviceTypeDTO>().ReverseMap();
+            CreateMap<CheckDetail, CreateDetailDTO>().ReverseMap();
+            CreateMap<CheckListItemMST, CreateItemDTO>().ReverseMap();
+            CreateMap<CheckRecord, CreateCheckDTO>().ReverseMap();
 
 
             //CreateMap<Product, ProductDto>().ReverseMap();  

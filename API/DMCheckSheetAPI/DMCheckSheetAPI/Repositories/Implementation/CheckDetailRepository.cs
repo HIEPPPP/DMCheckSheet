@@ -1,4 +1,5 @@
-﻿using DMCheckSheetAPI.Data;
+﻿using DMCheckSheetAPI.Constants;
+using DMCheckSheetAPI.Data;
 using DMCheckSheetAPI.Models.Domain;
 using DMCheckSheetAPI.Repositories.Interface;
 using Microsoft.EntityFrameworkCore;
@@ -51,6 +52,8 @@ namespace DMCheckSheetAPI.Repositories.Implementation
             existDetail.StringData  = checkDetail.StringData;
             existDetail.Status = checkDetail.Status;
             existDetail.Note = checkDetail.Note;
+            existDetail.UpdateBy = CheckSheet_Constants.userCode;
+            existDetail.UpdateAt = DateTime.Now;
             await context.SaveChangesAsync();
             return existDetail;
         }

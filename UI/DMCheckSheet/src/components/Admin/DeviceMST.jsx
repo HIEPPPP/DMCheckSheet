@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Table,
   TableBody,
@@ -16,42 +16,54 @@ import {
   IconButton,
 } from "@mui/material";
 import { Add, Edit, Delete } from "@mui/icons-material";
+import { getListDevice } from "../../services/deviceServices";
 
 const DeviceMaster = () => {
-  const [devices, setDevices] = useState([
-    { id: 1, name: "Laptop Dell", type: "Laptop", serial: "DL123456" },
-    { id: 2, name: "Printer HP", type: "Printer", serial: "HP987654" },
-  ]);
+  const [devices, setDevices] = useState([]);
 
   const [open, setOpen] = useState(false);
   const [editingDevice, setEditingDevice] = useState(null);
-  const [formData, setFormData] = useState({ name: "", type: "", serial: "" });
+  const [formData, setFormData] = useState({});
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await getListDevice();
+      console.log(res);
+
+      if (res !== null) {
+        setDevices(res);
+      }
+    };
+    fetchData();
+  }, []);
 
   const handleOpen = (device = null) => {
     setEditingDevice(device);
-    setFormData(device || { name: "", type: "", serial: "" });
+    setFormData(device || { deviceName: "", deviceCode: "", formNO: "" });
     setOpen(true);
   };
 
   const handleClose = () => {
     setOpen(false);
     setEditingDevice(null);
-    setFormData({ name: "", type: "", serial: "" });
+    setFormData({ deviceName: "", deviceCode: "", formNO: "" });
   };
 
   const handleSave = () => {
     if (editingDevice) {
       setDevices((prev) =>
-        prev.map((d) => (d.id === editingDevice.id ? { ...d, ...formData } : d))
+        prev.map((d) =>
+          d.deviceId === editingDevice.id ? { ...d, ...formData } : d
+        )
       );
     } else {
-      setDevices([...devices, { id: Date.now(), ...formData }]);
+      setDevices([...devices, { deviceId: Date.now(), ...formData }]);
     }
     handleClose();
   };
 
   const handleDelete = (id) => {
-    setDevices(devices.filter((d) => d.id !== id));
+    setDevices(devices.filter((d) => d.deviceId !== id));
   };
 
   return (
@@ -69,18 +81,21 @@ const DeviceMaster = () => {
         <Table>
           <TableHead>
             <TableRow>
+              <TableCell>Số Form</TableCell>
+              <TableCell>Mã thiết bị</TableCell>
               <TableCell>Tên Thiết Bị</TableCell>
               <TableCell>Loại</TableCell>
-              <TableCell>Số Serial</TableCell>
-              <TableCell>Hành Động</TableCell>
+              <TableCell>Tần suất</TableCell>
+              <TableCell>Vị trí</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {devices.map((device) => (
-              <TableRow key={device.id}>
-                <TableCell>{device.name}</TableCell>
-                <TableCell>{device.type}</TableCell>
-                <TableCell>{device.serial}</TableCell>
+              <TableRow key={device.formNO}>
+                <TableCell>{device.deviceCode}</TableCell>
+                <TableCell>{device.deviceName}</TableCell>
+                <TableCell>{device.deviceType}</TableCell>
+                <TableCell>{device.frequency}</TableCell>
                 <TableCell>
                   <IconButton
                     color="primary"
@@ -90,7 +105,7 @@ const DeviceMaster = () => {
                   </IconButton>
                   <IconButton
                     color="error"
-                    onClick={() => handleDelete(device.id)}
+                    onClick={() => handleDelete(device.deviceId)}
                   >
                     <Delete />
                   </IconButton>
@@ -110,23 +125,54 @@ const DeviceMaster = () => {
             label="Tên Thiết Bị"
             fullWidth
             margin="dense"
-            value={formData.name}
-            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+            value={formData.deviceType}
+            onChange={(e) =>
+              setFormData({ ...formData, deviceType: e.target.value })
+            }
+          />
+          <TextField
+            label="Tên Thiết Bị"
+            fullWidth
+            margin="dense"
+            value={formData.formNO}
+            onChange={(e) =>
+              setFormData({ ...formData, formNO: e.target.value })
+            }
           />
           <TextField
             label="Loại"
             fullWidth
             margin="dense"
-            value={formData.type}
-            onChange={(e) => setFormData({ ...formData, type: e.target.value })}
+            value={formData.formNO}
+            onChange={(e) =>
+              setFormData({ ...formData, formNO: e.target.value })
+            }
           />
           <TextField
             label="Số Serial"
             fullWidth
             margin="dense"
-            value={formData.serial}
+            value={formData.formNO}
             onChange={(e) =>
-              setFormData({ ...formData, serial: e.target.value })
+              setFormData({ ...formData, deviceName: e.target.value })
+            }
+          />
+          <TextField
+            label="Loại"
+            fullWidth
+            margin="dense"
+            value={formData.frequency}
+            onChange={(e) =>
+              setFormData({ ...formData, frequency: e.target.value })
+            }
+          />
+          <TextField
+            label="Số Serial"
+            fullWidth
+            margin="dense"
+            value={formData.location}
+            onChange={(e) =>
+              setFormData({ ...formData, location: e.target.value })
             }
           />
         </DialogContent>

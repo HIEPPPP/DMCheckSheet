@@ -3,8 +3,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DMCheckSheetAPI.Models.Domain
 {
-    [Table("CheckListItem")]
-    public class CheckListItem
+    [Table("CheckListItemMST")]
+    public class CheckListItemMST : ClassBase
     {
         [Key]
         public int ItemId { get; set; }
@@ -13,7 +13,6 @@ namespace DMCheckSheetAPI.Models.Domain
         public bool IsRequire { get; set; } = true;
         [Required]
         [StringLength(50)]
-        public string DataType { get; set; } = null!;
-
+        public string DataType { get; set; } = null!;      
     }
 }

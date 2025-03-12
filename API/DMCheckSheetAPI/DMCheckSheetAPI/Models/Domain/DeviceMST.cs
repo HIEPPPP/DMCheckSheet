@@ -3,8 +3,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DMCheckSheetAPI.Models.Domain
 {
-    [Table("Device")]
-    public class Device
+    [Table("DeviceMST")]
+    public class DeviceMST : ClassBase
     {
         [Key]
         public int DeviceId { get; set; }
@@ -21,5 +21,6 @@ namespace DMCheckSheetAPI.Models.Domain
         [StringLength(500)]
         public string Location { get; set; } = null!;
         public int Frequency { get; set; } = 1;
+        
     }
 }

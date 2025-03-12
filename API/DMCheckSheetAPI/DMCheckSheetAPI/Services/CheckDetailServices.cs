@@ -28,19 +28,19 @@ namespace DMCheckSheetAPI.Services
             return existDetail;
         }
 
-        public async Task<CreateUpdateDetailDTO> CreateDetail(CreateUpdateDetailDTO detailDto)
+        public async Task<CreateDetailDTO> CreateDetail(CreateDetailDTO detailDto)
         {
             var detailDomain = mapper.Map<CheckDetail>(detailDto);
             detailDomain = await checkDetailRepository.CreateAsync(detailDomain);
-            return mapper.Map<CreateUpdateDetailDTO>(detailDomain);
+            return mapper.Map<CreateDetailDTO>(detailDomain);
         }
 
-        public async Task<CreateUpdateDetailDTO> UpdateDetail(int id, CreateUpdateDetailDTO detailDto)
+        public async Task<CreateDetailDTO?> UpdateDetail(int id, CreateDetailDTO detailDto)
         {
             var detailDomamin = mapper.Map<CheckDetail>(detailDto);
             var existDetail = await checkDetailRepository.UpdateAsync(id, detailDomamin);
             if (existDetail == null) return null;
-            return mapper.Map<CreateUpdateDetailDTO>(existDetail);  
+            return mapper.Map<CreateDetailDTO>(existDetail);  
         }
     }
 }

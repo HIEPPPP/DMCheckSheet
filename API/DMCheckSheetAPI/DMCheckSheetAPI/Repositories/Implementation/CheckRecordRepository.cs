@@ -1,4 +1,5 @@
-﻿using DMCheckSheetAPI.Data;
+﻿using DMCheckSheetAPI.Constants;
+using DMCheckSheetAPI.Data;
 using DMCheckSheetAPI.Models.Domain;
 using DMCheckSheetAPI.Repositories.Interface;
 using Microsoft.EntityFrameworkCore;
@@ -48,6 +49,8 @@ namespace DMCheckSheetAPI.Repositories.Implementation
             existRecord.CheckDate = record.CheckDate;
             existRecord.CheckBy = record.CheckBy;
             existRecord.DeviceId = record.DeviceId;
+            existRecord.UpdateBy = CheckSheet_Constants.userCode;
+            existRecord.UpdateAt = DateTime.Now;
             await context.SaveChangesAsync();
             return existRecord;
         }

@@ -4,10 +4,10 @@ namespace DMCheckSheetAPI.Repositories.Interface
 {
     public interface IDeviceTypeRepository
     {
-        Task<List<DeviceType>> GetAllAsync();
-        Task<DeviceType?> GetByIdAsync(int id);
-        Task<DeviceType> CreateAsync(DeviceType deviceType);
-        Task<DeviceType?> UpdateAsync(int id, DeviceType deviceType);
-        Task<DeviceType?> DeleteAsync(int id);
+        Task<List<DeviceTypeMST>> GetAllAsync();
+        Task<DeviceTypeMST?> GetByIdAsync(int id);
+        Task<DeviceTypeMST> CreateAsync(DeviceTypeMST deviceType);
+        Task<DeviceTypeMST?> UpdateAsync(int id, DeviceTypeMST deviceType);
+        Task<DeviceTypeMST?> DeleteAsync(int id);
     }
 }
