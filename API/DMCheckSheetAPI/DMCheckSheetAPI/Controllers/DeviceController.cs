@@ -64,7 +64,13 @@ namespace DMCheckSheetAPI.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateDevice(int id, UpdateDeviceDTO updateDeviceDTO)
         {
-            return Ok(await  deviceSevices.UpdateDevice(id, updateDeviceDTO));
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            var result = await deviceSevices.UpdateDevice(id, updateDeviceDTO);
+            if (result == null) return NotFound();
+            return Ok(result);
         }
     }
 }

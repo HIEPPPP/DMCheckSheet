@@ -93,5 +93,68 @@
       }
     ],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DMCheckSheetAPI.Controllers.DeviceTypeController",
+    "Method": "GetListType",
+    "RelativePath": "api/DeviceType",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DMCheckSheetAPI.Controllers.DeviceTypeController",
+    "Method": "CreateType",
+    "RelativePath": "api/DeviceType",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "createDeviceTypeDTO",
+        "Type": "DMCheckSheetAPI.Models.DTO.CreateDeviceTypeDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DMCheckSheetAPI.Controllers.DeviceTypeController",
+    "Method": "GetListTypeById",
+    "RelativePath": "api/DeviceType/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DMCheckSheetAPI.Controllers.DeviceTypeController",
+    "Method": "UpdateType",
+    "RelativePath": "api/DeviceType/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "updateDeviceTypeDTO",
+        "Type": "DMCheckSheetAPI.Models.DTO.UpdateDeviceTypeDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
   }
 ]

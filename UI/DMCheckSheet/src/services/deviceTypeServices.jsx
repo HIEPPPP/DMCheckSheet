@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const apiClient = axios.create({
-  baseURL: "http://localhost:5118/api/Device",
+  baseURL: "http://localhost:5118/api/DeviceType",
   headers: {
     "Content-Type": "application/json",
   },
@@ -13,8 +13,8 @@ const handleError = (error) => {
   return null;
 };
 
-// Lấy danh sách thiết bị
-export const getListDevice = async () => {
+// Lấy danh sách loại thiết bị
+export const getListDeviceType = async () => {
   try {
     const res = await apiClient.get("/");
     return res.data;
@@ -23,30 +23,30 @@ export const getListDevice = async () => {
   }
 };
 
-// Tạo mới thiết bị
-export const createDevice = async (deviceData) => {
+// Tạo mới loại thiết bị
+export const createDeviceType = async (typeData) => {
   try {
-    const res = await apiClient.post("/", deviceData);
+    const res = await apiClient.post("/", typeData);
     return res.data;
   } catch (error) {
     return handleError(error);
   }
 };
 
-// Cập nhật thiết bị
-export const updateDevice = async (deviceId, deviceData) => {
+// Cập nhật loại thiết bị
+export const updateDeviceType = async (typeId, typeData) => {
   try {
-    const res = await apiClient.put(`/${deviceId}`, deviceData);
+    const res = await apiClient.put(`/${typeId}`, typeData);
     return res.data;
   } catch (error) {
     return handleError(error);
   }
 };
 
-// Xóa thiết bị
-export const deleteDevice = async (deviceId) => {
+// Xóa loại thiết bị
+export const deleteDeviceType = async (typeId) => {
   try {
-    await apiClient.delete(`/${deviceId}`);
+    await apiClient.delete(`/${typeId}`);
     return true;
   } catch (error) {
     return handleError(error);

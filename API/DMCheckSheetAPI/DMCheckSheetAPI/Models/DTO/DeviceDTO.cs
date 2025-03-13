@@ -1,10 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace DMCheckSheetAPI.Models.DTO
+﻿namespace DMCheckSheetAPI.Models.DTO
 {
-    public class CreateDeviceDTO
+    public class DeviceDTO
     {
-        public int TypeId { get; set; }
+        public int DeviceId { get; set; }
+        public string TypeName { get; set; } = null!;
         public string FormNO { get; set; } = null!;
         public string DeviceCode { get; set; } = null!;
         public string DeviceName { get; set; } = null!;

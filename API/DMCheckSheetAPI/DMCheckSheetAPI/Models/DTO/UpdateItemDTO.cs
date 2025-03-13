@@ -7,6 +7,6 @@
         public bool IsRequire { get; set; } = true;
         public string DataType { get; set; } = null!;
         public DateTime UpdateAt { get; set; } = DateTime.Now;
-        public string UpdateBy { get; set; } = null!;
+        public string? UpdateBy { get; set; }
     }
 }

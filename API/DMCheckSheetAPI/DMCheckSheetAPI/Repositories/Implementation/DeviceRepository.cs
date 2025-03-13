@@ -1,6 +1,7 @@
 ﻿using DMCheckSheetAPI.Constants;
 using DMCheckSheetAPI.Data;
 using DMCheckSheetAPI.Models.Domain;
+using DMCheckSheetAPI.Models.DTO;
 using DMCheckSheetAPI.Repositories.Interface;
 using Microsoft.EntityFrameworkCore;
 
@@ -31,9 +32,21 @@ namespace DMCheckSheetAPI.Repositories.Implementation
             return existDevice;
         }
 
-        public async Task<List<DeviceMST>> GetAllAsync()
+        public async Task<List<DeviceDTO>> GetAllAsync()
         {
-            return await context.Devices.AsNoTracking().ToListAsync();
+            return await (from d in context.Devices
+                          join dt in context.DeviceTypes
+                          on d.TypeId equals dt.TypeId 
+                          select new DeviceDTO
+                          {
+                              DeviceId = d.DeviceId,
+                              DeviceCode = d.DeviceCode,
+                              DeviceName = d.DeviceName,
+                              FormNO = d.FormNO,
+                              TypeName = dt.TypeName,
+                              Frequency = d.Frequency,
+                              Location = d.Location
+                          }).AsNoTracking().ToListAsync();                          
         }
 
         public async Task<DeviceMST?> GetAsync(int id)

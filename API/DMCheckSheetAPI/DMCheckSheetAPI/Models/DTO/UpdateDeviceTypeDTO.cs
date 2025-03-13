@@ -4,7 +4,7 @@
     {
         public string TypeName { get; set; } = null!;
         public string? TypeDesc { get; set; } = null!;
-        public string UpdateBy { get; set; } = null!;
+        public string? UpdateBy { get; set; }
         public DateTime UpdateAt { get; set; } = DateTime.Now;
     }
 }

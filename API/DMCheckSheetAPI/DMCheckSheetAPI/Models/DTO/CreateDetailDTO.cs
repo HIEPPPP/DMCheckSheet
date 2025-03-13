@@ -10,6 +10,6 @@ namespace DMCheckSheetAPI.Models.DTO
         public string StringData { get; set; } = null!;
         public string Note { get; set; } = null!;
         public DateTime CreateAt { get; set; } = DateTime.Now;
-        public string CreateBy { get; set; } = null!;
+        public string? CreateBy { get; set; }
     }
 }

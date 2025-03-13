@@ -12,6 +12,8 @@ import {
 
 import logo from "../assets/img/settings.png"; // Kiểm tra lại đường dẫn
 import { FcMultipleDevices } from "react-icons/fc";
+import { TypeSpecimen, TypeSpecimenRounded } from "@mui/icons-material";
+import { BsTypeBold } from "react-icons/bs";
 
 const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(true);
@@ -27,8 +29,13 @@ const Sidebar = () => {
     { name: "User Management", path: "/users", icon: <FiUsers size={22} /> },
     {
       name: "Device",
-      path: "/deviceMst",
+      path: "/deviceMST",
       icon: <FcMultipleDevices size={22} />,
+    },
+    {
+      name: "Device Type",
+      path: "/deviceTypeMST",
+      icon: <TypeSpecimenRounded size={22} />,
     },
     { name: "Settings", path: "/settings", icon: <FiSettings size={22} /> },
   ];

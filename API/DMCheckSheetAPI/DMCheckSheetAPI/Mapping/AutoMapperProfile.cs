@@ -11,10 +11,18 @@ namespace Ecommerce.API.Mapping
         {
             CreateMap<DeviceMST, CreateDeviceDTO>().ReverseMap();
             CreateMap<DeviceMST, UpdateDeviceDTO>().ReverseMap();
+
             CreateMap<DeviceTypeMST, CreateDeviceTypeDTO>().ReverseMap();
+            CreateMap<DeviceTypeMST, UpdateDeviceTypeDTO>().ReverseMap();
+
             CreateMap<CheckDetail, CreateDetailDTO>().ReverseMap();
+            CreateMap<CheckDetail, UpdateDetailDTO>().ReverseMap();
+
             CreateMap<CheckListItemMST, CreateItemDTO>().ReverseMap();
+            CreateMap<CheckListItemMST, UpdateItemDTO>().ReverseMap();
+
             CreateMap<CheckRecord, CreateCheckDTO>().ReverseMap();
+            CreateMap<CheckRecord, UpdateCheckDTO>().ReverseMap();
 
 
             //CreateMap<Product, ProductDto>().ReverseMap();  

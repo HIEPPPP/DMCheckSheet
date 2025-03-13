@@ -16,7 +16,7 @@ namespace DMCheckSheetAPI.Services
             this.mapper = mapper;
         }
 
-        public async Task<List<DeviceMST>> GetListDevice()
+        public async Task<List<DeviceDTO>> GetListDevice()
         {
             return await deviceRepository.GetAllAsync();
         }
