@@ -8,21 +8,32 @@ import {
   FiUsers,
   FiChevronLeft,
   FiChevronRight,
+  FiChevronDown,
+  FiKey,
+  FiLogOut,
+  FiUser,
 } from "react-icons/fi";
 
 import logo from "../assets/img/settings.png"; // Kiểm tra lại đường dẫn
 import { FcMultipleDevices } from "react-icons/fc";
 import { TypeSpecimen, TypeSpecimenRounded } from "@mui/icons-material";
-import { BsTypeBold } from "react-icons/bs";
+import { BsFilePdf, BsTypeBold } from "react-icons/bs";
+import { useNavigate } from "react-router-dom";
 
 const Sidebar = () => {
+  const user = {
+    name: "John Doe",
+    role: "Administrator",
+    avatar: "https://i.pravatar.cc/40", // Ảnh đại diện ngẫu nhiên
+  };
+
   const [isOpen, setIsOpen] = useState(true);
-  const isAdmin = true; // Giả định user là Admin (Thay đổi theo logic của bạn)
+  const isAdmin = true; // Để sau này thay đổi quyền admin
 
   const menuItems = [
-    { name: "Devices", path: "/dashboard", icon: <FiHome size={22} /> },
-    { name: "Check List", path: "/checklist", icon: <FiList size={22} /> },
-    { name: "Login", path: "/login", icon: <FiLogIn size={22} /> },
+    { name: "Daily Check", path: "/dashboard", icon: <FiHome size={22} /> },
+    { name: "PDF", path: "/checklist", icon: <BsFilePdf size={22} /> },
+    { name: "User", path: "/user", icon: <FiUser size={22} /> },
   ];
 
   const adminItems = [
@@ -37,9 +48,19 @@ const Sidebar = () => {
       path: "/deviceTypeMST",
       icon: <TypeSpecimenRounded size={22} />,
     },
+    {
+      name: "Check List",
+      path: "/deviceTypeMST",
+      icon: <FiList size={22} />,
+    },
     { name: "Settings", path: "/settings", icon: <FiSettings size={22} /> },
   ];
 
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    navigate("/login");
+  };
   return (
     <div className="relative flex">
       {/* Sidebar */}
@@ -129,6 +150,28 @@ const Sidebar = () => {
             </ul>
           </>
         )}
+        {/* User Info + Logout */}
+        <div className="mt-auto p-4 bg-[#F5F5F5] flex justify-center items-center rounded-lg mx-3">
+          {isOpen && (
+            <div className="flex items-center">
+              <img
+                src={user.avatar}
+                alt="User"
+                className="w-10 h-10 rounded-full"
+              />
+              <div className="ml-3">
+                <p className="font-semibold">{user.name}</p>
+                <p className="text-sm text-gray-500">{user.role}</p>
+              </div>
+            </div>
+          )}
+          <button
+            className="ml-auto text-[#333] hover:text-red-500 transition-all"
+            onClick={handleLogout}
+          >
+            <FiLogOut size={22} />
+          </button>
+        </div>
       </div>
     </div>
   );
