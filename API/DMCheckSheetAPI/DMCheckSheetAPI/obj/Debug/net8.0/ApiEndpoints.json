@@ -156,5 +156,21 @@
       }
     ],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DMCheckSheetAPI.Controllers.DeviceTypeController",
+    "Method": "DeleteType",
+    "RelativePath": "api/DeviceType/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
   }
 ]

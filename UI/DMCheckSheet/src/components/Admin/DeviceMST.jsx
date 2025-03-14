@@ -25,6 +25,7 @@ import {
   getListDevice,
   updateDevice,
   deleteDevice,
+  getDeviceById,
 } from "../../services/deviceServices";
 
 import { getListDeviceType } from "../../services/deviceTypeServices";

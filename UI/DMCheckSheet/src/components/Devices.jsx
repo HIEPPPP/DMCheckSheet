@@ -13,7 +13,27 @@ const Device = () => {
   return (
     <div>
       <SearchBar />
-      <div>
+      <div className="flex mt-10 gap-5 justify-center flex-wrap">
+        <DeviceCard device={sampleDevice} />
+        <DeviceCard device={sampleDevice} />
+        <DeviceCard device={sampleDevice} />
+        <DeviceCard device={sampleDevice} />
+        <DeviceCard device={sampleDevice} />
+        <DeviceCard device={sampleDevice} />
+        <DeviceCard device={sampleDevice} />
+        <DeviceCard device={sampleDevice} />
+        <DeviceCard device={sampleDevice} />
+        <DeviceCard device={sampleDevice} />
+        <DeviceCard device={sampleDevice} />
+        <DeviceCard device={sampleDevice} />
+        <DeviceCard device={sampleDevice} />
+        <DeviceCard device={sampleDevice} />
+        <DeviceCard device={sampleDevice} />
+        <DeviceCard device={sampleDevice} />
+        <DeviceCard device={sampleDevice} />
+        <DeviceCard device={sampleDevice} />
+        <DeviceCard device={sampleDevice} />
+        <DeviceCard device={sampleDevice} />
         <DeviceCard device={sampleDevice} />
       </div>
     </div>

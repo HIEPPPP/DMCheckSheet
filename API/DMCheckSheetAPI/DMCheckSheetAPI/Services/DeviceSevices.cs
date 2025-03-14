@@ -2,6 +2,7 @@
 using DMCheckSheetAPI.Models.Domain;
 using DMCheckSheetAPI.Models.DTO;
 using DMCheckSheetAPI.Repositories.Interface;
+using Microsoft.AspNetCore.Http.HttpResults;
 
 namespace DMCheckSheetAPI.Services
 {
@@ -28,12 +29,11 @@ namespace DMCheckSheetAPI.Services
             return existDevice;
         }
 
-        public async Task<CreateDeviceDTO> CreateDevice(CreateDeviceDTO deviceDto)
+        public async Task<DeviceDTO> CreateDevice(CreateDeviceDTO deviceDto)
         {
             var deviceDomail = mapper.Map<DeviceMST>(deviceDto);
-            await deviceRepository.CreateAsync(deviceDomail);
-            mapper.Map<CreateDeviceDTO>(deviceDomail);
-            return deviceDto;
+            var deviceNew = await deviceRepository.CreateAsync(deviceDomail);     
+            return deviceNew;
         }
 
         public async Task<DeviceMST?> DeleteDevice(int id)

@@ -57,5 +57,24 @@ namespace DMCheckSheetAPI.Controllers
             if(result == null) return NotFound($"Device type with ID {id} not found.");
             return Ok(result);
         }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteType(int id)
+        {
+            try
+            {
+                var deletedType = await deviceTypeServices.DeleteDeviceType(id);
+                if (deletedType == null)
+                {
+                    return NotFound(new { message = "Device not found" });
+                }
+
+                return NoContent(); // Trả về 204 khi xóa thành công
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = "Internal Server Error", error = ex.Message });
+            }
+        }
     }
 }

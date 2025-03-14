@@ -46,6 +46,7 @@ namespace DMCheckSheetAPI.Repositories.Implementation
         {
             var existType = await context.DeviceTypes.FindAsync(id);
             if (existType == null) return null;
+            existType.TypeCode = deviceType.TypeCode;
             existType.TypeDesc = deviceType.TypeDesc;
             existType.TypeName = deviceType.TypeName;
             existType.UpdateBy = CheckSheet_Constants.userCode;

@@ -16,11 +16,37 @@ namespace DMCheckSheetAPI.Repositories.Implementation
             this.context = context;
         }
 
-        public async Task<DeviceMST> CreateAsync(DeviceMST device)
+        public async Task<DeviceDTO> CreateAsync(DeviceMST device)
         {
             await context.AddAsync(device);
             await context.SaveChangesAsync();
-            return device;
+            var fullDevice = await (from d in context.Devices
+                                    join t in context.DeviceTypes
+                                    on d.TypeId equals t.TypeId
+                                    select new DeviceDTO
+                                    {
+                                        DeviceId = d.DeviceId,
+                                        TypeName = t.TypeName,
+                                        FormNO = d.FormNO,
+                                        DeviceCode = d.DeviceCode,
+                                        DeviceName = d.DeviceName,
+                                        Location = d.Location,
+                                        Frequency = d.Frequency,
+                                        CreateAt = d.CreateAt,
+                                        CreateBy = d.CreateBy,
+                                    }).FirstOrDefaultAsync();
+            return fullDevice ?? new DeviceDTO
+            {
+                DeviceId = device.DeviceId,
+                TypeName = "",
+                FormNO = device.FormNO,
+                DeviceCode = device.DeviceCode,
+                DeviceName = device.DeviceName,
+                Location = device.Location,
+                Frequency = device.Frequency,
+                CreateAt = device.CreateAt,
+                CreateBy = device.CreateBy,
+            };
         }
 
         public async Task<DeviceMST?> DeleteAsync(int id)

@@ -15,8 +15,8 @@ const DeviceCard = ({ device }) => {
       </div>
 
       <div className="mt-4 flex justify-between">
-        <button className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition">
-          FDF
+        <button className="bg-blue-500 text-[14px] text-white rounded-xl w-full p-2  hover:bg-blue-600 transition">
+          Check now
         </button>
       </div>
     </div>

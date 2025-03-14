@@ -23,6 +23,16 @@ export const getListDevice = async () => {
   }
 };
 
+// Lấy thiết bị theo ID
+export const getDeviceById = async (deviceId) => {
+  try {
+    const res = await apiClient.get(`/${deviceId}`);
+    return res.data;
+  } catch (error) {
+    return handleError(error);
+  }
+};
+
 // Tạo mới thiết bị
 export const createDevice = async (deviceData) => {
   try {

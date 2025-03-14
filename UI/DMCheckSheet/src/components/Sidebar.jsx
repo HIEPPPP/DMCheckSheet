@@ -22,7 +22,7 @@ import { useNavigate } from "react-router-dom";
 
 const Sidebar = () => {
   const user = {
-    name: "John Doe",
+    name: "MR. HIEP",
     role: "Administrator",
     avatar: "https://i.pravatar.cc/40", // Ảnh đại diện ngẫu nhiên
   };
@@ -32,7 +32,7 @@ const Sidebar = () => {
 
   const menuItems = [
     { name: "Daily Check", path: "/dashboard", icon: <FiHome size={22} /> },
-    { name: "PDF", path: "/checklist", icon: <BsFilePdf size={22} /> },
+    { name: "PDF", path: "/pdf", icon: <BsFilePdf size={22} /> },
     { name: "User", path: "/user", icon: <FiUser size={22} /> },
   ];
 
@@ -50,7 +50,7 @@ const Sidebar = () => {
     },
     {
       name: "Check List",
-      path: "/deviceTypeMST",
+      path: "/checklist",
       icon: <FiList size={22} />,
     },
     { name: "Settings", path: "/settings", icon: <FiSettings size={22} /> },
@@ -61,6 +61,8 @@ const Sidebar = () => {
   const handleLogout = () => {
     navigate("/login");
   };
+
+  const handleToggleSidebar = () => {};
   return (
     <div className="relative flex">
       {/* Sidebar */}

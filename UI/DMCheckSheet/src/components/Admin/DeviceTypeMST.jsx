@@ -15,12 +15,12 @@ import {
   DialogActions,
   TextField,
   IconButton,
-  FormControl,
-  Select,
-  MenuItem,
+  Snackbar,
+  Alert,
 } from "@mui/material";
 import {
   createDeviceType,
+  deleteDeviceType,
   getListDeviceType,
   updateDeviceType,
 } from "../../services/deviceTypeServices";
@@ -39,6 +39,24 @@ const DeviceTypeMST = () => {
     updateBy: "",
   });
   const [open, setOpen] = useState(false);
+  const [snackbar, setSnackbar] = useState({
+    open: false,
+    message: "",
+    severity: "success",
+  });
+  const [confirmDelete, setConfirmDelete] = useState(null);
+  const [errors, setErrors] = useState({});
+
+  // Kiểm tra dữ liệu đầu vào
+  const validate = () => {
+    let newErrors = {};
+    if (!formData.typeCode.trim())
+      newErrors.typeCode = "Mã loại không được để trống!";
+    if (!formData.typeName.trim())
+      newErrors.typeName = "Tên loại không được để trống!";
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -81,20 +99,73 @@ const DeviceTypeMST = () => {
   };
 
   const handleSave = async () => {
-    if (editType) {
-      const updateType = await updateDeviceType(editType.typeId, formData);
-      if (updateType) {
-        setDeviceType((prev) =>
-          prev.map((dt) => (dt.typeId === editType.typeId ? updateType : dt))
-        );
+    try {
+      if (editType) {
+        const updateType = await updateDeviceType(editType.typeId, {
+          ...formData,
+          updateAt: new Date().toISOString(),
+          updateBy: null,
+        });
+        if (updateType) {
+          setDeviceType((prev) =>
+            prev.map((dt) =>
+              dt.typeId === editType.typeId
+                ? { ...updateType, typeId: dt.typeId }
+                : dt
+            )
+          );
+          setSnackbar({
+            open: true,
+            message: "Cập nhật thành công!",
+            severity: "success",
+          });
+        }
+      } else {
+        const newDeviceType = await createDeviceType({
+          ...formData,
+          createAt: new Date().toISOString(),
+          createBy: null,
+        });
+        if (newDeviceType) {
+          setDeviceType([...deviceType, newDeviceType]);
+          setSnackbar({
+            open: true,
+            message: "Thêm thành công!",
+            severity: "success",
+          });
+        }
       }
-    } else {
-      const newDeviceType = await createDeviceType(formData);
-      if (newDeviceType) {
-        setDeviceType([...deviceType, newDeviceType]);
-      }
+      handleClose();
+    } catch (error) {
+      setSnackbar({
+        open: true,
+        message: "Lỗi! Vui lòng thử lại.",
+        severity: "error",
+      });
     }
-    handleClose();
+  };
+
+  const handleDelete = async (id) => {
+    try {
+      const isDeleted = await deleteDeviceType(id);
+      if (isDeleted) {
+        setDeviceType(deviceType.filter((d) => d.typeId !== id));
+        setSnackbar({
+          open: true,
+          message: "Xóa thành công!",
+          severity: "success",
+        });
+      }
+    } catch (error) {
+      setSnackbar({ open: true, message: "Lỗi khi xóa!", severity: "error" });
+    }
+    setConfirmDelete(null);
+  };
+
+  const handleSubmit = () => {
+    if (validate()) {
+      handleSave();
+    }
   };
 
   return (
@@ -108,7 +179,7 @@ const DeviceTypeMST = () => {
         Thêm Loại Thiết Bị
       </Button>
 
-      <TableContainer>
+      <TableContainer component={Paper} className="mt-5">
         <Table>
           <TableHead>
             <TableRow>
@@ -120,7 +191,7 @@ const DeviceTypeMST = () => {
           </TableHead>
           <TableBody>
             {deviceType.map((dt) => (
-              <TableRow>
+              <TableRow key={dt.typeId}>
                 <TableCell>{dt.typeCode}</TableCell>
                 <TableCell>{dt.typeName}</TableCell>
                 <TableCell>{dt.typeDesc}</TableCell>
@@ -130,7 +201,7 @@ const DeviceTypeMST = () => {
                   </IconButton>
                   <IconButton
                     color="error"
-                    //onClick={() => handleDelete(device.deviceId)}
+                    onClick={() => setConfirmDelete(dt.typeId)}
                   >
                     <Delete />
                   </IconButton>
@@ -141,7 +212,8 @@ const DeviceTypeMST = () => {
         </Table>
       </TableContainer>
 
-      <Dialog open={open}>
+      {/* Dialog thêm/sửa */}
+      <Dialog open={open} onClose={handleClose}>
         <DialogTitle>
           {editType ? "Cập Nhật Loại Linh Kiện" : "Thêm Loại Linh Kiện"}
         </DialogTitle>
@@ -154,6 +226,8 @@ const DeviceTypeMST = () => {
             onChange={(e) =>
               setFormData({ ...formData, typeCode: e.target.value })
             }
+            error={!!errors.typeCode}
+            helperText={errors.typeCode}
           />
           <TextField
             label="Tên loại"
@@ -163,6 +237,8 @@ const DeviceTypeMST = () => {
             onChange={(e) =>
               setFormData({ ...formData, typeName: e.target.value })
             }
+            error={!!errors.typeName}
+            helperText={errors.typeName}
           />
           <TextField
             label="Mô tả"
@@ -176,11 +252,48 @@ const DeviceTypeMST = () => {
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Hủy</Button>
-          <Button onClick={handleSave} variant="contained">
+          <Button onClick={handleSubmit} variant="contained">
             Lưu
           </Button>
         </DialogActions>
       </Dialog>
+
+      {/* Dialog xác nhận xóa */}
+      <Dialog
+        open={Boolean(confirmDelete)}
+        onClose={() => setConfirmDelete(null)}
+      >
+        <DialogTitle>Xác nhận xóa</DialogTitle>
+        <DialogContent>
+          Bạn có chắc muốn xóa loại linh kiện này không?
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={() => setConfirmDelete(null)}>Hủy</Button>
+          <Button
+            color="error"
+            variant="contained"
+            onClick={() => handleDelete(confirmDelete)}
+          >
+            Xóa
+          </Button>
+        </DialogActions>
+      </Dialog>
+
+      {/* Snackbar thông báo */}
+      <Snackbar
+        open={snackbar.open}
+        autoHideDuration={3000}
+        onClose={() => setSnackbar({ ...snackbar, open: false })}
+        anchorOrigin={{ vertical: "top", horizontal: "right" }}
+      >
+        <Alert
+          onClose={() => setSnackbar({ ...snackbar, open: false })}
+          severity={snackbar.severity}
+          variant="filled"
+        >
+          {snackbar.message}
+        </Alert>
+      </Snackbar>
     </div>
   );
 };
