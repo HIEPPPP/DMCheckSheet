@@ -37,9 +37,8 @@ namespace DMCheckSheetAPI.Repositories.Implementation
 
         public async Task<DeviceTypeMST?> GetByIdAsync(int id)
         {
-            var existType = await context.DeviceTypes.FindAsync(id);
-            if (existType == null) return null;
-            return existType;
+            return await context.DeviceTypes.FindAsync(id);
+           
         }
 
         public async Task<DeviceTypeMST?> UpdateAsync(int id, DeviceTypeMST deviceType)

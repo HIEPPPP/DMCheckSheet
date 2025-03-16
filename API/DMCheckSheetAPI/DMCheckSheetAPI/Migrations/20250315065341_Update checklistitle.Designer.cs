@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DMCheckSheetAPI.Migrations
 {
     [DbContext(typeof(CheckSheetDbContext))]
-    [Migration("20250312035256_Update-Database")]
-    partial class UpdateDatabase
+    [Migration("20250315065341_Update checklistitle")]
+    partial class Updatechecklistitle
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -40,7 +40,6 @@ namespace DMCheckSheetAPI.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("CreateBy")
-                        .IsRequired()
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
 
@@ -51,6 +50,14 @@ namespace DMCheckSheetAPI.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Note")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Policy")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Reason")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -65,11 +72,14 @@ namespace DMCheckSheetAPI.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("UpdateBy")
-                        .IsRequired()
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
 
                     b.HasKey("DetailId");
+
+                    b.HasIndex("CheckId");
+
+                    b.HasIndex("ItemId");
 
                     b.ToTable("CheckDetail");
                 });
@@ -84,13 +94,13 @@ namespace DMCheckSheetAPI.Migrations
 
                     b.Property<string>("CheckName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(1000)
+                        .HasColumnType("nvarchar(1000)");
 
                     b.Property<DateTime>("CreateAt")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("CreateBy")
-                        .IsRequired()
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
 
@@ -102,20 +112,63 @@ namespace DMCheckSheetAPI.Migrations
                     b.Property<int>("DeciveId")
                         .HasColumnType("int");
 
+                    b.Property<int?>("DeviceId")
+                        .HasColumnType("int");
+
                     b.Property<bool>("IsRequire")
                         .HasColumnType("bit");
+
+                    b.Property<int>("TitleId")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("UpdateAt")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("UpdateBy")
-                        .IsRequired()
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
 
                     b.HasKey("ItemId");
 
+                    b.HasIndex("DeviceId")
+                        .IsUnique()
+                        .HasFilter("[DeviceId] IS NOT NULL");
+
+                    b.HasIndex("TitleId");
+
                     b.ToTable("CheckListItemMST");
+                });
+
+            modelBuilder.Entity("DMCheckSheetAPI.Models.Domain.CheckListTitle", b =>
+                {
+                    b.Property<int>("TitleId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TitleId"));
+
+                    b.Property<DateTime>("CreateAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreateBy")
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<string>("TitleName")
+                        .IsRequired()
+                        .HasMaxLength(1000)
+                        .HasColumnType("nvarchar(1000)");
+
+                    b.Property<DateTime>("UpdateAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdateBy")
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.HasKey("TitleId");
+
+                    b.ToTable("TitleItemMST");
                 });
 
             modelBuilder.Entity("DMCheckSheetAPI.Models.Domain.CheckRecord", b =>
@@ -146,6 +199,8 @@ namespace DMCheckSheetAPI.Migrations
 
                     b.HasKey("CheckId");
 
+                    b.HasIndex("DeviceId");
+
                     b.ToTable("CheckRecord");
                 });
 
@@ -161,7 +216,6 @@ namespace DMCheckSheetAPI.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("CreateBy")
-                        .IsRequired()
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
 
@@ -195,11 +249,12 @@ namespace DMCheckSheetAPI.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("UpdateBy")
-                        .IsRequired()
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
 
                     b.HasKey("DeviceId");
+
+                    b.HasIndex("TypeId");
 
                     b.ToTable("DeviceMST");
                 });
@@ -216,12 +271,15 @@ namespace DMCheckSheetAPI.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("CreateBy")
-                        .IsRequired()
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
 
-                    b.Property<string>("TypeDesc")
+                    b.Property<string>("TypeCode")
                         .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("TypeDesc")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("TypeName")
@@ -233,7 +291,6 @@ namespace DMCheckSheetAPI.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("UpdateBy")
-                        .IsRequired()
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
 
@@ -254,7 +311,6 @@ namespace DMCheckSheetAPI.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("CreateBy")
-                        .IsRequired()
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
 
@@ -267,7 +323,6 @@ namespace DMCheckSheetAPI.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("UpdateBy")
-                        .IsRequired()
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
 
@@ -279,6 +334,79 @@ namespace DMCheckSheetAPI.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("UserLogin");
+                });
+
+            modelBuilder.Entity("DMCheckSheetAPI.Models.Domain.CheckDetail", b =>
+                {
+                    b.HasOne("DMCheckSheetAPI.Models.Domain.CheckRecord", "CheckRecord")
+                        .WithMany()
+                        .HasForeignKey("CheckId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("DMCheckSheetAPI.Models.Domain.CheckListItemMST", "CheckListItemMST")
+                        .WithMany()
+                        .HasForeignKey("ItemId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("CheckListItemMST");
+
+                    b.Navigation("CheckRecord");
+                });
+
+            modelBuilder.Entity("DMCheckSheetAPI.Models.Domain.CheckListItemMST", b =>
+                {
+                    b.HasOne("DMCheckSheetAPI.Models.Domain.DeviceMST", "DeviceMST")
+                        .WithOne("CheckListItem")
+                        .HasForeignKey("DMCheckSheetAPI.Models.Domain.CheckListItemMST", "DeviceId");
+
+                    b.HasOne("DMCheckSheetAPI.Models.Domain.CheckListTitle", "TitleItemMST")
+                        .WithMany("CheckListItems")
+                        .HasForeignKey("TitleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("DeviceMST");
+
+                    b.Navigation("TitleItemMST");
+                });
+
+            modelBuilder.Entity("DMCheckSheetAPI.Models.Domain.CheckRecord", b =>
+                {
+                    b.HasOne("DMCheckSheetAPI.Models.Domain.DeviceMST", "DeviceMST")
+                        .WithMany()
+                        .HasForeignKey("DeviceId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("DeviceMST");
+                });
+
+            modelBuilder.Entity("DMCheckSheetAPI.Models.Domain.DeviceMST", b =>
+                {
+                    b.HasOne("DMCheckSheetAPI.Models.Domain.DeviceTypeMST", "DeviceType")
+                        .WithMany("DeviceMSTs")
+                        .HasForeignKey("TypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("DeviceType");
+                });
+
+            modelBuilder.Entity("DMCheckSheetAPI.Models.Domain.CheckListTitle", b =>
+                {
+                    b.Navigation("CheckListItems");
+                });
+
+            modelBuilder.Entity("DMCheckSheetAPI.Models.Domain.DeviceMST", b =>
+                {
+                    b.Navigation("CheckListItem");
+                });
+
+            modelBuilder.Entity("DMCheckSheetAPI.Models.Domain.DeviceTypeMST", b =>
+                {
+                    b.Navigation("DeviceMSTs");
                 });
 #pragma warning restore 612, 618
         }

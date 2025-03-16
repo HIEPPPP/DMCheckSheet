@@ -3,6 +3,7 @@
     public class DeviceDTO
     {
         public int DeviceId { get; set; }
+        public int TypeId { get; set; }
         public string TypeName { get; set; } = null!;
         public string FormNO { get; set; } = null!;
         public string DeviceCode { get; set; } = null!;

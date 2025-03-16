@@ -1,9 +1,12 @@
-﻿using DMCheckSheetAPI.Data;
-using DMCheckSheetAPI.Models.Domain;
+﻿using DMCheckSheetAPI.Models.Domain;
 using DMCheckSheetAPI.Models.DTO;
-using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.Data;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
 
 namespace DMCheckSheetAPI.Controllers
 {
@@ -11,28 +14,86 @@ namespace DMCheckSheetAPI.Controllers
     [ApiController]
     public class AuthController : ControllerBase
     {
-        private readonly CheckSheetDbContext context;
+        private readonly UserManager<User> _userManager;
+        private readonly IConfiguration _configuration;
+        private readonly RoleManager<IdentityRole> _roleManager;
 
-        public AuthController(CheckSheetDbContext context)
+        public AuthController(UserManager<User> userManager, IConfiguration configuration, RoleManager<IdentityRole> roleManager)
         {
-            this.context = context;
+            _userManager = userManager;
+            _configuration = configuration;
+            _roleManager = roleManager;
         }
 
-        [HttpPost]
-        public async Task<IActionResult> Login([FromBody] UserLoginDTO request)
+        [HttpPost("register")]
+        public async Task<IActionResult> Register([FromBody] Models.DTO.RegisterRequest model)
         {
-            if (request == null || string.IsNullOrWhiteSpace(request.Username) || string.IsNullOrWhiteSpace(request.Password))
+            if (await _userManager.FindByNameAsync(model.Username) != null)
+                return BadRequest(new { message = "Username already exists!" });
+
+            var user = new User
             {
-                return BadRequest(new { message = "Vui lòng nhập đầy đủ thông tin đăng nhập." });
+                UserName = model.Username
+            };
+
+            var result = await _userManager.CreateAsync(user, model.Password);
+
+            if (!result.Succeeded)
+                return BadRequest(result.Errors);
+
+            if (!string.IsNullOrEmpty(model.Role))
+            {
+                if (!await _roleManager.RoleExistsAsync(model.Role))
+                    await _roleManager.CreateAsync(new IdentityRole(model.Role));
+
+                await _userManager.AddToRoleAsync(user, model.Role);
             }
 
-            var user = await context.UserLogins.FirstOrDefaultAsync(x => x.Username == request.Username && x.Password == request.Password);
-            if (user == null)
+            return Ok(new { message = "User registered successfully!" });
+        }
+
+        [HttpPost("login")]
+        public async Task<IActionResult> Login([FromBody] Models.DTO.LoginRequest request)
+        {
+            var user = await _userManager.FindByNameAsync(request.Username);
+            if (user == null || !await _userManager.CheckPasswordAsync(user, request.Password))
             {
-                return Unauthorized(new { message = "Sai tài khoản hoặc mật khẩu." });
+                return Unauthorized(new { message = "Sai tài khoản hoặc mật khẩu!" });
             }
 
-            return Ok(new { message = "Đăng nhập thành công!", username = request.Username });
+            var roles = await _userManager.GetRolesAsync(user);
+            var token = GenerateJwtToken(user, roles);
+
+            return Ok(new
+            {
+                token,
+                username = user.UserName,
+                roles
+            });
+        }
+
+        private string GenerateJwtToken(User user, IList<string> roles)
+        {
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
+            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+
+            var claims = new List<Claim>
+            {
+                new Claim(JwtRegisteredClaimNames.Sub, user.Id),
+                new Claim(JwtRegisteredClaimNames.UniqueName, user.UserName),
+            };
+
+            claims.AddRange(roles.Select(role => new Claim(ClaimTypes.Role, role)));
+
+            var token = new JwtSecurityToken(
+                issuer: _configuration["Jwt:Issuer"],
+                audience: _configuration["Jwt:Audience"],
+                claims: claims,
+                expires: DateTime.UtcNow.AddDays(1),
+                signingCredentials: creds
+            );
+
+            return new JwtSecurityTokenHandler().WriteToken(token);
         }
     }
 }

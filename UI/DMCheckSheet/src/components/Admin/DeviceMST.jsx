@@ -40,6 +40,7 @@ const DeviceMST = () => {
     deviceName: "",
     deviceCode: "",
     formNO: "",
+    typeId: "",
     typeName: "",
     frequency: "",
     location: "",
@@ -69,6 +70,7 @@ const DeviceMST = () => {
         deviceName: "",
         deviceCode: "",
         formNO: "",
+        typeId: "",
         typeName: "",
         frequency: "",
         location: "",
@@ -84,6 +86,7 @@ const DeviceMST = () => {
       deviceName: "",
       deviceCode: "",
       formNO: "",
+      typeId: "",
       typeName: "",
       frequency: "",
       location: "",
@@ -109,6 +112,9 @@ const DeviceMST = () => {
         setDevices([...devices, newDevice]);
       }
     }
+    // Cập nhật lại danh sách thiết bị
+    const updatedDevices = await getListDevice();
+    if (updatedDevices) setDevices(updatedDevices);
     handleClose();
   };
 

@@ -22,9 +22,8 @@ namespace DMCheckSheetAPI.Services
 
         public async Task<DeviceTypeMST?> GetTypeById(int id)
         {
-            var existType = await deviceTypeRepository.GetByIdAsync(id);
-            if (existType == null) return null;
-            return existType;
+            return await deviceTypeRepository.GetByIdAsync(id);
+            
         }
 
         public async Task<DeviceTypeMST?> DeleteDeviceType(int id)
@@ -34,21 +33,16 @@ namespace DMCheckSheetAPI.Services
             return existType;
         }
 
-        public async Task<CreateDeviceTypeDTO> CreateType(CreateDeviceTypeDTO typeDto)
+        public async Task<DeviceTypeMST> CreateType(CreateDeviceTypeDTO typeDto)
         {
             var typeDomail = mapper.Map<DeviceTypeMST>(typeDto);
-            await deviceTypeRepository.CreateAsync(typeDomail);
-            mapper.Map<CreateDeviceTypeDTO>(typeDomail);
-            return typeDto;
+            return await deviceTypeRepository.CreateAsync(typeDomail);            
         }
 
-        public async Task<UpdateDeviceTypeDTO?> UpdateType(int id, UpdateDeviceTypeDTO typeDto)
+        public async Task<DeviceTypeMST?> UpdateType(int id, UpdateDeviceTypeDTO typeDto)
         {
             var typeDomail = mapper.Map<DeviceTypeMST>(typeDto);
-            var existType = await deviceTypeRepository.UpdateAsync(id, typeDomail);
-            if (existType == null) return null;
-            mapper.Map<UpdateDeviceTypeDTO?>(typeDomail);
-            return typeDto;
+            return await deviceTypeRepository.UpdateAsync(id, typeDomail);                       
         }
     }
 }

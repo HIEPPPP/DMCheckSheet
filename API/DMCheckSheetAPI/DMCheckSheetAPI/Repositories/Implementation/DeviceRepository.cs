@@ -16,37 +16,11 @@ namespace DMCheckSheetAPI.Repositories.Implementation
             this.context = context;
         }
 
-        public async Task<DeviceDTO> CreateAsync(DeviceMST device)
+        public async Task<DeviceMST> CreateAsync(DeviceMST device)
         {
             await context.AddAsync(device);
             await context.SaveChangesAsync();
-            var fullDevice = await (from d in context.Devices
-                                    join t in context.DeviceTypes
-                                    on d.TypeId equals t.TypeId
-                                    select new DeviceDTO
-                                    {
-                                        DeviceId = d.DeviceId,
-                                        TypeName = t.TypeName,
-                                        FormNO = d.FormNO,
-                                        DeviceCode = d.DeviceCode,
-                                        DeviceName = d.DeviceName,
-                                        Location = d.Location,
-                                        Frequency = d.Frequency,
-                                        CreateAt = d.CreateAt,
-                                        CreateBy = d.CreateBy,
-                                    }).FirstOrDefaultAsync();
-            return fullDevice ?? new DeviceDTO
-            {
-                DeviceId = device.DeviceId,
-                TypeName = "",
-                FormNO = device.FormNO,
-                DeviceCode = device.DeviceCode,
-                DeviceName = device.DeviceName,
-                Location = device.Location,
-                Frequency = device.Frequency,
-                CreateAt = device.CreateAt,
-                CreateBy = device.CreateBy,
-            };
+            return device;
         }
 
         public async Task<DeviceMST?> DeleteAsync(int id)
@@ -60,32 +34,43 @@ namespace DMCheckSheetAPI.Repositories.Implementation
 
         public async Task<List<DeviceDTO>> GetAllAsync()
         {
-            return await (from d in context.Devices
-                          join dt in context.DeviceTypes
-                          on d.TypeId equals dt.TypeId 
-                          select new DeviceDTO
-                          {
-                              DeviceId = d.DeviceId,
-                              DeviceCode = d.DeviceCode,
-                              DeviceName = d.DeviceName,
-                              FormNO = d.FormNO,
-                              TypeName = dt.TypeName,
-                              Frequency = d.Frequency,
-                              Location = d.Location
-                          }).AsNoTracking().ToListAsync();                          
+            return await context.Devices.Include(d => d.DeviceType)
+                                        .Select(d => new DeviceDTO
+                                        {
+                                            DeviceId = d.DeviceId,
+                                            DeviceCode = d.DeviceCode,
+                                            DeviceName = d.DeviceName,
+                                            TypeId = d.TypeId,
+                                            TypeName = d.DeviceType.TypeName,
+                                            FormNO = d.FormNO,
+                                            CreateAt = DateTime.Now,
+                                            Frequency = d.Frequency,
+                                            Location = d.Location,
+                                        }).AsNoTracking().ToListAsync();            
         }
 
-        public async Task<DeviceMST?> GetAsync(int id)
+        public async Task<DeviceDTO?> GetAsync(int id)
         {
-            var existDevice = await context.Devices.FindAsync(id);
-            if (existDevice == null) return null;
-            return existDevice;
+            return await context.Devices.Include(d => d.DeviceType)
+                                        .Select(d => new DeviceDTO
+                                        {
+                                            DeviceId = d.DeviceId,
+                                            DeviceCode = d.DeviceCode,
+                                            DeviceName = d.DeviceName,
+                                            TypeId = d.TypeId,
+                                            TypeName = d.DeviceType.TypeName,
+                                            FormNO = d.FormNO,
+                                            CreateAt = DateTime.Now,
+                                            Frequency = d.Frequency,
+                                            Location = d.Location,
+                                        }).FirstOrDefaultAsync(d => d.DeviceId == id);
         }
 
         public async Task<DeviceMST?> UpdateAsync(int id, DeviceMST device)
         {
             var existDevice = await context.Devices.FindAsync(id);
             if (existDevice == null) return null;
+            existDevice.TypeId = device.TypeId; 
             existDevice.Location = device.Location;
             existDevice.Frequency = device.Frequency;
             existDevice.DeviceName = device.DeviceName;

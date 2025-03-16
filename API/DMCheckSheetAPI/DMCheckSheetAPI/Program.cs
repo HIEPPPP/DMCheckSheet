@@ -1,24 +1,65 @@
-using DMCheckSheetAPI.Data;
+﻿using DMCheckSheetAPI.Data;
+using DMCheckSheetAPI.Middleware;
 using DMCheckSheetAPI.Repositories.Implementation;
 using DMCheckSheetAPI.Repositories.Interface;
 using DMCheckSheetAPI.Services;
 using Ecommerce.API.Mapping;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Serilog;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+using DMCheckSheetAPI.Models.Domain;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
+var logger = new LoggerConfiguration()
+    .WriteTo.Console()
+    .WriteTo.File("Logs/DMCheckSheet_Log.txt", rollingInterval: RollingInterval.Month)
+    .MinimumLevel.Information()
+    .CreateLogger();
+
+builder.Logging.ClearProviders();
+builder.Logging.AddSerilog(logger);
+
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(options =>
+{
+    options.SwaggerDoc("v1", new OpenApiInfo { Title = "DMCheckSheet API", Version = "v1" });
+
+    // Cấu hình xác thực JWT cho Swagger
+    options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+    {
+        Name = "Authorization",
+        Type = SecuritySchemeType.Http,
+        Scheme = "Bearer",
+        BearerFormat = "JWT",
+        In = ParameterLocation.Header,
+        Description = "Nhập JWT token vào đây"
+    });
+
+    options.AddSecurityRequirement(new OpenApiSecurityRequirement
+    {
+        {
+            new OpenApiSecurityScheme
+            {
+                Reference = new OpenApiReference
+                {
+                    Type = ReferenceType.SecurityScheme,
+                    Id = "Bearer"
+                }
+            },
+            new string[] {}
+        }
+    });
+});
 
 
-//builder.Services.AddIdentityCore<ExtendedIdentityUser>()
-//    .AddRoles<IdentityRole>()
-//    .AddTokenProvider<DataProtectorTokenProvider<ExtendedIdentityUser>>("EcomsysHiepdd")
-//    .AddEntityFrameworkStores<EcomsysHiepddContext>()
-//    .AddDefaultTokenProviders();
 
 builder.Services.AddCors(options =>
 {
@@ -36,17 +77,55 @@ builder.Services.AddDbContext<CheckSheetDbContext>(options =>
 
 builder.Services.AddAutoMapper(typeof(AutoMapperProfile));
 
-builder.Services.AddTransient<IDeviceRepository, DeviceRepository>();
-builder.Services.AddTransient<IDeviceTypeRepository, DeviceTypeRepository>();
-builder.Services.AddTransient<ICheckListItemRepository, CheckListItemRepository>();
-builder.Services.AddTransient<ICheckRecordRepository, CheckRecordRepository>();
-builder.Services.AddTransient<ICheckDetailRepository, CheckDetailRepository>();
+builder.Services.AddScoped<IDeviceRepository, DeviceRepository>();
+builder.Services.AddScoped<IDeviceTypeRepository, DeviceTypeRepository>();
+builder.Services.AddScoped<ICheckListItemRepository, CheckListItemRepository>();
+builder.Services.AddScoped<ICheckRecordRepository, CheckRecordRepository>();
+builder.Services.AddScoped<ICheckDetailRepository, CheckDetailRepository>();
 
-builder.Services.AddTransient<DeviceSevices>();
-builder.Services.AddTransient<DeviceTypeServices>();
-builder.Services.AddTransient<CheckListItemServices>();
-builder.Services.AddTransient<CheckRecordServices>();
-builder.Services.AddTransient<CheckDetailServices>();
+builder.Services.AddScoped<DeviceSevices>();
+builder.Services.AddScoped<DeviceTypeServices>();
+builder.Services.AddScoped<CheckListItemServices>();
+builder.Services.AddScoped<CheckRecordServices>();
+builder.Services.AddScoped<CheckDetailServices>();
+
+
+
+builder.Services.AddIdentity<User, IdentityRole>()
+    .AddRoles<IdentityRole>()
+    .AddEntityFrameworkStores<CheckSheetDbContext>()
+    .AddDefaultTokenProviders();
+
+builder.Services.ConfigureApplicationCookie(options =>
+{
+    options.Events.OnRedirectToLogin = context =>
+    {
+        context.Response.StatusCode = StatusCodes.Status401Unauthorized;
+        return Task.CompletedTask;
+    };
+});
+
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(options =>
+    {
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuer = true,
+            ValidateAudience = true,
+            ValidateLifetime = true,
+            ValidateIssuerSigningKey = true,
+            ValidIssuer = builder.Configuration["Jwt:Issuer"],
+            ValidAudience = builder.Configuration["Jwt:Audience"],
+            IssuerSigningKey = new SymmetricSecurityKey(
+                Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
+        };
+    });
+
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("Admin", policy =>
+    policy.RequireClaim("http://schemas.microsoft.com/ws/2008/06/identity/claims/role", "Admin"));
+});
 
 var app = builder.Build();
 
@@ -59,9 +138,19 @@ if (app.Environment.IsDevelopment())
 
 app.UseCors("AllowSpecificOrigin");
 
-app.UseHttpsRedirection();
+//app.UseMiddleware<ExceptionHandlingMiddleware>();
 
+app.UseHttpsRedirection();
+app.UseRouting();
+app.UseAuthentication();
 app.UseAuthorization();
+
+app.Use(async (context, next) =>
+{
+    var token = context.Request.Headers["Authorization"];
+    Console.WriteLine($"Token: {token}");
+    await next();
+});
 
 app.MapControllers();
 

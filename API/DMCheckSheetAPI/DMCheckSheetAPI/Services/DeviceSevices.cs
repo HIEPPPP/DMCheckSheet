@@ -22,14 +22,13 @@ namespace DMCheckSheetAPI.Services
             return await deviceRepository.GetAllAsync();
         }
 
-        public async Task<DeviceMST?> GetDeviceById(int id)
+        public async Task<DeviceDTO?> GetDeviceById(int id)
         {
-            var existDevice = await deviceRepository.GetAsync(id);
-            if (existDevice == null) return null;
-            return existDevice;
+            return await deviceRepository.GetAsync(id);
+            
         }
 
-        public async Task<DeviceDTO> CreateDevice(CreateDeviceDTO deviceDto)
+        public async Task<DeviceMST> CreateDevice(CreateDeviceDTO deviceDto)
         {
             var deviceDomail = mapper.Map<DeviceMST>(deviceDto);
             var deviceNew = await deviceRepository.CreateAsync(deviceDomail);     

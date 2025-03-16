@@ -174,3 +174,17 @@ D:\IT-03-Code\01-MAIN\02.DM-CheckSheet\API\DMCheckSheetAPI\DMCheckSheetAPI\bin\D
 D:\IT-03-Code\01-MAIN\02.DM-CheckSheet\API\DMCheckSheetAPI\DMCheckSheetAPI\bin\Debug\net8.0\Microsoft.Extensions.Identity.Core.dll
 D:\IT-03-Code\01-MAIN\02.DM-CheckSheet\API\DMCheckSheetAPI\DMCheckSheetAPI\bin\Debug\net8.0\Microsoft.Extensions.Identity.Stores.dll
 D:\IT-03-Code\01-MAIN\02.DM-CheckSheet\API\DMCheckSheetAPI\DMCheckSheetAPI\obj\Debug\net8.0\DMCheckSheetAPI.sourcelink.json
+D:\IT-03-Code\01-MAIN\02.DM-CheckSheet\API\DMCheckSheetAPI\DMCheckSheetAPI\bin\Debug\net8.0\Microsoft.Extensions.Configuration.Binder.dll
+D:\IT-03-Code\01-MAIN\02.DM-CheckSheet\API\DMCheckSheetAPI\DMCheckSheetAPI\bin\Debug\net8.0\Microsoft.Extensions.Diagnostics.Abstractions.dll
+D:\IT-03-Code\01-MAIN\02.DM-CheckSheet\API\DMCheckSheetAPI\DMCheckSheetAPI\bin\Debug\net8.0\Microsoft.Extensions.FileProviders.Abstractions.dll
+D:\IT-03-Code\01-MAIN\02.DM-CheckSheet\API\DMCheckSheetAPI\DMCheckSheetAPI\bin\Debug\net8.0\Microsoft.Extensions.Hosting.Abstractions.dll
+D:\IT-03-Code\01-MAIN\02.DM-CheckSheet\API\DMCheckSheetAPI\DMCheckSheetAPI\bin\Debug\net8.0\Serilog.dll
+D:\IT-03-Code\01-MAIN\02.DM-CheckSheet\API\DMCheckSheetAPI\DMCheckSheetAPI\bin\Debug\net8.0\Serilog.AspNetCore.dll
+D:\IT-03-Code\01-MAIN\02.DM-CheckSheet\API\DMCheckSheetAPI\DMCheckSheetAPI\bin\Debug\net8.0\Serilog.Extensions.Hosting.dll
+D:\IT-03-Code\01-MAIN\02.DM-CheckSheet\API\DMCheckSheetAPI\DMCheckSheetAPI\bin\Debug\net8.0\Serilog.Extensions.Logging.dll
+D:\IT-03-Code\01-MAIN\02.DM-CheckSheet\API\DMCheckSheetAPI\DMCheckSheetAPI\bin\Debug\net8.0\Serilog.Formatting.Compact.dll
+D:\IT-03-Code\01-MAIN\02.DM-CheckSheet\API\DMCheckSheetAPI\DMCheckSheetAPI\bin\Debug\net8.0\Serilog.Settings.Configuration.dll
+D:\IT-03-Code\01-MAIN\02.DM-CheckSheet\API\DMCheckSheetAPI\DMCheckSheetAPI\bin\Debug\net8.0\Serilog.Sinks.Console.dll
+D:\IT-03-Code\01-MAIN\02.DM-CheckSheet\API\DMCheckSheetAPI\DMCheckSheetAPI\bin\Debug\net8.0\Serilog.Sinks.Debug.dll
+D:\IT-03-Code\01-MAIN\02.DM-CheckSheet\API\DMCheckSheetAPI\DMCheckSheetAPI\bin\Debug\net8.0\Serilog.Sinks.File.dll
+D:\IT-03-Code\01-MAIN\02.DM-CheckSheet\API\DMCheckSheetAPI\DMCheckSheetAPI\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll

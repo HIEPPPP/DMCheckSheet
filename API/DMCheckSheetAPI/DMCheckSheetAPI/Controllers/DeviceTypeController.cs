@@ -1,7 +1,9 @@
 ﻿using AutoMapper;
+using DMCheckSheetAPI.Models;
 using DMCheckSheetAPI.Models.Domain;
 using DMCheckSheetAPI.Models.DTO;
 using DMCheckSheetAPI.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,72 +11,71 @@ namespace DMCheckSheetAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize("Admin")]
     public class DeviceTypeController : ControllerBase
     {
-        private readonly DeviceTypeServices deviceTypeServices;
-        private readonly IMapper mapper;
+        private readonly DeviceTypeServices deviceTypeServices;        
 
-        public DeviceTypeController(DeviceTypeServices deviceTypeServices, IMapper mapper)
+        public DeviceTypeController(DeviceTypeServices deviceTypeServices)
         {
             this.deviceTypeServices = deviceTypeServices;
-            this.mapper = mapper;
         }
 
         [HttpGet]
         public async Task<IActionResult> GetListType()
         {
-            return Ok(await deviceTypeServices.GetListDeviceType());
+            var deviceTypes = await deviceTypeServices.GetListDeviceType();
+            return Ok(new ApiResponse<List<DeviceTypeMST>>(200, "Success", deviceTypes));
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetListTypeById(int id)
+        public async Task<IActionResult> GetTypeById(int id)
         {
-            var device = await deviceTypeServices.GetTypeById(id);
-            if (device == null) return NotFound();
-            return Ok(device);  
+            var devicetype = await deviceTypeServices.GetTypeById(id);
+            return devicetype != null ? Ok(new ApiResponse<DeviceTypeMST>(200, "Success", devicetype))
+                                  : NotFound(new ApiResponse<string>(404, "User not found"));
+             
         }
 
         [HttpPost]
         public async Task<IActionResult> CreateType(CreateDeviceTypeDTO createDeviceTypeDTO)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-            var createdtype = await deviceTypeServices.CreateType(createDeviceTypeDTO);
-
-            return Ok(createdtype);
+            //if (!ModelState.IsValid)
+            //{
+            //    return BadRequest(ModelState);
+            //}
+            var newType = await deviceTypeServices.CreateType(createDeviceTypeDTO);
+            return CreatedAtAction(nameof(GetTypeById), new { id = newType.TypeId }, new ApiResponse<DeviceTypeMST>(201, "Device type created", newType));
         }
 
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateType(int id, UpdateDeviceTypeDTO updateDeviceTypeDTO)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-            var result = await deviceTypeServices.UpdateType(id, updateDeviceTypeDTO);
-            if(result == null) return NotFound($"Device type with ID {id} not found.");
-            return Ok(result);
+            //if (!ModelState.IsValid)
+            //{
+            //    return BadRequest(ModelState);
+            //}
+            var updateDeviceType = await deviceTypeServices.UpdateType(id, updateDeviceTypeDTO);
+            return updateDeviceType != null ? Ok(new ApiResponse<DeviceTypeMST>(200, "Device type updated", updateDeviceType))
+                                            : NotFound(new ApiResponse<string>(404, "Device type not found"));
         }
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteType(int id)
         {
-            try
-            {
-                var deletedType = await deviceTypeServices.DeleteDeviceType(id);
-                if (deletedType == null)
-                {
-                    return NotFound(new { message = "Device not found" });
-                }
+            var deletedType = await deviceTypeServices.DeleteDeviceType(id);
+            return deletedType != null ? Ok(new ApiResponse<DeviceTypeMST>(200, "Device type deleted"))
+                                       : NotFound(new ApiResponse<DeviceTypeMST>(404, "Device type not found"));                        
+            
+        }
 
-                return NoContent(); // Trả về 204 khi xóa thành công
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, new { message = "Internal Server Error", error = ex.Message });
-            }
+        [HttpGet("debug-claims")]
+        public IActionResult DebugClaims()
+        {
+            var claims = HttpContext.User.Claims
+                  .Select(c => new { c.Type, c.Value })
+                  .ToList();
+            return Ok(claims);
         }
     }
 }

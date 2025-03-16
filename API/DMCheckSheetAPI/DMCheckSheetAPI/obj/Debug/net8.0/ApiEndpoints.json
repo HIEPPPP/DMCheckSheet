@@ -2,14 +2,30 @@
   {
     "ContainingType": "DMCheckSheetAPI.Controllers.AuthController",
     "Method": "Login",
-    "RelativePath": "api/Auth",
+    "RelativePath": "api/Auth/login",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
         "Name": "request",
-        "Type": "DMCheckSheetAPI.Models.DTO.UserLoginDTO",
+        "Type": "DMCheckSheetAPI.Models.DTO.LoginRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DMCheckSheetAPI.Controllers.AuthController",
+    "Method": "Register",
+    "RelativePath": "api/Auth/register",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "DMCheckSheetAPI.Models.DTO.RegisterRequest",
         "IsRequired": true
       }
     ],
@@ -122,7 +138,7 @@
   },
   {
     "ContainingType": "DMCheckSheetAPI.Controllers.DeviceTypeController",
-    "Method": "GetListTypeById",
+    "Method": "GetTypeById",
     "RelativePath": "api/DeviceType/{id}",
     "HttpMethod": "GET",
     "IsController": true,
@@ -171,6 +187,16 @@
         "IsRequired": true
       }
     ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DMCheckSheetAPI.Controllers.DeviceTypeController",
+    "Method": "DebugClaims",
+    "RelativePath": "api/DeviceType/debug-claims",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
     "ReturnTypes": []
   }
 ]

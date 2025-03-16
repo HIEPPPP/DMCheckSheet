@@ -14,6 +14,9 @@ namespace DMCheckSheetAPI.Models.Domain
         [Required]
         [StringLength(500)]
         public string TypeName { get; set; } = null!;
-        public string? TypeDesc { get; set; }          
+        public string? TypeDesc { get; set; }         
+        
+        // Navigation Properties
+        public virtual ICollection<DeviceMST>? DeviceMSTs { get; set; }
     }
 }
