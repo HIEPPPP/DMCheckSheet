@@ -1,7 +1,6 @@
-﻿
-namespace DMCheckSheetAPI.Models.DTO
+﻿namespace DMCheckSheetAPI.Models.DTO.CheckDetail
 {
-    public class CreateDetailDTO
+    public class UpdateDetailDTO
     {
         public int ItemId { get; set; }
         public int CheckId { get; set; }
@@ -9,7 +8,7 @@ namespace DMCheckSheetAPI.Models.DTO
         public int IntData { get; set; }
         public string StringData { get; set; } = null!;
         public string Note { get; set; } = null!;
-        public DateTime CreateAt { get; set; } = DateTime.Now;
-        public string? CreateBy { get; set; }
+        public DateTime UpdateAt { get; set; } = DateTime.Now;
+        public string? UpdateBy { get; set; }
     }
 }

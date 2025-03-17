@@ -4,6 +4,7 @@ using DMCheckSheetAPI.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DMCheckSheetAPI.Migrations
 {
     [DbContext(typeof(CheckSheetDbContext))]
-    partial class CheckSheetDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250317041934_update checklistitem table")]
+    partial class updatechecklistitemtable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -88,9 +91,6 @@ namespace DMCheckSheetAPI.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ItemId"));
-
-                    b.Property<string>("CheckContext")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CheckName")
                         .IsRequired()

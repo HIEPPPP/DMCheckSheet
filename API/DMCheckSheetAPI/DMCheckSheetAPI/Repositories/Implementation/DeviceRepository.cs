@@ -1,7 +1,7 @@
 ﻿using DMCheckSheetAPI.Constants;
 using DMCheckSheetAPI.Data;
 using DMCheckSheetAPI.Models.Domain;
-using DMCheckSheetAPI.Models.DTO;
+using DMCheckSheetAPI.Models.DTO.Device;
 using DMCheckSheetAPI.Repositories.Interface;
 using Microsoft.EntityFrameworkCore;
 

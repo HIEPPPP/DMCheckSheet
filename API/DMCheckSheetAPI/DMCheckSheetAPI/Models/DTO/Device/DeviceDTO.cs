@@ -1,4 +1,4 @@
-﻿namespace DMCheckSheetAPI.Models.DTO
+﻿namespace DMCheckSheetAPI.Models.DTO.Device
 {
     public class DeviceDTO
     {

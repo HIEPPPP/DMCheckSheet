@@ -1,7 +1,11 @@
 ﻿using AutoMapper;
 using DMCheckSheetAPI.Models;
 using DMCheckSheetAPI.Models.Domain;
-using DMCheckSheetAPI.Models.DTO;
+using DMCheckSheetAPI.Models.DTO.CheckDetail;
+using DMCheckSheetAPI.Models.DTO.CheckListItem;
+using DMCheckSheetAPI.Models.DTO.CheckRecord;
+using DMCheckSheetAPI.Models.DTO.Device;
+using DMCheckSheetAPI.Models.DTO.DeviceType;
 
 namespace Ecommerce.API.Mapping
 {

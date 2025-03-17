@@ -10,8 +10,9 @@ namespace DMCheckSheetAPI.Models.Domain
         public int ItemId { get; set; }
         // Foreign Key
         [Required]
-        public int DeciveId { get; set; }    
+        public int DeviceId { get; set; }    
         public string? CheckTitle { get; set; }
+        public string? CheckContext { get; set; }
         [Required]
         [StringLength(1000)]
         public string CheckName { get; set; } = null!;

@@ -47,7 +47,7 @@ namespace DMCheckSheetAPI.Repositories.Implementation
         {
             var existItem = await context.CheckListItems.FindAsync(id);
             if (existItem == null) return null;
-            existItem.DeciveId = item.DeciveId;
+            existItem.DeviceId = item.DeviceId;
             existItem.CheckName = item.CheckName;
             existItem.IsRequire = item.IsRequire;
             existItem.DataType = item.DataType;

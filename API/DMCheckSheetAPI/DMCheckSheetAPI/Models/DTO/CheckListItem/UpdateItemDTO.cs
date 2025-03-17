@@ -1,4 +1,4 @@
-﻿namespace DMCheckSheetAPI.Models.DTO
+﻿namespace DMCheckSheetAPI.Models.DTO.CheckListItem
 {
     public class UpdateItemDTO
     {

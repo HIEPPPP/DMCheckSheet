@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using DMCheckSheetAPI.Models.Domain;
-using DMCheckSheetAPI.Models.DTO;
+using DMCheckSheetAPI.Models.DTO.CheckDetail;
 using DMCheckSheetAPI.Repositories.Interface;
 
 namespace DMCheckSheetAPI.Services

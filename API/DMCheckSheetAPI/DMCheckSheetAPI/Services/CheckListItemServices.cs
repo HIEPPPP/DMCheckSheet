@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using DMCheckSheetAPI.Models.Domain;
-using DMCheckSheetAPI.Models.DTO;
+using DMCheckSheetAPI.Models.DTO.CheckListItem;
 using DMCheckSheetAPI.Repositories.Interface;
 
 namespace DMCheckSheetAPI.Services
@@ -21,6 +21,11 @@ namespace DMCheckSheetAPI.Services
             return await checkListItemRepository.GetAllAsync();
         }
 
+        public async Task<CheckListItemMST?> GetItem(int id)
+        {
+            return await checkListItemRepository.GetAsync(id);
+        }
+
         public async Task<CheckListItemMST?> DeleteItem(int id)
         {
             var existItem = await checkListItemRepository.DeleteAsync(id);
@@ -28,20 +33,17 @@ namespace DMCheckSheetAPI.Services
             return existItem;
         }
 
-        public async Task<CreateItemDTO> CreateItem(CreateItemDTO itemDto)
+        public async Task<CheckListItemMST> CreateItem(CreateItemDTO itemDto)
         {
             var itemDomail = mapper.Map<CheckListItemMST>(itemDto);
-            itemDomail = await checkListItemRepository.CreateAsync(itemDomail);
-            return mapper.Map<CreateItemDTO>(itemDomail);
+            return await checkListItemRepository.CreateAsync(itemDomail);
 
         }
 
-        public async Task<CreateItemDTO?> UpdateItem(int id, CreateItemDTO itemDto)
+        public async Task<CheckListItemMST?> UpdateItem(int id, UpdateItemDTO itemDto)
         {
             var itemDomail = mapper.Map<CheckListItemMST>(itemDto);
-            var existItem = await checkListItemRepository.UpdateAsync(id, itemDomail);
-            if (existItem == null) return null;
-            return mapper.Map<CreateItemDTO?>(existItem);            
+            return await checkListItemRepository.UpdateAsync(id, itemDomail);                       
         }
     }
 }

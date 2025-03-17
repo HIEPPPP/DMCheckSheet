@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace DMCheckSheetAPI.Models.DTO
+namespace DMCheckSheetAPI.Models.DTO.Device
 {
     public class CreateDeviceDTO
     {

@@ -1,5 +1,5 @@
 ﻿using DMCheckSheetAPI.Models.Domain;
-using DMCheckSheetAPI.Models.DTO;
+using DMCheckSheetAPI.Models.DTO.Device;
 
 namespace DMCheckSheetAPI.Repositories.Interface
 {

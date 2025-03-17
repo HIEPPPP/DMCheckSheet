@@ -1,4 +1,6 @@
-﻿using DMCheckSheetAPI.Models.DTO;
+﻿using DMCheckSheetAPI.Models;
+using DMCheckSheetAPI.Models.Domain;
+using DMCheckSheetAPI.Models.DTO.Device;
 using DMCheckSheetAPI.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -19,58 +21,48 @@ namespace DMCheckSheetAPI.Controllers
         [HttpGet]
         public async Task<IActionResult> GetListDevice()
         {
-            return Ok(await deviceSevices.GetListDevice());
+            var devices = await deviceSevices.GetListDevice();
+            return Ok(new ApiResponse<List<DeviceDTO>>(200, "Success", devices));
         }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetDeviceById(int id)
         {
             var device = await deviceSevices.GetDeviceById(id);
-            if (device == null) return NotFound();
-            return Ok(device);
+            return device != null ? Ok(new ApiResponse<DeviceDTO>(200, "Success", device))
+                                  : NotFound(new ApiResponse<string>(404, "Device not found"));
         }
 
         [HttpPost]
         public async Task<IActionResult> CreateDevice([FromBody] CreateDeviceDTO deviceDto)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-            var createdDevice = await deviceSevices.CreateDevice(deviceDto);
+            //if (!ModelState.IsValid)
+            //{
+            //    return BadRequest(ModelState);
+            //}
+            var newDevice = await deviceSevices.CreateDevice(deviceDto);
 
-            return Ok(createdDevice);         
+            return CreatedAtAction(nameof(GetDeviceById), new { id = newDevice.DeviceId }, new ApiResponse<DeviceMST>(201, "Device created", newDevice));        
         }
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteDevice(int id)
         {
-            try
-            {
-                var deletedDevice = await deviceSevices.DeleteDevice(id);
-                if (deletedDevice == null)
-                {
-                    return NotFound(new { message = "Device not found" });
-                }
-
-                return NoContent(); // Trả về 204 khi xóa thành công
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, new { message = "Internal Server Error", error = ex.Message });
-            }
+            var device = await deviceSevices.DeleteDevice(id);
+            return device != null ? Ok(new ApiResponse<DeviceMST>(200, "Device deleted"))
+                                  : NotFound(new ApiResponse<string>(404, "Device not found"));
         }
 
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateDevice(int id, UpdateDeviceDTO updateDeviceDTO)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-            var result = await deviceSevices.UpdateDevice(id, updateDeviceDTO);
-            if (result == null) return NotFound();
-            return Ok(result);
+            //if (!ModelState.IsValid)
+            //{
+            //    return BadRequest(ModelState);
+            //}
+            var updateDevice = await deviceSevices.UpdateDevice(id, updateDeviceDTO);
+            return updateDevice != null ? Ok(new ApiResponse<UpdateDeviceDTO>(200, "Device updated", updateDevice))
+                                        : NotFound(new ApiResponse<string>(200, "Device not found"));
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace DMCheckSheetAPI.Models.DTO
+﻿namespace DMCheckSheetAPI.Models.DTO.CheckRecord
 {
     public class UpdateCheckDTO
     {

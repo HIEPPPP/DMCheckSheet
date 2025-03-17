@@ -89,12 +89,21 @@ builder.Services.AddScoped<CheckListItemServices>();
 builder.Services.AddScoped<CheckRecordServices>();
 builder.Services.AddScoped<CheckDetailServices>();
 
-
-
-builder.Services.AddIdentity<User, IdentityRole>()
+builder.Services.AddIdentityCore<User>()
     .AddRoles<IdentityRole>()
+    .AddTokenProvider<DataProtectorTokenProvider<User>>("CheckSheetDbContext")
     .AddEntityFrameworkStores<CheckSheetDbContext>()
     .AddDefaultTokenProviders();
+
+builder.Services.Configure<IdentityOptions>(options =>
+{
+    options.Password.RequireNonAlphanumeric = false;
+    options.Password.RequireDigit = false;
+    options.Password.RequireLowercase = false;
+    options.Password.RequireUppercase = false;
+    options.Password.RequiredLength = 6;
+    options.Password.RequiredUniqueChars = 1;
+});
 
 builder.Services.ConfigureApplicationCookie(options =>
 {
@@ -141,16 +150,10 @@ app.UseCors("AllowSpecificOrigin");
 //app.UseMiddleware<ExceptionHandlingMiddleware>();
 
 app.UseHttpsRedirection();
-app.UseRouting();
+
 app.UseAuthentication();
 app.UseAuthorization();
 
-app.Use(async (context, next) =>
-{
-    var token = context.Request.Headers["Authorization"];
-    Console.WriteLine($"Token: {token}");
-    await next();
-});
 
 app.MapControllers();
 

@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using DMCheckSheetAPI.Models;
 using DMCheckSheetAPI.Models.Domain;
-using DMCheckSheetAPI.Models.DTO;
+using DMCheckSheetAPI.Models.DTO.DeviceType;
 using DMCheckSheetAPI.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -11,7 +11,7 @@ namespace DMCheckSheetAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize("Admin")]
+    //[Authorize("Admin")]
     public class DeviceTypeController : ControllerBase
     {
         private readonly DeviceTypeServices deviceTypeServices;        
@@ -69,13 +69,6 @@ namespace DMCheckSheetAPI.Controllers
             
         }
 
-        [HttpGet("debug-claims")]
-        public IActionResult DebugClaims()
-        {
-            var claims = HttpContext.User.Claims
-                  .Select(c => new { c.Type, c.Value })
-                  .ToList();
-            return Ok(claims);
-        }
+        
     }
 }

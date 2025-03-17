@@ -1,4 +1,4 @@
-﻿namespace DMCheckSheetAPI.Models.DTO
+﻿namespace DMCheckSheetAPI.Models.DTO.Device
 {
     public class UpdateDeviceDTO
     {
@@ -8,5 +8,7 @@
         public string DeviceName { get; set; } = null!;
         public string Location { get; set; } = null!;
         public int Frequency { get; set; } = 1;
-    }
+        public string? UpdateBy { get; set; }
+        public DateTime UpdateAt { get; set; } = DateTime.Now;
+        }
 }

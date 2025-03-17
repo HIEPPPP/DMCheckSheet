@@ -17,7 +17,7 @@ const handleError = (error) => {
 export const getListDeviceType = async () => {
   try {
     const res = await apiClient.get("/");
-    return res.data;
+    return res.data.data;
   } catch (error) {
     return handleError(error);
   }
@@ -27,7 +27,7 @@ export const getListDeviceType = async () => {
 export const createDeviceType = async (typeData) => {
   try {
     const res = await apiClient.post("/", typeData);
-    return res.data;
+    return res.data.data;
   } catch (error) {
     return handleError(error);
   }
@@ -37,7 +37,7 @@ export const createDeviceType = async (typeData) => {
 export const updateDeviceType = async (typeId, typeData) => {
   try {
     const res = await apiClient.put(`/${typeId}`, typeData);
-    return res.data;
+    return res.data.data;
   } catch (error) {
     return handleError(error);
   }
