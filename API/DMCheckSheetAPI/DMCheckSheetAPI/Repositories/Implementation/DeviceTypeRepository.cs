@@ -48,6 +48,7 @@ namespace DMCheckSheetAPI.Repositories.Implementation
             existType.TypeCode = deviceType.TypeCode;
             existType.TypeDesc = deviceType.TypeDesc;
             existType.TypeName = deviceType.TypeName;
+            existType.CheckSheetName = deviceType.CheckSheetName;
             existType.UpdateBy = CheckSheet_Constants.userCode;
             existType.UpdateAt = DateTime.Now;
             await context.SaveChangesAsync();

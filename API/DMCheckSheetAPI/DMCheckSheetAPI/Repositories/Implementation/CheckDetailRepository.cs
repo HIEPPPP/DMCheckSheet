@@ -48,9 +48,9 @@ namespace DMCheckSheetAPI.Repositories.Implementation
             if (existDetail == null) return null;
             existDetail.ItemId = checkDetail.ItemId;
             existDetail.CheckId = checkDetail.CheckId;
-            existDetail.IntData = checkDetail.IntData;
+            existDetail.NumData = checkDetail.NumData;
             existDetail.StringData  = checkDetail.StringData;
-            existDetail.Status = checkDetail.Status;
+            existDetail.BoolData = checkDetail.BoolData;
             existDetail.Note = checkDetail.Note;
             existDetail.UpdateBy = CheckSheet_Constants.userCode;
             existDetail.UpdateAt = DateTime.Now;

@@ -15,8 +15,10 @@ namespace DMCheckSheetAPI.Models.Domain
         [StringLength(200)]
         public string CheckBy { get; set; } = null!;
         public DateTime CheckDate { get; set; }
+        public string? ComfirmBy { get; set; }
+        public string? ApproveBy { get; set; }
         public string UpdateBy { get; set; } = null!;
-        public DateTime UpdateAt { get; set; }
+        public DateTime UpdateAt { get; set; }        
 
         //Navigation Properties
         [ForeignKey("DeviceId")]

@@ -1,4 +1,7 @@
 import React from "react";
+import { useEffect } from "react";
+import { getListDevice } from "../services/deviceServices";
+
 import SearchBar from "./SearchBar";
 import DeviceCard from "./DeviceCard";
 import { Button } from "@mui/material";
@@ -11,6 +14,16 @@ const Device = () => {
     form: "F001",
   };
 
+  const [devices, setDevices] = React.useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await getListDevice();
+      if (res) setDevices(res);
+    };
+    fetchData();
+  }, []);
+
   return (
     <div>
       <div className="flex justify-end items-center">
@@ -18,27 +31,9 @@ const Device = () => {
         <Button variant="contained">CHECK NOW</Button>
       </div>
       <div className="flex mt-10 gap-5 justify-center flex-wrap">
-        <DeviceCard device={sampleDevice} />
-        <DeviceCard device={sampleDevice} />
-        <DeviceCard device={sampleDevice} />
-        <DeviceCard device={sampleDevice} />
-        <DeviceCard device={sampleDevice} />
-        <DeviceCard device={sampleDevice} />
-        <DeviceCard device={sampleDevice} />
-        <DeviceCard device={sampleDevice} />
-        <DeviceCard device={sampleDevice} />
-        <DeviceCard device={sampleDevice} />
-        <DeviceCard device={sampleDevice} />
-        <DeviceCard device={sampleDevice} />
-        <DeviceCard device={sampleDevice} />
-        <DeviceCard device={sampleDevice} />
-        <DeviceCard device={sampleDevice} />
-        <DeviceCard device={sampleDevice} />
-        <DeviceCard device={sampleDevice} />
-        <DeviceCard device={sampleDevice} />
-        <DeviceCard device={sampleDevice} />
-        <DeviceCard device={sampleDevice} />
-        <DeviceCard device={sampleDevice} />
+        {devices.map((device) => (
+          <DeviceCard key={device.deviceId} device={device} />
+        ))}
       </div>
     </div>
   );

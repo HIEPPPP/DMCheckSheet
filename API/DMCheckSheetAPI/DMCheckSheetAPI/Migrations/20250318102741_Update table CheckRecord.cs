@@ -5,14 +5,20 @@
 namespace DMCheckSheetAPI.Migrations
 {
     /// <inheritdoc />
-    public partial class Addcheckcontextchecklistitem : Migration
+    public partial class UpdatetableCheckRecord : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AddColumn<string>(
-                name: "CheckContext",
-                table: "CheckListItemMST",
+                name: "ApproveBy",
+                table: "CheckRecord",
+                type: "nvarchar(max)",
+                nullable: true);
+
+            migrationBuilder.AddColumn<string>(
+                name: "ComfirmBy",
+                table: "CheckRecord",
                 type: "nvarchar(max)",
                 nullable: true);
         }
@@ -21,8 +27,12 @@ namespace DMCheckSheetAPI.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(
-                name: "CheckContext",
-                table: "CheckListItemMST");
+                name: "ApproveBy",
+                table: "CheckRecord");
+
+            migrationBuilder.DropColumn(
+                name: "ComfirmBy",
+                table: "CheckRecord");
         }
     }
 }

@@ -61,7 +61,7 @@ namespace DMCheckSheetAPI.Controllers
             //    return BadRequest(ModelState);
             //}
             var updateDevice = await deviceSevices.UpdateDevice(id, updateDeviceDTO);
-            return updateDevice != null ? Ok(new ApiResponse<UpdateDeviceDTO>(200, "Device updated", updateDevice))
+            return updateDevice != null ? Ok(new ApiResponse<DeviceMST>(200, "Device updated", updateDevice))
                                         : NotFound(new ApiResponse<string>(200, "Device not found"));
         }
     }

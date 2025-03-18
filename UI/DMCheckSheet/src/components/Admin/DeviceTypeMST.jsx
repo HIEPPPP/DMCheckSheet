@@ -32,6 +32,7 @@ const DeviceTypeMST = () => {
     typeId: "",
     typeCode: "",
     typeName: "",
+    checkSheetName: "",
     typeDesc: "",
     createAt: "",
     createBy: "",
@@ -73,6 +74,7 @@ const DeviceTypeMST = () => {
         typeId: "",
         typeCode: "",
         typeName: "",
+        checkSheetName: "",
         typeDesc: "",
         createAt: "",
         createBy: "",
@@ -90,6 +92,7 @@ const DeviceTypeMST = () => {
       typeId: "",
       typeCode: "",
       typeName: "",
+      checkSheetName: "",
       typeDesc: "",
       createAt: "",
       createBy: "",
@@ -183,19 +186,23 @@ const DeviceTypeMST = () => {
         <Table>
           <TableHead>
             <TableRow>
+              <TableCell>STT</TableCell>
               <TableCell>Mã loại</TableCell>
               <TableCell>Tên loại</TableCell>
+              <TableCell>Tên Check Sheet</TableCell>
               <TableCell>Mô tả</TableCell>
               <TableCell>Hành động</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {deviceType.map((dt) => (
+            {deviceType.map((dt, index) => (
               <TableRow key={dt.typeId}>
+                <TableCell>{index + 1}</TableCell>
                 <TableCell>{dt.typeCode}</TableCell>
                 <TableCell>{dt.typeName}</TableCell>
+                <TableCell>{dt.checkSheetName}</TableCell>
                 <TableCell>{dt.typeDesc}</TableCell>
-                <TableCell>
+                <TableCell className="flex items-center space-x-2 w-[150px]">
                   <IconButton color="primary" onClick={() => handleOpen(dt)}>
                     <Edit />
                   </IconButton>
@@ -215,7 +222,7 @@ const DeviceTypeMST = () => {
       {/* Dialog thêm/sửa */}
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle>
-          {editType ? "Cập Nhật Loại Linh Kiện" : "Thêm Loại Linh Kiện"}
+          {editType ? "Cập Nhật Loại Thiết Bị" : "Thêm Loại Thiết Bị"}
         </DialogTitle>
         <DialogContent>
           <TextField
@@ -236,6 +243,17 @@ const DeviceTypeMST = () => {
             value={formData.typeName ?? ""}
             onChange={(e) =>
               setFormData({ ...formData, typeName: e.target.value })
+            }
+            error={!!errors.typeName}
+            helperText={errors.typeName}
+          />
+          <TextField
+            label="Tên Check Sheet"
+            fullWidth
+            margin="dense"
+            value={formData.checkSheetName ?? ""}
+            onChange={(e) =>
+              setFormData({ ...formData, checkSheetName: e.target.value })
             }
             error={!!errors.typeName}
             helperText={errors.typeName}

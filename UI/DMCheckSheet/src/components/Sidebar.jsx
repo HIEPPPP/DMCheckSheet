@@ -37,23 +37,23 @@ const Sidebar = () => {
   ];
 
   const adminItems = [
-    { name: "User Management", path: "/users", icon: <FiUsers size={22} /> },
-    {
-      name: "Device",
-      path: "/deviceMST",
-      icon: <FcMultipleDevices size={22} />,
-    },
     {
       name: "Device Type",
       path: "/deviceTypeMST",
       icon: <TypeSpecimenRounded size={22} />,
     },
     {
+      name: "Device",
+      path: "/deviceMST",
+      icon: <FcMultipleDevices size={22} />,
+    },
+    {
       name: "Check List",
-      path: "/checklist",
+      path: "/checkListItemMST",
       icon: <FiList size={22} />,
     },
-    { name: "Settings", path: "/settings", icon: <FiSettings size={22} /> },
+    // { name: "Settings", path: "/settings", icon: <FiSettings size={22} /> },
+    { name: "User Management", path: "/users", icon: <FiUsers size={22} /> },
   ];
 
   const navigate = useNavigate();

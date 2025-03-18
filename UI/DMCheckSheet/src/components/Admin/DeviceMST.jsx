@@ -17,8 +17,10 @@ import {
   FormControl,
   Select,
   MenuItem,
+  Snackbar,
+  Alert,
 } from "@mui/material";
-import { Add, Edit, Delete } from "@mui/icons-material";
+import { Add, Edit, Delete, Info } from "@mui/icons-material";
 
 import {
   createDevice,
@@ -32,7 +34,7 @@ import { getListDeviceType } from "../../services/deviceTypeServices";
 
 const DeviceMST = () => {
   const [devices, setDevices] = useState([]);
-  const [deviceTypes, setDeviceTypes] = useState([]); // Danh sách loại thiết bị
+  const [deviceTypes, setDeviceTypes] = useState([]);
   const [open, setOpen] = useState(false);
   const [editingDevice, setEditingDevice] = useState(null);
   const [formData, setFormData] = useState({
@@ -47,7 +49,14 @@ const DeviceMST = () => {
     createBy: "",
   });
 
-  // Lấy danh sách thiết bị & loại thiết bị khi component mount
+  const [snackbar, setSnackbar] = useState({
+    open: false,
+    message: "",
+    severity: "success",
+  });
+  const [confirmDelete, setConfirmDelete] = useState(null);
+  const [errors, setErrors] = useState({});
+
   useEffect(() => {
     const fetchData = async () => {
       const res = await getListDevice();
@@ -69,6 +78,7 @@ const DeviceMST = () => {
       device ?? {
         deviceName: "",
         deviceCode: "",
+        checkSheetName: "",
         formNO: "",
         typeId: "",
         typeName: "",
@@ -85,6 +95,7 @@ const DeviceMST = () => {
     setFormData({
       deviceName: "",
       deviceCode: "",
+      checkSheetName: "",
       formNO: "",
       typeId: "",
       typeName: "",
@@ -105,11 +116,21 @@ const DeviceMST = () => {
             d.deviceId === editingDevice.deviceId ? updatedDevice : d
           )
         );
+        setSnackbar({
+          open: true,
+          message: "Cập nhật thành công!",
+          severity: "success",
+        });
       }
     } else {
       const newDevice = await createDevice(formData);
       if (newDevice) {
         setDevices([...devices, newDevice]);
+        setSnackbar({
+          open: true,
+          message: "Thêm thành công!",
+          severity: "success",
+        });
       }
     }
     // Cập nhật lại danh sách thiết bị
@@ -119,10 +140,20 @@ const DeviceMST = () => {
   };
 
   const handleDelete = async (id) => {
-    const isDeleted = await deleteDevice(id);
-    if (isDeleted) {
-      setDevices(devices.filter((d) => d.deviceId !== id));
+    try {
+      const isDeleted = await deleteDevice(id);
+      if (isDeleted) {
+        setDevices(devices.filter((d) => d.deviceId !== id));
+        setSnackbar({
+          open: true,
+          message: "Xóa thành công!",
+          severity: "success",
+        });
+      }
+    } catch (error) {
+      setSnackbar({ open: true, message: "Lỗi khi xóa!", severity: "error" });
     }
+    setConfirmDelete(null);
   };
 
   return (
@@ -140,6 +171,7 @@ const DeviceMST = () => {
         <Table>
           <TableHead>
             <TableRow>
+              <TableCell>STT</TableCell>
               <TableCell>Số Form</TableCell>
               <TableCell>Mã thiết bị</TableCell>
               <TableCell>Tên Thiết Bị</TableCell>
@@ -150,15 +182,16 @@ const DeviceMST = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {devices.map((device) => (
+            {devices.map((device, index) => (
               <TableRow key={device.deviceId}>
+                <TableCell>{index + 1}</TableCell>
                 <TableCell>{device.formNO}</TableCell>
                 <TableCell>{device.deviceCode}</TableCell>
                 <TableCell>{device.deviceName}</TableCell>
                 <TableCell>{device.typeName}</TableCell>
                 <TableCell>{device.frequency}</TableCell>
                 <TableCell>{device.location}</TableCell>
-                <TableCell>
+                <TableCell className="flex items-center space-x-2 w-[200px]">
                   <IconButton
                     color="primary"
                     onClick={() => handleOpen(device)}
@@ -167,9 +200,12 @@ const DeviceMST = () => {
                   </IconButton>
                   <IconButton
                     color="error"
-                    onClick={() => handleDelete(device.deviceId)}
+                    onClick={() => setConfirmDelete(device.deviceId)}
                   >
                     <Delete />
+                  </IconButton>
+                  <IconButton color="info">
+                    <Info />
                   </IconButton>
                 </TableCell>
               </TableRow>
@@ -257,6 +293,41 @@ const DeviceMST = () => {
           </Button>
         </DialogActions>
       </Dialog>
+
+      {/* Dialog xác nhận xóa */}
+      <Dialog
+        open={Boolean(confirmDelete)}
+        onClose={() => setConfirmDelete(null)}
+      >
+        <DialogTitle>Xác nhận xóa</DialogTitle>
+        <DialogContent>Bạn có chắc muốn xóa linh kiện này không?</DialogContent>
+        <DialogActions>
+          <Button onClick={() => setConfirmDelete(null)}>Hủy</Button>
+          <Button
+            color="error"
+            variant="contained"
+            onClick={() => handleDelete(confirmDelete)}
+          >
+            Xóa
+          </Button>
+        </DialogActions>
+      </Dialog>
+
+      {/* Snackbar thông báo */}
+      <Snackbar
+        open={snackbar.open}
+        autoHideDuration={3000}
+        onClose={() => setSnackbar({ ...snackbar, open: false })}
+        anchorOrigin={{ vertical: "top", horizontal: "right" }}
+      >
+        <Alert
+          onClose={() => setSnackbar({ ...snackbar, open: false })}
+          severity={snackbar.severity}
+          variant="filled"
+        >
+          {snackbar.message}
+        </Alert>
+      </Snackbar>
     </div>
   );
 };

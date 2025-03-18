@@ -42,12 +42,11 @@ namespace DMCheckSheetAPI.Services
             return existDevice;
         }
 
-        public async Task<UpdateDeviceDTO?> UpdateDevice(int id, UpdateDeviceDTO deviceDTO)
+        public async Task<DeviceMST?> UpdateDevice(int id, UpdateDeviceDTO deviceDTO)
         {
             var deviceDomail = mapper.Map<DeviceMST>(deviceDTO);
-            var existDevice = await deviceRepository.UpdateAsync(id, deviceDomail);
-            if (existDevice == null) return null;
-            return mapper.Map<UpdateDeviceDTO>(existDevice);           
+            return await deviceRepository.UpdateAsync(id, deviceDomail);
+                       
         }
     }
 }

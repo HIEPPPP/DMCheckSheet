@@ -16,7 +16,7 @@ namespace DMCheckSheetAPI.Models.Domain
 
         [Required]
         [StringLength(300)]
-        public string FormNO { get; set; } = null!;
+        public string FormNO { get; set; } = null!;        
 
         [Required]
         [StringLength(100)]
@@ -35,6 +35,5 @@ namespace DMCheckSheetAPI.Models.Domain
         [ForeignKey("TypeId")]
         [JsonIgnore]
         public virtual DeviceTypeMST? DeviceType { get; set; }
-        public virtual CheckListItemMST? CheckListItem { get; set; }
     }
 }

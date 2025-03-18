@@ -16,12 +16,12 @@ namespace DMCheckSheetAPI.Services
             this.mapper = mapper;
         }
 
-        public async Task<List<CheckListItemMST>> GetListItem()
+        public async Task<List<CheckListItemDTO>> GetListItem()
         {
             return await checkListItemRepository.GetAllAsync();
         }
 
-        public async Task<CheckListItemMST?> GetItem(int id)
+        public async Task<CheckListItemDTO?> GetItem(int id)
         {
             return await checkListItemRepository.GetAsync(id);
         }
@@ -43,7 +43,7 @@ namespace DMCheckSheetAPI.Services
         public async Task<CheckListItemMST?> UpdateItem(int id, UpdateItemDTO itemDto)
         {
             var itemDomail = mapper.Map<CheckListItemMST>(itemDto);
-            return await checkListItemRepository.UpdateAsync(id, itemDomail);                       
+            return await checkListItemRepository.UpdateAsync(id, itemDomail);
         }
     }
 }

@@ -10,19 +10,16 @@ namespace DMCheckSheetAPI.Models.Domain
         public int ItemId { get; set; }
         // Foreign Key
         [Required]
-        public int DeviceId { get; set; }    
+        public int TypeId { get; set; }
         public string? CheckTitle { get; set; }
-        public string? CheckContext { get; set; }
-        [Required]
-        [StringLength(1000)]
-        public string CheckName { get; set; } = null!;
+        public string? CheckContext { get; set; }        
         public bool IsRequire { get; set; } = true;
         [Required]
         [StringLength(50)]
         public string DataType { get; set; } = null!;
 
         //Navigation Properties
-        [ForeignKey("DeviceId")]
-        public virtual DeviceMST? DeviceMST { get; set; }
+        [ForeignKey("TypeId")]
+        public virtual DeviceTypeMST? DeviceTypeMST { get; set; }
     }
 }

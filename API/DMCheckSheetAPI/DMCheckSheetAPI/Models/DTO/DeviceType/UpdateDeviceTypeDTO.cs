@@ -5,6 +5,7 @@
         public string TypeCode { get; set; } = null!;
         public string TypeName { get; set; } = null!;
         public string? TypeDesc { get; set; } = null!;
+        public string? CheckSheetName { get; set; }
         public string? UpdateBy { get; set; }
         public DateTime UpdateAt { get; set; } = DateTime.Now;
     }

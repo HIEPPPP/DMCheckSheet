@@ -23,22 +23,22 @@ namespace DMCheckSheetAPI.Controllers
         public async Task<IActionResult> GetListItem()
         {
             var listItem = await checkListItemServices.GetListItem();
-            return Ok(new ApiResponse<List<CheckListItemMST>>(200, "Success", listItem));                                   
+            return Ok(new ApiResponse<List<CheckListItemDTO>>(200, "Success", listItem));
         }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetItem(int id)
         {
             var item = await checkListItemServices.GetItem(id);
-            return item != null ? Ok(new ApiResponse<CheckListItemMST>(200, "Success", item))
-                                : NotFound(new ApiResponse<string>(404, "Item not found"));       
+            return item != null ? Ok(new ApiResponse<CheckListItemDTO>(200, "Success", item))
+                                : NotFound(new ApiResponse<string>(404, "Item not found"));
         }
 
         [HttpPost]
         public async Task<IActionResult> CreateItem([FromBody] CreateItemDTO createItemDTO)
         {
             var newItem = await checkListItemServices.CreateItem(createItemDTO);
-            return CreatedAtAction(nameof(GetItem), new { id = newItem.ItemId }, new ApiResponse<CheckListItemMST>(200, "Item created", newItem ));
+            return CreatedAtAction(nameof(GetItem), new { id = newItem.ItemId }, new ApiResponse<CheckListItemMST>(200, "Item created", newItem));
         }
 
         [HttpPut("{id}")]
@@ -54,7 +54,7 @@ namespace DMCheckSheetAPI.Controllers
         {
             var deleteItem = await checkListItemServices.DeleteItem(id);
             return deleteItem != null ? Ok(new ApiResponse<CheckListItemMST>(200, "Item deleted", deleteItem))
-                                      : NotFound(new ApiResponse<string>(404, "Item not found"));        
+                                      : NotFound(new ApiResponse<string>(404, "Item not found"));
         }
     }
 }

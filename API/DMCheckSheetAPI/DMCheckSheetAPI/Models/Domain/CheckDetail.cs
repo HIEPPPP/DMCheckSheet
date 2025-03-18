@@ -14,12 +14,12 @@ namespace DMCheckSheetAPI.Models.Domain
         //Foreign Key
         [Required]
         public int CheckId { get; set; }
-        public bool Status { get; set; }
-        public int IntData { get; set; }
-        public string StringData { get; set; } = null!;
-        public string Reason { get; set; } = null!;
-        public string Policy { get; set; } = null!;
-        public string Note { get; set; } = null!;
+        public bool? BoolData { get; set; }
+        public float? NumData { get; set; }
+        public string? StringData { get; set; }
+        public string? Reason { get; set; }
+        public string? Policy { get; set; }
+        public string? Note { get; set; }
 
         //Navigation Properties
         [ForeignKey("ItemId")]               

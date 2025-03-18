@@ -8,6 +8,7 @@ import MainLayout from "../layouts/MainLayout";
 import Users from "../components/Admin/Users";
 import DeviceTypeMST from "../components/Admin/DeviceTypeMST";
 import DeviceMST from "../components/Admin/DeviceMST";
+import CheckListItemMST from "../components/Admin/CheckListItemMST";
 
 const AppRoutes = () => (
   <BrowserRouter>
@@ -18,8 +19,9 @@ const AppRoutes = () => (
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/checklist" element={<CheckListItem />} />
         <Route path="/users" element={<Users />} />
-        <Route path="/deviceMst" element={<DeviceMST />} />
-        <Route path="/deviceTypeMst" element={<DeviceTypeMST />} />
+        <Route path="/deviceMST" element={<DeviceMST />} />
+        <Route path="/deviceTypeMST" element={<DeviceTypeMST />} />
+        <Route path="/checkListItemMST" element={<CheckListItemMST />} />
       </Route>
 
       {/* Routes không có Sidebar */}

@@ -1,6 +1,7 @@
 ﻿using DMCheckSheetAPI.Constants;
 using DMCheckSheetAPI.Data;
 using DMCheckSheetAPI.Models.Domain;
+using DMCheckSheetAPI.Models.DTO.CheckListItem;
 using DMCheckSheetAPI.Repositories.Interface;
 using Microsoft.EntityFrameworkCore;
 
@@ -30,16 +31,36 @@ namespace DMCheckSheetAPI.Repositories.Implementation
             return existItem;
         }
 
-        public async Task<List<CheckListItemMST>> GetAllAsync()
+        public async Task<List<CheckListItemDTO>> GetAllAsync()
         {
-            return await context.CheckListItems.AsNoTracking().ToListAsync();
+            return await context.CheckListItems.Include(i => i.DeviceTypeMST)
+                                               .Select(i => new CheckListItemDTO
+                                               {
+                                                   ItemId = i.ItemId,
+                                                   TypeId = i.TypeId,
+                                                   TypeCode = i.DeviceTypeMST.TypeCode,
+                                                   TypeName = i.DeviceTypeMST.TypeName,
+                                                   CheckTitle = i.CheckTitle,
+                                                   CheckContext = i.CheckContext,
+                                                   IsRequire = i.IsRequire,
+                                                   DataType = i.DataType,
+                                               }).AsNoTracking().ToListAsync();
         }
 
-        public async Task<CheckListItemMST?> GetAsync(int id)
+        public async Task<CheckListItemDTO?> GetAsync(int id)
         {
-            var existItem = await context.CheckListItems.FindAsync(id);
-            if (existItem == null) return null;
-            return existItem;
+            return await context.CheckListItems.Include(i => i.DeviceTypeMST)
+                                              .Select(i => new CheckListItemDTO
+                                              {
+                                                  ItemId = i.ItemId,
+                                                  TypeId = i.TypeId,
+                                                  TypeCode = i.DeviceTypeMST.TypeCode,
+                                                  TypeName = i.DeviceTypeMST.TypeName,
+                                                  CheckTitle = i.CheckTitle,
+                                                  CheckContext = i.CheckContext,
+                                                  IsRequire = i.IsRequire,
+                                                  DataType = i.DataType,
+                                              }).AsNoTracking().FirstOrDefaultAsync(i => i.ItemId == id);
 
         }
 
@@ -47,14 +68,12 @@ namespace DMCheckSheetAPI.Repositories.Implementation
         {
             var existItem = await context.CheckListItems.FindAsync(id);
             if (existItem == null) return null;
-            existItem.DeviceId = item.DeviceId;
-            existItem.CheckName = item.CheckName;
+            existItem.TypeId = item.TypeId;
             existItem.IsRequire = item.IsRequire;
             existItem.DataType = item.DataType;
             existItem.UpdateAt = item.UpdateAt;
-            existItem.UpdateBy = item.UpdateBy;
             existItem.UpdateAt = DateTime.Now;
-            existItem.UpdateBy = CheckSheet_Constants.userCode;
+            existItem.UpdateBy = item.UpdateBy;
             await context.SaveChangesAsync();
             return existItem;
         }

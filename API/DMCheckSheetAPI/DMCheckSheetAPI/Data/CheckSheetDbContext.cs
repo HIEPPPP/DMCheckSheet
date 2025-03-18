@@ -14,6 +14,5 @@ namespace DMCheckSheetAPI.Data
         public virtual DbSet<CheckListItemMST> CheckListItems { get; set; }
         public virtual DbSet<CheckRecord> CheckRecords { get; set; }
         public virtual DbSet<CheckDetail> CheckDetails { get; set; }
-        public virtual DbSet<User> UserLogins { get; set; }
     }
 }

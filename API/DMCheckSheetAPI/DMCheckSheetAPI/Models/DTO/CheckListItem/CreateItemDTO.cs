@@ -3,10 +3,10 @@
 namespace DMCheckSheetAPI.Models.DTO.CheckListItem
 {
     public class CreateItemDTO
-    {
-        public int DeciveId { get; set; }
+    {    
+        public int TypeId { get; set; }
         public string? CheckTitle { get; set; }
-        public string CheckName { get; set; } = null!;
+        public string? CheckContext { get; set; }
         public bool IsRequire { get; set; } = true;
         public string DataType { get; set; } = null!;
         public DateTime CreateAt { get; set; } = DateTime.Now;
