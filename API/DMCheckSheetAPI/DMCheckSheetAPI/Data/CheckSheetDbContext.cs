@@ -9,10 +9,11 @@ namespace DMCheckSheetAPI.Data
         public CheckSheetDbContext(DbContextOptions options) : base(options)
         {
         }
-        public virtual DbSet<DeviceTypeMST> DeviceTypes { get; set; }
         public virtual DbSet<DeviceMST> Devices { get; set; }
-        public virtual DbSet<CheckListItemMST> CheckListItems { get; set; }
-        public virtual DbSet<CheckRecord> CheckRecords { get; set; }
-        public virtual DbSet<CheckDetail> CheckDetails { get; set; }
+        public virtual DbSet<CheckSheetMST> CheckSheets { get; set; }
+        public virtual DbSet<CheckSheetItemMST> CheckSheetItems { get; set; }
+        public virtual DbSet<CheckSheetDevice> CheckSheetDevices { get; set; }
+        public virtual DbSet<CheckResult> CheckResults { get; set; }
+        public virtual DbSet<ResultAction> ResultActions { get; set; }
     }
 }

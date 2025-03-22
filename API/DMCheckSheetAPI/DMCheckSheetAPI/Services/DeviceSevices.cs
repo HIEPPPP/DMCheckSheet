@@ -17,12 +17,12 @@ namespace DMCheckSheetAPI.Services
             this.mapper = mapper;
         }
 
-        public async Task<List<DeviceDTO>> GetListDevice()
+        public async Task<List<DeviceMST>> GetListDevice()
         {
             return await deviceRepository.GetAllAsync();
         }
 
-        public async Task<DeviceDTO?> GetDeviceById(int id)
+        public async Task<DeviceMST?> GetDeviceById(int id)
         {
             return await deviceRepository.GetAsync(id);
             
@@ -35,9 +35,9 @@ namespace DMCheckSheetAPI.Services
             return deviceNew;
         }
 
-        public async Task<DeviceMST?> DeleteDevice(int id)
+        public async Task<DeviceMST?> UpdateCancelFlag(int id)
         {
-            var existDevice = await deviceRepository.DeleteAsync(id);
+            var existDevice = await deviceRepository.UpdateCancelFlagAsync(id);
             if (existDevice == null) return null;
             return existDevice;
         }
@@ -45,8 +45,7 @@ namespace DMCheckSheetAPI.Services
         public async Task<DeviceMST?> UpdateDevice(int id, UpdateDeviceDTO deviceDTO)
         {
             var deviceDomail = mapper.Map<DeviceMST>(deviceDTO);
-            return await deviceRepository.UpdateAsync(id, deviceDomail);
-                       
+            return await deviceRepository.UpdateAsync(id, deviceDomail);                       
         }
     }
 }

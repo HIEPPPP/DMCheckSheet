@@ -32,9 +32,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "DMCheckSheetAPI.Controllers.CheckListItemController",
-    "Method": "GetListItem",
-    "RelativePath": "api/CheckListItem",
+    "ContainingType": "DMCheckSheetAPI.Controllers.CheckSheetController",
+    "Method": "GetListCheckSheet",
+    "RelativePath": "api/CheckSheet",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -42,25 +42,25 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "DMCheckSheetAPI.Controllers.CheckListItemController",
-    "Method": "CreateItem",
-    "RelativePath": "api/CheckListItem",
+    "ContainingType": "DMCheckSheetAPI.Controllers.CheckSheetController",
+    "Method": "CreateSheet",
+    "RelativePath": "api/CheckSheet",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "createItemDTO",
-        "Type": "DMCheckSheetAPI.Models.DTO.CheckListItem.CreateItemDTO",
+        "Name": "createSheetDTO",
+        "Type": "DMCheckSheetAPI.Models.DTO.CheckSheet.CreateSheetDTO",
         "IsRequired": true
       }
     ],
     "ReturnTypes": []
   },
   {
-    "ContainingType": "DMCheckSheetAPI.Controllers.CheckListItemController",
-    "Method": "GetItem",
-    "RelativePath": "api/CheckListItem/{id}",
+    "ContainingType": "DMCheckSheetAPI.Controllers.CheckSheetController",
+    "Method": "GetCheckSheet",
+    "RelativePath": "api/CheckSheet/{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -74,9 +74,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "DMCheckSheetAPI.Controllers.CheckListItemController",
-    "Method": "UpdateItem",
-    "RelativePath": "api/CheckListItem/{id}",
+    "ContainingType": "DMCheckSheetAPI.Controllers.CheckSheetController",
+    "Method": "UpdateSheet",
+    "RelativePath": "api/CheckSheet/{id}",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
@@ -87,18 +87,18 @@
         "IsRequired": true
       },
       {
-        "Name": "updateItemDTO",
-        "Type": "DMCheckSheetAPI.Models.DTO.CheckListItem.UpdateItemDTO",
+        "Name": "updateSheetDTO",
+        "Type": "DMCheckSheetAPI.Models.DTO.CheckSheet.UpdateSheetDTO",
         "IsRequired": true
       }
     ],
     "ReturnTypes": []
   },
   {
-    "ContainingType": "DMCheckSheetAPI.Controllers.CheckListItemController",
-    "Method": "DeleteItem",
-    "RelativePath": "api/CheckListItem/{id}",
-    "HttpMethod": "DELETE",
+    "ContainingType": "DMCheckSheetAPI.Controllers.CheckSheetController",
+    "Method": "UpdateCancelFlag",
+    "RelativePath": "api/CheckSheet/{id}/cancel",
+    "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
     "Parameters": [
@@ -154,22 +154,6 @@
   },
   {
     "ContainingType": "DMCheckSheetAPI.Controllers.DeviceController",
-    "Method": "DeleteDevice",
-    "RelativePath": "api/Device/{id}",
-    "HttpMethod": "DELETE",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "DMCheckSheetAPI.Controllers.DeviceController",
     "Method": "UpdateDevice",
     "RelativePath": "api/Device/{id}",
     "HttpMethod": "PUT",
@@ -190,73 +174,10 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "DMCheckSheetAPI.Controllers.DeviceTypeController",
-    "Method": "GetListType",
-    "RelativePath": "api/DeviceType",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "DMCheckSheetAPI.Controllers.DeviceTypeController",
-    "Method": "CreateType",
-    "RelativePath": "api/DeviceType",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "createDeviceTypeDTO",
-        "Type": "DMCheckSheetAPI.Models.DTO.DeviceType.CreateDeviceTypeDTO",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "DMCheckSheetAPI.Controllers.DeviceTypeController",
-    "Method": "GetTypeById",
-    "RelativePath": "api/DeviceType/{id}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "DMCheckSheetAPI.Controllers.DeviceTypeController",
-    "Method": "UpdateType",
-    "RelativePath": "api/DeviceType/{id}",
+    "ContainingType": "DMCheckSheetAPI.Controllers.DeviceController",
+    "Method": "UpdateCancelFlag",
+    "RelativePath": "api/Device/{id}/cancel",
     "HttpMethod": "PUT",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
-      },
-      {
-        "Name": "updateDeviceTypeDTO",
-        "Type": "DMCheckSheetAPI.Models.DTO.DeviceType.UpdateDeviceTypeDTO",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "DMCheckSheetAPI.Controllers.DeviceTypeController",
-    "Method": "DeleteType",
-    "RelativePath": "api/DeviceType/{id}",
-    "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
     "Parameters": [

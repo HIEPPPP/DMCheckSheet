@@ -21,6 +21,7 @@ import {
   Snackbar,
   Alert,
   InputAdornment,
+  Pagination,
 } from "@mui/material";
 import {
   Add,
@@ -49,6 +50,13 @@ const CheckListItemMST = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [confirmDelete, setConfirmDelete] = useState(null);
   const [errors, setErrors] = useState({});
+  const [pageNumber, setPage] = useState(1);
+  const pageSize = 10;
+  const totalPages = 10;
+
+  const handleChange = (event, value) => {
+    setPage(value);
+  };
 
   const [formData, setFormData] = useState({
     typeId: "",
@@ -65,19 +73,32 @@ const CheckListItemMST = () => {
   });
 
   useEffect(() => {
-    const fetchData = async () => {
-      const res = await getListItem();
-      if (res) setCheckListItems(res);
-    };
-
     const fetchDeviceTypes = async () => {
       const res = await getListDeviceType();
-      if (res) setDeviceTypes(res);
+      if (res) {
+        setDeviceTypes(res);
+      }
     };
-
+    const fetchData = async () => {
+      const res = await getListItem(pageNumber, pageSize);
+      if (res) {
+        setCheckListItems(res);
+      }
+    };
     fetchData();
+
     fetchDeviceTypes();
   }, []);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await getListItem(pageNumber, pageSize);
+      if (res) {
+        setCheckListItems(res);
+      }
+    };
+    fetchData();
+  }, [pageNumber]);
 
   const handleSearch = () => {};
 
@@ -145,7 +166,7 @@ const CheckListItemMST = () => {
     try {
       const isDeleted = await deleteListItem(id);
       if (isDeleted) {
-        setDevices(checkListItems.filter((d) => d.itemId !== id));
+        setCheckListItems(checkListItems.filter((d) => d.itemId !== id));
         setSnackbar({
           open: true,
           message: "Xóa thành công!",
@@ -229,6 +250,14 @@ const CheckListItemMST = () => {
           </TableBody>
         </Table>
       </TableContainer>
+      <div className="flex justify-end mt-4">
+        <Pagination
+          count={totalPages}
+          page={pageNumber}
+          onChange={handleChange}
+          color="primary"
+        />
+      </div>
 
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle>

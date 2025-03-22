@@ -23,61 +23,35 @@ namespace DMCheckSheetAPI.Repositories.Implementation
             return device;
         }
 
-        public async Task<DeviceMST?> DeleteAsync(int id)
+        public async Task<DeviceMST?> UpdateCancelFlagAsync(int id)
         {
             var existDevice = await context.Devices.FindAsync(id);
-            if(existDevice == null) return null;
-            context.Remove(existDevice);
+            if (existDevice == null) return null;
+            existDevice.CancelFlag = true;
             await context.SaveChangesAsync();
             return existDevice;
         }
 
-        public async Task<List<DeviceDTO>> GetAllAsync()
+        public async Task<List<DeviceMST>> GetAllAsync()
         {
-            return await context.Devices.Include(d => d.DeviceType)
-                                        .Select(d => new DeviceDTO
-                                        {
-                                            DeviceId = d.DeviceId,
-                                            DeviceCode = d.DeviceCode,
-                                            DeviceName = d.DeviceName,
-                                            TypeId = d.TypeId,
-                                            TypeName = d.DeviceType.TypeName,
-                                            FormNO = d.FormNO,
-                                            CreateAt = DateTime.Now,
-                                            Frequency = d.Frequency,
-                                            Location = d.Location,
-                                        }).AsNoTracking().ToListAsync();            
-        }
+            return await context.Devices.Where(x => x.CancelFlag == false).AsNoTracking().ToListAsync();
+        } 
 
-        public async Task<DeviceDTO?> GetAsync(int id)
+        public async Task<DeviceMST?> GetAsync(int id)
         {
-            return await context.Devices.Include(d => d.DeviceType)
-                                        .Select(d => new DeviceDTO
-                                        {
-                                            DeviceId = d.DeviceId,
-                                            DeviceCode = d.DeviceCode,
-                                            DeviceName = d.DeviceName,
-                                            TypeId = d.TypeId,
-                                            TypeName = d.DeviceType.TypeName,
-                                            FormNO = d.FormNO,
-                                            CreateAt = DateTime.Now,
-                                            Frequency = d.Frequency,
-                                            Location = d.Location,
-                                        }).FirstOrDefaultAsync(d => d.DeviceId == id);
+            return await context.Devices.FirstOrDefaultAsync(x => x.DeviceId == id && x.CancelFlag == false);
         }
 
         public async Task<DeviceMST?> UpdateAsync(int id, DeviceMST device)
         {
             var existDevice = await context.Devices.FindAsync(id);
             if (existDevice == null) return null;
-            existDevice.TypeId = device.TypeId; 
             existDevice.Location = device.Location;
             existDevice.Frequency = device.Frequency;
             existDevice.DeviceName = device.DeviceName;
             existDevice.DeviceCode = device.DeviceCode;
-            existDevice.FormNO = device.FormNO;
-            existDevice.UpdateAt = DateTime.Now;
-            existDevice.UpdateBy = CheckSheet_Constants.userCode;
+            existDevice.UpdateBy = device.DeviceCode;            
+            existDevice.UpdateBy = device.UpdateBy;
             await context.SaveChangesAsync();
             return existDevice;
         }

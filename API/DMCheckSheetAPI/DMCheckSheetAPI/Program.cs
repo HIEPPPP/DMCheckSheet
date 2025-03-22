@@ -59,8 +59,6 @@ builder.Services.AddSwaggerGen(options =>
     });
 });
 
-
-
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowSpecificOrigin",
@@ -77,17 +75,13 @@ builder.Services.AddDbContext<CheckSheetDbContext>(options =>
 
 builder.Services.AddAutoMapper(typeof(AutoMapperProfile));
 
+// Repository
 builder.Services.AddScoped<IDeviceRepository, DeviceRepository>();
-builder.Services.AddScoped<IDeviceTypeRepository, DeviceTypeRepository>();
-builder.Services.AddScoped<ICheckListItemRepository, CheckListItemRepository>();
-builder.Services.AddScoped<ICheckRecordRepository, CheckRecordRepository>();
-builder.Services.AddScoped<ICheckDetailRepository, CheckDetailRepository>();
+builder.Services.AddScoped<ICheckSheetRepository, CheckSheetRepository>();
 
+// Services
 builder.Services.AddScoped<DeviceSevices>();
-builder.Services.AddScoped<DeviceTypeServices>();
-builder.Services.AddScoped<CheckListItemServices>();
-builder.Services.AddScoped<CheckRecordServices>();
-builder.Services.AddScoped<CheckDetailServices>();
+builder.Services.AddScoped<CheckSheetServices>();
 
 builder.Services.AddIdentityCore<User>()
     .AddRoles<IdentityRole>()
