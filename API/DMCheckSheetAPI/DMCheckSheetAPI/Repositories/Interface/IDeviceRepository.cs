@@ -10,5 +10,8 @@ namespace DMCheckSheetAPI.Repositories.Interface
         Task<DeviceMST> CreateAsync(DeviceMST device);
         Task<DeviceMST?> UpdateAsync(int id, DeviceMST device);
         Task<DeviceMST?> UpdateCancelFlagAsync(int id);
+        Task<List<int>> GetCheckSheetIdsByDevicesAsync(int deviceId);
+        Task AddCheckSheetsToDevicesAsync(List<CheckSheetDevice> checkSheetDevices);
+        Task RemoveCheckSheetsToDevicesAsync(List<CheckSheetDevice> checkSheetDevices);
     }
 }

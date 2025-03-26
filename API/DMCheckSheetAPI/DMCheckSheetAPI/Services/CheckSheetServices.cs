@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using DMCheckSheetAPI.Models.Domain;
 using DMCheckSheetAPI.Models.DTO.CheckSheet;
+using DMCheckSheetAPI.Repositories.Implementation;
 using DMCheckSheetAPI.Repositories.Interface;
 
 namespace DMCheckSheetAPI.Services
@@ -30,7 +31,7 @@ namespace DMCheckSheetAPI.Services
         {
             var sheetDomain = mapper.Map<CheckSheetMST>(createSheetDTO);
             return await checkSheetRepository.CreateAsync(sheetDomain);
-        } 
+        }
 
         public async Task<CheckSheetMST?> UpdateSheet(int id, UpdateSheetDTO updateSheetDTO)
         {
@@ -41,6 +42,39 @@ namespace DMCheckSheetAPI.Services
         public async Task<CheckSheetMST?> UpdateCancelFlag(int id)
         {
             return await checkSheetRepository.UpdateCancelFlagAsync(id);
+        }
+
+        public async Task<bool> UpdateDevicesInCheckSheetAsync(int checkSheetId, List<int> deviceIds)
+        {
+            var checkSheet = await checkSheetRepository.GetAsync(checkSheetId);
+            if (checkSheet == null) return false;
+
+            // Lấy danh sách thiết bị hiện tại của CheckSheet
+            var existingDeviceIds = await checkSheetRepository.GetDeviceIdsByCheckSheetIdAsync(checkSheetId);
+
+            // Xóa các thiết bị không còn trong danh sách mới
+            var devicesToRemove = existingDeviceIds
+                .Where(id => !deviceIds.Contains(id))
+                .Select(id => new CheckSheetDevice { CheckSheetId = checkSheetId, DeviceId = id })
+                .ToList();
+
+            if (devicesToRemove.Any())
+            {
+                await checkSheetRepository.RemoveDevicesAsync(devicesToRemove);
+            }
+
+            // Thêm các thiết bị mới chưa có
+            var newDevices = deviceIds
+                .Where(id => !existingDeviceIds.Contains(id))
+                .Select(id => new CheckSheetDevice { CheckSheetId = checkSheetId, DeviceId = id })
+                .ToList();
+
+            if (newDevices.Any())
+            {
+                await checkSheetRepository.AddDevicesToCheckSheetAsync(newDevices);
+            }
+
+            return true;
         }
     }
 }

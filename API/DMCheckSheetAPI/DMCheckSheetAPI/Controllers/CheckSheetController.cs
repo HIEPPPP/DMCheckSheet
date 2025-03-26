@@ -55,5 +55,18 @@ namespace DMCheckSheetAPI.Controllers
             return checksheet != null ? Ok(new ApiResponse<CheckSheetMST>(200, "Updated cancel flag", checksheet))
                                       : NotFound(new ApiResponse<string>(401, "Check Sheet not found"));
         }
+
+        [HttpPut("{checkSheetId}/devices")]
+        public async Task<IActionResult> UpdateDevices(int checkSheetId, [FromBody] List<int> deviceIds)
+        {
+            var result = await checkSheetServices.UpdateDevicesInCheckSheetAsync(checkSheetId, deviceIds);
+
+            if (!result)
+            {
+                return NotFound(new ApiResponse<string>(401, "CheckSheet not found"));
+            }
+
+            return Ok(new ApiResponse<string>(200, "Success"));
+        }
     }
 }

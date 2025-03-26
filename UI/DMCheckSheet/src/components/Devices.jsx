@@ -7,13 +7,6 @@ import DeviceCard from "./DeviceCard";
 import { Button } from "@mui/material";
 
 const Device = () => {
-  // Dữ liệu mẫu
-  const sampleDevice = {
-    code: "DEV12345",
-    name: "Máy ép nhiệt",
-    form: "F001",
-  };
-
   const [devices, setDevices] = React.useState([]);
 
   useEffect(() => {

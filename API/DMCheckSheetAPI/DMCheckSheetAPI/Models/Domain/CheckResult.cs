@@ -26,10 +26,10 @@ namespace DMCheckSheetAPI.Models.Domain
         public string? DataType { get; set; }
         [StringLength(255)]
         public string? Value { get; set; }
-        public DateTime CheckedDate { get; set; }
+        public DateTime CheckedDate { get; set; } = DateTime.Now;
         [StringLength(255)]
         public string? CheckedBy { get; set; }
-        public DateTime UpdateAt { get; set; }
+        public DateTime UpdateAt { get; set; } = DateTime.Now;
         public string? UpdateBy { get; set; }
         [StringLength(255)]
         public string? ConfirmedBy { get; set; }

@@ -211,7 +211,7 @@ namespace DMCheckSheetAPI.Migrations
 
                     b.HasKey("SheetId");
 
-                    b.ToTable("CheckSheets");
+                    b.ToTable("CheckSheetMST");
                 });
 
             modelBuilder.Entity("DMCheckSheetAPI.Models.Domain.DeviceMST", b =>

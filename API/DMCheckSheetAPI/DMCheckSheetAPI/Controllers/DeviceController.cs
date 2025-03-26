@@ -65,5 +65,18 @@ namespace DMCheckSheetAPI.Controllers
             return updateDevice != null ? Ok(new ApiResponse<DeviceMST>(200, "Device updated", updateDevice))
                                         : NotFound(new ApiResponse<string>(200, "Device not found"));
         }
+
+        [HttpPut("{deviceId}/checksheets")]
+        public async Task<IActionResult> UpdateDevices(int deviceId, [FromBody] List<int> checkSheetsId)
+        {
+            var result = await deviceSevices.UpdateCheckSheetInDevicesAsync(deviceId, checkSheetsId);
+
+            if (!result)
+            {
+                return NotFound(new ApiResponse<string>(401, "Device not found"));
+            }
+
+            return Ok(new ApiResponse<string>(200, "Success"));
+        }
     }
 }

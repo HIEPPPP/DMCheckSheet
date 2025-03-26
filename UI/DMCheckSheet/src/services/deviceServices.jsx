@@ -56,7 +56,7 @@ export const updateDevice = async (deviceId, deviceData) => {
 // Xóa thiết bị
 export const deleteDevice = async (deviceId) => {
   try {
-    await apiClient.delete(`/${deviceId}`);
+    await apiClient.put(`/${deviceId}/cancel`);
     return true;
   } catch (error) {
     return handleError(error);

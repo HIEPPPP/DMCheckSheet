@@ -1,3 +1,5 @@
+import { Alert, Snackbar } from "@mui/material";
+
 const Notification = ({ open, message, severity, onClose }) => (
   <Snackbar
     open={open}

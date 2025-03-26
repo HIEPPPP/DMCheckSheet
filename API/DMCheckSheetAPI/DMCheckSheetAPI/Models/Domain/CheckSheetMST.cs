@@ -1,7 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DMCheckSheetAPI.Models.Domain
 {
+    [Table("CheckSheetMST")]
     public class CheckSheetMST : ClassBase
     {
         [Key]

@@ -14,11 +14,12 @@ import {
   FiUser,
 } from "react-icons/fi";
 
-import logo from "../assets/img/settings.png"; // Kiểm tra lại đường dẫn
 import { FcMultipleDevices } from "react-icons/fc";
 import { TypeSpecimen, TypeSpecimenRounded } from "@mui/icons-material";
 import { BsFilePdf, BsTypeBold } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
+
+import logo from "../../assets/img/settings.png";
 
 const Sidebar = () => {
   const user = {
@@ -28,7 +29,7 @@ const Sidebar = () => {
   };
 
   const [isOpen, setIsOpen] = useState(true);
-  const isAdmin = true; // Để sau này thay đổi quyền admin
+  const isAdmin = true;
 
   const menuItems = [
     { name: "Daily Check", path: "/dashboard", icon: <FiHome size={22} /> },
@@ -38,17 +39,23 @@ const Sidebar = () => {
 
   const adminItems = [
     {
-      name: "Device Type",
-      path: "/deviceTypeMST",
-      icon: <TypeSpecimenRounded size={22} />,
-    },
-    {
       name: "Device",
       path: "/deviceMST",
       icon: <FcMultipleDevices size={22} />,
     },
     {
-      name: "Check List",
+      name: "Check Sheet",
+      path: "/checkSheetMST",
+      icon: <TypeSpecimen size={22} />,
+      // icon: <TypeSpecimenRounded size={22} />,
+    },
+    {
+      name: "Context",
+      path: "/checkListItemMST",
+      icon: <FiList size={22} />,
+    },
+    {
+      name: "Result",
       path: "/checkListItemMST",
       icon: <FiList size={22} />,
     },

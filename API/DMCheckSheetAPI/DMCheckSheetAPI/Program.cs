@@ -78,10 +78,16 @@ builder.Services.AddAutoMapper(typeof(AutoMapperProfile));
 // Repository
 builder.Services.AddScoped<IDeviceRepository, DeviceRepository>();
 builder.Services.AddScoped<ICheckSheetRepository, CheckSheetRepository>();
+builder.Services.AddScoped<ICheckSheetItemRepository, CheckSheetItemRepository>();
+builder.Services.AddScoped<ICheckResultRepository, CheckResultRepository>();
+builder.Services.AddScoped<IResultActionRepository, ResultActionRepository>();
 
 // Services
 builder.Services.AddScoped<DeviceSevices>();
 builder.Services.AddScoped<CheckSheetServices>();
+builder.Services.AddScoped<CheckSheetItemServices>();
+builder.Services.AddScoped<CheckResultServices>();
+builder.Services.AddScoped<ResultActionServices>();
 
 builder.Services.AddIdentityCore<User>()
     .AddRoles<IdentityRole>()

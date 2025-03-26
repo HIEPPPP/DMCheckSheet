@@ -1,6 +1,7 @@
 ﻿using DMCheckSheetAPI.Data;
 using DMCheckSheetAPI.Models.Domain;
 using DMCheckSheetAPI.Repositories.Interface;
+using DMCheckSheetAPI.Services;
 using Microsoft.EntityFrameworkCore;
 
 namespace DMCheckSheetAPI.Repositories.Implementation
@@ -49,6 +50,28 @@ namespace DMCheckSheetAPI.Repositories.Implementation
             existCheckSheet.CancelFlag = true;
             await context.SaveChangesAsync();
             return existCheckSheet;
+        }
+
+        // Lấy dánh sách id của thiết bị theo checksheet id
+        public async Task<List<int>> GetDeviceIdsByCheckSheetIdAsync(int checkSheetId)
+        {
+            return await context.CheckSheetDevices
+                .Where(cs => cs.CheckSheetId == checkSheetId)
+                .Select(cs => cs.DeviceId)
+            .ToListAsync();
+        }
+
+        public async Task AddDevicesToCheckSheetAsync(List<CheckSheetDevice> checkSheetDevices)
+        {
+            await context.CheckSheetDevices.AddRangeAsync(checkSheetDevices);
+            await context.SaveChangesAsync();
+        }
+
+        // Xóa bản ghi của CheckSheet - Devices
+        public async Task RemoveDevicesAsync(List<CheckSheetDevice> checkSheetDevices)
+        {
+             context.RemoveRange(checkSheetDevices);
+             await context.SaveChangesAsync();
         }
     }
 }

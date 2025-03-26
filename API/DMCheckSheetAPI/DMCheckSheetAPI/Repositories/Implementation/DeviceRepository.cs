@@ -55,5 +55,25 @@ namespace DMCheckSheetAPI.Repositories.Implementation
             await context.SaveChangesAsync();
             return existDevice;
         }
+
+        public async Task<List<int>> GetCheckSheetIdsByDevicesAsync(int deviceId)
+        {
+            return await context.CheckSheetDevices
+                            .Where(cs => cs.DeviceId == deviceId)
+                            .Select(cs => cs.CheckSheetId)
+                            .ToListAsync();
+        }
+
+        public async Task AddCheckSheetsToDevicesAsync(List<CheckSheetDevice> checkSheetDevices)
+        {
+            await context.CheckSheetDevices.AddRangeAsync(checkSheetDevices);
+            await context.SaveChangesAsync();
+        }
+
+        public async Task RemoveCheckSheetsToDevicesAsync(List<CheckSheetDevice> checkSheetDevices)
+        {
+            context.CheckSheetDevices.RemoveRange(checkSheetDevices);
+            await context.SaveChangesAsync();
+        }
     }
 }
