@@ -1,5 +1,5 @@
 import { Button } from "@mui/material";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import CheckSheetTable from "../components/UI/CheckSheetTable";
 import CheckSheetFormDialog from "../components/UI/CheckSheetFormDialog";
 import { Add } from "@mui/icons-material";
@@ -20,6 +20,15 @@ const CheckSheetMST = () => {
     message: "",
     severity: "success",
   });
+
+  useEffect(() => {
+    var fetchData = async () => {
+      // const response = await getListDevice();
+      // setDevices(response);
+    };
+
+    fetchData();
+  }, []);
 
   const handleOpenForm = (checkSheet = null) => {
     if (checkSheet) {

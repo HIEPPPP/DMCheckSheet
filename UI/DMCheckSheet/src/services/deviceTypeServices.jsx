@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const apiClient = axios.create({
-  baseURL: "http://localhost:5118/api/DeviceType",
+  baseURL: "http://localhost:5118/api/checkSheet",
   headers: {
     "Content-Type": "application/json",
   },
@@ -14,7 +14,7 @@ const handleError = (error) => {
 };
 
 // Lấy danh sách loại thiết bị
-export const getListDeviceType = async () => {
+export const getListCheckSheet = async () => {
   try {
     const res = await apiClient.get("/");
     return res.data.data;
