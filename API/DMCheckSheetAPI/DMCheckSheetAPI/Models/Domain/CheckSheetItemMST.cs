@@ -11,12 +11,12 @@ namespace DMCheckSheetAPI.Models.Domain
         // Foreign Key
         [Required]
         public int SheetId { get; set; }
-        public string? ItemTitle { get; set; }
-        public string? ItemName { get; set; }        
+        public string Content { get; set; } = null!;
+        public int? ParentId { get; set; }
+        [StringLength(100)]
+        public string? DataType { get; set; }
         public bool IsRequire { get; set; } = true;
-        [Required]
-        [StringLength(50)]
-        public string DataType { get; set; } = null!;
+        public int? OrderNumber { get; set; }
         public bool CancelFlag { get; set; } = false;
 
         //Navigation Properties

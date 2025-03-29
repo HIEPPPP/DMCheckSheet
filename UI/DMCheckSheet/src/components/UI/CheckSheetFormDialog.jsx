@@ -25,19 +25,21 @@ const CheckSheetFormDialog = ({
         {formData.id ? "Cập Nhật Check Sheet" : "Thêm Check Sheet"}
       </DialogTitle>
       <DialogContent>
-        <FormControl>
-          <Select className="w-full">
-            <MenuItem value={1}>1</MenuItem>
-            <MenuItem value={2}>2</MenuItem>
-            <MenuItem value={3}>3</MenuItem>
-          </Select>
-        </FormControl>
         <TextField
           label="Mã Form"
           fullWidth
           margin="dense"
-          value={formData.formNo ?? ""}
-          onChange={(e) => setFormData({ ...formData, formNo: e.target.value })}
+          value={formData.formNO ?? ""}
+          onChange={(e) => setFormData({ ...formData, formNO: e.target.value })}
+        />
+        <TextField
+          label="Mã Check Sheet"
+          fullWidth
+          margin="dense"
+          value={formData.sheetCode ?? ""}
+          onChange={(e) =>
+            setFormData({ ...formData, sheetCode: e.target.value })
+          }
         />
         <TextField
           label="Tên Sheet"

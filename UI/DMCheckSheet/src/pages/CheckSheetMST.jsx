@@ -4,6 +4,8 @@ import CheckSheetTable from "../components/UI/CheckSheetTable";
 import CheckSheetFormDialog from "../components/UI/CheckSheetFormDialog";
 import { Add } from "@mui/icons-material";
 
+import { getListItem } from "../services/checkSheetServices";
+
 const CheckSheetMST = () => {
   const [checkSheets, setCheckSheets] = useState([]);
   const [open, setOpen] = useState(false);
@@ -23,8 +25,8 @@ const CheckSheetMST = () => {
 
   useEffect(() => {
     var fetchData = async () => {
-      // const response = await getListDevice();
-      // setDevices(response);
+      const response = await getListItem();
+      setCheckSheets(response);
     };
 
     fetchData();
@@ -45,6 +47,15 @@ const CheckSheetMST = () => {
   const handleSave = async () => {
     if (formData.id) {
       // Update
+      const updatedCheckSheets = checkSheets.map((checkSheet) =>
+        checkSheet.id === formData.id ? formData : checkSheet
+      );
+      setCheckSheets(updatedCheckSheets);
+      setSnackbar({
+        open: true,
+        message: "Cập nhật thành công",
+        severity: "success",
+      });
     } else {
       // Create
     }

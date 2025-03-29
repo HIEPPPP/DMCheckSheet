@@ -4,6 +4,7 @@ using DMCheckSheetAPI.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DMCheckSheetAPI.Migrations
 {
     [DbContext(typeof(CheckSheetDbContext))]
-    partial class CheckSheetDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250327082602_update checkListItem cancelFlaggg")]
+    partial class updatecheckListItemcancelFlaggg
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -87,8 +90,6 @@ namespace DMCheckSheetAPI.Migrations
                         .HasColumnType("nvarchar(255)");
 
                     b.HasKey("ResultId");
-
-                    b.HasIndex("ItemId");
 
                     b.ToTable("CheckResults");
                 });
@@ -190,11 +191,6 @@ namespace DMCheckSheetAPI.Migrations
                         .IsRequired()
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)");
-
-                    b.Property<string>("SheetCode")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("SheetName")
                         .IsRequired()
@@ -495,17 +491,6 @@ namespace DMCheckSheetAPI.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens", (string)null);
-                });
-
-            modelBuilder.Entity("DMCheckSheetAPI.Models.Domain.CheckResult", b =>
-                {
-                    b.HasOne("DMCheckSheetAPI.Models.Domain.CheckSheetItemMST", "CheckSheetItemMST")
-                        .WithMany()
-                        .HasForeignKey("ItemId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("CheckSheetItemMST");
                 });
 
             modelBuilder.Entity("DMCheckSheetAPI.Models.Domain.CheckSheetDevice", b =>

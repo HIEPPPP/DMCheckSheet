@@ -1,4 +1,6 @@
+import { Delete, Edit, Info } from "@mui/icons-material";
 import {
+  IconButton,
   Paper,
   Table,
   TableBody,
@@ -17,16 +19,18 @@ const CheckSheetTable = ({ checkSheets, onEdit, onDelete }) => {
           <TableRow>
             <TableCell>STT</TableCell>
             <TableCell>Form NO.</TableCell>
+            <TableCell>Mã</TableCell>
             <TableCell>Tên</TableCell>
             <TableCell>Hành động</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {checkSheets?.map((checkSheet, index) => (
-            <TableRow key={checkSheet.id}>
+            <TableRow key={checkSheet.sheetId}>
               <TableCell>{index + 1}</TableCell>
-              <TableCell>{checkSheet.formNo}</TableCell>
-              <TableCell>{checkSheet.name}</TableCell>
+              <TableCell>{checkSheet.formNO}</TableCell>
+              <TableCell>{checkSheet.sheetCode}</TableCell>
+              <TableCell>{checkSheet.sheetName}</TableCell>
               <TableCell>
                 <IconButton color="primary" onClick={() => onEdit(checkSheet)}>
                   <Edit />

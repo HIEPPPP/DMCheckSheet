@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DMCheckSheetAPI.Models.Domain
 {
@@ -18,12 +19,13 @@ namespace DMCheckSheetAPI.Models.Domain
         [StringLength(1000)]
         public string? Location { get; set; }
         [StringLength(1000)]
-        public string? ItemTitle { get; set; }
-        [StringLength(1000)]
-        public string? ItemName { get; set; }
-        public bool IsRequire { get; set; }
-        [StringLength(255)]
-        public string? DataType { get; set; }
+        //public string? ItemTitle { get; set; }
+        //[StringLength(1000)]
+        //public string? ItemName { get; set; }
+        public int ItemId { get; set; }
+        //public bool IsRequire { get; set; }
+        //[StringLength(255)]
+        //public string? DataType { get; set; }
         [StringLength(255)]
         public string? Value { get; set; }
         public DateTime CheckedDate { get; set; } = DateTime.Now;
@@ -39,6 +41,8 @@ namespace DMCheckSheetAPI.Models.Domain
         public string? Note { get; set; }
 
         //Navigation Properties
+        [ForeignKey("ItemId")]
+        public CheckSheetItemMST? CheckSheetItemMST { get; set; }
         public ICollection<ResultAction>? ResultActions { get; set; }
     }
 }

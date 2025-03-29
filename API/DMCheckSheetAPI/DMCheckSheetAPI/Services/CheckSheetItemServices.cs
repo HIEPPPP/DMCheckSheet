@@ -16,9 +16,15 @@ namespace DMCheckSheetAPI.Services
             this.checkSheetItemRepository = checkSheetItemRepository;
             this.mapper = mapper;
         }
-        public async Task<List<CheckSheetItemMST>> GetListItem()
+        public async Task<List<ItemDTO>> GetListItem()
         {
+
             return await checkSheetItemRepository.GetAllAsync();
+        }
+
+        public async Task<List<ItemDTO>?> GetListItemByCode(string sheetCode)
+        {
+            return await checkSheetItemRepository.GetAllAsyncByCode(sheetCode);
         }
 
         public async Task<CheckSheetItemMST?> GetItemById(int id)
@@ -30,7 +36,7 @@ namespace DMCheckSheetAPI.Services
         {
             var itemDomain = mapper.Map<CheckSheetItemMST>(createItemDTO);
             return await checkSheetItemRepository.CreateAsync(itemDomain);
-        }
+        }        
 
         public async Task<CheckSheetItemMST?> UpdateItem(int id, UpdateItemDTO updateItemDTO)
         {
@@ -38,9 +44,14 @@ namespace DMCheckSheetAPI.Services
             return await checkSheetItemRepository.UpdateAsync(id, itemDomain);
         }
 
+        public async Task<CheckSheetItemMST?> DeleteItem(int id)
+        {
+            return await checkSheetItemRepository.DeleteAsync(id);
+        }
+
         public async Task<CheckSheetItemMST?> UpdateCancelFlag(int id)
         {
-            return await checkSheetItemRepository.UpdateCancelFlagAsync(id);
+            return await checkSheetItemRepository.UpdateCancelFlag(id);
         }
 
     }

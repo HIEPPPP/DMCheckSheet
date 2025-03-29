@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const apiClient = axios.create({
-  baseURL: "http://localhost:5118/api/CheckListItem",
+  baseURL: "http://localhost:5118/api/CheckSheet",
   headers: {
     "Content-Type": "application/json",
   },
@@ -12,14 +12,23 @@ const handleError = (error) => {
   return null;
 };
 
+// export const getListItem = async (pageNumber, pageSize) => {
+//   try {
+//     const res = await apiClient.get("/", {
+//       params: {
+//         pageNumber: pageNumber,
+//         pageSize: pageSize,
+//       },
+//     });
+//     return res.data.data;
+//   } catch (error) {
+//     return handleError(error);
+//   }
+// };
+
 export const getListItem = async (pageNumber, pageSize) => {
   try {
-    const res = await apiClient.get("/", {
-      params: {
-        pageNumber: pageNumber,
-        pageSize: pageSize,
-      },
-    });
+    const res = await apiClient.get("/");
     return res.data.data;
   } catch (error) {
     return handleError(error);

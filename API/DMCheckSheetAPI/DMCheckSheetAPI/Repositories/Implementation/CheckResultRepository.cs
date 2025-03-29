@@ -41,10 +41,7 @@ namespace DMCheckSheetAPI.Repositories.Implementation
             existResult.DeviceName = result.DeviceName;
             existResult.Frequency = result.Frequency;
             existResult.Location = result.Location;
-            existResult.ItemTitle = result.ItemTitle;
-            existResult.ItemName = result.ItemName;
-            existResult.IsRequire = result.IsRequire;
-            existResult.DataType = result.DataType;
+            existResult.ItemId = result.ItemId;
             existResult.Value = result.Value;   
             existResult.ConfirmedBy = result.ConfirmedBy;   
             existResult.ApprovedBy = result.ApprovedBy;

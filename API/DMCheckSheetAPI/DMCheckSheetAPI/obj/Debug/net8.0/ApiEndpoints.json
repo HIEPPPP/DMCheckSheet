@@ -317,6 +317,22 @@
   },
   {
     "ContainingType": "DMCheckSheetAPI.Controllers.CheckSheetItemController",
+    "Method": "DeleteItem",
+    "RelativePath": "api/CheckSheetItem/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DMCheckSheetAPI.Controllers.CheckSheetItemController",
     "Method": "UpdateCancelFlag",
     "RelativePath": "api/CheckSheetItem/{id}/cancel",
     "HttpMethod": "PUT",
@@ -326,6 +342,22 @@
       {
         "Name": "id",
         "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DMCheckSheetAPI.Controllers.CheckSheetItemController",
+    "Method": "GetListItemBySheetCode",
+    "RelativePath": "api/CheckSheetItem/{sheetCode}/sheetCode",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "sheetCode",
+        "Type": "System.String",
         "IsRequired": true
       }
     ],

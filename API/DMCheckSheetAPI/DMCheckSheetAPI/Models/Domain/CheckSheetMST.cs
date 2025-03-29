@@ -12,7 +12,9 @@ namespace DMCheckSheetAPI.Models.Domain
         [Required]
         [StringLength(255)]
         public string FormNO { get; set; } = null!;
-
+        [Required]
+        [StringLength(100)]
+        public string SheetCode { get; set; } = null!;
         [Required]
         [StringLength(1000)]
         public string SheetName { get; set; } = null!;

@@ -22,7 +22,14 @@ namespace DMCheckSheetAPI.Controllers
         public async Task<IActionResult> GetListItem()
         {
             var items = await checkSheetItemServices.GetListItem();
-            return Ok(new ApiResponse<List<CheckSheetItemMST>>(200, "Success", items));
+            return Ok(new ApiResponse<List<ItemDTO>>(200, "Success", items));
+        }
+
+        [HttpGet("{sheetCode}/sheetCode")]
+        public async Task<IActionResult> GetListItemBySheetCode(string sheetCode)
+        {
+            var items = await checkSheetItemServices.GetListItemByCode(sheetCode);
+            return Ok(new ApiResponse<List<ItemDTO>>(200, "Success", items));
         }
 
         [HttpGet("{id}")]
@@ -38,7 +45,7 @@ namespace DMCheckSheetAPI.Controllers
         {
             var newItem = await checkSheetItemServices.CreateItem(createItemDTO);
             return CreatedAtAction(nameof(GetItem), new {id = newItem.ItemId}, new ApiResponse<CheckSheetItemMST>(201, "Created item", newItem));
-        }
+        }       
 
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateItem(int id, UpdateItemDTO updateItemDTO)
@@ -54,6 +61,15 @@ namespace DMCheckSheetAPI.Controllers
             var updateItem = await checkSheetItemServices.UpdateCancelFlag(id);
             return updateItem != null ? Ok(new ApiResponse<CheckSheetItemMST>(200, "Success", updateItem))
                                       : NotFound(new ApiResponse<string>(401, "Item not found"));
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteItem(int id)
+        {
+            throw new Exception();
+            //var updateItem = await checkSheetItemServices.DeleteItem(id);
+            //return updateItem != null ? Ok(new ApiResponse<CheckSheetItemMST>(200, "Success", updateItem))
+            //                          : NotFound(new ApiResponse<string>(401, "Item not found"));
         }
     }
 }

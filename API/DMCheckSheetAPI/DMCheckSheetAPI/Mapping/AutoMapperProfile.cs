@@ -21,6 +21,7 @@ namespace Ecommerce.API.Mapping
 
             CreateMap<CheckSheetItemMST, CreateItemDTO>().ReverseMap();
             CreateMap<CheckSheetItemMST, UpdateItemDTO>().ReverseMap();
+            CreateMap<CheckSheetItemMST, ItemDTO>().ReverseMap();
 
             CreateMap<CheckResult, CreateResultDTO>().ReverseMap();
             CreateMap<CheckResult, UpdateResultDTO>().ReverseMap();
