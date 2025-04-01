@@ -91,13 +91,24 @@ const DeviceMST = () => {
     response != null && setDevices(response);
   };
 
+  const handleButtonAddClick = () => {
+    setFormData({
+      deviceId: null,
+      deviceCode: "",
+      deviceName: "",
+      frequency: "",
+      location: "",
+    });
+    setOpen(true);
+  };
+
   return (
     <div>
       <h1 className="text-3xl font-bold mb-4">Danh Sách Thiết Bị</h1>
       <Button
         variant="contained"
         startIcon={<Add />}
-        onClick={() => setOpen(true)}
+        onClick={() => handleButtonAddClick()}
       >
         Thêm Thiết Bị
       </Button>
@@ -117,9 +128,9 @@ const DeviceMST = () => {
       <ConfirmDialog
         open={Boolean(confirmDelete)}
         onConfirm={() => handleDelete(confirmDelete)}
+        onCancel={() => setConfirmDelete(null)}
         title={"Xác nhận xóa thiết bị"}
         content={`Bạn có chắc chắn muốn xóa thiết bị này không?`}
-        onCancel={() => setConfirmDelete(null)}
       />
       <Notification
         {...snackbar}

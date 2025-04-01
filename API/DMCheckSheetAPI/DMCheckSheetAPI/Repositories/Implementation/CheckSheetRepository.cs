@@ -37,6 +37,7 @@ namespace DMCheckSheetAPI.Repositories.Implementation
             if (existCheckSheet == null) return null;
             existCheckSheet.FormNO = checkSheetMST.FormNO;
             existCheckSheet.SheetName = checkSheetMST.SheetName;
+            existCheckSheet.SheetCode = checkSheetMST.SheetCode;
             existCheckSheet.UpdateAt = DateTime.Now;
             existCheckSheet.UpdateBy = checkSheetMST.UpdateBy;
             await context.SaveChangesAsync();

@@ -10,6 +10,7 @@
         public int? ParentId { get; set; }
         public string? Content { get; set; }
         public int? OrderNumber { get; set; }
+        public string? DataType { get; set; }
         public int? Level { get; set; }
         public string? OrderPath { get; set; }
     }

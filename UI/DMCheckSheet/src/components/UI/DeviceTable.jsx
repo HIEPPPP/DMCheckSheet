@@ -14,7 +14,7 @@ const DeviceTable = ({ devices, onEdit, onDelete }) => (
   <TableContainer component={Paper} className="mt-4">
     <Table>
       <TableHead>
-        <TableRow>
+        <TableRow className="bg-gray-200">
           <TableCell>STT</TableCell>
           <TableCell>Mã thiết bị</TableCell>
           <TableCell>Tên Thiết Bị</TableCell>

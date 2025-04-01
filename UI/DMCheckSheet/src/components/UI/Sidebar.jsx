@@ -12,6 +12,7 @@ import {
   FiKey,
   FiLogOut,
   FiUser,
+  FiAirplay,
 } from "react-icons/fi";
 
 import { FcMultipleDevices } from "react-icons/fc";
@@ -51,8 +52,8 @@ const Sidebar = () => {
     },
     {
       name: "Context",
-      path: "/checkListItemMST",
-      icon: <FiList size={22} />,
+      path: "/checkSheetItemMST",
+      icon: <FiAirplay size={22} />,
     },
     {
       name: "Result",

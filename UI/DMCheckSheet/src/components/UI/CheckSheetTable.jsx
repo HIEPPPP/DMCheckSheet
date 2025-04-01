@@ -16,7 +16,7 @@ const CheckSheetTable = ({ checkSheets, onEdit, onDelete }) => {
     <TableContainer component={Paper} className="mt-4">
       <Table>
         <TableHead>
-          <TableRow>
+          <TableRow className="bg-gray-200">
             <TableCell>STT</TableCell>
             <TableCell>Form NO.</TableCell>
             <TableCell>Mã</TableCell>
@@ -25,7 +25,7 @@ const CheckSheetTable = ({ checkSheets, onEdit, onDelete }) => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {checkSheets?.map((checkSheet, index) => (
+          {(checkSheets ?? []).map((checkSheet, index) => (
             <TableRow key={checkSheet.sheetId}>
               <TableCell>{index + 1}</TableCell>
               <TableCell>{checkSheet.formNO}</TableCell>
@@ -37,12 +37,9 @@ const CheckSheetTable = ({ checkSheets, onEdit, onDelete }) => {
                 </IconButton>
                 <IconButton
                   color="error"
-                  onClick={() => onDelete(checkSheet.id)}
+                  onClick={() => onDelete(checkSheet.sheetId)}
                 >
                   <Delete />
-                </IconButton>
-                <IconButton color="info">
-                  <Info />
                 </IconButton>
               </TableCell>
             </TableRow>

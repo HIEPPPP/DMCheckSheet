@@ -26,7 +26,7 @@ const handleError = (error) => {
 //   }
 // };
 
-export const getListItem = async (pageNumber, pageSize) => {
+export const getListCheckSheet = async () => {
   try {
     const res = await apiClient.get("/");
     return res.data.data;
@@ -35,7 +35,7 @@ export const getListItem = async (pageNumber, pageSize) => {
   }
 };
 
-export const getListItemById = async (itemId) => {
+export const getCheckSheet = async (itemId) => {
   try {
     const res = await apiClient.get(`/${itemId}`);
     return res.data.data;
@@ -44,7 +44,7 @@ export const getListItemById = async (itemId) => {
   }
 };
 
-export const createListItem = async (itemData) => {
+export const createCheckSheet = async (itemData) => {
   try {
     const res = await apiClient.post("/", itemData);
     return res.data.data;
@@ -53,7 +53,7 @@ export const createListItem = async (itemData) => {
   }
 };
 
-export const updateListItem = async (itemId, itemData) => {
+export const updateCheckSheet = async (itemId, itemData) => {
   try {
     const res = await apiClient.put(`/${itemId}`, itemData);
     return res.data.data;
@@ -62,9 +62,9 @@ export const updateListItem = async (itemId, itemData) => {
   }
 };
 
-export const deleteListItem = async (itemId) => {
+export const updateCancelFlagCS = async (itemId) => {
   try {
-    await apiClient.delete(`/${itemId}`);
+    await apiClient.put(`/${itemId}/cancel`);
     return true;
   } catch (error) {
     return handleError(error);

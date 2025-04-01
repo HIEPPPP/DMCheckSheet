@@ -7,6 +7,7 @@ import MainLayout from "../layouts/MainLayout";
 import Users from "../components/Admin/Users";
 import DeviceMST from "../pages/DeviceMST";
 import CheckSheetMST from "../pages/CheckSheetMST";
+import CheckSheetItemMST from "../pages/CheckSheetItemMST";
 
 const AppRoutes = () => (
   <BrowserRouter>
@@ -18,6 +19,7 @@ const AppRoutes = () => (
         <Route path="/users" element={<Users />} />
         <Route path="/deviceMST" element={<DeviceMST />} />
         <Route path="/checkSheetMST" element={<CheckSheetMST />} />
+        <Route path="/checkSheetItemMST" element={<CheckSheetItemMST />} />
       </Route>
 
       {/* Routes không có Sidebar */}
