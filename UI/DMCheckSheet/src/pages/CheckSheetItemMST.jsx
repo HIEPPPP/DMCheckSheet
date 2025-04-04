@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 
 import { Button } from "@mui/material";
 import { Add } from "@mui/icons-material";
-import ItemTable from "../components/UI/ItemTable";
+import ItemTree from "../components/UI/ItemTable";
 import ItemFormDialog from "../components/UI/ItemFormDialog";
 import ConfirmDialog from "../components/ConfirmDialog";
 import Notification from "../components/Notification";
@@ -59,7 +59,7 @@ const CheckSheetItemMST = () => {
         Thêm nội dung Check Sheet
       </Button>
 
-      <ItemTable items={items} onAddChild={(item) => handleFormChild(item)} />
+      <ItemTree items={items} onAddChild={(item) => handleFormChild(item)} />
 
       <ItemFormDialog
         formData={formData}

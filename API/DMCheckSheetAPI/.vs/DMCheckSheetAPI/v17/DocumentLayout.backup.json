@@ -226,8 +226,7 @@
               "RelativeToolTip": "DMCheckSheetAPI\\Models\\DTO\\CheckSheetItem\\ItemDTO.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAqwA0AAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-29T05:56:45.703Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-29T05:56:45.703Z"
             },
             {
               "$type": "Document",
@@ -235,9 +234,9 @@
               "Title": "CheckSheetItemRepository.cs",
               "DocumentMoniker": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Repositories\\Implementation\\CheckSheetItemRepository.cs",
               "RelativeDocumentMoniker": "DMCheckSheetAPI\\Repositories\\Implementation\\CheckSheetItemRepository.cs",
-              "ToolTip": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Repositories\\Implementation\\CheckSheetItemRepository.cs*",
-              "RelativeToolTip": "DMCheckSheetAPI\\Repositories\\Implementation\\CheckSheetItemRepository.cs*",
-              "ViewState": "AgIAAGUAAAAAAAAAAAAAwIEAAACKAAAAAAAAAA==",
+              "ToolTip": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Repositories\\Implementation\\CheckSheetItemRepository.cs",
+              "RelativeToolTip": "DMCheckSheetAPI\\Repositories\\Implementation\\CheckSheetItemRepository.cs",
+              "ViewState": "AgIAAIYAAAAAAAAAAAAAwHgAAAAoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-24T04:08:36.441Z",
               "EditorCaption": ""
@@ -288,8 +287,7 @@
               "RelativeToolTip": "DMCheckSheetAPI\\Repositories\\Implementation\\CheckSheetRepository.cs",
               "ViewState": "AgIAACsAAAAAAAAAAAAcwCoAAAAtAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-22T04:20:00.477Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-22T04:20:00.477Z"
             },
             {
               "$type": "Document",
