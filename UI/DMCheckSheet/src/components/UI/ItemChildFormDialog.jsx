@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   Dialog,
   DialogTitle,
@@ -27,7 +27,7 @@ const ItemChildFormDialog = ({
           label="Parent ID"
           fullWidth
           margin="dense"
-          value={formData.itemId ?? ""}
+          value={formData.parentId ?? ""}
           disabled
         />
         <TextField
@@ -58,10 +58,10 @@ const ItemChildFormDialog = ({
             }
             label="Kiểu dữ liệu"
           >
-            <MenuItem value="Boolean">Boolean</MenuItem>
-            <MenuItem value="Text">Text</MenuItem>
-            <MenuItem value="Number">Number</MenuItem>
-            <MenuItem value="Date">Date</MenuItem>
+            <MenuItem value="Boolean">BOOLEAN</MenuItem>
+            <MenuItem value="Text">TEXT</MenuItem>
+            <MenuItem value="Number">NUMBER</MenuItem>
+            <MenuItem value="Date">DATE</MenuItem>
           </Select>
         </FormControl>
       </DialogContent>

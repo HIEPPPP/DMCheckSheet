@@ -8,6 +8,7 @@ import Users from "../components/Admin/Users";
 import DeviceMST from "../pages/DeviceMST";
 import CheckSheetMST from "../pages/CheckSheetMST";
 import CheckSheetItemMST from "../pages/CheckSheetItemMST";
+import DeviceCheckSheetMST from "../pages/DeviceCheckSheetMST";
 
 const AppRoutes = () => (
   <BrowserRouter>
@@ -20,6 +21,7 @@ const AppRoutes = () => (
         <Route path="/deviceMST" element={<DeviceMST />} />
         <Route path="/checkSheetMST" element={<CheckSheetMST />} />
         <Route path="/checkSheetItemMST" element={<CheckSheetItemMST />} />
+        <Route path="/deviceSheetMST" element={<DeviceCheckSheetMST />} />
       </Route>
 
       {/* Routes không có Sidebar */}

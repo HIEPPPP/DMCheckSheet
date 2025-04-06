@@ -109,7 +109,7 @@ const CheckSheetMST = () => {
 
   return (
     <div>
-      <h1 className="text-3xl font-bold mb-4">Danh sách Check Sheet</h1>
+      <h1 className="text-3xl font-bold">Danh sách Check Sheet</h1>
       <Button
         variant="contained"
         startIcon={<Add />}

@@ -35,7 +35,7 @@ const DeviceMST = () => {
   useEffect(() => {
     var fetchData = async () => {
       const response = await getListDevice();
-      setDevices(response);
+      response && setDevices(response);
     };
 
     fetchData();
@@ -58,7 +58,7 @@ const DeviceMST = () => {
 
   const handleSave = async () => {
     if (formData.deviceId) {
-      const res = await updateDevice(formData);
+      const res = await updateDevice(formData.deviceId, formData);
       res != null
         ? setSnackbar({ open: true, message: "Cập nhật thành công" })
         : setSnackbar({

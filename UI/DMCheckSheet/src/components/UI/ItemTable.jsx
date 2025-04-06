@@ -42,7 +42,12 @@ const flattenTree = (nodes, level = 0) =>
   );
 
 // Component chính
-const TreeTable = ({ items = [], onEdit = () => {}, onDelete = () => {} }) => {
+const TreeTable = ({
+  items = [],
+  onEdit = () => {},
+  onDelete = () => {},
+  onAddChild = () => {},
+}) => {
   const [treeData, setTreeData] = useState([]);
   const [flatRows, setFlatRows] = useState([]);
 
@@ -82,7 +87,7 @@ const TreeTable = ({ items = [], onEdit = () => {}, onDelete = () => {} }) => {
   return (
     <Box>
       {/* Thanh tìm kiếm + chọn số dòng */}
-      <Box className="flex justify-between flex-wrap gap-2 my-5">
+      <Box className="flex justify-between flex-wrap gap-2 my-4">
         <TextField
           label="Tìm kiếm"
           variant="outlined"
@@ -109,17 +114,17 @@ const TreeTable = ({ items = [], onEdit = () => {}, onDelete = () => {} }) => {
       {/* Bảng dữ liệu */}
       <TableContainer component={Paper}>
         <Table>
-          <TableHead sx={{ backgroundColor: "#f5f5f5" }}>
+          <TableHead className="bg-gray-200">
             <TableRow>
-              <TableCell>Mã Check Sheet</TableCell>
-              <TableCell>ND Check Sheet</TableCell>
-              <TableCell>Form NO</TableCell>
-              <TableCell>Kiểu dữ liệu</TableCell>
-              <TableCell>Nội dung</TableCell>
-              <TableCell>Item ID</TableCell>
-              <TableCell>Parent ID</TableCell>
-              <TableCell>Thứ tự</TableCell>
-              <TableCell>Hành động</TableCell>
+              <TableCell sx={{ fontWeight: 700 }}>Mã Check Sheet</TableCell>
+              <TableCell sx={{ fontWeight: 700 }}>ND Check Sheet</TableCell>
+              <TableCell sx={{ fontWeight: 700 }}>Form NO</TableCell>
+              <TableCell sx={{ fontWeight: 700 }}>Kiểu dữ liệu</TableCell>
+              <TableCell sx={{ fontWeight: 700 }}>Nội dung</TableCell>
+              <TableCell sx={{ fontWeight: 700 }}>Item ID</TableCell>
+              <TableCell sx={{ fontWeight: 700 }}>Parent ID</TableCell>
+              <TableCell sx={{ fontWeight: 700 }}>Thứ tự hiển thị</TableCell>
+              <TableCell sx={{ fontWeight: 700 }}>Hành động</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -139,10 +144,13 @@ const TreeTable = ({ items = [], onEdit = () => {}, onDelete = () => {} }) => {
                   <IconButton color="primary" onClick={() => onEdit(node)}>
                     <Edit />
                   </IconButton>
-                  <IconButton color="error" onClick={() => onDelete(node)}>
+                  <IconButton
+                    color="error"
+                    onClick={() => onDelete(node.itemId)}
+                  >
                     <Delete />
                   </IconButton>
-                  <IconButton color="success">
+                  <IconButton color="success" onClick={() => onAddChild(node)}>
                     <AddBox />
                   </IconButton>
                 </TableCell>

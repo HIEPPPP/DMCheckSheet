@@ -58,8 +58,9 @@ namespace DMCheckSheetAPI.Repositories.Implementation
                                 c.ItemId, 
                                 c.ParentId, 
                                 c.Content, 
-		                        c.OrderNumber,
+                                c.OrderNumber,
                                 c.DataType,
+                                c.CancelFlag,
                                 0 AS Level,
                                 CAST(c.ItemId AS VARCHAR(MAX)) AS Path,
                                 CAST(RIGHT('000' + CAST(ROW_NUMBER() OVER (PARTITION BY c.SheetId ORDER BY c.OrderNumber) AS VARCHAR(MAX)), 3) AS VARCHAR(MAX)) AS OrderPath
@@ -74,17 +75,19 @@ namespace DMCheckSheetAPI.Repositories.Implementation
                                 c.ItemId, 
                                 c.ParentId, 
                                 c.Content, 
-		                        c.OrderNumber,
+                                c.OrderNumber,
                                 c.DataType,
+                                c.CancelFlag,
                                 rc.Level + 1, 
                                 CAST(rc.Path + '.' + CAST(c.ItemId AS VARCHAR(MAX)) AS VARCHAR(MAX)) AS Path,
                                 CAST(rc.OrderPath + '.' + RIGHT('000' + CAST(ROW_NUMBER() OVER (PARTITION BY c.SheetId, c.ParentId ORDER BY c.OrderNumber) AS VARCHAR(MAX)), 3) AS VARCHAR(MAX)) AS OrderPath
                             FROM CheckSheetItemMST c
                             INNER JOIN RecursiveCheckSheet rc ON c.ParentId = rc.ItemId
                         )
-                        SELECT cs.SheetId, cs.FormNO, cs.SheetCode, cs.SheetName, r.ItemId, r.ParentId, r.Content, r.OrderNumber, r.DataType, r.Level, r.OrderPath
+                        SELECT cs.SheetId, cs.FormNO, cs.SheetCode, cs.SheetName, r.ItemId, r.ParentId, r.Content, r.OrderNumber, r.DataType, r.Level, r.OrderPath, r.CancelFlag
                         FROM RecursiveCheckSheet as r
                         LEFT JOIN CheckSheetMST as cs ON r.SheetId = cs.SheetId
+                        WHERE r.CancelFlag = 0
                         ORDER BY r.SheetId, r.OrderPath;
                         ";
 
@@ -103,6 +106,7 @@ namespace DMCheckSheetAPI.Repositories.Implementation
                                 c.Content, 
 		                        c.OrderNumber,
                                 c.DataType,
+                                c.CancelFlag,
                                 0 AS Level,
                                 CAST(c.ItemId AS VARCHAR(MAX)) AS Path,
                                 CAST(RIGHT('000' + CAST(ROW_NUMBER() OVER (PARTITION BY c.SheetId ORDER BY c.OrderNumber) AS VARCHAR(MAX)), 3) AS VARCHAR(MAX)) AS OrderPath
@@ -120,6 +124,7 @@ namespace DMCheckSheetAPI.Repositories.Implementation
                                 c.Content, 
 		                        c.OrderNumber,
                                 c.DataType,
+                                c.CancelFlag,
                                 rc.Level + 1, 
                                 CAST(rc.Path + '.' + CAST(c.ItemId AS VARCHAR(MAX)) AS VARCHAR(MAX)) AS Path,
                                 CAST(rc.OrderPath + '.' + RIGHT('000' + CAST(ROW_NUMBER() OVER (PARTITION BY c.SheetId, c.ParentId ORDER BY c.OrderNumber) AS VARCHAR(MAX)), 3) AS VARCHAR(MAX)) AS OrderPath
@@ -127,9 +132,10 @@ namespace DMCheckSheetAPI.Repositories.Implementation
                             INNER JOIN RecursiveCheckSheet rc ON c.ParentId = rc.ItemId
                         )
                         SELECT 
-                            cs.SheetId, cs.FormNO, cs.SheetCode, cs.SheetName, r.ItemId, r.ParentId, r.Content, r.OrderNumber, r.DataType, r.Level, r.OrderPath
+                            cs.SheetId, cs.FormNO, cs.SheetCode, cs.SheetName, r.ItemId, r.ParentId, r.Content, r.OrderNumber, r.DataType, r.Level, r.OrderPath, r.CancelFlag
                         FROM RecursiveCheckSheet as r
                         LEFT JOIN CheckSheetMST as cs ON r.SheetId = cs.SheetId
+                        Where r.CancelFlag = 0
                         ORDER BY r.SheetId, r.OrderPath;";
             return await context.Database.SqlQueryRaw<ItemDTO>(
                                 query,

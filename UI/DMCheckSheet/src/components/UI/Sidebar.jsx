@@ -40,6 +40,11 @@ const Sidebar = () => {
 
   const adminItems = [
     {
+      name: "Device - Sheet",
+      path: "/deviceSheetMST",
+      icon: <BsTypeBold size={22} />,
+    },
+    {
       name: "Device",
       path: "/deviceMST",
       icon: <FcMultipleDevices size={22} />,
@@ -75,7 +80,7 @@ const Sidebar = () => {
     <div className="relative flex">
       {/* Sidebar */}
       <div
-        className={`h-screen bg-[#F5F5F5] text-[#333] transition-all duration-300 flex flex-col shadow-lg ${
+        className={`h-screen bg-[#F5F5F5] text-[#333] transition-all duration-200 flex flex-col shadow-lg ${
           isOpen ? "w-64" : "w-16"
         }`}
       >

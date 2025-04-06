@@ -1,0 +1,53 @@
+﻿using DMCheckSheetAPI.Data;
+using DMCheckSheetAPI.Models.Domain;
+using DMCheckSheetAPI.Repositories.Interface;
+using Microsoft.EntityFrameworkCore;
+
+namespace DMCheckSheetAPI.Repositories.Implementation
+{
+    public class CheckSheetDeviceRepository : ICheckSheetDeviceRepository
+    {
+        private readonly CheckSheetDbContext context;
+
+        public CheckSheetDeviceRepository(CheckSheetDbContext context)
+        {
+            this.context = context;
+        }
+        public async Task<CheckSheetDevice> Create(CheckSheetDevice checkSheetDevice)
+        {
+            await context.CheckSheetDevices.AddAsync(checkSheetDevice);
+            await context.SaveChangesAsync();
+            return checkSheetDevice;
+
+        }
+
+        public async Task<CheckSheetDevice?> Delete(int id)
+        {
+            var existSheetDevice = await context.CheckSheetDevices.FindAsync(id);
+            if (existSheetDevice == null) return null;
+            context.CheckSheetDevices.Remove(existSheetDevice);
+            await context.SaveChangesAsync();
+            return existSheetDevice;
+        }
+
+        public async Task<List<CheckSheetDevice>> GetAll()
+        {
+            return await context.CheckSheetDevices.AsNoTracking().ToListAsync();
+        }
+
+        public async Task<CheckSheetDevice?> GetById(int id)
+        {
+            return await context.CheckSheetDevices.FindAsync(id);
+        }
+
+        public async Task<CheckSheetDevice?> Update(int id, CheckSheetDevice checkSheetDevice)
+        {
+            var existSheetDevice = await context.CheckSheetDevices.FindAsync(id);
+            if (existSheetDevice == null) return null;
+            existSheetDevice.CheckSheetId = checkSheetDevice.CheckSheetId;
+            existSheetDevice.DeviceId = checkSheetDevice.DeviceId;
+            await context.SaveChangesAsync();
+            return existSheetDevice;
+        }
+    }
+}

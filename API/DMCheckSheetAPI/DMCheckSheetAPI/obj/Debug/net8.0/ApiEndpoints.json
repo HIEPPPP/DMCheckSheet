@@ -253,6 +253,69 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "DMCheckSheetAPI.Controllers.CheckSheetDeviceController",
+    "Method": "GetListCheckSheetDevice",
+    "RelativePath": "api/CheckSheetDevice",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DMCheckSheetAPI.Controllers.CheckSheetDeviceController",
+    "Method": "GetCheckSheetDeviceById",
+    "RelativePath": "api/CheckSheetDevice/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DMCheckSheetAPI.Controllers.CheckSheetDeviceController",
+    "Method": "CreateCheckSheetDevice",
+    "RelativePath": "api/CheckSheetDevice/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "checkSheetDevice",
+        "Type": "DMCheckSheetAPI.Models.Domain.CheckSheetDevice",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DMCheckSheetAPI.Controllers.CheckSheetDeviceController",
+    "Method": "DeleteCheckSheetDevice",
+    "RelativePath": "api/CheckSheetDevice/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "DMCheckSheetAPI.Controllers.CheckSheetItemController",
     "Method": "GetListItem",
     "RelativePath": "api/CheckSheetItem",

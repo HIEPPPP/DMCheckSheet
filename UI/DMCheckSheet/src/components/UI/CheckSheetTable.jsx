@@ -17,11 +17,11 @@ const CheckSheetTable = ({ checkSheets, onEdit, onDelete }) => {
       <Table>
         <TableHead>
           <TableRow className="bg-gray-200">
-            <TableCell>STT</TableCell>
-            <TableCell>Form NO.</TableCell>
-            <TableCell>Mã</TableCell>
-            <TableCell>Tên</TableCell>
-            <TableCell>Hành động</TableCell>
+            <TableCell sx={{ fontWeight: 700 }}>STT</TableCell>
+            <TableCell sx={{ fontWeight: 700 }}>Form NO.</TableCell>
+            <TableCell sx={{ fontWeight: 700 }}>Mã</TableCell>
+            <TableCell sx={{ fontWeight: 700 }}>Tên</TableCell>
+            <TableCell sx={{ fontWeight: 700 }}>Hành động</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>

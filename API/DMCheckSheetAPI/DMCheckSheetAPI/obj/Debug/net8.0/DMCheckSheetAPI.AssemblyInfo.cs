@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DMCheckSheetAPI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+43ebd81b3cb758db2417725bdf910df59869012c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+bc064364ec56be59e5273d5327acd739af881ff2")]
 [assembly: System.Reflection.AssemblyProductAttribute("DMCheckSheetAPI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DMCheckSheetAPI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -1,3 +1,4 @@
+import React, { useEffect, useState } from "react";
 import {
   Dialog,
   DialogTitle,
@@ -5,56 +6,140 @@ import {
   DialogActions,
   TextField,
   Button,
+  FormControl,
+  Select,
+  InputLabel,
+  MenuItem,
+  FormHelperText,
 } from "@mui/material";
-import React from "react";
+import { getListCheckSheet } from "../../services/checkSheetServices";
 
-const ItemFormDialog = ({ open, formData, setFormData, onSave, onClose }) => {
+const ItemFormDialog = ({ open, onClose, formData, setFormData, onSave }) => {
+  const [checkSheet, setCheckSheet] = useState([]);
+  const [errors, setErrors] = useState({});
+
+  // Fetch sheet list
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await getListCheckSheet();
+        setCheckSheet(data || []);
+      } catch (error) {
+        console.error("Error fetching sheet list", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  // Validate form fields
+  const validate = () => {
+    const newErrors = {};
+    if (!formData.content?.trim())
+      newErrors.content = "Nội dung không được để trống";
+    if (!formData.dataType?.trim())
+      newErrors.dataType = "Vui lòng chọn kiểu dữ liệu";
+    if (!formData.sheetId?.toString()?.trim())
+      newErrors.sheetId = "Vui lòng chọn Sheet ID";
+    return newErrors;
+  };
+
+  const handleChange = (field) => (e) => {
+    setFormData({ ...formData, [field]: e.target.value });
+  };
+
+  const handleSave = () => {
+    const validationErrors = validate();
+    setErrors(validationErrors);
+    if (Object.keys(validationErrors).length === 0) {
+      onSave(formData);
+    }
+  };
+
   return (
-    <Dialog open={open} onClose={onClose}>
+    <Dialog open={open} onClose={onClose} fullWidth maxWidth="sm">
       <DialogTitle>
-        {formData.itemId ? "Cập Nhật Nội Dung" : "Thêm Nội Dung"}
+        {formData.itemId ? "Cập nhật nội dung" : "Thêm nội dung"}
       </DialogTitle>
+
       <DialogContent>
-        <TextField
-          label="Parent ID"
+        {/* Sheet ID Select */}
+        <FormControl
           fullWidth
           margin="dense"
-          value={formData.parentId ?? ""}
-          onChange={(e) =>
-            setFormData({ ...formData, parentId: e.target.value })
-          }
-        />
+          required
+          error={Boolean(errors.sheetId)}
+        >
+          <InputLabel id="sheet-id-label">Sheet ID</InputLabel>
+          <Select
+            labelId="sheet-id-label"
+            id="sheet-id-select"
+            value={formData.sheetId ?? ""}
+            onChange={handleChange("sheetId")}
+            label="Sheet ID"
+          >
+            <MenuItem value="">-- Chọn sheet --</MenuItem>
+            {checkSheet.map((sheet) => (
+              <MenuItem key={sheet.sheetId} value={sheet.sheetId}>
+                {sheet.sheetCode} - {sheet.sheetName}
+              </MenuItem>
+            ))}
+          </Select>
+          {errors.sheetId && <FormHelperText>{errors.sheetId}</FormHelperText>}
+        </FormControl>
+
+        {/* Content Field */}
         <TextField
           label="Nội dung"
           fullWidth
           margin="dense"
+          required
           value={formData.content ?? ""}
-          onChange={(e) =>
-            setFormData({ ...formData, content: e.target.value })
-          }
+          onChange={handleChange("content")}
+          error={Boolean(errors.content)}
+          helperText={errors.content}
         />
+
+        {/* Order Number Field */}
         <TextField
-          label="Nội dung"
+          label="Vị trí"
           fullWidth
           margin="dense"
+          type="number"
           value={formData.orderNumber ?? ""}
-          onChange={(e) =>
-            setFormData({ ...formData, orderNumber: e.target.value })
-          }
+          onChange={handleChange("orderNumber")}
         />
-        <TextField
-          label="Nội dung"
+
+        {/* Data Type Select */}
+        <FormControl
           fullWidth
           margin="dense"
-          value={formData.dataType ?? ""}
-          onChange={(e) =>
-            setFormData({ ...formData, dataType: e.target.value })
-          }
-        />
+          required
+          error={Boolean(errors.dataType)}
+        >
+          <InputLabel id="data-type-label">Kiểu dữ liệu *</InputLabel>
+          <Select
+            labelId="data-type-label"
+            id="data-type-select"
+            value={formData.dataType ?? ""}
+            onChange={handleChange("dataType")}
+            label="Kiểu dữ liệu"
+          >
+            <MenuItem value="">-- Chọn kiểu dữ liệu --</MenuItem>
+            <MenuItem value="BOOLEAN">BOOLEAN</MenuItem>
+            <MenuItem value="TEXT">TEXT</MenuItem>
+            <MenuItem value="NUMBER">NUMBER</MenuItem>
+            <MenuItem value="DATE">DATE</MenuItem>
+          </Select>
+          {errors.dataType && (
+            <FormHelperText>{errors.dataType}</FormHelperText>
+          )}
+        </FormControl>
       </DialogContent>
+
       <DialogActions>
         <Button onClick={onClose}>Hủy</Button>
-        <Button onClick={onSave} variant="contained">
+        <Button onClick={handleSave} variant="contained">
           Lưu
         </Button>
       </DialogActions>

@@ -15,12 +15,12 @@ const DeviceTable = ({ devices, onEdit, onDelete }) => (
     <Table>
       <TableHead>
         <TableRow className="bg-gray-200">
-          <TableCell>STT</TableCell>
-          <TableCell>Mã thiết bị</TableCell>
-          <TableCell>Tên Thiết Bị</TableCell>
-          <TableCell>Tần suất</TableCell>
-          <TableCell>Vị trí</TableCell>
-          <TableCell>Hành động</TableCell>
+          <TableCell sx={{ fontWeight: 700 }}>STT</TableCell>
+          <TableCell sx={{ fontWeight: 700 }}>Mã thiết bị</TableCell>
+          <TableCell sx={{ fontWeight: 700 }}>Tên Thiết Bị</TableCell>
+          <TableCell sx={{ fontWeight: 700 }}>Tần suất</TableCell>
+          <TableCell sx={{ fontWeight: 700 }}>Vị trí</TableCell>
+          <TableCell sx={{ fontWeight: 700 }}>Hành động</TableCell>
         </TableRow>
       </TableHead>
       <TableBody>

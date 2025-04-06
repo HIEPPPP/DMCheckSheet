@@ -39,7 +39,7 @@ export const getItemBySheetCode = async (sheetCode) => {
   }
 };
 
-export const createDevice = async (itemData) => {
+export const createItem = async (itemData) => {
   try {
     const res = await apiClient.post("/", itemData);
     return res.data.data;
@@ -48,7 +48,7 @@ export const createDevice = async (itemData) => {
   }
 };
 
-export const updateDevice = async (itemId, itemData) => {
+export const updateItem = async (itemId, itemData) => {
   try {
     const res = await apiClient.put(`/${itemId}`, itemData);
     return res.data.data;
