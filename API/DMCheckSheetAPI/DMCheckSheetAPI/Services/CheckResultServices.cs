@@ -32,6 +32,12 @@ namespace DMCheckSheetAPI.Services
             return await checkResultRepository.CreateAsync(resultDomain);
         }
 
+        public async Task<List<CheckResult>> CreateResults(List<CreateResultDTO> createResultDTOs)
+        {
+            var resultDomains = mapper.Map<List<CheckResult>>(createResultDTOs);
+            return await checkResultRepository.CreateAsyncs(resultDomains);
+        }
+
         public async Task<CheckResult?> UpdateResult(int id, UpdateResultDTO updateResultDTO)
         {
             var resultDomain = mapper.Map<CheckResult>(updateResultDTO);

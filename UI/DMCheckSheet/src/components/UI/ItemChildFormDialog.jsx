@@ -58,10 +58,10 @@ const ItemChildFormDialog = ({
             }
             label="Kiểu dữ liệu"
           >
-            <MenuItem value="Boolean">BOOLEAN</MenuItem>
-            <MenuItem value="Text">TEXT</MenuItem>
-            <MenuItem value="Number">NUMBER</MenuItem>
-            <MenuItem value="Date">DATE</MenuItem>
+            <MenuItem value="BOOLEAN">BOOLEAN</MenuItem>
+            <MenuItem value="TEXT">TEXT</MenuItem>
+            <MenuItem value="NUMBER">NUMBER</MenuItem>
+            <MenuItem value="DATE">DATE</MenuItem>
           </Select>
         </FormControl>
       </DialogContent>

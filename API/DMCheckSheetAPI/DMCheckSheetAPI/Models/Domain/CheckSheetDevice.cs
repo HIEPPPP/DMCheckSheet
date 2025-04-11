@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace DMCheckSheetAPI.Models.Domain
 {
@@ -12,8 +13,10 @@ namespace DMCheckSheetAPI.Models.Domain
 
         //Navigation Properties
         [ForeignKey("CheckSheetId")]
+        [JsonIgnore]
         public CheckSheetMST? CheckSheetMST { get; set; }
         [ForeignKey("DeviceId")]
+        [JsonIgnore]
         public DeviceMST? DeviceMST { get; set; }
     }
 }

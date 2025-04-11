@@ -7,6 +7,6 @@ namespace DMCheckSheetAPI.Models.Domain
     [Table("User")]
     public class User : IdentityUser
     {
-            
+            public string? FullName { get; set; }
     }
 }

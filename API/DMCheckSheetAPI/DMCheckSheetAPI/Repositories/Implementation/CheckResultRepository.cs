@@ -16,9 +16,15 @@ namespace DMCheckSheetAPI.Repositories.Implementation
 
         public async Task<CheckResult> CreateAsync(CheckResult result)
         {
-            await context.AddRangeAsync(result);
+            await context.AddAsync(result);
             await context.SaveChangesAsync();
             return result;
+        }
+        public async Task<List<CheckResult>> CreateAsyncs(List<CheckResult> results)
+        {
+            await context.AddRangeAsync(results);
+            await context.SaveChangesAsync();
+            return results;
         }
 
         public async Task<List<CheckResult>> GetAllAsync()

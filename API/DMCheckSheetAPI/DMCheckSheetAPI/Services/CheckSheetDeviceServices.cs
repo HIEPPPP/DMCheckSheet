@@ -1,4 +1,5 @@
 ﻿using DMCheckSheetAPI.Models.Domain;
+using DMCheckSheetAPI.Models.DTO.CheckSheetDevice;
 using DMCheckSheetAPI.Repositories.Interface;
 
 namespace DMCheckSheetAPI.Services
@@ -11,14 +12,21 @@ namespace DMCheckSheetAPI.Services
         {
             this.checkSheetDeviceRepository = checkSheetDeviceRepository;
         }
-        public async Task<List<CheckSheetDevice>> GetListSheetDevice()
+        public async Task<List<CheckSheetDeviceDTO>> GetListSheetDevice()
         {
             return await checkSheetDeviceRepository.GetAll();
         }
 
-        public async Task<CheckSheetDevice?> GetSheetDevice(int id)
+        public async Task<CheckSheetDeviceDTO?> GetSheetDevice(int id)
         {
             var existSheetDevice = await checkSheetDeviceRepository.GetById(id);
+            if (existSheetDevice == null) return null;
+            return existSheetDevice;
+        }
+
+        public async Task<CheckSheetDeviceDTO?> GetByDeviceAndCheckSheetCode(string deviceCode, string checkSheetCode)
+        {
+            var existSheetDevice = await checkSheetDeviceRepository.GetByDeviceAndCheckSheetCode(deviceCode, checkSheetCode);
             if (existSheetDevice == null) return null;
             return existSheetDevice;
         }

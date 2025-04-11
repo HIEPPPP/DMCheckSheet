@@ -34,10 +34,10 @@ namespace DMCheckSheetAPI.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateResult([FromBody] CreateResultDTO createResultDTO)
+        public async Task<IActionResult> CreateResult([FromBody] List<CreateResultDTO> createResultDTOs)
         {
-            var result = await checkResultServices.CreateResult(createResultDTO);
-            return CreatedAtAction(nameof(GetResult), new {id = result.ResultId}, new ApiResponse<CheckResult>(201, "Created result", result));
+            var results = await checkResultServices.CreateResults(createResultDTOs);
+            return Ok(new ApiResponse<List<CheckResult>>(201, "Created results", results));
         }
 
         [HttpPut("{id}")]

@@ -1,6 +1,6 @@
 import React from "react";
 
-const DeviceCard = ({ device }) => {
+const DeviceCard = ({ device, onOpen }) => {
   return (
     <div className="bg-white shadow-md rounded-lg p-4 w-50 border border-gray-200 flex flex-col">
       <div className="flex-grow">

@@ -1,5 +1,6 @@
 ﻿using DMCheckSheetAPI.Data;
 using DMCheckSheetAPI.Models.Domain;
+using DMCheckSheetAPI.Models.DTO.CheckSheetDevice;
 using DMCheckSheetAPI.Repositories.Interface;
 using Microsoft.EntityFrameworkCore;
 
@@ -30,14 +31,64 @@ namespace DMCheckSheetAPI.Repositories.Implementation
             return existSheetDevice;
         }
 
-        public async Task<List<CheckSheetDevice>> GetAll()
+        public async Task<List<CheckSheetDeviceDTO>> GetAll()
         {
-            return await context.CheckSheetDevices.AsNoTracking().ToListAsync();
+            var result = await context.CheckSheetDevices
+                                      .Include(x => x.CheckSheetMST)
+                                      .Include(x => x.DeviceMST)
+                                      .Select(x => new CheckSheetDeviceDTO
+                                      {
+                                          Id = x.Id,
+                                          DeviceId = x.DeviceId,
+                                          CheckSheetId = x.CheckSheetId,
+                                          SheetCode = x.CheckSheetMST.SheetCode,
+                                          SheetName = x.CheckSheetMST.SheetName,
+                                          DeviceCode = x.DeviceMST.DeviceCode,
+                                          DeviceName = x.DeviceMST.DeviceName
+                                      })
+                                      .AsNoTracking()
+                                      .ToListAsync();
+            return result;
         }
 
-        public async Task<CheckSheetDevice?> GetById(int id)
+        public async Task<CheckSheetDeviceDTO?> GetById(int id)
         {
-            return await context.CheckSheetDevices.FindAsync(id);
+            return await context.CheckSheetDevices.Include(x => x.CheckSheetMST)
+                                                  .Include(x => x.DeviceMST)
+                                                  .Select(x => new CheckSheetDeviceDTO
+                                                  {
+                                                      Id = x.Id,
+                                                      DeviceId = x.DeviceId,
+                                                      CheckSheetId = x.CheckSheetId,
+                                                      SheetCode = x.CheckSheetMST.SheetCode,
+                                                      SheetName = x.CheckSheetMST.SheetName,
+                                                      FormNO = x.CheckSheetMST.FormNO,
+                                                      DeviceCode = x.DeviceMST.DeviceCode,
+                                                      DeviceName = x.DeviceMST.DeviceName,
+                                                      Frequency = x.DeviceMST.Frequency,
+                                                      Location = x.DeviceMST.Location,
+                                                  })
+                                                  .FirstOrDefaultAsync(x => x.Id == id);                                                  
+        }
+
+        public async Task<CheckSheetDeviceDTO?> GetByDeviceAndCheckSheetCode(string deviceCode, string checkSheetCode)
+        {
+            return await context.CheckSheetDevices.Include(x => x.CheckSheetMST)
+                                                  .Include(x => x.DeviceMST)
+                                                  .Select(x => new CheckSheetDeviceDTO
+                                                  {
+                                                      Id = x.Id,
+                                                      DeviceId = x.DeviceId,
+                                                      CheckSheetId = x.CheckSheetId,
+                                                      SheetCode = x.CheckSheetMST.SheetCode,
+                                                      SheetName = x.CheckSheetMST.SheetName,
+                                                      FormNO = x.CheckSheetMST.FormNO,
+                                                      DeviceCode = x.DeviceMST.DeviceCode,
+                                                      DeviceName = x.DeviceMST.DeviceName,
+                                                      Frequency = x.DeviceMST.Frequency,
+                                                      Location = x.DeviceMST.Location,
+                                                  })
+                                                  .FirstOrDefaultAsync(x => x.DeviceCode == deviceCode && x.SheetCode == checkSheetCode);
         }
 
         public async Task<CheckSheetDevice?> Update(int id, CheckSheetDevice checkSheetDevice)

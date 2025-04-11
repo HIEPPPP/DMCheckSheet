@@ -50,8 +50,8 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "createResultDTO",
-        "Type": "DMCheckSheetAPI.Models.DTO.CheckResult.CreateResultDTO",
+        "Name": "createResultDTOs",
+        "Type": "System.Collections.Generic.List\u00601[[DMCheckSheetAPI.Models.DTO.CheckResult.CreateResultDTO, DMCheckSheetAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "IsRequired": true
       }
     ],
@@ -264,6 +264,22 @@
   },
   {
     "ContainingType": "DMCheckSheetAPI.Controllers.CheckSheetDeviceController",
+    "Method": "CreateCheckSheetDevice",
+    "RelativePath": "api/CheckSheetDevice",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "checkSheetDevice",
+        "Type": "DMCheckSheetAPI.Models.Domain.CheckSheetDevice",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DMCheckSheetAPI.Controllers.CheckSheetDeviceController",
     "Method": "GetCheckSheetDeviceById",
     "RelativePath": "api/CheckSheetDevice/{id}",
     "HttpMethod": "GET",
@@ -311,6 +327,27 @@
         "Name": "id",
         "Type": "System.Int32",
         "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DMCheckSheetAPI.Controllers.CheckSheetDeviceController",
+    "Method": "GetByDeviceAndCheckSheetCode",
+    "RelativePath": "api/CheckSheetDevice/checkSheetItemList",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "deviceCode",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "checkSheetCode",
+        "Type": "System.String",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []

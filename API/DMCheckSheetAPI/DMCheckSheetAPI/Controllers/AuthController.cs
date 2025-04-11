@@ -33,7 +33,8 @@ namespace DMCheckSheetAPI.Controllers
 
             var user = new User
             {
-                UserName = model.Username
+                UserName = model.Username,
+                FullName = model.FullName,
             };
 
             var result = await _userManager.CreateAsync(user, model.Password);
@@ -68,6 +69,7 @@ namespace DMCheckSheetAPI.Controllers
             {
                 token,
                 username = user.UserName,
+                fullName = user.FullName,
                 roles
             });
         }

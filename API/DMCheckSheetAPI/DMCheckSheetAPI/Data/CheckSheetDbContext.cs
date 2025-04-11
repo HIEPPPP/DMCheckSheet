@@ -6,7 +6,7 @@ namespace DMCheckSheetAPI.Data
 {
     public class CheckSheetDbContext : IdentityDbContext<User>
     {        
-        public CheckSheetDbContext(DbContextOptions options) : base(options)
+        public CheckSheetDbContext(DbContextOptions<CheckSheetDbContext> options) : base(options)
         {
         }
         public virtual DbSet<DeviceMST> Devices { get; set; }

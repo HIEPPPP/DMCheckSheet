@@ -7,6 +7,7 @@ namespace DMCheckSheetAPI.Repositories.Interface
         Task<List<CheckResult>> GetAllAsync();
         Task<CheckResult?> GetAsync(int id);
         Task<CheckResult> CreateAsync(CheckResult result);
+        Task<List<CheckResult>> CreateAsyncs(List<CheckResult> results);
         Task<CheckResult?> UpdateAsync(int id, CheckResult result);
         Task<CheckResult?> DeleteAsync(int id);
         Task<CheckResult?> EditConfirmBy(int id, CheckResult result);

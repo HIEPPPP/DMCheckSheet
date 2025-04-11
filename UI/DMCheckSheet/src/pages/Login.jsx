@@ -1,101 +1,102 @@
-import * as React from "react";
+import React, { useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../contexts/AuthContext";
+import { login } from "../services/authService";
 import {
   Button,
   FormControl,
   InputLabel,
   OutlinedInput,
   InputAdornment,
-  Alert,
   IconButton,
   TextField,
-  Avatar,
-  Box,
 } from "@mui/material";
-import BadgeIcon from "@mui/icons-material/Badge";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import AccountCircle from "@mui/icons-material/AccountCircle";
+
 const Login = () => {
-  const [showPassword, setShowPassword] = React.useState(false);
-  const handleClickShowPassword = () => setShowPassword((show) => !show);
-  const handleMouseDownPassword = (event) => event.preventDefault();
-  const handleSubmit = (event) => {
+  const [employeeId, setEmployeeId] = useState("");
+  const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
+  const { loginUser } = useContext(AuthContext);
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    const formData = new FormData(event.target);
-    alert(
-      `Logging in with Employee ID: ${formData.get(
-        "employeeId"
-      )}, Password: ${formData.get("password")}`
-    );
+    setError("");
+
+    if (!employeeId || !password) {
+      setError("Vui lòng nhập đầy đủ Employee ID và Password.");
+      return;
+    }
+
+    try {
+      const response = await login(employeeId, password);
+      if (!response || !response.token) {
+        setError("Tài khoản hoặc mật khẩu không đúng.");
+        return;
+      }
+      // Lưu thông tin vào context
+      loginUser(response);
+      navigate("/dashboard");
+    } catch (err) {
+      setError("Đã xảy ra lỗi khi đăng nhập.");
+    }
   };
+
   return (
     <div className="flex min-h-screen items-center justify-center bg-gray-100">
-      <form component="form" onSubmit={handleSubmit}>
-        {/* <Box display="flex" justifyContent="center" mb={2}>
-          <InputAdornment>
-            <BadgeIcon
-              className="text-gray-600 mb-8"
-              style={{ fontSize: "4rem" }}
-            />
-          </InputAdornment>
-        </Box> */}
-        <h2 className="mb-8 text-center font- text-4xl">Sign In</h2>
+      <form onSubmit={handleSubmit}>
+        <h2 className="mb-8 text-center text-4xl">Sign In</h2>
+
+        {error && <p className="mb-4 text-red-600 text-sm">{error}</p>}
+
         <TextField
-          id="input-with-icon-textfield"
           label="Employee ID"
-          name="employeeId"
-          type="text"
+          value={employeeId}
+          onChange={(e) => setEmployeeId(e.target.value)}
           size="small"
           required
           fullWidth
-          slotProps={{
-            input: {
-              startAdornment: (
-                <InputAdornment position="start">
-                  <AccountCircle fontSize="inherit" />
-                </InputAdornment>
-              ),
-            },
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <AccountCircle fontSize="inherit" />
+              </InputAdornment>
+            ),
           }}
-          variant="outlined"
         />
+
         <FormControl sx={{ my: 2 }} fullWidth variant="outlined">
-          <InputLabel size="small" htmlFor="outlined-adornment-password">
-            Password
-          </InputLabel>
+          <InputLabel size="small">Password</InputLabel>
           <OutlinedInput
-            id="outlined-adornment-password"
             type={showPassword ? "text" : "password"}
-            name="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
             size="small"
             endAdornment={
               <InputAdornment position="end">
                 <IconButton
-                  aria-label="toggle password visibility"
-                  onClick={handleClickShowPassword}
-                  onMouseDown={handleMouseDownPassword}
+                  onClick={() => setShowPassword(!showPassword)}
                   edge="end"
                   size="small"
                 >
-                  {showPassword ? (
-                    <VisibilityOff fontSize="inherit" />
-                  ) : (
-                    <Visibility fontSize="inherit" />
-                  )}
+                  {showPassword ? <VisibilityOff /> : <Visibility />}
                 </IconButton>
               </InputAdornment>
             }
             label="Password"
           />
         </FormControl>
+
         <Button
           type="submit"
           variant="contained"
           color="info"
           size="small"
-          disableElevation
           fullWidth
-          sx={{ my: 2 }}
         >
           Log In
         </Button>
@@ -103,4 +104,5 @@ const Login = () => {
     </div>
   );
 };
+
 export default Login;

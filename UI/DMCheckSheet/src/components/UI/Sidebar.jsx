@@ -21,6 +21,9 @@ import { BsFilePdf, BsTypeBold } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 
 import logo from "../../assets/img/settings.png";
+import LogoutButton from "../LogoutButton";
+import { getAuthData } from "../../services/authService";
+import { jwtDecode } from "jwt-decode";
 
 const Sidebar = () => {
   const user = {
@@ -30,7 +33,25 @@ const Sidebar = () => {
   };
 
   const [isOpen, setIsOpen] = useState(true);
-  const isAdmin = true;
+
+  const token = localStorage.getItem("token");
+
+  let isAdmin = false;
+
+  if (token) {
+    try {
+      const decoded = jwtDecode(token);
+      const userRole =
+        decoded["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"];
+      if (Array.isArray(userRole)) {
+        isAdmin = userRole.includes("Admin");
+      } else {
+        isAdmin = userRole === "Admin";
+      }
+    } catch (error) {
+      console.error("Lỗi giải mã token:", error);
+    }
+  }
 
   const menuItems = [
     { name: "Daily Check", path: "/dashboard", icon: <FiHome size={22} /> },
@@ -68,12 +89,6 @@ const Sidebar = () => {
     // { name: "Settings", path: "/settings", icon: <FiSettings size={22} /> },
     { name: "User Management", path: "/users", icon: <FiUsers size={22} /> },
   ];
-
-  const navigate = useNavigate();
-
-  const handleLogout = () => {
-    navigate("/login");
-  };
 
   const handleToggleSidebar = () => {};
   return (
@@ -180,12 +195,7 @@ const Sidebar = () => {
               </div>
             </div>
           )}
-          <button
-            className="ml-auto text-[#333] hover:text-red-500 transition-all"
-            onClick={handleLogout}
-          >
-            <FiLogOut size={22} />
-          </button>
+          <LogoutButton />
         </div>
       </div>
     </div>
