@@ -1,4 +1,4 @@
-import { Delete, Edit, Info } from "@mui/icons-material";
+import { Delete, Edit } from "@mui/icons-material";
 import {
   Table,
   TableBody,
@@ -15,35 +15,36 @@ import {
 } from "@mui/material";
 import { useState } from "react";
 
-const DeviceTable = ({ devices, onEdit, onDelete }) => {
-  const [flatRows, setFlatRows] = useState([]);
-
+const DeviceTable = ({ devices = [], onEdit, onDelete }) => {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
   const [searchText, setSearchText] = useState("");
 
-  // Lọc dữ liệu theo tìm kiếm
-  const filteredRows = flatRows.filter((row) =>
-    row.deviceCode.toLowerCase().includes(searchText.toLowerCase())
+  // Lọc theo deviceCode hoặc deviceName
+  const filteredDevices = devices.filter((device) =>
+    `${device.deviceCode} ${device.deviceName}`
+      .toLowerCase()
+      .includes(searchText.toLowerCase())
   );
 
-  const paginatedRows = filteredRows.slice(
+  // Dữ liệu sau phân trang
+  const paginatedDevices = filteredDevices.slice(
     page * rowsPerPage,
     page * rowsPerPage + rowsPerPage
   );
 
-  // Sự kiện phân trang
   const handleChangePage = (event, newPage) => {
-    setPage(newPage - 1); // Pagination bắt đầu từ 1
+    setPage(newPage - 1);
   };
 
   const handleChangeRowsPerPage = (event) => {
     setRowsPerPage(parseInt(event.target.value, 10));
     setPage(0);
   };
+
   return (
     <Box>
-      {/* Thanh tìm kiếm + chọn số dòng */}
+      {/* Thanh tìm kiếm và chọn số dòng */}
       <Box className="flex justify-between flex-wrap gap-2 my-4">
         <TextField
           label="Tìm kiếm"
@@ -68,7 +69,8 @@ const DeviceTable = ({ devices, onEdit, onDelete }) => {
         </TextField>
       </Box>
 
-      <TableContainer component={Paper} className="mt-4">
+      {/* Bảng thiết bị */}
+      <TableContainer component={Paper}>
         <Table>
           <TableHead>
             <TableRow className="bg-gray-200">
@@ -81,9 +83,9 @@ const DeviceTable = ({ devices, onEdit, onDelete }) => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {devices?.map((device, index) => (
+            {paginatedDevices.map((device, index) => (
               <TableRow key={device.deviceId}>
-                <TableCell>{index + 1}</TableCell>
+                <TableCell>{page * rowsPerPage + index + 1}</TableCell>
                 <TableCell>{device.deviceCode}</TableCell>
                 <TableCell>{device.deviceName}</TableCell>
                 <TableCell>{device.frequency}</TableCell>
@@ -98,19 +100,17 @@ const DeviceTable = ({ devices, onEdit, onDelete }) => {
                   >
                     <Delete />
                   </IconButton>
-                  {/* <IconButton color="info">
-                  <Info />
-                </IconButton> */}
                 </TableCell>
               </TableRow>
             ))}
           </TableBody>
         </Table>
       </TableContainer>
-      {/* Phân trang số */}
+
+      {/* Phân trang */}
       <Box mt={2} display="flex" justifyContent="center">
         <Pagination
-          count={Math.ceil(filteredRows.length / rowsPerPage)}
+          count={Math.ceil(filteredDevices.length / rowsPerPage)}
           page={page + 1}
           onChange={handleChangePage}
           color="primary"

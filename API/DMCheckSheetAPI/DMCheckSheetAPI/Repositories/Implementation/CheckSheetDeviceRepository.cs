@@ -43,8 +43,11 @@ namespace DMCheckSheetAPI.Repositories.Implementation
                                           CheckSheetId = x.CheckSheetId,
                                           SheetCode = x.CheckSheetMST.SheetCode,
                                           SheetName = x.CheckSheetMST.SheetName,
+                                          FormNO = x.CheckSheetMST.FormNO,
                                           DeviceCode = x.DeviceMST.DeviceCode,
-                                          DeviceName = x.DeviceMST.DeviceName
+                                          DeviceName = x.DeviceMST.DeviceName,
+                                          Frequency = x.DeviceMST.Frequency,
+                                          Location = x.DeviceMST.Location
                                       })
                                       .AsNoTracking()
                                       .ToListAsync();

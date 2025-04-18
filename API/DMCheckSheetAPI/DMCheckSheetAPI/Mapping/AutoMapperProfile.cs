@@ -27,6 +27,7 @@ namespace Ecommerce.API.Mapping
             CreateMap<CheckResult, UpdateResultDTO>().ReverseMap();
             CreateMap<CheckResult, ResultConfirmByDTO>().ReverseMap();
             CreateMap<CheckResult, ResultApproveByDTO>().ReverseMap();
+            CreateMap<CheckResult, ResultBySheetCodeAndDateDTO>().ReverseMap();
 
             CreateMap<ResultAction, CreateActionDTO>().ReverseMap();
             CreateMap<ResultAction, UpdateActionDTO>().ReverseMap();

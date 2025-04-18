@@ -29,6 +29,7 @@ const BooleanToggleSwitch = ({ defaultValue = "-", onChange }) => {
     if (val === selected) return;
 
     setSelected(val);
+    val = val === "-" ? null : val; // Chuyển đổi "-" thành null
     onChange?.(val);
 
     // Kích hoạt hiệu ứng lắc

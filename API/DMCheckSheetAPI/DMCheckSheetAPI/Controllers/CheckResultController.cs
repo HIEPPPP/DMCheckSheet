@@ -25,6 +25,13 @@ namespace DMCheckSheetAPI.Controllers
             return Ok(new ApiResponse<List<CheckResult>>(200, "Success", results));
         }
 
+        [HttpGet("bySheetAndDate")]
+        public async Task<IActionResult> GetResultsBySheetAndDateAsync([FromQuery] string sheetCode, [FromQuery] DateTime today)
+        {
+            var results = await checkResultServices.GetResultsBySheetAndDateAsync(sheetCode, today);
+            return Ok(new ApiResponse<List<ResultBySheetCodeAndDateDTO>>(200, "Success", results));
+        }
+
         [HttpGet("{id}")]
         public async Task<IActionResult> GetResult(int id)
         {
@@ -72,5 +79,6 @@ namespace DMCheckSheetAPI.Controllers
                                   : NotFound(new ApiResponse<string>(401, "Result not found"));
         }
 
+        
     }
 }

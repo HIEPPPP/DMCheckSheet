@@ -5,6 +5,7 @@ namespace DMCheckSheetAPI.Models.DTO.CheckResult
     public class CreateResultDTO
     {
         public string? FormNO { get; set; }
+        public string? SheetCode { get; set; }
         public string? SheetName { get; set; }
         public string? DeviceCode { get; set; }
         public string? DeviceName { get; set; }

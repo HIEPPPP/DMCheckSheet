@@ -72,6 +72,9 @@ namespace DMCheckSheetAPI.Migrations
                         .HasMaxLength(1000)
                         .HasColumnType("nvarchar(1000)");
 
+                    b.Property<string>("SheetCode")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("SheetName")
                         .HasMaxLength(1000)
                         .HasColumnType("nvarchar(1000)");
@@ -269,16 +272,14 @@ namespace DMCheckSheetAPI.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ActionId"));
 
-                    b.Property<DateTime>("ActionDate")
+                    b.Property<DateTime?>("ActionDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("ActionTaken")
-                        .IsRequired()
                         .HasMaxLength(500)
                         .HasColumnType("nvarchar(500)");
 
                     b.Property<string>("ConfirmedBy")
-                        .IsRequired()
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)");
 
@@ -294,7 +295,8 @@ namespace DMCheckSheetAPI.Migrations
 
                     b.HasKey("ActionId");
 
-                    b.HasIndex("ResultId");
+                    b.HasIndex("ResultId")
+                        .IsUnique();
 
                     b.ToTable("ResultActions");
                 });
@@ -544,8 +546,8 @@ namespace DMCheckSheetAPI.Migrations
             modelBuilder.Entity("DMCheckSheetAPI.Models.Domain.ResultAction", b =>
                 {
                     b.HasOne("DMCheckSheetAPI.Models.Domain.CheckResult", "CheckResult")
-                        .WithMany("ResultActions")
-                        .HasForeignKey("ResultId")
+                        .WithOne("ResultActions")
+                        .HasForeignKey("DMCheckSheetAPI.Models.Domain.ResultAction", "ResultId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

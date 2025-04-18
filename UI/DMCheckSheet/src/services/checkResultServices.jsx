@@ -22,6 +22,17 @@ export const getListCheckResult = async () => {
   }
 };
 
+export const getResultsBySheetAndDate = async (sheetCode, today) => {
+  try {
+    const res = await apiClient.get(
+      `/bySheetAndDate?sheetCode=${sheetCode}&today=${today}`
+    );
+    return res.data.data;
+  } catch (error) {
+    return handleError(error);
+  }
+};
+
 export const getCheckResultById = async (id) => {
   try {
     const res = await apiClient.get(`/${id}`);

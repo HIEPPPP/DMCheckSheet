@@ -9,6 +9,7 @@ namespace DMCheckSheetAPI.Models.Domain
         public int ResultId { get; set; }
         [StringLength(255)]
         public string? FormNO { get; set; }
+        public string? SheetCode { get; set; }
         [StringLength(1000)]
         public string? SheetName { get; set; }
         [StringLength(255)]
@@ -43,6 +44,6 @@ namespace DMCheckSheetAPI.Models.Domain
         //Navigation Properties
         [ForeignKey("ItemId")]
         public CheckSheetItemMST? CheckSheetItemMST { get; set; }
-        public ICollection<ResultAction>? ResultActions { get; set; }
+        public ResultAction? ResultActions { get; set; }
     }
 }

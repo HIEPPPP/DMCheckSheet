@@ -11,14 +11,11 @@ namespace DMCheckSheetAPI.Models.Domain
         [Required]
         public int ResultId { get; set; }         
 
-        [Required]
         [MaxLength(500)]
         public string? ActionTaken { get; set; } // Nội dung khắc phục
 
-        [Required]
         public DateTime? ActionDate { get; set; }
 
-        [Required]
         [MaxLength(255)]
         public string? ConfirmedBy { get; set; }
 

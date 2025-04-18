@@ -98,7 +98,7 @@ const CheckSheetItemMST = () => {
 
   // Hàm lưu dữ liệu
   const handleSave = async () => {
-    if (!formData.content || !formData.dataType) {
+    if (!formData.content) {
       alert("Vui lòng nhập đầy đủ nội dung và kiểu dữ liệu!");
       return;
     }

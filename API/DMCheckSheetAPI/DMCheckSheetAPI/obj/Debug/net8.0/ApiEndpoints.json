@@ -153,6 +153,27 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "DMCheckSheetAPI.Controllers.CheckResultController",
+    "Method": "GetResultsBySheetAndDateAsync",
+    "RelativePath": "api/CheckResult/bySheetAndDate",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "sheetCode",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "today",
+        "Type": "System.DateTime",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "DMCheckSheetAPI.Controllers.CheckSheetController",
     "Method": "GetListCheckSheet",
     "RelativePath": "api/CheckSheet",

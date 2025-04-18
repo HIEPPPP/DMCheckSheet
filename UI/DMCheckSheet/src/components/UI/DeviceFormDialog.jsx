@@ -32,7 +32,8 @@ const DeviceFormDialog = ({ open, formData, setFormData, onSave, onClose }) => (
         }
       />
       <TextField
-        label="Tần suất"
+        type="number"
+        label="Tần suất "
         fullWidth
         margin="dense"
         value={formData.frequency ?? ""}

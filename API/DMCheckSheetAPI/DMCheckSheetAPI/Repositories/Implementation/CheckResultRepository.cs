@@ -1,5 +1,6 @@
 ﻿using DMCheckSheetAPI.Data;
 using DMCheckSheetAPI.Models.Domain;
+using DMCheckSheetAPI.Models.DTO.CheckResult;
 using DMCheckSheetAPI.Repositories.Interface;
 using Microsoft.EntityFrameworkCore;
 
@@ -40,18 +41,8 @@ namespace DMCheckSheetAPI.Repositories.Implementation
         public async Task<CheckResult?> UpdateAsync(int id, CheckResult result)
         {
             var existResult = await context.CheckResults.FindAsync(id);
-            if (existResult == null) return null;
-            existResult.FormNO = result.FormNO;
-            existResult.SheetName = result.SheetName;
-            existResult.DeviceCode = result.DeviceCode; 
-            existResult.DeviceName = result.DeviceName;
-            existResult.Frequency = result.Frequency;
-            existResult.Location = result.Location;
-            existResult.ItemId = result.ItemId;
+            if (existResult == null) return null;  
             existResult.Value = result.Value;   
-            existResult.ConfirmedBy = result.ConfirmedBy;   
-            existResult.ApprovedBy = result.ApprovedBy;
-            existResult.Note = result.Note;
             existResult.UpdateBy = result.UpdateBy;
             existResult.UpdateAt = DateTime.Now;
             await context.SaveChangesAsync();
@@ -83,6 +74,19 @@ namespace DMCheckSheetAPI.Repositories.Implementation
             existResult.ApprovedBy = result.ApprovedBy;
             await context.SaveChangesAsync();
             return existResult;
+        }
+
+        public async Task<List<ResultBySheetCodeAndDateDTO>> GetResultsBySheetAndDateAsync(string sheetCode, DateTime today)
+        {
+            var results = await context.CheckResults
+                                       .Where(x => x.SheetCode == sheetCode && x.CheckedDate.Date == today.Date)
+                                       .Select(x => new ResultBySheetCodeAndDateDTO {
+                                           ItemId = x.ItemId,
+                                           ResultId = x.ResultId,
+                                           Value = x.Value,
+                                       })
+                                       .ToListAsync();
+            return results;
         }
     }
 }

@@ -37,8 +37,8 @@ const ItemFormDialog = ({ open, onClose, formData, setFormData, onSave }) => {
     const newErrors = {};
     if (!formData.content?.trim())
       newErrors.content = "Nội dung không được để trống";
-    if (!formData.dataType?.trim())
-      newErrors.dataType = "Vui lòng chọn kiểu dữ liệu";
+    // if (!formData.dataType?.trim())
+    //   newErrors.dataType = "Vui lòng chọn kiểu dữ liệu";
     if (!formData.sheetId?.toString()?.trim())
       newErrors.sheetId = "Vui lòng chọn Sheet ID";
     return newErrors;

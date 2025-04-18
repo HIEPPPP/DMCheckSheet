@@ -22,7 +22,7 @@ namespace DMCheckSheetAPI.Models.Domain
         public string Location { get; set; } = null!;
 
         public int Frequency { get; set; } = 1;
-        public bool CancelFlag { get; set; } = false;   
+        public bool CancelFlag { get; set; } = false;
 
         //Navigation Properties
         public ICollection<CheckSheetDevice>? CheckSheetDevices { get; set; }

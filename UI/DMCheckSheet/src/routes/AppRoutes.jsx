@@ -10,7 +10,7 @@ import CheckSheetMST from "../pages/CheckSheetMST";
 import CheckSheetItemMST from "../pages/CheckSheetItemMST";
 import DeviceCheckSheetMST from "../pages/DeviceCheckSheetMST";
 import CheckSheet from "../pages/CheckSheet";
-import PrivateRoute from "./PrivateRoute"; // 👈 Thêm vào đây
+import PrivateRoute from "./PrivateRoute";
 
 const AppRoutes = () => (
   <BrowserRouter>

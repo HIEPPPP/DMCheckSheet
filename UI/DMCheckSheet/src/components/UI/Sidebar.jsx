@@ -24,6 +24,7 @@ import logo from "../../assets/img/settings.png";
 import LogoutButton from "../LogoutButton";
 import { getAuthData } from "../../services/authService";
 import { jwtDecode } from "jwt-decode";
+import { CgFileDocument } from "react-icons/cg";
 
 const Sidebar = () => {
   const user = {
@@ -55,6 +56,7 @@ const Sidebar = () => {
 
   const menuItems = [
     { name: "Daily Check", path: "/dashboard", icon: <FiHome size={22} /> },
+    { name: "Needed Check", path: "", icon: <CgFileDocument size={22} /> },
     { name: "PDF", path: "/pdf", icon: <BsFilePdf size={22} /> },
     { name: "User", path: "/user", icon: <FiUser size={22} /> },
   ];

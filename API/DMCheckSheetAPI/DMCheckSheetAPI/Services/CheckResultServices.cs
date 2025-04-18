@@ -21,6 +21,11 @@ namespace DMCheckSheetAPI.Services
             return await checkResultRepository.GetAllAsync();
         }
 
+        public async Task<List<ResultBySheetCodeAndDateDTO>> GetResultsBySheetAndDateAsync(string sheetCode, DateTime today)
+        {
+            return await checkResultRepository.GetResultsBySheetAndDateAsync(sheetCode, today);
+        }
+
         public async Task<CheckResult?> GetById(int id)
         {
             return await checkResultRepository.GetAsync(id);
