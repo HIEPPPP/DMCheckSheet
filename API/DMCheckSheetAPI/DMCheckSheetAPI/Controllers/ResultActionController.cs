@@ -22,15 +22,30 @@ namespace DMCheckSheetAPI.Controllers
         public async Task<IActionResult> GetListAction()
         {
             var actions = await resultActionServices.GetListAction();
-            return Ok(new ApiResponse<List<ResultAction>>(200, "Success", actions));
+            return Ok(new ApiResponse<List<ResultActionDTO>>(200, "Success", actions));
         }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetActionById(int id)
         {
             var action = await resultActionServices.GetActionById(id);
-            return action != null ? Ok(new ApiResponse<ResultAction>(200, "Success", action))
-                                  : NotFound(new ApiResponse<string>(401, "Action not found"));   
+            return action != null ? Ok(new ApiResponse<ResultActionDTO>(200, "Success", action))
+                                  : NotFound(new ApiResponse<string>(404, "Action not found"));   
+        }
+
+        [HttpGet("{resultId}/resultId")]
+        public async Task<IActionResult> GetActionByResultId(int resultId)
+        {
+            var action = await resultActionServices.GetActionByResultId(resultId);
+            return action != null ? Ok(new ApiResponse<ResultActionDTO>(200, "Success", action))
+                                  : NotFound(new ApiResponse<string>(404, "Action not found"));
+        }
+
+        [HttpGet("resultNG")]
+        public async Task<IActionResult> GetListActionNG()
+        {
+            var actions = await resultActionServices.GetListActionNG();
+            return Ok(new ApiResponse<List<ResultActionNGDTO>>(200, "Success", actions));
         }
 
         [HttpPost]
@@ -45,7 +60,15 @@ namespace DMCheckSheetAPI.Controllers
         {
             var updateAction = await resultActionServices.UpdateAction(id, updateActionDTO);
             return updateAction != null ? Ok(new ApiResponse<ResultAction>(200, "Updated action", updateAction))
-                                        : NotFound(new ApiResponse<string>(401, "Action not found"));
+                                        : NotFound(new ApiResponse<string>(404, "Action not found"));
+        }
+
+        [HttpPut("{resultId}/resultId")]
+        public async Task<IActionResult> UpdateActionByResultId(int resultId, UpdateActionDTO updateActionDTO)
+        {
+            var updateAction = await resultActionServices.UpdateActionByResultId(resultId, updateActionDTO);
+            return updateAction != null ? Ok(new ApiResponse<ResultAction>(200, "Updated action", updateAction))
+                                        : NotFound(new ApiResponse<string>(404, "Action not found"));
         }
 
         [HttpDelete("{id}")]
@@ -53,7 +76,7 @@ namespace DMCheckSheetAPI.Controllers
         {
             var deletedAction = await resultActionServices.DeleteAction(id);
             return deletedAction != null ? Ok(new ApiResponse<ResultAction>(200, "Deleted action", deletedAction))
-                                         : NotFound(new ApiResponse<string>(401, "Action not found"));
+                                         : NotFound(new ApiResponse<string>(404, "Action not found"));
         }
     }
 }

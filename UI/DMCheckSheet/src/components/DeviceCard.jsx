@@ -1,9 +1,47 @@
-import { Button } from "@mui/material";
 import React from "react";
+import { Button } from "@mui/material";
+import { useStatus } from "../contexts/StatusContext";
+
+const styleMap = {
+  OK: { color: "bg-green-500", anim: "animate-pulse", icon: null },
+  NG: { color: "bg-red-500", anim: "animate-ping", icon: null },
+  Checking: {
+    color: "bg-indigo-500",
+    anim: "",
+    icon: (
+      <svg
+        className="mr-2 inline-block h-5 w-5 text-white animate-spin"
+        fill="none"
+        viewBox="0 0 24 24"
+      >
+        <circle
+          className="opacity-25"
+          cx="12"
+          cy="12"
+          r="10"
+          stroke="currentColor"
+          strokeWidth="4"
+        />
+        <path
+          className="opacity-75"
+          fill="currentColor"
+          d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
+        />
+      </svg>
+    ),
+  },
+  Pending: { color: "bg-amber-500", anim: "animate-bounce", icon: null },
+};
 
 const DeviceCard = ({ device, onOpen }) => {
+  const { statusMap } = useStatus();
+  const key = `${device.deviceCode}-${device.sheetCode}`;
+  const status = statusMap[key] || "Pending";
+
+  const { color, anim, icon } = styleMap[status];
+
   return (
-    <div className="bg-white shadow-md rounded-lg p-4 w-50 border border-gray-200 flex flex-col">
+    <div className="bg-white shadow-md rounded-lg p-4 w-60 border border-gray-200 flex flex-col">
       <div className="flex-grow">
         <h2 className="text-lg font-semibold text-gray-800">
           {device.deviceName}
@@ -22,9 +60,19 @@ const DeviceCard = ({ device, onOpen }) => {
             </span>
           </p>
         </div>
-        <div className="text-sm text-gray-500 mt-4">
-          Trạng thái:
-          <span className="p-2 bg-amber-500 rounded-2xl ml-3">Pending</span>
+
+        <div className="text-sm text-gray-500 mt-4 flex items-center">
+          <span>Trạng thái:</span>
+          <span
+            className={`
+              inline-flex items-center justify-center
+              p-2 rounded-2xl ml-3 text-white
+              ${color} ${anim}
+            `}
+          >
+            {icon}
+            <span>{status}</span>
+          </span>
         </div>
       </div>
 

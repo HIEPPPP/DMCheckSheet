@@ -6,6 +6,7 @@ import { Info } from "@mui/icons-material";
 
 import BooleanToggleSwitch from "../components/BooleanToggleSwitch";
 import NgInfoDialog from "../components/NgInfoDialog";
+import NgInfoConfirmDialog from "../components/NgInfoConfirmDialog";
 import TableNG from "../components/TableNG";
 import { AuthContext } from "../contexts/AuthContext";
 import { getItemBySheetCode } from "../services/itemServices";
@@ -14,8 +15,17 @@ import {
   createResults,
   updateResult,
   getResultsBySheetAndDate,
+  getResultByResultId,
+  confirmResult,
+  updateConfirmNG,
 } from "../services/checkResultServices";
-import { createResultAction } from "../services/resultActionServices";
+import {
+  createResultAction,
+  getResultActionByResultId,
+  updateResultAction,
+  updateResultActionByResultId,
+} from "../services/resultActionServices";
+import { useStatus } from "../contexts/StatusContext";
 
 const CheckSheet = () => {
   const { code } = useParams();
@@ -30,6 +40,7 @@ const CheckSheet = () => {
   const [values, setValues] = useState({});
   const [ngDetails, setNgDetails] = useState({});
   const [openDialogFor, setOpenDialogFor] = useState(null);
+  const [openDialogNGInfo, setOpenDialogNGInfo] = useState(null);
   const [anchorEl, setAnchorEl] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -37,6 +48,10 @@ const CheckSheet = () => {
   // key: itemId, value: resultId
   const [resultMap, setResultMap] = useState({});
   const [openSnackbar, setOpenSnackbar] = useState(false);
+  const [disabledItems, setDisabledItems] = useState({});
+
+  // Context
+  const { refreshStatus } = useStatus();
 
   // Roles
   const roles = user?.auth?.roles || [];
@@ -75,10 +90,13 @@ const CheckSheet = () => {
   // Reset to default (empty) and update backend
   const handleValueDefault = async (itemId) => {
     setValues((prev) => ({ ...prev, [itemId]: "" }));
+    const resultId = resultMap[itemId];
+    if (!resultId) {
+      console.error(`Không tìm thấy resultId cho itemId=${itemId}`);
+      return;
+    }
     try {
-      await updateResult(itemId, {
-        ...getBaseInfo(),
-        itemId,
+      await updateResult(resultId, {
         value: "",
       });
     } catch (err) {
@@ -88,9 +106,9 @@ const CheckSheet = () => {
 
   // Cancel NG dialog
   const handleCancelNg = () => {
-    // if (openDialogFor != null) {
-    //   handleValueDefault(openDialogFor);
-    // }
+    if (openDialogFor != null) {
+      handleValueDefault(openDialogFor);
+    }
     setOpenDialogFor(null);
     setAnchorEl(null);
   };
@@ -145,6 +163,7 @@ const CheckSheet = () => {
       try {
         const existing = await getResultsBySheetAndDate(
           sheetDevice.sheetCode,
+          sheetDevice.deviceCode,
           today
         );
 
@@ -156,11 +175,18 @@ const CheckSheet = () => {
           }, {});
           setResultMap(map);
 
-          // 2) Lấy value hiện tại cho UI
-          const vals = existing.reduce((acc, r) => {
-            acc[r.itemId] = r.value;
-            return acc;
-          }, {});
+          // 2) set values và disabledItems
+          const vals = {};
+          const disabledInit = {};
+          existing.forEach((r) => {
+            vals[r.itemId] = r.value;
+            // nếu NG và đã confirm thì disable
+            if (r.value === "NG" && r.isConfirmNG) {
+              disabledInit[r.itemId] = true;
+            }
+          });
+          setValues(vals);
+          setDisabledItems(disabledInit);
           setValues(vals);
         } else {
           // Chưa có kết quả hôm nay: tạo mới batch
@@ -215,31 +241,36 @@ const CheckSheet = () => {
 
   // Handle change
   const handleValueChange = async (itemId, newValue) => {
-    // 1) Cập nhật UI ngay
-    setValues((prev) => ({ ...prev, [itemId]: newValue }));
+    // 1) Cập nhật UI tạm
+    setValues((p) => ({ ...p, [itemId]: newValue }));
 
-    // 2) Lấy resultId từ map
+    // 2) Gọi updateResult
     const resultId = resultMap[itemId];
-    if (!resultId) {
-      console.error(`Không tìm thấy resultId cho itemId=${itemId}`);
-      return;
-    }
+    if (!resultId) return console.error(`No resultId for item ${itemId}`);
 
-    // 3) Chuẩn bị payload
     const payload = {
-      // chỉ cần update những gì thay đổi
       value: newValue,
       updateAt: new Date().toISOString(),
       updateBy: user.auth.username,
     };
-
     try {
       await updateResult(resultId, payload);
+      // console.log(" updateResult succeeded");
     } catch (err) {
-      console.error(`Update result ${resultId} failed:`, err);
+      console.error(` updateResult ${resultId} failed:`, err);
+      return; // dừng nếu update lỗi
     }
 
-    // Nếu NG thì mở dialog
+    // 3) Gọi refreshStatus
+    try {
+      // console.log("calling refreshStatus");
+      await refreshStatus();
+      // console.log("refreshStatus done");
+    } catch (err) {
+      // console.error("refreshStatus failed:", err);
+    }
+
+    // 4) Nếu NG thì show dialog
     if (newValue === "NG") {
       setOpenDialogFor(itemId);
       setAnchorEl(document.getElementById(`ng-button-${itemId}`));
@@ -257,6 +288,7 @@ const CheckSheet = () => {
           <BooleanToggleSwitch
             defaultValue={value || null}
             onChange={(val) => handleValueChange(itemId, val)}
+            disabled={!!disabledItems[itemId]}
           />
         );
         break;
@@ -284,10 +316,7 @@ const CheckSheet = () => {
             id={`ng-button-${itemId}`}
             variant="outlined"
             size="small"
-            onClick={(e) => {
-              setOpenDialogFor(itemId);
-              setAnchorEl(e.currentTarget);
-            }}
+            onClick={(e) => handleOpenNGInfo(itemId, e.currentTarget)}
           >
             <Info fontSize="small" />
             <span className="ml-1">NG</span>
@@ -316,20 +345,29 @@ const CheckSheet = () => {
   // Save NG detail
   const handleSaveNgDetail = async (itemId, detail) => {
     const resultId = resultMap[itemId];
-    if (!resultId) return;
-
-    // 1) Update kết quả “NG”
-    await updateResult(resultId, { value: "NG", ...getBaseInfo() });
-
-    // 2) Tạo action liên quan
-    await createResultAction({
+    const payload = {
       resultId,
       actionTaken: detail.ActionTaken,
       actionDate: detail.ActionDate,
       confirmedBy: detail.ConfirmedBy,
       confirmedDate: detail.ConfirmedDate,
       note: detail.Note,
-    });
+    };
+
+    if (!resultId) return;
+
+    // 1) Update kết quả “NG”
+    await updateResult(resultId, { value: "NG", ...getBaseInfo() });
+
+    const existResultId = await getResultActionByResultId(resultId);
+
+    // 2) Tạo/Cập nhật result action liên quan
+    if (existResultId) {
+      // Nếu đã có thì update
+      await updateResultActionByResultId(resultId, payload);
+    } else {
+      await createResultAction(payload);
+    }
 
     // 3) Cập nhật UI và đóng dialog
     setNgDetails((prev) => ({ ...prev, [itemId]: detail }));
@@ -347,11 +385,64 @@ const CheckSheet = () => {
     // Sau 2 giây thì chuyển trang
     setTimeout(() => {
       navigate("/dashboard");
-    }, 2000);
+    }, 1000);
   };
 
   const handleConfirm = async () => {
-    // 1) Cập nhật tất cả trường dữ liệu ConfirmedBy trong CheckResult
+    // 1) Tạo mảng payload
+    const toConfirm = Object.values(resultMap).map((resultId) => ({
+      resultId: resultId,
+      confirmedBy: user.auth.username,
+    }));
+
+    try {
+      // 2) Gọi API batch
+      await confirmResult(toConfirm);
+      // 3) Feedback cho user
+      setOpenSnackbar(true);
+      setTimeout(() => navigate("/dashboard"), 1000);
+    } catch (err) {
+      console.error("Confirm results failed:", err);
+      setError("Xác nhận thất bại, vui lòng thử lại.");
+    }
+  };
+
+  const handleConfirmNG = async () => {
+    const itemId = openDialogFor;
+    if (itemId != null) {
+      const resultId = resultMap[itemId];
+
+      try {
+        // Gọi API updateResult để set isConfirm = true
+        await updateConfirmNG(resultId, { isConfirmNG: true });
+
+        // Cập nhật state để disable ngay
+        setDisabledItems((prev) => ({
+          ...prev,
+          [itemId]: true,
+        }));
+      } catch (err) {
+        console.error("Confirm NG failed:", err);
+        // Có thể setError để hiển thị
+      }
+    }
+    setOpenDialogFor(null);
+    setAnchorEl(null);
+  };
+
+  const handleOpenNGInfo = async (itemId, targetEl) => {
+    const resultId = resultMap[itemId];
+    let detail = {};
+
+    if (resultId) {
+      // gọi API lấy detail đã lưu (nếu có)
+      detail = await getResultActionByResultId(resultId);
+    }
+
+    // lưu vào state
+    setNgDetails((prev) => ({ ...prev, [itemId]: detail || {} }));
+    setOpenDialogNGInfo(itemId);
+    setAnchorEl(targetEl);
   };
 
   if (error) return <p className="text-red-500">{error}</p>;
@@ -397,21 +488,35 @@ const CheckSheet = () => {
             disabled={!isComplete}
             onClick={handleComplete}
           >
-            Hoàn thành
+            Chuyển hướng
           </Button>
         )}
       </div>
 
-      <TableNG />
       {openDialogFor !== null && (
-        <NgInfoDialog
+        <NgInfoConfirmDialog
           open
           anchorEl={anchorEl}
           item={data.find((i) => i.itemId === openDialogFor)}
           onSave={handleSaveNgDetail}
           onClose={handleCancelNg}
+          onConfirm={handleConfirmNG}
           roles={roles}
           ngDetail={ngDetails[openDialogFor] || {}}
+        />
+      )}
+
+      {openDialogNGInfo !== null && (
+        <NgInfoDialog
+          open
+          anchorEl={anchorEl}
+          item={data.find((i) => i.itemId === openDialogNGInfo)}
+          resultId={resultMap[openDialogNGInfo]}
+          ngDetail={ngDetails[openDialogNGInfo] || {}}
+          onClose={() => {
+            setOpenDialogNGInfo(null);
+            setAnchorEl(null);
+          }}
         />
       )}
 

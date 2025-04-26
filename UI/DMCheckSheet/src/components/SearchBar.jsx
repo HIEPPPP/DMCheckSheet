@@ -1,13 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import { FiSearch } from "react-icons/fi";
 
 const SearchBar = () => {
+  const [inputSearch, setInputSearch] = useState("");
+
+  const handleInputChange = (e) => {};
   return (
     <div className="relative w-full max-w-md mx-auto">
       <input
         type="text"
-        placeholder="Tìm kiếm theo tên thiết bị..."
+        placeholder="Tìm kiếm..."
         className="w-full  py-2 pl-10 pr-4 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        onChange={() => handleInputChange(event)}
+        value={inputSearch}
       />
       <FiSearch className="absolute left-3 top-2.5 text-gray-400" size={18} />
     </div>

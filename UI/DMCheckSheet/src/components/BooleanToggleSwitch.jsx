@@ -19,14 +19,20 @@ const shake = keyframes`
   100% { transform: translateX(0); }
 `;
 
-const BooleanToggleSwitch = ({ defaultValue = "-", onChange }) => {
+const BooleanToggleSwitch = ({
+  defaultValue = "-",
+  onChange,
+  disabled = false,
+}) => {
   const [selected, setSelected] = useState(defaultValue);
   const [isShaking, setIsShaking] = useState(false);
 
   const selectedIndex = options.indexOf(selected);
 
   const handleClick = (val) => {
-    if (val === selected) return;
+    if (disabled || val === selected) return;
+
+    console.log(disabled);
 
     setSelected(val);
     val = val === "-" ? null : val; // Chuyển đổi "-" thành null
@@ -57,6 +63,8 @@ const BooleanToggleSwitch = ({ defaultValue = "-", onChange }) => {
         overflow: "hidden",
         userSelect: "none",
         border: "1px solid #ccc",
+        opacity: disabled ? 0.5 : 1,
+        pointerEvents: disabled ? "none" : "auto",
       }}
     >
       {/* Nút trượt động */}
@@ -90,6 +98,7 @@ const BooleanToggleSwitch = ({ defaultValue = "-", onChange }) => {
             "&:hover": {
               backgroundColor: "rgba(0, 0, 0, 0.05)",
             },
+            pointerEvents: disabled ? "none" : "auto",
           }}
           onClick={() => handleClick(opt)}
         >

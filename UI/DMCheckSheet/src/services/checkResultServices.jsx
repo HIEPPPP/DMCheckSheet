@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const apiClient = axios.create({
-  baseURL: "http://localhost:5118/api/CheckResult",
+  baseURL: import.meta.VITE_API_BASE_URL + "/CheckResult",
   headers: {
     "Content-Type": "application/json",
   },
@@ -22,10 +22,14 @@ export const getListCheckResult = async () => {
   }
 };
 
-export const getResultsBySheetAndDate = async (sheetCode, today) => {
+export const getResultsBySheetAndDate = async (
+  sheetCode,
+  deviceCode,
+  today
+) => {
   try {
     const res = await apiClient.get(
-      `/bySheetAndDate?sheetCode=${sheetCode}&today=${today}`
+      `/bySheetAndDate?sheetCode=${sheetCode}&deviceCode=${deviceCode}&today=${today}`
     );
     return res.data.data;
   } catch (error) {
@@ -36,6 +40,15 @@ export const getResultsBySheetAndDate = async (sheetCode, today) => {
 export const getCheckResultById = async (id) => {
   try {
     const res = await apiClient.get(`/${id}`);
+    return res.data.data;
+  } catch (error) {
+    return handleError(error);
+  }
+};
+
+export const getResultToDay = async (today) => {
+  try {
+    const res = await apiClient.get(`/today?today=${today}`);
     return res.data.data;
   } catch (error) {
     return handleError(error);
@@ -64,6 +77,42 @@ export const deleteResult = async (id) => {
   try {
     await apiClient.delete(`/${id}`);
     return true;
+  } catch (error) {
+    return handleError(error);
+  }
+};
+
+export const getResultByResultId = async (resultId) => {
+  try {
+    const res = await apiClient.get(`/${resultId}`);
+    return res.data.data;
+  } catch (error) {
+    return handleError(error);
+  }
+};
+
+export const confirmResult = async (data) => {
+  try {
+    const res = await apiClient.put("/confirm", data);
+    return res.data.data;
+  } catch (error) {
+    return handleError(error);
+  }
+};
+
+export const approveResult = async (data) => {
+  try {
+    const res = await apiClient.put("/approve", data);
+    return res.data.data;
+  } catch (error) {
+    return handleError(error);
+  }
+};
+
+export const updateConfirmNG = async (resultId, data) => {
+  try {
+    const res = await apiClient.put(`/${resultId}/updateIsConfirmNG`, data);
+    return res.data.data;
   } catch (error) {
     return handleError(error);
   }

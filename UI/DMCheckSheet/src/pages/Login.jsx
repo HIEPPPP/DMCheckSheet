@@ -36,6 +36,7 @@ const Login = () => {
       const response = await login(employeeId, password);
       if (!response || !response.token) {
         setError("Tài khoản hoặc mật khẩu không đúng.");
+        setPassword("");
         return;
       }
       // Lưu thông tin vào context

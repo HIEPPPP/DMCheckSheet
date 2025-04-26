@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const apiClient = axios.create({
-  baseURL: "http://localhost:5118/api/ResultAction",
+  baseURL: import.meta.env.VITE_API_BASE_URL + "/ResultAction",
   headers: {
     "Content-Type": "application/json",
   },
@@ -13,7 +13,7 @@ const handleError = (error) => {
   return null;
 };
 
-export const getListCheckResult = async () => {
+export const getListResultAction = async () => {
   try {
     const res = await apiClient.get("/");
     return res.data.data;
@@ -22,9 +22,27 @@ export const getListCheckResult = async () => {
   }
 };
 
-export const getCheckResultById = async (id) => {
+export const getListResultActionNG = async () => {
+  try {
+    const res = await apiClient.get("/resultNG");
+    return res.data.data;
+  } catch (error) {
+    return handleError(error);
+  }
+};
+
+export const getResultActionById = async (id) => {
   try {
     const res = await apiClient.get(`/${id}`);
+    return res.data.data;
+  } catch (error) {
+    return handleError(error);
+  }
+};
+
+export const getResultActionByResultId = async (resultId) => {
+  try {
+    const res = await apiClient.get(`${resultId}/resultId`);
     return res.data.data;
   } catch (error) {
     return handleError(error);
@@ -40,7 +58,7 @@ export const createResultAction = async (data) => {
   }
 };
 
-export const updateResult = async (id, data) => {
+export const updateResultAction = async (id, data) => {
   try {
     const res = await apiClient.put(`/${id}`, data);
     return res.data.data;
@@ -49,7 +67,16 @@ export const updateResult = async (id, data) => {
   }
 };
 
-export const deleteResult = async (id) => {
+export const updateResultActionByResultId = async (resultId, data) => {
+  try {
+    const res = await apiClient.put(`/${resultId}/resultId`, data);
+    return res.data.data;
+  } catch (error) {
+    return handleError(error);
+  }
+};
+
+export const deleteResultAction = async (id) => {
   try {
     await apiClient.delete(`/${id}`);
     return true;

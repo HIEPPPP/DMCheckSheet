@@ -1,180 +1,112 @@
+import React, { useState, useEffect } from "react";
 import {
   Popover,
-  TextField,
-  Button,
   Typography,
   Box,
   Divider,
+  Button,
+  CircularProgress,
 } from "@mui/material";
-import { useState, useEffect } from "react";
+import { getResultActionByResultId } from "../services/resultActionServices";
 
 /**
- * NgInfoDialog:
- * - Nếu mặc định có dữ liệu (defaultValue) thì dialog ở chế độ cập nhật (update)
- * - Nếu defaultValue.confirmedDate đã có thì các field sẽ bị disable (read-only)
- * - Khi nhấn Xác nhận, sẽ gọi onSave(itemId, payload, isUpdate)
- *   + isUpdate = true nếu defaultValue tồn tại
- *   + Sau khi lưu mới, component chuyển sang chế độ read-only
+ * Hiển thị thông tin NG dưới dạng chỉ đọc, tự fetch dữ liệu từ API
+ * Props:
+ * - open: boolean
+ * - anchorEl: HTMLElement
+ * - item: { itemId, content }
+ * - resultId: string
+ * - onClose: () => void
  */
-const NgInfoDialog = ({
-  open,
-  anchorEl,
-  onClose,
-  onSave,
-  item,
-  defaultValue,
-  roles,
-}) => {
-  const isChecker = roles?.includes("Checker");
-  const isUpdateMode = Boolean(defaultValue);
-
-  // Nếu defaultValue.confirmedDate khác null => đã xác nhận NG, đóng form
-  const hasConfirmed = Boolean(defaultValue?.confirmedDate);
-
-  // Local state để disable sau khi user mới vừa xác nhận
-  const [readOnly, setReadOnly] = useState(hasConfirmed);
-
-  // Format helper
-  const formatDate = (d) => {
-    if (!d) return null;
-    if (typeof d === "string" && /^\d{4}-\d{2}-\d{2}$/.test(d)) return d;
-    const dt = new Date(d);
-    const yyyy = dt.getFullYear();
-    const mm = String(dt.getMonth() + 1).padStart(2, "0");
-    const dd = String(dt.getDate()).padStart(2, "0");
-    return `${yyyy}-${mm}-${dd}`;
-  };
-
-  // Form data
-  const [formData, setFormData] = useState({
-    ActionTaken: "",
-    ActionDate: null,
-    ConfirmedBy: "",
-    ConfirmedDate: null,
-    Note: "",
+const NgInfoDialog = ({ open, anchorEl, item, resultId, onClose }) => {
+  const [detail, setDetail] = useState({
+    actionTaken: "",
+    actionDate: "",
+    confirmedBy: "",
+    confirmedDate: "",
+    note: "",
   });
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
-  // Khi defaultValue thay đổi: update form và readOnly
-  useEffect(() => {
-    if (defaultValue) {
-      setFormData({
-        ActionTaken: defaultValue.actionTaken || "",
-        ActionDate: formatDate(defaultValue.actionDate),
-        ConfirmedBy: defaultValue.confirmedBy || "",
-        ConfirmedDate: formatDate(defaultValue.confirmedDate),
-        Note: defaultValue.note || "",
-      });
-      // Nếu đã confirmData lúc load => disable tất cả
-      setReadOnly(Boolean(defaultValue.confirmedDate));
-    } else {
-      // create mode => cho nhập liệu lại
-      setReadOnly(false);
-    }
-  }, [defaultValue]);
-
-  // Change handler
-  const handleChange =
-    (field, isDate = false) =>
-    (e) => {
-      let val = e.target.value;
-      if (isDate) val = val === "" ? null : val;
-      setFormData((prev) => ({ ...prev, [field]: val }));
-    };
-
-  // Save
-  const handleSave = () => {
-    const payload = {
-      actionTaken: formData.ActionTaken,
-      actionDate: formData.ActionDate,
-      confirmedBy: formData.ConfirmedBy,
-      confirmedDate: formData.ConfirmedDate,
-      note: formData.Note,
-    };
-    onSave(item.itemId, payload, isUpdateMode);
-    // Sau lần lưu đầu tiên ở chế độ create: chuyển sang khoá form
-    setReadOnly(true);
-    onClose();
+  // Format ISO string thành dd/MM/yyyy HH:mm:ss
+  const formatDateTime = (iso) => {
+    if (!iso) return "-";
+    const dt = new Date(iso);
+    const pad = (n) => n.toString().padStart(2, "0");
+    const day = pad(dt.getDate());
+    const month = pad(dt.getMonth() + 1);
+    const year = dt.getFullYear();
+    const hours = pad(dt.getHours());
+    const mins = pad(dt.getMinutes());
+    const secs = pad(dt.getSeconds());
+    return `${day}/${month}/${year} ${hours}:${mins}:${secs}`;
   };
+
+  useEffect(() => {
+    if (open && resultId) {
+      setLoading(true);
+      setError(null);
+      const fetchDetail = async () => {
+        try {
+          const data = await getResultActionByResultId(resultId);
+          setDetail(data || {});
+        } catch (err) {
+          setError("Lỗi khi tải dữ liệu");
+        } finally {
+          setLoading(false);
+        }
+      };
+      fetchDetail();
+    }
+  }, [open, resultId]);
 
   return (
     <Popover
       open={open}
       anchorEl={anchorEl}
-      onClose={onClose}
       anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
       transformOrigin={{ vertical: "top", horizontal: "left" }}
       PaperProps={{ sx: { p: 2, width: 400 } }}
+      onClose={onClose}
     >
-      <Typography variant="h6" gutterBottom>
-        Thông tin NG - {item?.content}
+      <Typography variant="h6" gutterBottom sx={{ fontWeight: 600 }}>
+        🔍 Thông tin NG
+      </Typography>
+      <Typography variant="subtitle2" gutterBottom>
+        {item?.content}
       </Typography>
       <Divider sx={{ mb: 2 }} />
-      <Box display="flex" flexDirection="column" gap={2}>
-        <Typography variant="body2">
-          Ngày lỗi: {new Date().toLocaleString()}
-        </Typography>
-        <Typography variant="body2">Số mục: {item?.itemId}</Typography>
-        <Typography variant="body2">
-          Nội dung chưa đạt: {item?.content}
-        </Typography>
 
-        {/* Fields */}
-        <TextField
-          fullWidth
-          type="date"
-          label="Ngày khắc phục"
-          InputLabelProps={{ shrink: true }}
-          value={formData.ActionDate || ""}
-          onChange={handleChange("ActionDate", true)}
-          disabled={readOnly}
-        />
-
-        <TextField
-          fullWidth
-          label="Khắc phục"
-          value={formData.ActionTaken}
-          onChange={handleChange("ActionTaken")}
-          disabled={readOnly}
-        />
-
-        {!isChecker && (
-          <>
-            <TextField
-              fullWidth
-              type="date"
-              label="Ngày kiểm tra"
-              InputLabelProps={{ shrink: true }}
-              value={formData.ConfirmedDate || ""}
-              onChange={handleChange("ConfirmedDate", true)}
-              disabled={readOnly}
-            />
-            <TextField
-              fullWidth
-              label="Người kiểm tra"
-              value={formData.ConfirmedBy}
-              onChange={handleChange("ConfirmedBy")}
-              disabled={readOnly}
-            />
-          </>
-        )}
-
-        <TextField
-          fullWidth
-          multiline
-          label="Ghi chú"
-          value={formData.Note}
-          onChange={handleChange("Note")}
-          disabled={readOnly}
-        />
-
-        <Box display="flex" justifyContent="flex-end" gap={1} mt={1}>
-          <Button onClick={onClose}>Hủy</Button>
-          {!readOnly && (
-            <Button onClick={handleSave} variant="contained">
-              Xác nhận
-            </Button>
-          )}
+      {loading ? (
+        <Box display="flex" justifyContent="center" my={2}>
+          <CircularProgress size={24} />
         </Box>
+      ) : error ? (
+        <Typography color="error" variant="body2">
+          {error}
+        </Typography>
+      ) : (
+        <Box display="flex" flexDirection="column" gap={1}>
+          <Typography variant="body2">Result ID: {resultId}</Typography>
+          <Typography variant="body2">
+            Ngày lỗi: {formatDateTime(detail.checkedDate) || "-"}
+          </Typography>
+          <Typography variant="body2">
+            Người check:{" "}
+            <span className="font-semibold text-blue-600">
+              {detail.checkedBy || "-"}
+            </span>
+          </Typography>
+          <Typography variant="body2">
+            Nội dung chưa đạt: {item.content || "-"}
+          </Typography>
+        </Box>
+      )}
+      <Box display="flex" justifyContent="flex-end" mt={2}>
+        <Button variant="contained" onClick={onClose}>
+          Đóng
+        </Button>
       </Box>
     </Popover>
   );

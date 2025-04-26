@@ -16,7 +16,16 @@ import {
 } from "react-icons/fi";
 
 import { FcMultipleDevices } from "react-icons/fc";
-import { TypeSpecimen, TypeSpecimenRounded } from "@mui/icons-material";
+import {
+  Assignment,
+  ContentPasteOutlined,
+  DoneAllOutlined,
+  OpenInFullOutlined,
+  SdCardAlertOutlined,
+  SourceOutlined,
+  TypeSpecimen,
+  TypeSpecimenRounded,
+} from "@mui/icons-material";
 import { BsFilePdf, BsTypeBold } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 
@@ -58,6 +67,11 @@ const Sidebar = () => {
     { name: "Daily Check", path: "/dashboard", icon: <FiHome size={22} /> },
     { name: "Needed Check", path: "", icon: <CgFileDocument size={22} /> },
     { name: "PDF", path: "/pdf", icon: <BsFilePdf size={22} /> },
+    {
+      name: "NG Update",
+      path: "/resultAction",
+      icon: <SdCardAlertOutlined size={22} />,
+    },
     { name: "User", path: "/user", icon: <FiUser size={22} /> },
   ];
 
@@ -65,7 +79,7 @@ const Sidebar = () => {
     {
       name: "Device - Sheet",
       path: "/deviceSheetMST",
-      icon: <BsTypeBold size={22} />,
+      icon: <OpenInFullOutlined size={22} />,
     },
     {
       name: "Device",
@@ -75,18 +89,18 @@ const Sidebar = () => {
     {
       name: "Check Sheet",
       path: "/checkSheetMST",
-      icon: <TypeSpecimen size={22} />,
+      icon: <ContentPasteOutlined size={22} />,
       // icon: <TypeSpecimenRounded size={22} />,
     },
     {
-      name: "Context",
+      name: "Content",
       path: "/checkSheetItemMST",
-      icon: <FiAirplay size={22} />,
+      icon: <SourceOutlined size={22} />,
     },
     {
       name: "Result",
       path: "/checkListItemMST",
-      icon: <FiList size={22} />,
+      icon: <DoneAllOutlined size={22} />,
     },
     // { name: "Settings", path: "/settings", icon: <FiSettings size={22} /> },
     { name: "User Management", path: "/users", icon: <FiUsers size={22} /> },

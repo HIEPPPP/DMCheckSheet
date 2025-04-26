@@ -20,7 +20,13 @@ const ItemChildFormDialog = ({
   setFormData,
 }) => {
   return (
-    <Dialog open={open} onClose={onClose}>
+    <Dialog
+      open={open}
+      onClose={onClose}
+      disableEnforceFocus
+      disableAutoFocus
+      disableRestoreFocus
+    >
       <DialogTitle>Thêm nội dung con</DialogTitle>
       <DialogContent>
         <TextField

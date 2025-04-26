@@ -58,35 +58,91 @@ namespace DMCheckSheetAPI.Repositories.Implementation
             return existResult;
         }
 
-        public async Task<CheckResult?> EditConfirmBy(int id, CheckResult result)
+        public async Task<List<CheckResult>> EditConfirmBy(List<CheckResult> checkResults)
         {
-            var existResult = await context.CheckResults.FindAsync(id);
-            if (existResult == null) return null;
-            existResult.ConfirmedBy = result.ConfirmedBy;
+            var ids = checkResults.Select(r => r.ResultId).ToList();
+
+            var existResults = await context.CheckResults
+                                            .Where(r => ids.Contains(r.ResultId))
+                                            .ToListAsync();
+
+            foreach (var item in existResults)
+            {
+                var updateItem = checkResults.FirstOrDefault(u => u.ResultId == item.ResultId);
+                if (updateItem != null)
+                {
+                    item.ConfirmedBy = updateItem.ConfirmedBy;
+                }
+            }
+
             await context.SaveChangesAsync();
-            return existResult;
+            return existResults;
         }
 
-        public async Task<CheckResult?> EditApproveBy(int id, CheckResult result)
+        public async Task<List<CheckResult>> EditApproveBy(List<CheckResult> checkResults)
         {
-            var existResult = await context.CheckResults.FindAsync(id);
-            if (existResult == null) return null;
-            existResult.ApprovedBy = result.ApprovedBy;
+            var ids = checkResults.Select(r => r.ResultId).ToList();
+            var existResults = await context.CheckResults
+                                            .Where(r => ids.Contains(r.ResultId))
+                                            .ToListAsync();
+            foreach (var item in existResults)
+            {
+                var updateItem = checkResults.FirstOrDefault(u => u.ResultId == item.ResultId);
+                if (updateItem != null)
+                {
+                    item.ApprovedBy = updateItem.ApprovedBy;
+                }
+            }
             await context.SaveChangesAsync();
-            return existResult;
+            return existResults;
         }
 
-        public async Task<List<ResultBySheetCodeAndDateDTO>> GetResultsBySheetAndDateAsync(string sheetCode, DateTime today)
+        public async Task<List<ResultBySheetCodeAndDateDTO>> GetResultsBySheetAndDateAsync(string sheetCode, string deviceCode, DateTime today)
         {
             var results = await context.CheckResults
-                                       .Where(x => x.SheetCode == sheetCode && x.CheckedDate.Date == today.Date)
+                                       .Where(x => x.SheetCode == sheetCode && x.DeviceCode == deviceCode && x.CheckedDate.Date == today.Date)
                                        .Select(x => new ResultBySheetCodeAndDateDTO {
                                            ItemId = x.ItemId,
                                            ResultId = x.ResultId,
                                            Value = x.Value,
+                                           IsConfirmNG = x.IsConfirmNG,
                                        })
                                        .ToListAsync();
             return results;
+        }
+
+        public async Task<List<ResultTodayDTO>> GetResultTodays(DateTime today)
+        {
+            return await context.CheckResults.Where(x => x.CheckedDate.Date == today.Date)
+                                             .Select(x => new ResultTodayDTO
+                                             {
+                                                 ResultId = x.ResultId,
+                                                 FormNO = x.FormNO,
+                                                 SheetCode = x.SheetCode,
+                                                 SheetName = x.SheetName,
+                                                 DeviceCode = x.DeviceCode,
+                                                 DeviceName = x.DeviceName,
+                                                 Frequency = x.Frequency,
+                                                 Location = x.Location,
+                                                 Value = x.Value,
+                                                 CheckedDate = x.CheckedDate,
+                                                 CheckedBy = x.CheckedBy,
+                                                 ItemId = x.ItemId,
+                                                 ItemContent = x.CheckSheetItemMST.Content,
+                                                 DataType = x.CheckSheetItemMST.DataType,
+                                                 Note = x.Note
+                                             })
+                                             .Where(x => x.DataType != null).AsNoTracking().ToListAsync();
+
+        }
+
+        public async Task<CheckResult?> UpdateIsConfirmNG(int id, CheckResult checkResult)
+        {
+            var existResult = context.CheckResults.FirstOrDefault(x => x.ResultId == id);
+            if (existResult == null) return null;
+            existResult.IsConfirmNG = checkResult.IsConfirmNG;
+            await context.SaveChangesAsync();
+            return existResult;
         }
     }
 }

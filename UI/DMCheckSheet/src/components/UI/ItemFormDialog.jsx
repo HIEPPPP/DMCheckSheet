@@ -57,7 +57,15 @@ const ItemFormDialog = ({ open, onClose, formData, setFormData, onSave }) => {
   };
 
   return (
-    <Dialog open={open} onClose={onClose} fullWidth maxWidth="sm">
+    <Dialog
+      open={open}
+      onClose={onClose}
+      fullWidth
+      maxWidth="sm"
+      disableEnforceFocus
+      disableAutoFocus
+      disableRestoreFocus
+    >
       <DialogTitle>
         {formData.itemId ? "Cập nhật nội dung" : "Thêm nội dung"}
       </DialogTitle>

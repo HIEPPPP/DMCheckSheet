@@ -8,7 +8,13 @@ import {
 
 const ConfirmDialog = ({ open, title, content, onConfirm, onCancel }) => {
   return (
-    <Dialog open={open} onClose={onCancel}>
+    <Dialog
+      open={open}
+      onClose={onCancel}
+      disableEnforceFocus
+      disableAutoFocus
+      disableRestoreFocus
+    >
       <DialogTitle>{title}</DialogTitle>
       <DialogContent>{content}</DialogContent>
       <DialogActions>

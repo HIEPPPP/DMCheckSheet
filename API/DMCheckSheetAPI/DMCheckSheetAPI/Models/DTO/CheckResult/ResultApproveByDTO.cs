@@ -2,6 +2,7 @@
 {
     public class ResultApproveByDTO
     {
+        public int ResultId { get; set; }
         public string? ApprovedBy { get; set; }
     }
 }

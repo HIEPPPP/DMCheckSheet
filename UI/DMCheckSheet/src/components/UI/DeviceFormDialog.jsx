@@ -8,7 +8,13 @@ import {
 } from "@mui/material";
 
 const DeviceFormDialog = ({ open, formData, setFormData, onSave, onClose }) => (
-  <Dialog open={open} onClose={onClose}>
+  <Dialog
+    open={open}
+    onClose={onClose}
+    disableEnforceFocus
+    disableAutoFocus
+    disableRestoreFocus
+  >
     <DialogTitle>
       {formData.deviceId ? "Cập Nhật Thiết Bị" : "Thêm Thiết Bị"}
     </DialogTitle>

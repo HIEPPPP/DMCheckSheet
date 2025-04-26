@@ -21,9 +21,9 @@ namespace DMCheckSheetAPI.Services
             return await checkResultRepository.GetAllAsync();
         }
 
-        public async Task<List<ResultBySheetCodeAndDateDTO>> GetResultsBySheetAndDateAsync(string sheetCode, DateTime today)
+        public async Task<List<ResultBySheetCodeAndDateDTO>> GetResultsBySheetAndDateAsync(string sheetCode, string deviceCode, DateTime today)
         {
-            return await checkResultRepository.GetResultsBySheetAndDateAsync(sheetCode, today);
+            return await checkResultRepository.GetResultsBySheetAndDateAsync(sheetCode, deviceCode, today);
         }
 
         public async Task<CheckResult?> GetById(int id)
@@ -54,17 +54,27 @@ namespace DMCheckSheetAPI.Services
             return await checkResultRepository.DeleteAsync(id);
         }
 
-        public async Task<CheckResult?> EditConfirmBy(int id, ResultConfirmByDTO resultConfirmByDTO) 
+        public async Task<List<CheckResult>> EditConfirmBy(List<ResultConfirmByDTO> resultConfirmByDTOs) 
         {
-            var resultDomain = mapper.Map<CheckResult>(resultConfirmByDTO);
-            return await checkResultRepository.EditConfirmBy(id, resultDomain);
+            var resultDomain = mapper.Map<List<CheckResult>>(resultConfirmByDTOs);
+            return await checkResultRepository.EditConfirmBy(resultDomain);
         }
 
-        public async Task<CheckResult?> EditApproveBy(int id, ResultApproveByDTO resultApproveByDTO)
+        public async Task<List<CheckResult>> EditApproveBy(List<ResultApproveByDTO> resultApproveByDTOs)
         {
-            var resultDomain = mapper.Map<CheckResult>(resultApproveByDTO);
-            return await checkResultRepository.EditConfirmBy(id, resultDomain);
+            var resultDomain = mapper.Map<List<CheckResult>>(resultApproveByDTOs);
+            return await checkResultRepository.EditApproveBy(resultDomain);
         }
 
+        public async Task<List<ResultTodayDTO>> GetListResultToday(DateTime today)
+        {
+            return await checkResultRepository.GetResultTodays(today);
+        }
+
+        public async Task<CheckResult?> UpdateIsConfirmNG(int id, UpdateResultIsConfirmNGDTO updateResultIsConfirm)
+        {
+            var resultDomain = mapper.Map<CheckResult>(updateResultIsConfirm);
+            return await checkResultRepository.UpdateIsConfirmNG(id, resultDomain);
+        }
     }
 }

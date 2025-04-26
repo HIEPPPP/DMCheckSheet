@@ -30,7 +30,7 @@ namespace DMCheckSheetAPI.Controllers
         {
             var checkSheetDevice = await checkSheetDeviceServices.GetSheetDevice(id);
             return checkSheetDevice != null ? Ok(new ApiResponse<CheckSheetDeviceDTO>(200, "Success", checkSheetDevice))
-                                            : NotFound(new ApiResponse<string>(401, "Check Sheet - Device not found"));     
+                                            : NotFound(new ApiResponse<string>(404, "Check Sheet - Device not found"));     
         }
 
         [HttpGet("checkSheetItemList")]
@@ -38,7 +38,7 @@ namespace DMCheckSheetAPI.Controllers
         {
             var checkSheetDevice = await checkSheetDeviceServices.GetByDeviceAndCheckSheetCode(deviceCode, checkSheetCode);
             return checkSheetDevice != null ? Ok(new ApiResponse<CheckSheetDeviceDTO>(200, "Success", checkSheetDevice))
-                                            : NotFound(new ApiResponse<string>(401, "Check Sheet - Device not found"));
+                                            : NotFound(new ApiResponse<string>(404, "Check Sheet - Device not found"));
         }
 
         [HttpPost]
@@ -53,7 +53,7 @@ namespace DMCheckSheetAPI.Controllers
         {
             var updateCheckSheetDevice = await checkSheetDeviceServices.UpdateSheetDevice(id, checkSheetDevice);
             return updateCheckSheetDevice != null ? Ok(new ApiResponse<CheckSheetDevice>(200, "Updated Check Sheet - Device", updateCheckSheetDevice))
-                                                  : NotFound(new ApiResponse<string>(401, "CheckSheetDevice not found"));
+                                                  : NotFound(new ApiResponse<string>(404, "CheckSheetDevice not found"));
         }
 
         [HttpDelete("{id}")]
@@ -61,7 +61,7 @@ namespace DMCheckSheetAPI.Controllers
         {
             var deleteCheckSheetDevice = await checkSheetDeviceServices.DeleteSheetDevice(id);
             return deleteCheckSheetDevice != null ? Ok(new ApiResponse<CheckSheetDevice>(200, "Deleted Check Sheet - Device", deleteCheckSheetDevice))
-                                                  : NotFound(new ApiResponse<string>(401, "CheckSheetDevice not found"));
+                                                  : NotFound(new ApiResponse<string>(404, "CheckSheetDevice not found"));
         }
     }
 }

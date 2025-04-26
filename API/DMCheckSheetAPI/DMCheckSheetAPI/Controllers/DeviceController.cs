@@ -63,7 +63,7 @@ namespace DMCheckSheetAPI.Controllers
             //}
             var updateDevice = await deviceSevices.UpdateDevice(id, updateDeviceDTO);
             return updateDevice != null ? Ok(new ApiResponse<DeviceMST>(200, "Device updated", updateDevice))
-                                        : NotFound(new ApiResponse<string>(200, "Device not found"));
+                                        : NotFound(new ApiResponse<string>(404, "Device not found"));
         }
 
         [HttpPut("{deviceId}/checksheets")]
@@ -73,7 +73,7 @@ namespace DMCheckSheetAPI.Controllers
 
             if (!result)
             {
-                return NotFound(new ApiResponse<string>(401, "Device not found"));
+                return NotFound(new ApiResponse<string>(404, "Device not found"));
             }
 
             return Ok(new ApiResponse<string>(200, "Success"));

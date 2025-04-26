@@ -37,7 +37,7 @@ namespace DMCheckSheetAPI.Controllers
         {
             var item = await checkSheetItemServices.GetItemById(id);
             return item != null ? Ok(new ApiResponse<CheckSheetItemMST>(200, "Success", item))
-                                : NotFound(new ApiResponse<string>(401, "Item not found"));
+                                : NotFound(new ApiResponse<string>(404, "Item not found"));
         }
 
         [HttpPost]
@@ -52,7 +52,7 @@ namespace DMCheckSheetAPI.Controllers
         {
             var updateItem = await checkSheetItemServices.UpdateItem(id, updateItemDTO);
             return updateItem != null ? Ok(new ApiResponse<CheckSheetItemMST>(200, "Success", updateItem))
-                                      : NotFound(new ApiResponse<string>(401, "Item not found"));
+                                      : NotFound(new ApiResponse<string>(404, "Item not found"));
         }
 
         [HttpPut("{id}/cancel")]
@@ -60,7 +60,7 @@ namespace DMCheckSheetAPI.Controllers
         {
             var updateItem = await checkSheetItemServices.UpdateCancelFlag(id);
             return updateItem != null ? Ok(new ApiResponse<CheckSheetItemMST>(200, "Success", updateItem))
-                                      : NotFound(new ApiResponse<string>(401, "Item not found"));
+                                      : NotFound(new ApiResponse<string>(404, "Item not found"));
         }
 
         [HttpDelete("{id}")]

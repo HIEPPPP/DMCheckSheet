@@ -31,7 +31,7 @@ export const clearAuthData = () => {
 };
 
 const apiClient = axios.create({
-  baseURL: "http://localhost:5118/api/Auth",
+  baseURL: import.meta.env.VITE_API_BASE_URL + "/Auth",
   headers: {
     "Content-Type": "application/json",
   },

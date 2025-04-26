@@ -26,10 +26,17 @@ namespace DMCheckSheetAPI.Controllers
         }
 
         [HttpGet("bySheetAndDate")]
-        public async Task<IActionResult> GetResultsBySheetAndDateAsync([FromQuery] string sheetCode, [FromQuery] DateTime today)
+        public async Task<IActionResult> GetResultsBySheetAndDateAsync([FromQuery] string sheetCode, [FromQuery] string deviceCode, [FromQuery] DateTime today)
         {
-            var results = await checkResultServices.GetResultsBySheetAndDateAsync(sheetCode, today);
+            var results = await checkResultServices.GetResultsBySheetAndDateAsync(sheetCode, deviceCode, today);
             return Ok(new ApiResponse<List<ResultBySheetCodeAndDateDTO>>(200, "Success", results));
+        }
+
+        [HttpGet("today")]
+        public async Task<IActionResult> GetListResultToday([FromQuery] DateTime today)
+        {
+            var result = await checkResultServices.GetListResultToday(today);
+            return Ok(new ApiResponse<List<ResultTodayDTO>>(200, "Success", result));
         }
 
         [HttpGet("{id}")]
@@ -37,7 +44,7 @@ namespace DMCheckSheetAPI.Controllers
         {
             var result = await checkResultServices.GetById(id);
             return result != null ? Ok(new ApiResponse<CheckResult>(200, "Succsess", result)) 
-                                  : NotFound(new ApiResponse<string>(401, "Result not found"));
+                                  : NotFound(new ApiResponse<string>(404, "Result not found"));
         }
 
         [HttpPost]
@@ -52,23 +59,25 @@ namespace DMCheckSheetAPI.Controllers
         {
             var result = await checkResultServices.UpdateResult(id, updateResultDTO);
             return result != null ? Ok(new ApiResponse<CheckResult>(200, "Updated result", result))
-                                  : NotFound(new ApiResponse<string>(401, "Result not found"));
+                                  : NotFound(new ApiResponse<string>(404, "Result not found"));
         }
 
-        [HttpPut("{id}/confirm")]
-        public async Task<IActionResult> ResultConfirm(int id, [FromBody] ResultConfirmByDTO confirmByDTO)
+        [HttpPut("confirm")]
+        public async Task<IActionResult> ResultConfirm([FromBody] List<ResultConfirmByDTO> resultConfirmByDTOs)
         {
-            var result = await checkResultServices.EditConfirmBy(id, confirmByDTO);
-            return result != null ? Ok(new ApiResponse<CheckResult>(200, "Confirmed", result))
-                                  : NotFound(new ApiResponse<string>(401, "Result not found"));
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+            var results = await checkResultServices.EditConfirmBy(resultConfirmByDTOs);
+            return results != null ? Ok(new ApiResponse<List<CheckResult>>(200, "Confirmed", results))
+                                   : NotFound(new ApiResponse<string>(404, "Result not found"));
         }
 
-        [HttpPut("{id}/approve")]
-        public async Task<IActionResult> ResultApprove(int id, [FromBody] ResultApproveByDTO resultApproveByDTO)
+        [HttpPut("approve")]
+        public async Task<IActionResult> ResultApprove([FromBody] List<ResultApproveByDTO> resultApproveByDTOs)
         {
-            var result = await checkResultServices.EditApproveBy(id, resultApproveByDTO);
-            return result != null ? Ok(new ApiResponse<CheckResult>(200, "Approved", result))
-                                  : NotFound(new ApiResponse<string>(401, "Result not found"));
+            var results = await checkResultServices.EditApproveBy(resultApproveByDTOs);
+            return results != null ? Ok(new ApiResponse<List<CheckResult>>(200, "Approved", results))
+                                   : NotFound(new ApiResponse<string>(404, "Result not found"));
         }
 
         [HttpDelete("{id}")]
@@ -76,9 +85,16 @@ namespace DMCheckSheetAPI.Controllers
         {
             var result = await checkResultServices.DeleteResult(id);
             return result != null ? Ok(new ApiResponse<CheckResult>(200, "Deleted result", result))
-                                  : NotFound(new ApiResponse<string>(401, "Result not found"));
+                                  : NotFound(new ApiResponse<string>(404, "Result not found"));
         }
 
-        
+        [HttpPut("{id}/updateIsConfirmNG")]
+        public async Task<IActionResult> UpdateIsConfirmNG(int id, UpdateResultIsConfirmNGDTO updateResultIsConfirm)
+        {
+            var result = await checkResultServices.UpdateIsConfirmNG(id, updateResultIsConfirm);
+            return result != null ? Ok(new ApiResponse<CheckResult>(200, "Updated isConfirmNG", result))
+                                  : NotFound(new ApiResponse<string>(404, "Result not found"));
+        }
+      
     }
 }

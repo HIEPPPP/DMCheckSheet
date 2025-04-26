@@ -53,7 +53,15 @@ const CheckSheetDeviceFormDialog = ({
   };
 
   return (
-    <Dialog open={open} onClose={onClose} fullWidth maxWidth="sm">
+    <Dialog
+      open={open}
+      onClose={onClose}
+      fullWidth
+      maxWidth="sm"
+      disableEnforceFocus
+      disableAutoFocus
+      disableRestoreFocus
+    >
       <DialogTitle>{formData.id ? "Cập Nhật" : "Thêm Mới"}</DialogTitle>
       <DialogContent>
         <FormControl

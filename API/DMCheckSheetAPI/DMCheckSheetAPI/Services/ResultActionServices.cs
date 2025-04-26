@@ -16,14 +16,24 @@ namespace DMCheckSheetAPI.Services
             this.mapper = mapper;
         }
 
-        public async Task<List<ResultAction>> GetListAction()
+        public async Task<List<ResultActionDTO>> GetListAction()
         {
             return await resultActionRepository.GetAllAsync();
         }
 
-        public async Task<ResultAction?> GetActionById(int id)
+        public async Task<ResultActionDTO?> GetActionById(int id)
         {
             return await resultActionRepository.GetAsync(id);
+        }
+
+        public async Task<ResultActionDTO?> GetActionByResultId(int resultId)
+        {
+            return await resultActionRepository.GetByResultIdAsync(resultId);
+        }
+
+        public async Task<List<ResultActionNGDTO>> GetListActionNG()
+        {
+            return await resultActionRepository.GetAllActionNG();
         }
 
         public async Task<ResultAction> CreateAction(CreateActionDTO createActionDTO)
@@ -38,9 +48,16 @@ namespace DMCheckSheetAPI.Services
             return await resultActionRepository.UpdateAsync(id, actionDomain);  
         }
 
+        public async Task<ResultAction?> UpdateActionByResultId(int resultId, UpdateActionDTO updateActionDTO)
+        {
+            var actionDomain = mapper.Map<ResultAction>(updateActionDTO);
+            return await resultActionRepository.UpdateByResultIdAsync(resultId, actionDomain);
+        }
+
         public async Task<ResultAction?> DeleteAction(int id)
         {
             return await resultActionRepository.DeleteAsync(id);
         }
+       
     }
 }

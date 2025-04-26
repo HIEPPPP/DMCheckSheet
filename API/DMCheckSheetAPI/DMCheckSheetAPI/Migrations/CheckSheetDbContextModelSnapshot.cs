@@ -60,6 +60,9 @@ namespace DMCheckSheetAPI.Migrations
                     b.Property<int>("Frequency")
                         .HasColumnType("int");
 
+                    b.Property<bool>("IsConfirmNG")
+                        .HasColumnType("bit");
+
                     b.Property<int>("ItemId")
                         .HasMaxLength(1000)
                         .HasColumnType("int");

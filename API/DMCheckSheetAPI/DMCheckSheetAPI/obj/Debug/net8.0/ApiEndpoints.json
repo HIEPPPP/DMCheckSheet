@@ -112,8 +112,8 @@
   },
   {
     "ContainingType": "DMCheckSheetAPI.Controllers.CheckResultController",
-    "Method": "ResultApprove",
-    "RelativePath": "api/CheckResult/{id}/approve",
+    "Method": "UpdateIsConfirmNG",
+    "RelativePath": "api/CheckResult/{id}/updateIsConfirmNG",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
@@ -124,8 +124,8 @@
         "IsRequired": true
       },
       {
-        "Name": "resultApproveByDTO",
-        "Type": "DMCheckSheetAPI.Models.DTO.CheckResult.ResultApproveByDTO",
+        "Name": "updateResultIsConfirm",
+        "Type": "DMCheckSheetAPI.Models.DTO.CheckResult.UpdateResultIsConfirmNGDTO",
         "IsRequired": true
       }
     ],
@@ -133,20 +133,15 @@
   },
   {
     "ContainingType": "DMCheckSheetAPI.Controllers.CheckResultController",
-    "Method": "ResultConfirm",
-    "RelativePath": "api/CheckResult/{id}/confirm",
+    "Method": "ResultApprove",
+    "RelativePath": "api/CheckResult/approve",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
-      },
-      {
-        "Name": "confirmByDTO",
-        "Type": "DMCheckSheetAPI.Models.DTO.CheckResult.ResultConfirmByDTO",
+        "Name": "resultApproveByDTOs",
+        "Type": "System.Collections.Generic.List\u00601[[DMCheckSheetAPI.Models.DTO.CheckResult.ResultApproveByDTO, DMCheckSheetAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "IsRequired": true
       }
     ],
@@ -165,6 +160,43 @@
         "Type": "System.String",
         "IsRequired": false
       },
+      {
+        "Name": "deviceCode",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "today",
+        "Type": "System.DateTime",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DMCheckSheetAPI.Controllers.CheckResultController",
+    "Method": "ResultConfirm",
+    "RelativePath": "api/CheckResult/confirm",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "resultConfirmByDTOs",
+        "Type": "System.Collections.Generic.List\u00601[[DMCheckSheetAPI.Models.DTO.CheckResult.ResultConfirmByDTO, DMCheckSheetAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DMCheckSheetAPI.Controllers.CheckResultController",
+    "Method": "GetListResultToday",
+    "RelativePath": "api/CheckResult/today",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
       {
         "Name": "today",
         "Type": "System.DateTime",
@@ -661,6 +693,53 @@
         "IsRequired": true
       }
     ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DMCheckSheetAPI.Controllers.ResultActionController",
+    "Method": "GetActionByResultId",
+    "RelativePath": "api/ResultAction/{resultId}/resultId",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "resultId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DMCheckSheetAPI.Controllers.ResultActionController",
+    "Method": "UpdateActionByResultId",
+    "RelativePath": "api/ResultAction/{resultId}/resultId",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "resultId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "updateActionDTO",
+        "Type": "DMCheckSheetAPI.Models.DTO.ResultAction.UpdateActionDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DMCheckSheetAPI.Controllers.ResultActionController",
+    "Method": "GetListActionNG",
+    "RelativePath": "api/ResultAction/resultNG",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
     "ReturnTypes": []
   }
 ]

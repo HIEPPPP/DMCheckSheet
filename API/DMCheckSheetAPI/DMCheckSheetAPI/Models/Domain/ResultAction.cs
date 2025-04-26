@@ -9,7 +9,7 @@ namespace DMCheckSheetAPI.Models.Domain
         public int ActionId { get; set; }
 
         [Required]
-        public int ResultId { get; set; }         
+        public int ResultId { get; set; }
 
         [MaxLength(500)]
         public string? ActionTaken { get; set; } // Nội dung khắc phục

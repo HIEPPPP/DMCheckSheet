@@ -38,6 +38,7 @@ namespace DMCheckSheetAPI.Models.Domain
         public string? ConfirmedBy { get; set; }
         [StringLength(255)]
         public string? ApprovedBy { get; set; }
+        public Boolean IsConfirmNG { get; set; } = false;
         [StringLength(1000)]
         public string? Note { get; set; }
 
