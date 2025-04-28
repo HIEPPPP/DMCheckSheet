@@ -306,8 +306,7 @@
               "RelativeToolTip": "DMCheckSheetAPI\\DMCheckSheetAPI.http",
               "ViewState": "AgIAAAIAAAAAAAAAAAAxwAYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003502|",
-              "WhenOpened": "2025-04-26T01:30:28.624Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-26T01:30:28.624Z"
             },
             {
               "$type": "Document",
@@ -319,8 +318,7 @@
               "RelativeToolTip": "DMCheckSheetAPI\\appsettings.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-04-26T01:30:07.562Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-26T01:30:07.562Z"
             },
             {
               "$type": "Document",
@@ -367,7 +365,7 @@
               "RelativeDocumentMoniker": "DMCheckSheetAPI\\Program.cs",
               "ToolTip": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Program.cs",
               "RelativeToolTip": "DMCheckSheetAPI\\Program.cs",
-              "ViewState": "AgIAAGwAAAAAAAAAAAAAAEAAAABBAAAAAAAAAA==",
+              "ViewState": "AgIAAC0AAAAAAAAAAAAAADsAAAADAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-22T03:32:10.025Z",
               "EditorCaption": ""

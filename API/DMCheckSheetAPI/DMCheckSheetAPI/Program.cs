@@ -61,11 +61,20 @@ builder.Services.AddSwaggerGen(options =>
 
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowSpecificOrigin",
-        builder => builder.WithOrigins("http://172.17.140.11:5001")
-                          .AllowAnyMethod()
-                          .AllowAnyHeader()
-                          .AllowCredentials());
+    options.AddPolicy("AllowSpecificOrigin", policy => policy
+        .WithOrigins(
+            "http://172.17.140.11:5000",
+            "https://172.17.140.11:5000",
+            "http://172.17.140.11:5001",
+            "https://172.17.140.11:5001",
+            "https://172.17.140.11:5002",
+            "http://localhost:5118",
+            "http://localhost:5173"
+        )
+        .AllowAnyMethod()
+        .AllowAnyHeader()
+        .AllowCredentials()
+    );
 });
 
 
@@ -151,9 +160,9 @@ if (app.Environment.IsDevelopment())
 
 //app.UseMiddleware<ExceptionHandlingMiddleware>();
 
-app.UseHttpsRedirection();
-
 app.UseCors("AllowSpecificOrigin");
+
+app.UseHttpsRedirection();
 
 app.UseAuthentication();
 app.UseAuthorization();

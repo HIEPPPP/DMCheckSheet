@@ -1,6 +1,4 @@
-// src/contexts/StatusContext.js
 import React, { createContext, useContext, useEffect, useState } from "react";
-// giả sử bạn có service như này:
 import { getResultToDay } from "../services/checkResultServices";
 
 const StatusContext = createContext({
@@ -15,7 +13,7 @@ export const StatusProvider = ({ children }) => {
     try {
       console.log("refreshStatus start");
       // 1) Lấy ngày hôm nay
-      const today = new Date().toISOString().slice(0, 10); // "2025-04-23"
+      const today = new Date().toISOString().slice(0, 10);
       // 2) Gọi API trả về toàn bộ kết quả trong ngày
       const results = await getResultToDay(today);
       // 3) Group theo deviceCode–sheetCode
@@ -51,7 +49,7 @@ export const StatusProvider = ({ children }) => {
     }
   };
 
-  // Chạy lần đầu và mỗi ngày (hoặc khi bạn muốn refresh manual)
+  // Chạy lần đầu và mỗi ngày (hoặc khi muốn refresh manual)
   useEffect(() => {
     refreshStatus();
   }, []);
