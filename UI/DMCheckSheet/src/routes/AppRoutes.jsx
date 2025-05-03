@@ -4,7 +4,7 @@ import Login from "../pages/Login";
 import Dashboard from "../pages/Dashboard";
 import NotFound from "../pages/NotFound";
 import MainLayout from "../layouts/MainLayout";
-import Users from "../components/Admin/Users";
+import Users from "../pages/Users";
 import DeviceMST from "../pages/DeviceMST";
 import CheckSheetMST from "../pages/CheckSheetMST";
 import CheckSheetItemMST from "../pages/CheckSheetItemMST";
@@ -13,6 +13,7 @@ import CheckSheet from "../pages/CheckSheet";
 import PrivateRoute from "./PrivateRoute";
 import ResultAction from "../pages/ResultAction";
 import CheckSheetContainer from "../pages/CheckSheetContainer";
+import User from "../pages/User";
 
 const AppRoutes = () => (
   <Routes>
@@ -27,6 +28,7 @@ const AppRoutes = () => (
       <Route path="/" element={<Dashboard />} />
       <Route path="/dashboard" element={<Dashboard />} />
       <Route path="/users" element={<Users />} />
+      <Route path="/user" element={<User />} />
       <Route path="/deviceMST" element={<DeviceMST />} />
       <Route path="/checkSheetMST" element={<CheckSheetMST />} />
       <Route path="/checkSheetItemMST" element={<CheckSheetItemMST />} />

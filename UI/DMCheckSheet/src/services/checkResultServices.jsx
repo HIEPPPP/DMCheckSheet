@@ -37,6 +37,21 @@ export const getResultsBySheetAndDate = async (
   }
 };
 
+export const getResultBySheetDeviceToday = async (
+  deviceCode,
+  sheetCode,
+  today
+) => {
+  try {
+    const res = await apiClient.get(
+      `/bySheetDeviceToday?deviceCode=${deviceCode}&sheetCode=${sheetCode}&today=${today}`
+    );
+    return res.data.data;
+  } catch (error) {
+    return handleError(error);
+  }
+};
+
 export const getCheckResultById = async (id) => {
   try {
     const res = await apiClient.get(`/${id}`);

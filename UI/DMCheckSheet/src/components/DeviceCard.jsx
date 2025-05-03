@@ -1,6 +1,6 @@
-import React from "react";
-import { Button } from "@mui/material";
+import React, { useState } from "react";
 import { useStatus } from "../contexts/StatusContext";
+import { Button } from "@mui/material";
 
 const styleMap = {
   OK: { color: "bg-green-500", anim: "animate-pulse", icon: null },
@@ -10,7 +10,7 @@ const styleMap = {
     anim: "",
     icon: (
       <svg
-        className="mr-2 inline-block h-5 w-5 text-white animate-spin"
+        className="mr-2 inline-block h-4 w-4 text-white animate-spin"
         fill="none"
         viewBox="0 0 24 24"
       >
@@ -41,34 +41,30 @@ const DeviceCard = ({ device, onOpen }) => {
   const { color, anim, icon } = styleMap[status];
 
   return (
-    <div className="bg-white shadow-md rounded-lg p-4 w-60 border border-gray-200 flex flex-col">
+    <div className="bg-white shadow-lg rounded-2xl p-5 w-72 border border-gray-200 flex flex-col transition-transform hover:scale-[1.02] hover:shadow-xl duration-200">
       <div className="flex-grow">
-        <h2 className="text-lg font-semibold text-gray-800">
-          {device.deviceName}
-        </h2>
-        <p className="text-sm text-gray-500 mt-2">
-          Mã thiết bị: {device.deviceCode}
-        </p>
-        <p className="text-sm text-gray-500 mt-1">
-          Mã CheckSheet: {device.sheetCode}
-        </p>
-        <div className="mt-3">
-          <p className="text-sm font-medium text-gray-600">
-            Vị trí:{" "}
+        <h2 className="text-xl font-bold text-gray-800">{device.deviceName}</h2>
+        <div className="text-sm text-gray-500 mt-3 space-y-1">
+          <p>
+            <span className="font-medium text-gray-700">Mã thiết bị:</span>{" "}
+            {device.deviceCode}
+          </p>
+          <p>
+            <span className="font-medium text-gray-700">Mã CheckSheet:</span>{" "}
+            {device.sheetCode}
+          </p>
+          <p>
+            <span className="font-medium text-gray-700">Vị trí:</span>{" "}
             <span className="font-semibold text-blue-600">
               {device.location}
             </span>
           </p>
         </div>
 
-        <div className="text-sm text-gray-500 mt-4 flex items-center">
-          <span>Trạng thái:</span>
+        <div className="text-sm text-gray-600 mt-5 flex items-center">
+          <span className="font-semibold">Trạng thái:</span>
           <span
-            className={`
-              inline-flex items-center justify-center
-              p-2 rounded-2xl ml-3 text-white
-              ${color} ${anim}
-            `}
+            className={`ml-3 inline-flex items-center px-3 py-2 rounded-full text-white text-sm font-medium ${color} ${anim}`}
           >
             {icon}
             <span>{status}</span>
@@ -78,9 +74,22 @@ const DeviceCard = ({ device, onOpen }) => {
 
       <div className="mt-6">
         <Button
-          className="w-full"
+          fullWidth
           variant="contained"
-          onClick={() => onOpen(device)}
+          onClick={(e) => onOpen(device, e)}
+          sx={{
+            borderRadius: "9999px",
+            textTransform: "none",
+            fontWeight: 600,
+            fontSize: "0.9rem",
+            py: 1,
+            boxShadow: "none",
+            backgroundColor: "#3b82f6",
+            "&:hover": {
+              backgroundColor: "#2563eb",
+              boxShadow: "none",
+            },
+          }}
         >
           Chi tiết
         </Button>

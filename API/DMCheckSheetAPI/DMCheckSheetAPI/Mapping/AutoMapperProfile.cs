@@ -6,6 +6,7 @@ using DMCheckSheetAPI.Models.DTO.CheckSheet;
 using DMCheckSheetAPI.Models.DTO.CheckSheetItem;
 using DMCheckSheetAPI.Models.DTO.Device;
 using DMCheckSheetAPI.Models.DTO.ResultAction;
+using DMCheckSheetAPI.Models.DTO.UserDTO;
 
 namespace Ecommerce.API.Mapping
 {
@@ -33,6 +34,11 @@ namespace Ecommerce.API.Mapping
 
             CreateMap<ResultAction, CreateActionDTO>().ReverseMap();
             CreateMap<ResultAction, UpdateActionDTO>().ReverseMap();
+            
+            CreateMap<User, UserDTO>().ReverseMap();
+            CreateMap<User, UpdateUserDTO>().ReverseMap();
+
+
         }
     }
 }

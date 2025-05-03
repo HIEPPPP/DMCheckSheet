@@ -95,6 +95,14 @@ namespace DMCheckSheetAPI.Controllers
             return result != null ? Ok(new ApiResponse<CheckResult>(200, "Updated isConfirmNG", result))
                                   : NotFound(new ApiResponse<string>(404, "Result not found"));
         }
-      
+
+        [HttpGet("bySheetDeviceToday")]
+        public async Task<IActionResult> GetResultBySheetDeviceToday([FromQuery] string sheetCode, [FromQuery] string deviceCode, [FromQuery] DateTime today)
+        {
+            var results = await checkResultServices.GetResultBySheetDeviceToday(sheetCode, deviceCode, today);
+            return Ok(new ApiResponse<CheckResult>(200, "Success", results));
+        }
+
+
     }
 }

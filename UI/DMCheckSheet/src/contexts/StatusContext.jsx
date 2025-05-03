@@ -11,7 +11,7 @@ export const StatusProvider = ({ children }) => {
 
   const refreshStatus = async () => {
     try {
-      console.log("refreshStatus start");
+      // console.log("refreshStatus start");
       // 1) Lấy ngày hôm nay
       const today = new Date().toISOString().slice(0, 10);
       // 2) Gọi API trả về toàn bộ kết quả trong ngày
@@ -42,7 +42,7 @@ export const StatusProvider = ({ children }) => {
       });
       // 5) Với những device–sheet chưa bao giờ có record trong ngày, cũng đánh Pending
       //    (nếu có danh sách thiết bị cố định, có thể merge thêm bước này)
-      console.log("refreshStatus build map:", map);
+      // console.log("refreshStatus build map:", map);
       setStatusMap(map);
     } catch (err) {
       console.error("Không load được status:", err);

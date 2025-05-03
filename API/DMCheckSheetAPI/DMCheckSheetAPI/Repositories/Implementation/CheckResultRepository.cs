@@ -144,5 +144,10 @@ namespace DMCheckSheetAPI.Repositories.Implementation
             await context.SaveChangesAsync();
             return existResult;
         }
+
+        public async Task<CheckResult?> GetResultBySheetDeviceToday(string sheetCode, string deviceCode, DateTime today)
+        {
+            return await context.CheckResults.FirstOrDefaultAsync(x => x.SheetCode == sheetCode && x.DeviceCode == deviceCode && x.CheckedDate == today);
+        }
     }
 }

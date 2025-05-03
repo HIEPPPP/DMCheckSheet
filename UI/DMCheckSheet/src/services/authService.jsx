@@ -54,3 +54,12 @@ export const login = async (userName, password) => {
     return handleError(error);
   }
 };
+
+export const register = async (user) => {
+  try {
+    const res = await apiClient.post("/register", user);
+    return res.data;
+  } catch (error) {
+    return handleError(error);
+  }
+};

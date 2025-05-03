@@ -76,5 +76,10 @@ namespace DMCheckSheetAPI.Services
             var resultDomain = mapper.Map<CheckResult>(updateResultIsConfirm);
             return await checkResultRepository.UpdateIsConfirmNG(id, resultDomain);
         }
+
+        public async Task<CheckResult?> GetResultBySheetDeviceToday(string sheetCode, string deviceCode, DateTime today)
+        {
+            return await checkResultRepository.GetResultBySheetDeviceToday(sheetCode, deviceCode, today);
+        }
     }
 }

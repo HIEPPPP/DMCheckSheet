@@ -15,31 +15,26 @@ import {
 } from "@mui/material";
 import { useState } from "react";
 
-const DeviceTable = ({ devices = [], onEdit, onDelete }) => {
+import React from "react";
+
+const UsersTable = ({ users = [], onEdit, onDelete }) => {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
   const [searchText, setSearchText] = useState("");
 
-  // Lọc theo deviceCode hoặc deviceName
-  const filteredDevices = devices.filter((device) =>
-    `${device.deviceCode} ${device.deviceName}`
+  const filteredUsers = users.filter((user) =>
+    `${user.normalizedUserName} ${user.userName}`
       .toLowerCase()
       .includes(searchText.toLowerCase())
   );
 
-  // Dữ liệu sau phân trang
-  const paginatedDevices = filteredDevices.slice(
+  const paginatedUsers = filteredUsers.slice(
     page * rowsPerPage,
     page * rowsPerPage + rowsPerPage
   );
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage - 1);
-  };
-
-  const handleChangeRowsPerPage = (event) => {
-    setRowsPerPage(parseInt(event.target.value, 10));
-    setPage(0);
   };
 
   return (
@@ -58,46 +53,43 @@ const DeviceTable = ({ devices = [], onEdit, onDelete }) => {
           select
           size="small"
           value={rowsPerPage}
-          onChange={handleChangeRowsPerPage}
+          onChange={(event) => {
+            setRowsPerPage(parseInt(event.target.value, 10));
+            setPage(0);
+          }}
           sx={{ width: 120 }}
         >
-          {[5, 10, 20, 50].map((option) => (
+          {[10, 25, 50].map((option) => (
             <MenuItem key={option} value={option}>
-              {option} dòng
+              {option}
             </MenuItem>
           ))}
         </TextField>
       </Box>
 
-      {/* Bảng thiết bị */}
       <TableContainer component={Paper}>
         <Table>
           <TableHead>
-            <TableRow className="bg-gray-200">
+            <TableRow>
               <TableCell sx={{ fontWeight: 700 }}>STT</TableCell>
-              <TableCell sx={{ fontWeight: 700 }}>Mã thiết bị</TableCell>
-              <TableCell sx={{ fontWeight: 700 }}>Tên Thiết Bị</TableCell>
-              <TableCell sx={{ fontWeight: 700 }}>Tần suất</TableCell>
-              <TableCell sx={{ fontWeight: 700 }}>Vị trí</TableCell>
-              <TableCell sx={{ fontWeight: 700 }}>Hành động</TableCell>
+              <TableCell sx={{ fontWeight: 700 }}>Mã nhân viên</TableCell>
+              <TableCell sx={{ fontWeight: 700 }}>Họ và tên</TableCell>
+              <TableCell sx={{ fontWeight: 700 }}>Quyền</TableCell>
+              <TableCell sx={{ fontWeight: 700 }}>Thao tác</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {paginatedDevices.map((device, index) => (
-              <TableRow key={device.deviceId}>
-                <TableCell>{page * rowsPerPage + index + 1}</TableCell>
-                <TableCell>{device.deviceCode}</TableCell>
-                <TableCell>{device.deviceName}</TableCell>
-                <TableCell>{device.frequency}</TableCell>
-                <TableCell>{device.location}</TableCell>
+            {paginatedUsers.map((user, index) => (
+              <TableRow key={user.id}>
+                <TableCell>{index + 1}</TableCell>
+                <TableCell>{user.userName}</TableCell>
+                <TableCell>{user.fullName}</TableCell>
+                <TableCell>{user.name}</TableCell>
                 <TableCell>
-                  <IconButton color="primary" onClick={() => onEdit(device)}>
+                  <IconButton color="primary" onClick={() => onEdit(user)}>
                     <Edit />
                   </IconButton>
-                  <IconButton
-                    color="error"
-                    onClick={() => onDelete(device.deviceId)}
-                  >
+                  <IconButton color="error" onClick={() => onDelete(user.id)}>
                     <Delete />
                   </IconButton>
                 </TableCell>
@@ -110,7 +102,7 @@ const DeviceTable = ({ devices = [], onEdit, onDelete }) => {
       {/* Phân trang */}
       <Box mt={2} display="flex" justifyContent="center">
         <Pagination
-          count={Math.ceil(filteredDevices.length / rowsPerPage)}
+          count={Math.ceil(filteredUsers.length / rowsPerPage)}
           page={page + 1}
           onChange={handleChangePage}
           color="primary"
@@ -120,4 +112,4 @@ const DeviceTable = ({ devices = [], onEdit, onDelete }) => {
   );
 };
 
-export default DeviceTable;
+export default UsersTable;

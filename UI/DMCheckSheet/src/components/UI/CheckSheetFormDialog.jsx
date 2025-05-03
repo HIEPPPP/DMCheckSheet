@@ -20,7 +20,13 @@ const CheckSheetFormDialog = ({
   onClose,
 }) => {
   return (
-    <Dialog open={open} onClose={onClose}>
+    <Dialog
+      open={open}
+      onClose={onClose}
+      disableEnforceFocus
+      disableAutoFocus
+      disableRestoreFocus
+    >
       <DialogTitle>
         {formData.id ? "Cập Nhật Check Sheet" : "Thêm Check Sheet"}
       </DialogTitle>

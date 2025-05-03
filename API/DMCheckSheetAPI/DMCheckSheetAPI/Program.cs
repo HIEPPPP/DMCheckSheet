@@ -92,6 +92,7 @@ builder.Services.AddScoped<ICheckSheetItemRepository, CheckSheetItemRepository>(
 builder.Services.AddScoped<ICheckResultRepository, CheckResultRepository>();
 builder.Services.AddScoped<IResultActionRepository, ResultActionRepository>();
 builder.Services.AddScoped<ICheckSheetDeviceRepository, CheckSheetDeviceRepository>();
+builder.Services.AddScoped<IUserReposiory, UserReposiory>();
 
 // Services
 builder.Services.AddScoped<DeviceSevices>();
@@ -100,6 +101,7 @@ builder.Services.AddScoped<CheckSheetItemServices>();
 builder.Services.AddScoped<CheckResultServices>();
 builder.Services.AddScoped<ResultActionServices>();
 builder.Services.AddScoped<CheckSheetDeviceServices>();
+builder.Services.AddScoped<UsersServices>();
 
 builder.Services.AddIdentityCore<User>()
     .AddRoles<IdentityRole>()

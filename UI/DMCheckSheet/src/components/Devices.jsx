@@ -1,17 +1,52 @@
 import React, { useEffect, useState, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
+import { Button, Popover } from "@mui/material";
+import { Html5QrcodeScanner } from "html5-qrcode";
 
 import SearchBar from "./SearchBar";
 import DeviceCard from "./DeviceCard";
-import { Button } from "@mui/material";
 import { QrCode } from "@mui/icons-material";
 import { getListCheckSheetDevices } from "../services/checkSheetDeviceServices";
-import { Html5QrcodeScanner } from "html5-qrcode";
+import DeviceDetail from "./DeviceDetail";
+import { getResultBySheetDeviceToday } from "../services/checkResultServices";
 
 function Device() {
   const [showScanner, setShowScanner] = useState(false);
   const [checkSheetDevices, setCheckSheetDevices] = useState([]);
   const navigate = useNavigate();
+
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [selectedDevice, setSelectedDevice] = useState(null);
+
+  const handleOpen = async (device, event) => {
+    setAnchorEl(event.currentTarget);
+
+    const today = new Date().toISOString().split("T")[0];
+
+    try {
+      const result = await getResultBySheetDeviceToday(
+        device.deviceCode,
+        device.sheetCode,
+        today
+      );
+      // 3. gộp vào state
+      setSelectedDevice({
+        ...device,
+        checkedBy: result?.checkedBy ? result.checkedBy : "",
+        confirmedBy: result?.confirmedBy ? result.confirmedBy : "",
+      });
+    } catch (err) {
+      console.error("Lỗi fetch result:", err);
+      setSelectedDevice(device);
+    }
+  };
+
+  const handleClose = () => {
+    setSelectedDevice(null);
+    setAnchorEl(null);
+  };
+
+  const open = Boolean(anchorEl);
 
   // Load danh sách check-sheet frequency = 1
   useEffect(() => {
@@ -106,9 +141,29 @@ function Device() {
 
       <div className="flex mt-10 gap-5 justify-center flex-wrap">
         {checkSheetDevices.map((device) => (
-          <DeviceCard key={device.id} device={device} />
+          <DeviceCard
+            key={device.id}
+            device={device}
+            onOpen={(device, e) => handleOpen(device, e)}
+          />
         ))}
       </div>
+
+      <Popover
+        open={open}
+        anchorEl={anchorEl}
+        onClose={handleClose}
+        anchorOrigin={{
+          vertical: "top",
+          horizontal: "center",
+        }}
+        transformOrigin={{
+          vertical: "bottom",
+          horizontal: "left",
+        }}
+      >
+        {selectedDevice && <DeviceDetail device={selectedDevice} />}
+      </Popover>
     </div>
   );
 }

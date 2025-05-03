@@ -16,5 +16,6 @@ namespace DMCheckSheetAPI.Repositories.Interface
         Task<List<CheckResult>> EditConfirmBy(List<CheckResult> checkResults);
         Task<List<CheckResult>> EditApproveBy(List<CheckResult> checkResults);
         Task<CheckResult?> UpdateIsConfirmNG(int id, CheckResult checkResult);
+        Task<CheckResult?> GetResultBySheetDeviceToday(string sheetCode, string deviceCode, DateTime today);
     }
 }
