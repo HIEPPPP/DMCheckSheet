@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const apiClient = axios.create({
-  baseURL: import.meta.VITE_API_BASE_URL + "/CheckResult",
+  baseURL: import.meta.env.VITE_API_BASE_URL + "/CheckResult",
   headers: {
     "Content-Type": "application/json",
   },
@@ -31,7 +31,7 @@ export const getResultsBySheetAndDate = async (
     const res = await apiClient.get(
       `/bySheetAndDate?sheetCode=${sheetCode}&deviceCode=${deviceCode}&today=${today}`
     );
-    return res.data.data;
+    return res.data.data ?? [];
   } catch (error) {
     return handleError(error);
   }
@@ -46,7 +46,7 @@ export const getResultBySheetDeviceToday = async (
     const res = await apiClient.get(
       `/bySheetDeviceToday?deviceCode=${deviceCode}&sheetCode=${sheetCode}&today=${today}`
     );
-    return res.data.data;
+    return res.data.data ?? [];
   } catch (error) {
     return handleError(error);
   }
@@ -73,7 +73,7 @@ export const getResultToDay = async (today) => {
 export const createResults = async (data) => {
   try {
     const res = await apiClient.post("/", data);
-    return res.data.data;
+    return res.data.data ?? [];
   } catch (error) {
     return handleError(error);
   }

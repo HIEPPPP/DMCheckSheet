@@ -14,6 +14,8 @@ import PrivateRoute from "./PrivateRoute";
 import ResultAction from "../pages/ResultAction";
 import CheckSheetContainer from "../pages/CheckSheetContainer";
 import User from "../pages/User";
+import DeviceNeeded from "../components/DeviceNeeded";
+import PDFContainer from "../pages/PDFContainer";
 
 const AppRoutes = () => (
   <Routes>
@@ -27,6 +29,7 @@ const AppRoutes = () => (
     >
       <Route path="/" element={<Dashboard />} />
       <Route path="/dashboard" element={<Dashboard />} />
+      <Route path="/deviceNeeded" element={<DeviceNeeded />} />
       <Route path="/users" element={<Users />} />
       <Route path="/user" element={<User />} />
       <Route path="/deviceMST" element={<DeviceMST />} />
@@ -35,6 +38,7 @@ const AppRoutes = () => (
       <Route path="/deviceSheetMST" element={<DeviceCheckSheetMST />} />
       <Route path="/checkSheet/:code" element={<CheckSheet />} />
       <Route path="/resultAction" element={<ResultAction />} />
+      <Route path="/pdf" element={<PDFContainer />} />
     </Route>
 
     {/* Route không cần login */}

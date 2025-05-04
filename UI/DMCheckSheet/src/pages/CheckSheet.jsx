@@ -382,7 +382,7 @@ const CheckSheet = () => {
     // Bật Snackbar
     setOpenSnackbar(true);
 
-    // Sau 2 giây thì chuyển trang
+    // Sau 1 giây thì chuyển trang
     setTimeout(() => {
       navigate("/dashboard");
     }, 1000);

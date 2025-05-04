@@ -13,21 +13,32 @@ import {
   Avatar,
   Grid,
   Divider,
+  Snackbar,
+  Alert,
 } from "@mui/material";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import { AuthContext } from "../contexts/AuthContext";
 import { getUserByUsername } from "../services/usersService";
+import { changePassword } from "../services/authService";
+import { useNavigate } from "react-router-dom";
 
 const User = () => {
   const [user, setUser] = useState({});
 
   const userContext = useContext(AuthContext);
-  console.log(userContext.auth.username);
+  const { logoutUser } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const [open, setOpen] = useState(false);
   const [oldPassword, setOldPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [snackbar, setSnackbar] = useState({
+    open: false,
+    message: "",
+    severity: "success",
+  });
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -44,15 +55,64 @@ const User = () => {
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+  const handleSnackbarClose = () =>
+    setSnackbar((prev) => ({ ...prev, open: false }));
 
-  const handleChangePassword = () => {
-    if (newPassword !== confirmPassword) {
-      alert("Mật khẩu mới và xác nhận mật khẩu không khớp!");
+  const handleChangePassword = async () => {
+    if (!oldPassword || !newPassword || !confirmPassword) {
+      setSnackbar({
+        open: true,
+        message: "Vui lòng điền đầy đủ thông tin.",
+        severity: "warning",
+      });
       return;
     }
-    // TODO: gọi API đổi mật khẩu tại đây
-    alert("Đổi mật khẩu thành công!");
-    handleClose();
+    if (newPassword !== confirmPassword) {
+      setSnackbar({
+        open: true,
+        message: "Mật khẩu mới và xác nhận không khớp.",
+        severity: "error",
+      });
+      return;
+    }
+
+    setLoading(true);
+    try {
+      // Call API đổi mật khẩu
+      const response = await changePassword(oldPassword, newPassword);
+
+      if (response !== null) {
+        setSnackbar({
+          open: true,
+          message: "Đổi mật khẩu thành công!",
+          severity: "success",
+        });
+        handleClose();
+        // Reset form
+        setOldPassword("");
+        setNewPassword("");
+        setConfirmPassword("");
+
+        setTimeout(() => {
+          // Logout user
+          logoutUser();
+          navigate("/login");
+        }, 2000);
+      } else {
+        setSnackbar({
+          open: true,
+          message: "Đổi mật khẩu thất bại, vui lòng thử lại.",
+          severity: "error",
+        });
+      }
+    } catch (error) {
+      console.error(error);
+      const msg =
+        error.response?.data?.message || "Lỗi hệ thống, vui lòng thử lại sau.";
+      setSnackbar({ open: true, message: msg, severity: "error" });
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -72,7 +132,7 @@ const User = () => {
           <Avatar
             sx={{ bgcolor: "primary.main", width: 64, height: 64, mr: 2 }}
           >
-            {user.fullName.charAt(0).toUpperCase()}
+            {user.fullName?.charAt(0).toUpperCase()}
           </Avatar>
           <Box>
             <Typography variant="h5">{user.fullName}</Typography>
@@ -139,12 +199,33 @@ const User = () => {
           />
         </DialogContent>
         <DialogActions sx={{ px: 3 }}>
-          <Button onClick={handleClose}>Hủy</Button>
-          <Button variant="contained" onClick={handleChangePassword}>
-            Lưu
+          <Button onClick={handleClose} disabled={loading}>
+            Hủy
+          </Button>
+          <Button
+            variant="contained"
+            onClick={handleChangePassword}
+            disabled={loading}
+          >
+            {loading ? "Đang xử lý..." : "Lưu"}
           </Button>
         </DialogActions>
       </Dialog>
+      {/* Snackbar thông báo */}
+      <Snackbar
+        open={snackbar.open}
+        autoHideDuration={4000}
+        onClose={handleSnackbarClose}
+        anchorOrigin={{ vertical: "top", horizontal: "right" }}
+      >
+        <Alert
+          onClose={handleSnackbarClose}
+          severity={snackbar.severity}
+          sx={{ width: "100%" }}
+        >
+          {snackbar.message}
+        </Alert>
+      </Snackbar>
     </Container>
   );
 };

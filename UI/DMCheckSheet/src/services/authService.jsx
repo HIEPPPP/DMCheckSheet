@@ -37,6 +37,15 @@ const apiClient = axios.create({
   },
 });
 
+// interceptor để tự động thêm Authorization header nếu có token
+apiClient.interceptors.request.use((config) => {
+  const auth = getAuthData();
+  if (auth?.token) {
+    config.headers.Authorization = `Bearer ${auth.token}`;
+  }
+  return config;
+});
+
 // Xử lý lỗi chung
 const handleError = (error) => {
   console.error("API Error:", error.response?.data || error.message);
@@ -61,5 +70,21 @@ export const register = async (user) => {
     return res.data;
   } catch (error) {
     return handleError(error);
+  }
+};
+
+export const changePassword = async (oldPassword, newPassword) => {
+  try {
+    const res = await apiClient.post("/change-password", {
+      oldPassword,
+      newPassword,
+    });
+    return res.data; // { message: "Đổi mật khẩu thành công!" }
+  } catch (error) {
+    console.error(
+      "Change Password Error:",
+      error.response?.data || error.message
+    );
+    return null;
   }
 };

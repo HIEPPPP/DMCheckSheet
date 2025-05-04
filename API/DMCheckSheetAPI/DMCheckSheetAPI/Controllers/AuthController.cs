@@ -1,5 +1,6 @@
 ﻿using DMCheckSheetAPI.Models.Domain;
 using DMCheckSheetAPI.Models.DTO;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.Data;
 using Microsoft.AspNetCore.Mvc;
@@ -72,6 +73,32 @@ namespace DMCheckSheetAPI.Controllers
                 fullName = user.FullName,
                 roles
             });
+        }
+
+        [HttpPost("change-password")]
+        [Authorize] // đảm bảo chỉ người dùng đã đăng nhập mới được đổi mật khẩu
+        public async Task<IActionResult> ChangePassword([FromBody] ChangePasswordRequest model)
+        {
+            // Lấy user từ token đã đăng nhập
+            var username = User.Identity?.Name;
+            if (string.IsNullOrEmpty(username))
+            {
+                return Unauthorized(new { message = "Không xác thực được người dùng." });
+            }
+
+            var user = await _userManager.FindByNameAsync(username);
+            if (user == null)
+            {
+                return Unauthorized(new { message = "Người dùng không tồn tại." });
+            }
+
+            var result = await _userManager.ChangePasswordAsync(user, model.OldPassword, model.NewPassword);
+            if (!result.Succeeded)
+            {
+                return BadRequest(new { errors = result.Errors.Select(e => e.Description) });
+            }
+
+            return Ok(new { message = "Đổi mật khẩu thành công!" });
         }
 
         private string GenerateJwtToken(User user, IList<string> roles)

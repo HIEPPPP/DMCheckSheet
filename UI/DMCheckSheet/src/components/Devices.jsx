@@ -1,3 +1,4 @@
+// Device.jsx
 import React, { useEffect, useState, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button, Popover } from "@mui/material";
@@ -5,55 +6,25 @@ import { Html5QrcodeScanner } from "html5-qrcode";
 
 import SearchBar from "./SearchBar";
 import DeviceCard from "./DeviceCard";
+import DeviceDetail from "./DeviceDetail";
 import { QrCode } from "@mui/icons-material";
 import { getListCheckSheetDevices } from "../services/checkSheetDeviceServices";
-import DeviceDetail from "./DeviceDetail";
 import { getResultBySheetDeviceToday } from "../services/checkResultServices";
 
 function Device() {
   const [showScanner, setShowScanner] = useState(false);
   const [checkSheetDevices, setCheckSheetDevices] = useState([]);
-  const navigate = useNavigate();
-
+  const [searchTerm, setSearchTerm] = useState("");
   const [anchorEl, setAnchorEl] = useState(null);
   const [selectedDevice, setSelectedDevice] = useState(null);
+  const navigate = useNavigate();
 
-  const handleOpen = async (device, event) => {
-    setAnchorEl(event.currentTarget);
-
-    const today = new Date().toISOString().split("T")[0];
-
-    try {
-      const result = await getResultBySheetDeviceToday(
-        device.deviceCode,
-        device.sheetCode,
-        today
-      );
-      // 3. gộp vào state
-      setSelectedDevice({
-        ...device,
-        checkedBy: result?.checkedBy ? result.checkedBy : "",
-        confirmedBy: result?.confirmedBy ? result.confirmedBy : "",
-      });
-    } catch (err) {
-      console.error("Lỗi fetch result:", err);
-      setSelectedDevice(device);
-    }
-  };
-
-  const handleClose = () => {
-    setSelectedDevice(null);
-    setAnchorEl(null);
-  };
-
-  const open = Boolean(anchorEl);
-
-  // Load danh sách check-sheet frequency = 1
+  // Fetch devices
   useEffect(() => {
     async function fetchData() {
       try {
         const res = await getListCheckSheetDevices();
-        if (res && Array.isArray(res)) {
+        if (Array.isArray(res)) {
           setCheckSheetDevices(res.filter((item) => item.frequency === 1));
         }
       } catch (err) {
@@ -63,7 +34,49 @@ function Device() {
     fetchData();
   }, []);
 
-  // Xử lý sau khi quét được mã QR
+  // Filtered list based on search term
+  const filteredDevices = checkSheetDevices.filter((device) => {
+    const term = searchTerm.toLowerCase();
+    return (
+      device.deviceName?.toLowerCase().includes(term) ||
+      device.deviceCode?.toLowerCase().includes(term) ||
+      device.sheetCode?.toLowerCase().includes(term) ||
+      device.sheetName?.toLowerCase().includes(term)
+    );
+  });
+
+  // Open device detail
+  const handleOpen = async (device, event) => {
+    setAnchorEl(event.currentTarget);
+    const today = new Date().toISOString().split("T")[0];
+
+    try {
+      const result = await getResultBySheetDeviceToday(
+        device.deviceCode,
+        device.sheetCode,
+        today
+      );
+      console.log("Result:", result);
+
+      setSelectedDevice({
+        ...device,
+        checkedBy: result?.checkedBy || "",
+        confirmedBy: result?.confirmedBy || "",
+      });
+    } catch (err) {
+      console.error("Lỗi fetch result:", err);
+      setSelectedDevice(device);
+    }
+  };
+
+  console.log("Selected device:", selectedDevice);
+
+  const handleClose = () => {
+    setSelectedDevice(null);
+    setAnchorEl(null);
+  };
+
+  // QR scanner logic
   const handleScannedCode = useCallback(
     (decodedText) => {
       const parts = decodedText.split("-");
@@ -71,25 +84,16 @@ function Device() {
         alert("Mã QR không hợp lệ (phải có định dạng DEVICE-CHECKSHEET)");
         return;
       }
-      const deviceCode = parts[0].trim();
-      const sheetCode = parts[1].trim();
-      if (!deviceCode || !sheetCode) {
-        alert("Mã QR không hợp lệ");
-        return;
-      }
+      const [deviceCode, sheetCode] = parts.map((p) => p.trim());
       const exists = checkSheetDevices.some(
         (item) => item.deviceCode === deviceCode && item.sheetCode === sheetCode
       );
-      if (exists) {
-        navigate(`/checkSheet/${decodedText}`);
-      } else {
-        alert("Không tìm thấy mã QR này");
-      }
+      if (exists) navigate(`/checkSheet/${decodedText}`);
+      else alert("Không tìm thấy mã QR này");
     },
     [checkSheetDevices, navigate]
   );
 
-  // Khi showScanner = true thì khởi scanner
   useEffect(() => {
     if (!showScanner) return;
 
@@ -105,12 +109,9 @@ function Device() {
         scanner.clear().catch(() => {});
         setShowScanner(false);
       },
-      (error) => {
-        console.warn("Scan error:", error);
-      }
+      (error) => console.warn("Scan error:", error)
     );
 
-    // cleanup khi component unmount hoặc tắt scanner
     return () => {
       scanner.clear().catch(() => {});
     };
@@ -118,8 +119,8 @@ function Device() {
 
   return (
     <div>
-      <div className="flex justify-end items-center gap-3">
-        <SearchBar />
+      <div className="flex justify-between items-center gap-3">
+        <SearchBar value={searchTerm} onChange={setSearchTerm} />
         <Button
           variant="outlined"
           color="info"
@@ -140,27 +141,21 @@ function Device() {
       )}
 
       <div className="flex mt-10 gap-5 justify-center flex-wrap">
-        {checkSheetDevices.map((device) => (
+        {filteredDevices.map((device) => (
           <DeviceCard
             key={device.id}
             device={device}
-            onOpen={(device, e) => handleOpen(device, e)}
+            onOpen={(d, e) => handleOpen(d, e)}
           />
         ))}
       </div>
 
       <Popover
-        open={open}
+        open={Boolean(anchorEl)}
         anchorEl={anchorEl}
         onClose={handleClose}
-        anchorOrigin={{
-          vertical: "top",
-          horizontal: "center",
-        }}
-        transformOrigin={{
-          vertical: "bottom",
-          horizontal: "left",
-        }}
+        anchorOrigin={{ vertical: "top", horizontal: "center" }}
+        transformOrigin={{ vertical: "bottom", horizontal: "left" }}
       >
         {selectedDevice && <DeviceDetail device={selectedDevice} />}
       </Popover>

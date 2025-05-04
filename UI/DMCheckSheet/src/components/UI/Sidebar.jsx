@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import {
   FiHome,
@@ -34,14 +34,18 @@ import LogoutButton from "../LogoutButton";
 import { getAuthData } from "../../services/authService";
 import { jwtDecode } from "jwt-decode";
 import { CgFileDocument } from "react-icons/cg";
+import { AuthContext } from "../../contexts/AuthContext";
+import { Avatar } from "@mui/material";
 
 const Sidebar = () => {
-  const user = {
-    name: "MR. HIEP",
-    role: "Administrator",
-    avatar: "https://i.pravatar.cc/40", // Ảnh đại diện ngẫu nhiên
-  };
-
+  // const user = {
+  //   name: "MR. HIEP",
+  //   role: "Administrator",
+  //   avatar: "https://i.pravatar.cc/40", // Ảnh đại diện ngẫu nhiên
+  // };
+  const user = useContext(AuthContext);
+  const fullName = user.auth.fullName;
+  const username = user.auth.username;
   const [isOpen, setIsOpen] = useState(true);
 
   const token = localStorage.getItem("token");
@@ -65,7 +69,11 @@ const Sidebar = () => {
 
   const menuItems = [
     { name: "Daily Check", path: "/dashboard", icon: <FiHome size={22} /> },
-    { name: "Needed Check", path: "", icon: <CgFileDocument size={22} /> },
+    {
+      name: "Usage Check",
+      path: "/deviceNeeded",
+      icon: <CgFileDocument size={22} />,
+    },
     { name: "PDF", path: "/pdf", icon: <BsFilePdf size={22} /> },
     {
       name: "NG Update",
@@ -197,17 +205,18 @@ const Sidebar = () => {
           </>
         )}
         {/* User Info + Logout */}
-        <div className="mt-auto p-4 bg-[#F5F5F5] flex justify-center items-center rounded-lg mx-3">
+        <div className="mt-auto px-1 py-4 bg-[#F5F5F5] flex justify-center items-center rounded-lg mx-3">
           {isOpen && (
             <div className="flex items-center">
-              <img
-                src={user.avatar}
-                alt="User"
-                className="w-10 h-10 rounded-full"
-              />
+              <Avatar
+                sx={{ bgcolor: "primary.main" }}
+                className="w-10 h-10 rounded-full mr-2"
+              >
+                {fullName?.charAt(0).toUpperCase()}
+              </Avatar>
               <div className="ml-3">
-                <p className="font-semibold">{user.name}</p>
-                <p className="text-sm text-gray-500">{user.role}</p>
+                <p className="font-semibold">{fullName}</p>
+                <p className="text-sm text-gray-500">{username}</p>
               </div>
             </div>
           )}

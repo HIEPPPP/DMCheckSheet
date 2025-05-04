@@ -36,7 +36,6 @@ const ResultAction = () => {
       try {
         const res = await getListResultActionNG();
         res && setResultAction(res);
-        console.log("ResultAction", res);
       } catch (error) {
         console.error("Lỗi khi lấy dữ liệu:", error);
       }
