@@ -60,7 +60,7 @@ const CheckSheetItemMST = () => {
       parentId: parentItem.itemId,
       content: "",
       dataType: "",
-      orderNumber: parentItem.orderNumber ?? null,
+      orderNumber: null,
       createBy: "Admin",
       updateBy: "",
     });

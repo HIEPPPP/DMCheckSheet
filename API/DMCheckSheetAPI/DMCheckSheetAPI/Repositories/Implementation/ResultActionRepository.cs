@@ -1,5 +1,6 @@
 ﻿using DMCheckSheetAPI.Data;
 using DMCheckSheetAPI.Models.Domain;
+using DMCheckSheetAPI.Models.DTO;
 using DMCheckSheetAPI.Models.DTO.CheckSheetItem;
 using DMCheckSheetAPI.Models.DTO.ResultAction;
 using DMCheckSheetAPI.Repositories.Interface;
@@ -29,6 +30,15 @@ namespace DMCheckSheetAPI.Repositories.Implementation
         public async Task<ResultAction?> DeleteAsync(int id)
         {
             var existAction = await context.ResultActions.FindAsync(id);
+            if (existAction == null) return null;
+            context.ResultActions.Remove(existAction);
+            await context.SaveChangesAsync();
+            return existAction;
+        }
+
+        public async Task<ResultAction?> DeleteByResultId(int id)
+        {
+            var existAction = await context.ResultActions.FirstOrDefaultAsync(x => x.ResultId == id);
             if (existAction == null) return null;
             context.ResultActions.Remove(existAction);
             await context.SaveChangesAsync();
@@ -96,6 +106,23 @@ namespace DMCheckSheetAPI.Repositories.Implementation
                                                   Note = x.Note,
                                               })
                                               .FirstOrDefaultAsync(x => x.ResultId == resultId);
+        }
+
+        public async Task<List<ResultActionMonthDTO>> GetListActionByMonth(string sheetCode, string deviceCode, DateTime month)
+        {
+            string query = @"SELECT ra.ActionId, ra.ResultId, cr.CheckedDate, cr.CheckedBy, i.Content, ra.ActionTaken, ra.ActionDate, ra.ConfirmedBy, ra.ConfirmedDate, ra.Note FROM ResultActions AS ra
+                            LEFT JOIN CheckResults AS cr ON ra.ResultId = cr.ResultId
+                            LEFT JOIN CheckSheetItemMST AS i ON cr.ItemId = i.ItemId
+                            WHERE cr.DeviceCode = @DeviceCode
+                                AND cr.SheetCode = @SheetCode
+                                AND cr.CheckedDate >= @MonthRef
+                                AND cr.CheckedDate <  DATEADD(MONTH, 1, @MonthRef)";
+            return await context.Database.SqlQueryRaw<ResultActionMonthDTO>(
+                               query,
+                               new SqlParameter("@SheetCode", sheetCode),
+                               new SqlParameter("@DeviceCode", deviceCode),
+                               new SqlParameter("@MonthRef", month)
+                           ).ToListAsync();
         }
 
         public async Task<ResultAction?> UpdateAsync(int id, ResultAction action)

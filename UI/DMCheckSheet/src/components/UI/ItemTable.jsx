@@ -129,7 +129,7 @@ const TreeTable = ({
           </TableHead>
           <TableBody>
             {paginatedRows.map((node) => (
-              <TableRow key={node.itemId}>
+              <TableRow key={node.itemId} className="hover:bg-gray-100">
                 <TableCell sx={{ paddingLeft: `${node.level * 20}px` }}>
                   {node.sheetCode}
                 </TableCell>
@@ -141,9 +141,9 @@ const TreeTable = ({
                 <TableCell>{node.parentId}</TableCell>
                 <TableCell>{node.orderNumber}</TableCell>
                 <TableCell className="w-40">
-                  <IconButton color="primary" onClick={() => onEdit(node)}>
+                  {/* <IconButton color="primary" onClick={() => onEdit(node)}>
                     <Edit />
-                  </IconButton>
+                  </IconButton> */}
                   <IconButton
                     color="error"
                     onClick={() => onDelete(node.itemId)}

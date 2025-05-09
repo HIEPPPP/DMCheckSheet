@@ -85,7 +85,7 @@ const ActionTable = ({ resultAction = [], onEdit }) => {
         <TableContainer component={Paper}>
           <Table>
             <TableHead>
-              <TableRow className="bg-gray-200">
+              <TableRow className="bg-gray-200 hover:bg-gray-100">
                 <TableCell sx={{ fontWeight: 700 }}>STT</TableCell>
                 <TableCell sx={{ fontWeight: 700 }}>Mã CheckSheet</TableCell>
                 <TableCell sx={{ fontWeight: 700 }}>Tên CheckSheet</TableCell>
@@ -107,7 +107,7 @@ const ActionTable = ({ resultAction = [], onEdit }) => {
             </TableHead>
             <TableBody>
               {paginatedActions.map((action, index) => (
-                <TableRow key={action.actionId}>
+                <TableRow key={action.actionId} className="hover:bg-gray-100">
                   <TableCell>{page * rowsPerPage + index + 1}</TableCell>
                   <TableCell>{action.sheetCode}</TableCell>
                   <TableCell>{action.sheetName}</TableCell>

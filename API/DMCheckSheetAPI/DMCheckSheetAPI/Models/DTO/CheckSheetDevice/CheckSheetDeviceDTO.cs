@@ -14,5 +14,6 @@
 
         public string? DeviceName { get; set; }
         public string? DeviceCode { get; set; }
+        public bool IsConfirm { get; set; }
     }
 }

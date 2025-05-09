@@ -11,7 +11,7 @@ const SearchBar = ({ value, onChange }) => {
       <input
         type="text"
         placeholder="Tìm kiếm thiết bị..."
-        className="w-full py-2 pl-10 pr-4 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-700"
+        className="w-[380px] py-2 pl-10 pr-4 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-700"
         onChange={handleInputChange}
         value={value}
       />

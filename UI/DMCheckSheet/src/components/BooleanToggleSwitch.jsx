@@ -30,9 +30,8 @@ const BooleanToggleSwitch = ({
   const selectedIndex = options.indexOf(selected);
 
   const handleClick = (val) => {
-    if (disabled || val === selected) return;
-
-    console.log(disabled);
+    // if (disabled || val === selected) return;
+    // console.log(disabled);
 
     setSelected(val);
     val = val === "-" ? null : val; // Chuyển đổi "-" thành null
@@ -63,8 +62,8 @@ const BooleanToggleSwitch = ({
         overflow: "hidden",
         userSelect: "none",
         border: "1px solid #ccc",
-        opacity: disabled ? 0.5 : 1,
-        pointerEvents: disabled ? "none" : "auto",
+        // opacity: disabled ? 0.5 : 1,
+        // pointerEvents: disabled ? "none" : "auto",
       }}
     >
       {/* Nút trượt động */}
@@ -98,7 +97,7 @@ const BooleanToggleSwitch = ({
             "&:hover": {
               backgroundColor: "rgba(0, 0, 0, 0.05)",
             },
-            pointerEvents: disabled ? "none" : "auto",
+            // pointerEvents: disabled ? "none" : "auto",
           }}
           onClick={() => handleClick(opt)}
         >

@@ -16,8 +16,11 @@ export const StatusProvider = ({ children }) => {
       const today = new Date().toISOString().slice(0, 10);
       // 2) Gọi API trả về toàn bộ kết quả trong ngày
       const results = await getResultToDay(today);
+      const resultsFilter = results.filter((r) => r.dataType !== "");
+      // console.log(resultsFilter);
+
       // 3) Group theo deviceCode–sheetCode
-      const groups = results.reduce((acc, r) => {
+      const groups = resultsFilter.reduce((acc, r) => {
         const key = `${r.deviceCode}-${r.sheetCode}`;
         if (!acc[key]) acc[key] = [];
         acc[key].push(r);
@@ -42,7 +45,7 @@ export const StatusProvider = ({ children }) => {
       });
       // 5) Với những device–sheet chưa bao giờ có record trong ngày, cũng đánh Pending
       //    (nếu có danh sách thiết bị cố định, có thể merge thêm bước này)
-      // console.log("refreshStatus build map:", map);
+      console.log("refreshStatus build map:", map);
       setStatusMap(map);
     } catch (err) {
       console.error("Không load được status:", err);

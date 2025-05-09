@@ -84,7 +84,7 @@ const DeviceTable = ({ devices = [], onEdit, onDelete }) => {
           </TableHead>
           <TableBody>
             {paginatedDevices.map((device, index) => (
-              <TableRow key={device.deviceId}>
+              <TableRow key={device.deviceId} className="hover:bg-gray-100">
                 <TableCell>{page * rowsPerPage + index + 1}</TableCell>
                 <TableCell>{device.deviceCode}</TableCell>
                 <TableCell>{device.deviceName}</TableCell>

@@ -1,5 +1,6 @@
 ﻿using DMCheckSheetAPI.Models;
 using DMCheckSheetAPI.Models.Domain;
+using DMCheckSheetAPI.Models.DTO;
 using DMCheckSheetAPI.Models.DTO.CheckResult;
 using DMCheckSheetAPI.Services;
 using Microsoft.AspNetCore.Http;
@@ -73,10 +74,18 @@ namespace DMCheckSheetAPI.Controllers
         }
 
         [HttpPut("approve")]
-        public async Task<IActionResult> ResultApprove([FromBody] List<ResultApproveByDTO> resultApproveByDTOs)
+        public async Task<IActionResult> ResultApprove([FromQuery] string sheetCode, [FromQuery] string deviceCode, [FromQuery] DateTime month, [FromQuery] string username)
         {
-            var results = await checkResultServices.EditApproveBy(resultApproveByDTOs);
-            return results != null ? Ok(new ApiResponse<List<CheckResult>>(200, "Approved", results))
+            var results = await checkResultServices.EditApproveBy(sheetCode, deviceCode, month, username);
+            return results != null ? Ok(new ApiResponse<CheckResult>(200, "Approved", results))
+                                   : NotFound(new ApiResponse<string>(404, "Result not found"));
+        }
+
+        [HttpPut("confirmedMonth")]
+        public async Task<IActionResult> ResultConfirmedMonth([FromQuery] string sheetCode, [FromQuery] string deviceCode, [FromQuery] DateTime month, [FromQuery] string username)
+        {
+            var results = await checkResultServices.EditConfirmedMonth(sheetCode, deviceCode, month, username);
+            return results != null ? Ok(new ApiResponse<CheckResult>(200, "Confirmed month", results))
                                    : NotFound(new ApiResponse<string>(404, "Result not found"));
         }
 
@@ -103,6 +112,32 @@ namespace DMCheckSheetAPI.Controllers
             return Ok(new ApiResponse<CheckResult>(200, "Success", results));
         }
 
+        [HttpGet("checkSheetRow")]
+        public async Task<IActionResult> GetCheckSheetRows([FromQuery] string sheetCode, [FromQuery] string deviceCode, [FromQuery] DateTime monthref)
+        {
+            var result = await checkResultServices.GetCheckSheetRows(sheetCode, deviceCode, monthref);
+            return Ok(new ApiResponse<List<CheckSheetRowDTO>>(200, "Success", result));
+        }
 
+        [HttpGet("approvedByMonth")]
+        public async Task<IActionResult> GetApprovedByMonth([FromQuery] string sheetCode, [FromQuery] string deviceCode, [FromQuery] DateTime month)
+        {
+            var result = await checkResultServices.GetApprovedByMonth(sheetCode, deviceCode, month);
+            return Ok(new ApiResponse<CheckResult>(200, "Success", result));
+        }
+
+        [HttpGet("confirmedByMonth")]
+        public async Task<IActionResult> GetConfirmedByMonth([FromQuery] string sheetCode, [FromQuery] string deviceCode, [FromQuery] DateTime month)
+        {
+            var result = await checkResultServices.GetConfirmedByMonth(sheetCode, deviceCode, month);
+            return Ok(new ApiResponse<CheckResult>(200, "Success", result));
+        }
+
+        [HttpGet("approvedConfirmedMonth")]
+        public async Task<IActionResult> GetResultsApproveConfirmeMonths([FromQuery] DateTime month)
+        {
+            var results = await checkResultServices.GetResultsApproveConfirmeMonths(month);
+            return Ok(new ApiResponse<List<ResultsApproveConfirmeMonthDTO>>(200, "Success", results));
+        }
     }
 }

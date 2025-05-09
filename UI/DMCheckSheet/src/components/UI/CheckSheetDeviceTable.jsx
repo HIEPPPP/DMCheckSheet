@@ -79,8 +79,8 @@ const CheckSheetDeviceTable = ({ checkSheetDevices, onEdit, onDelete }) => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {(checkSheetDevices ?? []).map((checkSheetDevice, index) => (
-              <TableRow key={checkSheetDevice.id}>
+            {paginatedCheckSheetDevices.map((checkSheetDevice, index) => (
+              <TableRow key={checkSheetDevice.id} className="hover:bg-gray-100">
                 <TableCell>{index + 1}</TableCell>
                 <TableCell>{checkSheetDevice.sheetCode}</TableCell>
                 <TableCell>{checkSheetDevice.sheetName}</TableCell>

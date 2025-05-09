@@ -33,7 +33,7 @@ const styleMap = {
   Pending: { color: "bg-amber-500", anim: "animate-bounce", icon: null },
 };
 
-const DeviceCard = ({ device, onOpen }) => {
+const DeviceCard = ({ device, onOpen, showConfirmer, confirmedBy }) => {
   const { statusMap } = useStatus();
   const key = `${device.deviceCode}-${device.sheetCode}`;
   const status = statusMap[key] || "Pending";
@@ -43,7 +43,9 @@ const DeviceCard = ({ device, onOpen }) => {
   return (
     <div className="bg-white shadow-lg rounded-2xl p-5 w-72 border border-gray-200 flex flex-col transition-transform hover:scale-[1.02] hover:shadow-xl duration-200">
       <div className="flex-grow">
-        <h2 className="text-xl font-bold text-gray-800">{device.deviceName}</h2>
+        <h2 className="text-base font-bold text-gray-800">
+          {device.deviceName}
+        </h2>
         <div className="text-sm text-gray-500 mt-3 space-y-1">
           <p>
             <span className="font-medium text-gray-700">Mã thiết bị:</span>{" "}
@@ -59,6 +61,14 @@ const DeviceCard = ({ device, onOpen }) => {
               {device.location}
             </span>
           </p>
+          {showConfirmer && confirmedBy && (
+            <p>
+              <span className="font-medium text-gray-700">Người xác nhận:</span>{" "}
+              <span className="font-semibold text-green-600">
+                {confirmedBy}
+              </span>
+            </p>
+          )}
         </div>
 
         <div className="text-sm text-gray-600 mt-5 flex items-center">

@@ -45,6 +45,10 @@ namespace DMCheckSheetAPI.Migrations
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)");
 
+                    b.Property<string>("ConfirmedMonthBy")
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
                     b.Property<string>("DeviceCode")
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)");
@@ -249,6 +253,9 @@ namespace DMCheckSheetAPI.Migrations
 
                     b.Property<int>("Frequency")
                         .HasColumnType("int");
+
+                    b.Property<bool>("IsConfirm")
+                        .HasColumnType("bit");
 
                     b.Property<string>("Location")
                         .IsRequired()

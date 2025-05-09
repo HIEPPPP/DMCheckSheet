@@ -42,31 +42,31 @@ const CheckSheetTable = ({ checkSheets, onEdit, onDelete }) => {
 
   return (
     <Box>
+      {/* Thanh tìm kiếm và chọn số dòng */}
+      <Box className="flex justify-between flex-wrap gap-2 my-4">
+        <TextField
+          label="Tìm kiếm"
+          variant="outlined"
+          size="small"
+          value={searchText}
+          onChange={(e) => setSearchText(e.target.value)}
+        />
+        <TextField
+          label="Số dòng/trang"
+          select
+          size="small"
+          value={rowsPerPage}
+          onChange={handleChangeRowsPerPage}
+          sx={{ width: 150 }}
+        >
+          {[5, 10, 25].map((option) => (
+            <MenuItem key={option} value={option}>
+              {option}
+            </MenuItem>
+          ))}
+        </TextField>
+      </Box>
       <TableContainer component={Paper} className="mt-4">
-        {/* Thanh tìm kiếm và chọn số dòng */}
-        <Box className="flex justify-between flex-wrap gap-2 my-4">
-          <TextField
-            label="Tìm kiếm"
-            variant="outlined"
-            size="small"
-            value={searchText}
-            onChange={(e) => setSearchText(e.target.value)}
-          />
-          <TextField
-            label="Số dòng/trang"
-            select
-            size="small"
-            value={rowsPerPage}
-            onChange={handleChangeRowsPerPage}
-            sx={{ width: 150 }}
-          >
-            {[5, 10, 25].map((option) => (
-              <MenuItem key={option} value={option}>
-                {option}
-              </MenuItem>
-            ))}
-          </TextField>
-        </Box>
         <Table>
           <TableHead>
             <TableRow className="bg-gray-200">
@@ -79,7 +79,7 @@ const CheckSheetTable = ({ checkSheets, onEdit, onDelete }) => {
           </TableHead>
           <TableBody>
             {paginatedCheckSheets.map((checkSheet, index) => (
-              <TableRow key={checkSheet.sheetId}>
+              <TableRow key={checkSheet.sheetId} className="hover:bg-gray-100">
                 <TableCell>{page * rowsPerPage + index + 1}</TableCell>
                 <TableCell>{checkSheet.formNO}</TableCell>
                 <TableCell>{checkSheet.sheetCode}</TableCell>

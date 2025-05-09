@@ -58,6 +58,16 @@ namespace DMCheckSheetAPI.Services
         {
             return await resultActionRepository.DeleteAsync(id);
         }
+
+        public async Task<ResultAction?> DeleteActionByResultId(int id)
+        {
+            return await resultActionRepository.DeleteByResultId(id);
+        }
+
+        public async Task<List<ResultActionMonthDTO>> GetlistActionMonth(string sheetCode, string deviceCode, DateTime month)
+        {
+            return await resultActionRepository.GetListActionByMonth(sheetCode, deviceCode, month);
+        }
        
     }
 }

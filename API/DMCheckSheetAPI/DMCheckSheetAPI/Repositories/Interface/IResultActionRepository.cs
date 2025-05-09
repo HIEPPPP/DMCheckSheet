@@ -1,5 +1,6 @@
 ﻿using DMCheckSheetAPI.Models.Domain;
 using DMCheckSheetAPI.Models.DTO.ResultAction;
+using System.Runtime.CompilerServices;
 
 namespace DMCheckSheetAPI.Repositories.Interface
 {
@@ -13,5 +14,7 @@ namespace DMCheckSheetAPI.Repositories.Interface
         Task<ResultAction?> UpdateAsync(int id, ResultAction action);
         Task<ResultAction?> UpdateByResultIdAsync(int resultId, ResultAction action);
         Task<ResultAction?> DeleteAsync(int id);
+        Task<ResultAction?> DeleteByResultId(int id);
+        Task<List<ResultActionMonthDTO>> GetListActionByMonth(string sheetCode, string deviceCode, DateTime month);
     }
 }

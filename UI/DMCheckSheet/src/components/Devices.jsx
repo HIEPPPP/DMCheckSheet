@@ -7,9 +7,19 @@ import { Html5QrcodeScanner } from "html5-qrcode";
 import SearchBar from "./SearchBar";
 import DeviceCard from "./DeviceCard";
 import DeviceDetail from "./DeviceDetail";
-import { QrCode } from "@mui/icons-material";
+import {
+  CheckBoxOutlineBlank,
+  CheckBoxOutlineBlankRounded,
+  CheckBoxRounded,
+  QrCode,
+  VisibilityOffTwoTone,
+  VisibilityTwoTone,
+} from "@mui/icons-material";
 import { getListCheckSheetDevices } from "../services/checkSheetDeviceServices";
-import { getResultBySheetDeviceToday } from "../services/checkResultServices";
+import {
+  getResultBySheetDeviceToday,
+  getResultToDay,
+} from "../services/checkResultServices";
 
 function Device() {
   const [showScanner, setShowScanner] = useState(false);
@@ -17,6 +27,9 @@ function Device() {
   const [searchTerm, setSearchTerm] = useState("");
   const [anchorEl, setAnchorEl] = useState(null);
   const [selectedDevice, setSelectedDevice] = useState(null);
+
+  const [showConfirmer, setShowConfirmer] = useState(false);
+  const [resultMap, setResultMap] = useState({});
   const navigate = useNavigate();
 
   // Fetch devices
@@ -33,6 +46,30 @@ function Device() {
     }
     fetchData();
   }, []);
+
+  useEffect(() => {
+    if (!showConfirmer) {
+      // khi tắt chế độ xem confirmer thì clear map
+      setResultMap({});
+      return;
+    }
+    async function fetchResultsToday() {
+      try {
+        const today = new Date().toISOString().split("T")[0];
+        // Giả sử API này trả về mảng [{ deviceCode, sheetCode, confirmedBy, ... }]
+        const results = await getResultToDay(today);
+        const map = {};
+        results.forEach((r) => {
+          const key = `${r.deviceCode}-${r.sheetCode}`;
+          map[key] = r.confirmedBy;
+        });
+        setResultMap(map);
+      } catch (err) {
+        console.error("Lỗi fetch results today:", err);
+      }
+    }
+    fetchResultsToday();
+  }, [showConfirmer]);
 
   // Filtered list based on search term
   const filteredDevices = checkSheetDevices.filter((device) => {
@@ -68,8 +105,6 @@ function Device() {
       setSelectedDevice(device);
     }
   };
-
-  console.log("Selected device:", selectedDevice);
 
   const handleClose = () => {
     setSelectedDevice(null);
@@ -117,10 +152,50 @@ function Device() {
     };
   }, [showScanner, handleScannedCode]);
 
+  const handleToggleConfirm = async () => {
+    // newState là giá trị của showConfirmer sẽ được cập nhật
+    const newState = !showConfirmer;
+    setShowConfirmer(newState);
+
+    try {
+      const res = await getListCheckSheetDevices();
+      if (!Array.isArray(res)) return;
+
+      // Khi newState === true: chỉ lấy item.isConfirm === true
+      // Khi newState === false: lấy tất cả (chỉ tách theo frequency)
+      const filtered = res.filter(
+        (item) =>
+          item.frequency === 1 && (newState ? item.isConfirm === true : true)
+      );
+
+      setCheckSheetDevices(filtered);
+    } catch (err) {
+      console.error("Lỗi fetch checkSheetDevices:", err);
+    }
+  };
+
   return (
-    <div>
-      <div className="flex justify-between items-center gap-3">
-        <SearchBar value={searchTerm} onChange={setSearchTerm} />
+    <div className="">
+      <div className="flex justify-around gap-5">
+        <div className="">
+          <SearchBar value={searchTerm} onChange={setSearchTerm} />
+          <div className="flex gap-2 mt-2 float-end items-center">
+            <p className="text-gray-600 font-bold">Cần xác nhận</p>
+            {showConfirmer ? (
+              // <VisibilityTwoTone onClick={handleToggleConfirm} />
+              <CheckBoxRounded
+                onClick={handleToggleConfirm}
+                sx={{ fontSize: 35, color: "#2196F3" }}
+              />
+            ) : (
+              // <VisibilityOffTwoTone onClick={handleToggleConfirm} />
+              <CheckBoxOutlineBlankRounded
+                onClick={handleToggleConfirm}
+                sx={{ fontSize: 35, color: "#2196F3" }}
+              />
+            )}
+          </div>
+        </div>
         <Button
           variant="outlined"
           color="info"
@@ -141,13 +216,18 @@ function Device() {
       )}
 
       <div className="flex mt-10 gap-5 justify-center flex-wrap">
-        {filteredDevices.map((device) => (
-          <DeviceCard
-            key={device.id}
-            device={device}
-            onOpen={(d, e) => handleOpen(d, e)}
-          />
-        ))}
+        {filteredDevices.map((device) => {
+          const key = `${device.deviceCode}-${device.sheetCode}`;
+          return (
+            <DeviceCard
+              key={device.id}
+              device={device}
+              showConfirmer={showConfirmer}
+              confirmedBy={resultMap[key]}
+              onOpen={(d, e) => handleOpen(d, e)}
+            />
+          );
+        })}
       </div>
 
       <Popover

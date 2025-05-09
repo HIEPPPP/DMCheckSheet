@@ -1,8 +1,12 @@
 ﻿using DMCheckSheetAPI.Data;
 using DMCheckSheetAPI.Models.Domain;
+using DMCheckSheetAPI.Models.DTO;
 using DMCheckSheetAPI.Models.DTO.CheckResult;
+using DMCheckSheetAPI.Models.DTO.CheckSheetItem;
 using DMCheckSheetAPI.Repositories.Interface;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace DMCheckSheetAPI.Repositories.Implementation
 {
@@ -77,24 +81,45 @@ namespace DMCheckSheetAPI.Repositories.Implementation
 
             await context.SaveChangesAsync();
             return existResults;
+            
         }
 
-        public async Task<List<CheckResult>> EditApproveBy(List<CheckResult> checkResults)
+        public async Task<CheckResult?> EditApproveBy(string sheetCode, string deviceCode, DateTime month, string username)
         {
-            var ids = checkResults.Select(r => r.ResultId).ToList();
-            var existResults = await context.CheckResults
-                                            .Where(r => ids.Contains(r.ResultId))
-                                            .ToListAsync();
-            foreach (var item in existResults)
-            {
-                var updateItem = checkResults.FirstOrDefault(u => u.ResultId == item.ResultId);
-                if (updateItem != null)
-                {
-                    item.ApprovedBy = updateItem.ApprovedBy;
-                }
-            }
+            //var ids = checkResults.Select(r => r.ResultId).ToList();
+            //var existResults = await context.CheckResults
+            //                                .Where(r => ids.Contains(r.ResultId))
+            //                                .ToListAsync();
+            //foreach (var item in existResults)
+            //{
+            //    var updateItem = checkResults.FirstOrDefault(u => u.ResultId == item.ResultId);
+            //    if (updateItem != null)
+            //    {
+            //        item.ApprovedBy = updateItem.ApprovedBy;
+            //    }
+            //}
+            //await context.SaveChangesAsync();
+            //return existResults;
+            var results = await context.CheckResults
+                                       .Where(x => x.SheetCode == sheetCode && x.DeviceCode == deviceCode && x.CheckedDate.Date.Month == month.Date.Month)
+                                       .FirstOrDefaultAsync();
+
+            if (results == null) return null;
+            results.ApprovedBy = username;
             await context.SaveChangesAsync();
-            return existResults;
+            return results;
+        }
+
+        public async Task<CheckResult?> EditConfirmMonth(string sheetCode, string deviceCode, DateTime month, string username)
+        {
+            var results = await context.CheckResults
+                                       .Where(x => x.SheetCode == sheetCode && x.DeviceCode == deviceCode && x.CheckedDate.Date.Month == month.Date.Month)
+                                       .FirstOrDefaultAsync();
+
+            if (results == null) return null;
+            results.ConfirmedMonthBy = username;
+            await context.SaveChangesAsync();
+            return results;
         }
 
         public async Task<List<ResultBySheetCodeAndDateDTO>> GetResultsBySheetAndDateAsync(string sheetCode, string deviceCode, DateTime today)
@@ -106,6 +131,7 @@ namespace DMCheckSheetAPI.Repositories.Implementation
                                            ResultId = x.ResultId,
                                            Value = x.Value,
                                            IsConfirmNG = x.IsConfirmNG,
+                                           ConfirmedBy = x.ConfirmedBy
                                        })
                                        .ToListAsync();
             return results;
@@ -127,6 +153,7 @@ namespace DMCheckSheetAPI.Repositories.Implementation
                                                  Value = x.Value,
                                                  CheckedDate = x.CheckedDate,
                                                  CheckedBy = x.CheckedBy,
+                                                 ConfirmedBy = x.ConfirmedBy,
                                                  ItemId = x.ItemId,
                                                  ItemContent = x.CheckSheetItemMST.Content,
                                                  DataType = x.CheckSheetItemMST.DataType,
@@ -149,5 +176,175 @@ namespace DMCheckSheetAPI.Repositories.Implementation
         {
             return await context.CheckResults.FirstOrDefaultAsync(x => x.SheetCode == sheetCode && x.DeviceCode == deviceCode && x.CheckedDate.Date == today.Date);
         }
+
+        public async Task<List<CheckSheetRowDTO>> GetCheckSheetRows(string sheetCode, string deviceCode, DateTime monthref)
+        {
+            string query = @"
+                                WITH
+                                -- 1. Các mục con + parent
+                                Items AS (
+                                  SELECT 
+                                    ci.ItemId,
+                                    ci.Content         AS Content,
+                                    p.Content         AS ParentContent,
+                                    ci.OrderNumber,
+                                    ISNULL(p.OrderNumber * 100 + ci.OrderNumber, ci.OrderNumber) + 2  
+                                      AS SortOrder
+                                  FROM ChecksheetItemMST ci
+                                  LEFT JOIN ChecksheetItemMST p
+                                    ON ci.ParentId = p.ItemId
+                                  JOIN CheckSheetMST cs
+                                    ON ci.SheetId = cs.SheetId
+                                  WHERE cs.SheetCode = @SheetCode
+                                    AND ci.CancelFlag = 0
+                                ),
+
+                                -- 2. Kết quả
+                                Results AS (
+                                  SELECT
+                                    cr.ItemId,
+                                    cr.CheckedDate,
+                                    DAY(cr.CheckedDate) AS CheckedDay,
+                                    CASE 
+                                      WHEN cr.Value = 'OK' THEN 'o'
+                                      WHEN cr.Value = 'NG' THEN 'x'
+                                      ELSE ''
+                                    END                AS ValueText,
+                                    cr.CheckedBy,
+                                    cr.ConfirmedBy
+                                  FROM CheckResults cr
+                                  WHERE cr.DeviceCode = @DeviceCode
+                                    AND cr.CheckedDate >= @MonthRef
+                                    AND cr.CheckedDate <  DATEADD(MONTH, 1, @MonthRef)
+                                ),
+
+                                -- 3. Tập hợp nguồn trước khi pivot
+                                srcAll AS (
+                                  -- Dòng 0: Người kiểm tra
+                                  SELECT
+                                    1                    AS SortOrder,
+                                    N'Người kiểm tra'   AS ParentContent,
+                                    ''                   AS Content,
+                                    DAY(r.CheckedDate)   AS CheckedDay,
+                                    ISNULL(r.CheckedBy,'') AS ValueText
+                                  FROM Results r
+
+                                  UNION ALL
+
+                                  -- Dòng 1: Người xác nhận
+                                  SELECT
+                                    0                    AS SortOrder,
+                                    N'Người Xác nhận'         AS ParentContent,
+                                    ''                   AS Content,
+                                    DAY(r.CheckedDate)   AS CheckedDay,
+                                    ISNULL(r.ConfirmedBy,'') AS ValueText
+                                  FROM Results r
+
+                                  UNION ALL
+
+                                  -- Các dòng kiểm tra con
+                                  SELECT
+                                    i.SortOrder,
+                                    i.ParentContent,
+                                    i.Content,
+                                    r.CheckedDay,
+                                    r.ValueText
+                                  FROM Items i
+                                  LEFT JOIN Results r
+                                    ON i.ItemId = r.ItemId
+                                )
+
+                                -- 4. Pivot
+                                SELECT
+                                  p.ParentContent,
+                                  p.Content,
+                                  ISNULL(p.[1], '')   AS [Day1],
+                                  ISNULL(p.[2], '')   AS [Day2],
+                                  ISNULL(p.[3], '')   AS [Day3],
+                                  ISNULL(p.[4], '')   AS [Day4],
+                                  ISNULL(p.[5], '')   AS [Day5],
+                                  ISNULL(p.[6], '')   AS [Day6],
+                                  ISNULL(p.[7], '')   AS [Day7],
+                                  ISNULL(p.[8], '')   AS [Day8],
+                                  ISNULL(p.[9], '')   AS [Day9],
+                                  ISNULL(p.[10], '')  AS [Day10],
+                                  ISNULL(p.[11], '')  AS [Day11],
+                                  ISNULL(p.[12], '')  AS [Day12],
+                                  ISNULL(p.[13], '')  AS [Day13],
+                                  ISNULL(p.[14], '')  AS [Day14],
+                                  ISNULL(p.[15], '')  AS [Day15],
+                                  ISNULL(p.[16], '')  AS [Day16],
+                                  ISNULL(p.[17], '')  AS [Day17],
+                                  ISNULL(p.[18], '')  AS [Day18],
+                                  ISNULL(p.[19], '')  AS [Day19],
+                                  ISNULL(p.[20], '')  AS [Day20],
+                                  ISNULL(p.[21], '')  AS [Day21],
+                                  ISNULL(p.[22], '')  AS [Day22],
+                                  ISNULL(p.[23], '')  AS [Day23],
+                                  ISNULL(p.[24], '')  AS [Day24],
+                                  ISNULL(p.[25], '')  AS [Day25],
+                                  ISNULL(p.[26], '')  AS [Day26],
+                                  ISNULL(p.[27], '')  AS [Day27],
+                                  ISNULL(p.[28], '')  AS [Day28],
+                                  ISNULL(p.[29], '')  AS [Day29],
+                                  ISNULL(p.[30], '')  AS [Day30],
+                                  ISNULL(p.[31], '')  AS [Day31]
+                                FROM srcAll
+                                PIVOT (
+                                  MAX(ValueText) FOR CheckedDay IN (
+                                    [1],[2],[3],[4],[5],[6],[7],[8],[9],
+                                    [10],[11],[12],[13],[14],[15],[16],[17],[18],[19],
+                                    [20],[21],[22],[23],[24],[25],[26],[27],[28],
+                                    [29],[30],[31]
+                                  )
+                                ) AS p
+                                WHERE p.ParentContent IS NOT NULL
+                                ORDER BY p.SortOrder DESC;";
+            return await context.Database.SqlQueryRaw<CheckSheetRowDTO>(
+                               query,
+                               new SqlParameter("@SheetCode", sheetCode),
+                               new SqlParameter("@DeviceCode", deviceCode),
+                               new SqlParameter("@MonthRef", monthref)
+                           ).ToListAsync();
+        }
+
+        public async Task<CheckResult?> GetApprovedByMonth(string sheetCode, string deviceCode, DateTime month)
+        {
+            return await context.CheckResults.FirstOrDefaultAsync(x => x.SheetCode == sheetCode && x.DeviceCode == deviceCode && x.CheckedDate.Date.Month == month.Date.Month && x.ApprovedBy != null);
+        }
+
+        public async Task<CheckResult?> GetConfirmedByMonth(string sheetCode, string deviceCode, DateTime month)
+        {
+            return await context.CheckResults.FirstOrDefaultAsync(x => x.SheetCode == sheetCode && x.DeviceCode == deviceCode && x.CheckedDate.Date.Month == month.Date.Month && x.ConfirmedMonthBy != null);
+        }
+
+        public async Task<List<ResultsApproveConfirmeMonthDTO>> GetResultsApproveConfirmeMonths(DateTime month)
+        {
+            string query = @"
+                            SELECT
+                                SheetName,
+                                DeviceName,
+                                SheetCode,
+                                DeviceCode,
+
+                                -- Nếu có ít nhất 1 bản ghi trong tháng có ApprovedBy != NULL thì trả về 1 (TRUE), ngược lại 0 (FALSE)
+                                MAX(CASE WHEN ApprovedBy IS NOT NULL THEN 1 ELSE 0 END) 
+                                  AS IsApproved,
+
+                                -- Tương tự với ConfirmedMonthBy
+                                MAX(CASE WHEN ConfirmedMonthBy IS NOT NULL THEN 1 ELSE 0 END) 
+                                  AS IsConfirmedMonth
+                            FROM CheckResults
+                            WHERE CheckedDate >= @MonthRef
+                              AND CheckedDate <  DATEADD(MONTH, 1, @MonthRef)
+                            GROUP BY
+                                SheetName, DeviceName, SheetCode, DeviceCode
+                            ;";
+            return await context.Database.SqlQueryRaw<ResultsApproveConfirmeMonthDTO>(
+                               query,
+                               new SqlParameter("@MonthRef", month)
+                           ).ToListAsync();
+        }
+
     }
 }

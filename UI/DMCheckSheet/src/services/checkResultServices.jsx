@@ -115,9 +115,27 @@ export const confirmResult = async (data) => {
   }
 };
 
-export const approveResult = async (data) => {
+export const approveResult = async (sheetCode, deviceCode, month, username) => {
   try {
-    const res = await apiClient.put("/approve", data);
+    const res = await apiClient.put(
+      `/approve?sheetCode=${sheetCode}&deviceCode=${deviceCode}&month=${month}&username=${username}`
+    );
+    return res.data.data;
+  } catch (error) {
+    return handleError(error);
+  }
+};
+
+export const confirmedMonthResult = async (
+  sheetCode,
+  deviceCode,
+  month,
+  username
+) => {
+  try {
+    const res = await apiClient.put(
+      `/confirmedMonth?sheetCode=${sheetCode}&deviceCode=${deviceCode}&month=${month}&username=${username}`
+    );
     return res.data.data;
   } catch (error) {
     return handleError(error);
@@ -127,6 +145,48 @@ export const approveResult = async (data) => {
 export const updateConfirmNG = async (resultId, data) => {
   try {
     const res = await apiClient.put(`/${resultId}/updateIsConfirmNG`, data);
+    return res.data.data;
+  } catch (error) {
+    return handleError(error);
+  }
+};
+
+export const getCheckSheetRows = async (sheetCode, deviceCode, monthref) => {
+  try {
+    const res = await apiClient.get(
+      `/checkSheetRow?sheetCode=${sheetCode}&deviceCode=${deviceCode}&monthRef=${monthref}`
+    );
+    return res.data.data;
+  } catch (error) {
+    return handleError(error);
+  }
+};
+
+export const getApprovedByMonth = async (sheetCode, deviceCode, month) => {
+  try {
+    const res = await apiClient.get(
+      `/approvedByMonth?sheetCode=${sheetCode}&deviceCode=${deviceCode}&month=${month}`
+    );
+    return res.data.data;
+  } catch (error) {
+    return handleError(error);
+  }
+};
+
+export const getConfirmedByMonth = async (sheetCode, deviceCode, month) => {
+  try {
+    const res = await apiClient.get(
+      `/confirmedByMonth?sheetCode=${sheetCode}&deviceCode=${deviceCode}&month=${month}`
+    );
+    return res.data.data;
+  } catch (error) {
+    return handleError(error);
+  }
+};
+
+export const getListResultApprovedConfirmedMonth = async (month) => {
+  try {
+    const res = await apiClient.get(`/approvedConfirmedMonth?month=${month}`);
     return res.data.data;
   } catch (error) {
     return handleError(error);

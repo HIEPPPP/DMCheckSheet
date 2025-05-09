@@ -84,3 +84,27 @@ export const deleteResultAction = async (id) => {
     return handleError(error);
   }
 };
+
+export const deleteResultActionByResultID = async (resultId) => {
+  try {
+    await apiClient.delete(`/${resultId}/resultId`);
+    return true;
+  } catch (error) {
+    return handleError(error);
+  }
+};
+
+export const getListResultActionMonth = async (
+  sheetCode,
+  deviceCode,
+  month
+) => {
+  try {
+    const res = await apiClient.get(
+      `/resultActionMonth?sheetCode=${sheetCode}&deviceCode=${deviceCode}&month=${month}`
+    );
+    return res.data.data;
+  } catch (error) {
+    return handleError(error);
+  }
+};

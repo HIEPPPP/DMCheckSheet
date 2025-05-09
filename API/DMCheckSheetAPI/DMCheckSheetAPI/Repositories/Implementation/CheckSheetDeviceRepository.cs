@@ -47,7 +47,8 @@ namespace DMCheckSheetAPI.Repositories.Implementation
                                           DeviceCode = x.DeviceMST.DeviceCode,
                                           DeviceName = x.DeviceMST.DeviceName,
                                           Frequency = x.DeviceMST.Frequency,
-                                          Location = x.DeviceMST.Location
+                                          Location = x.DeviceMST.Location,
+                                          IsConfirm = x.DeviceMST.IsConfirm
                                       })
                                       .AsNoTracking()
                                       .ToListAsync();

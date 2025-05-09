@@ -7,20 +7,136 @@
       "RelativeMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|solutionrelative:dmchecksheetapi\\repositories\\implementation\\checkresultrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|d:\\it-03-code\\01-main\\02.dm-checksheet\\api\\dmchecksheetapi\\dmchecksheetapi\\repositories\\interface\\icheckresultrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|solutionrelative:dmchecksheetapi\\repositories\\interface\\icheckresultrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|d:\\it-03-code\\01-main\\02.dm-checksheet\\api\\dmchecksheetapi\\dmchecksheetapi\\services\\checkresultservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|solutionrelative:dmchecksheetapi\\services\\checkresultservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|d:\\it-03-code\\01-main\\02.dm-checksheet\\api\\dmchecksheetapi\\dmchecksheetapi\\models\\dto\\checkresult\\resultsapproveconfirmemonthdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|solutionrelative:dmchecksheetapi\\models\\dto\\checkresult\\resultsapproveconfirmemonthdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|d:\\it-03-code\\01-main\\02.dm-checksheet\\api\\dmchecksheetapi\\dmchecksheetapi\\controllers\\checkresultcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|solutionrelative:dmchecksheetapi\\controllers\\checkresultcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|d:\\it-03-code\\01-main\\02.dm-checksheet\\api\\dmchecksheetapi\\dmchecksheetapi\\services\\checkresultservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|solutionrelative:dmchecksheetapi\\services\\checkresultservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|d:\\it-03-code\\01-main\\02.dm-checksheet\\api\\dmchecksheetapi\\dmchecksheetapi\\repositories\\interface\\icheckresultrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|solutionrelative:dmchecksheetapi\\repositories\\interface\\icheckresultrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|d:\\it-03-code\\01-main\\02.dm-checksheet\\api\\dmchecksheetapi\\dmchecksheetapi\\models\\dto\\checkresult\\resultbysheetcodeanddatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|solutionrelative:dmchecksheetapi\\models\\dto\\checkresult\\resultbysheetcodeanddatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|d:\\it-03-code\\01-main\\02.dm-checksheet\\api\\dmchecksheetapi\\dmchecksheetapi\\models\\dto\\checkresult\\resulttodaydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|solutionrelative:dmchecksheetapi\\models\\dto\\checkresult\\resulttodaydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|d:\\it-03-code\\01-main\\02.dm-checksheet\\api\\dmchecksheetapi\\dmchecksheetapi\\repositories\\implementation\\devicerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|solutionrelative:dmchecksheetapi\\repositories\\implementation\\devicerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|d:\\it-03-code\\01-main\\02.dm-checksheet\\api\\dmchecksheetapi\\dmchecksheetapi\\repositories\\interface\\idevicerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|solutionrelative:dmchecksheetapi\\repositories\\interface\\idevicerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|d:\\it-03-code\\01-main\\02.dm-checksheet\\api\\dmchecksheetapi\\dmchecksheetapi\\services\\devicesevices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|solutionrelative:dmchecksheetapi\\services\\devicesevices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|d:\\it-03-code\\01-main\\02.dm-checksheet\\api\\dmchecksheetapi\\dmchecksheetapi\\controllers\\devicecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|solutionrelative:dmchecksheetapi\\controllers\\devicecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|d:\\it-03-code\\01-main\\02.dm-checksheet\\api\\dmchecksheetapi\\dmchecksheetapi\\repositories\\implementation\\checksheetdevicerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|solutionrelative:dmchecksheetapi\\repositories\\implementation\\checksheetdevicerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|d:\\it-03-code\\01-main\\02.dm-checksheet\\api\\dmchecksheetapi\\dmchecksheetapi\\models\\dto\\checksheetdevice\\checksheetdevicedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|solutionrelative:dmchecksheetapi\\models\\dto\\checksheetdevice\\checksheetdevicedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|d:\\it-03-code\\01-main\\02.dm-checksheet\\api\\dmchecksheetapi\\dmchecksheetapi\\repositories\\interface\\ichecksheetdevicerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|solutionrelative:dmchecksheetapi\\repositories\\interface\\ichecksheetdevicerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|d:\\it-03-code\\01-main\\02.dm-checksheet\\api\\dmchecksheetapi\\dmchecksheetapi\\services\\checksheetdeviceservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|solutionrelative:dmchecksheetapi\\services\\checksheetdeviceservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|d:\\it-03-code\\01-main\\02.dm-checksheet\\api\\dmchecksheetapi\\dmchecksheetapi\\controllers\\checksheetdevicecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|solutionrelative:dmchecksheetapi\\controllers\\checksheetdevicecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|d:\\it-03-code\\01-main\\02.dm-checksheet\\api\\dmchecksheetapi\\dmchecksheetapi\\models\\domain\\devicemst.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|solutionrelative:dmchecksheetapi\\models\\domain\\devicemst.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|d:\\it-03-code\\01-main\\02.dm-checksheet\\api\\dmchecksheetapi\\dmchecksheetapi\\controllers\\resultactioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|solutionrelative:dmchecksheetapi\\controllers\\resultactioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|d:\\it-03-code\\01-main\\02.dm-checksheet\\api\\dmchecksheetapi\\dmchecksheetapi\\services\\resultactionservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|solutionrelative:dmchecksheetapi\\services\\resultactionservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|d:\\it-03-code\\01-main\\02.dm-checksheet\\api\\dmchecksheetapi\\dmchecksheetapi\\repositories\\implementation\\resultactionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|solutionrelative:dmchecksheetapi\\repositories\\implementation\\resultactionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|d:\\it-03-code\\01-main\\02.dm-checksheet\\api\\dmchecksheetapi\\dmchecksheetapi\\repositories\\interface\\iresultactionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|solutionrelative:dmchecksheetapi\\repositories\\interface\\iresultactionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|d:\\it-03-code\\01-main\\02.dm-checksheet\\api\\dmchecksheetapi\\dmchecksheetapi\\models\\dto\\checkresult\\resultconfirmbydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|solutionrelative:dmchecksheetapi\\models\\dto\\checkresult\\resultconfirmbydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Migrations\\20250506062845_add pro confirmedMonthBy into result.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:DMCheckSheetAPI\\Migrations\\20250506062845_add pro confirmedMonthBy into result.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|d:\\it-03-code\\01-main\\02.dm-checksheet\\api\\dmchecksheetapi\\dmchecksheetapi\\models\\domain\\checkresult.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|solutionrelative:dmchecksheetapi\\models\\domain\\checkresult.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|d:\\it-03-code\\01-main\\02.dm-checksheet\\api\\dmchecksheetapi\\dmchecksheetapi\\repositories\\implementation\\checksheetitemrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|solutionrelative:dmchecksheetapi\\repositories\\implementation\\checksheetitemrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|d:\\it-03-code\\01-main\\02.dm-checksheet\\api\\dmchecksheetapi\\dmchecksheetapi\\models\\dto\\resultaction\\resultactionmonthdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|solutionrelative:dmchecksheetapi\\models\\dto\\resultaction\\resultactionmonthdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|d:\\it-03-code\\01-main\\02.dm-checksheet\\api\\dmchecksheetapi\\dmchecksheetapi\\models\\dto\\checksheetrowdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|solutionrelative:dmchecksheetapi\\models\\dto\\checksheetrowdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|d:\\it-03-code\\01-main\\02.dm-checksheet\\api\\dmchecksheetapi\\dmchecksheetapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|solutionrelative:dmchecksheetapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|d:\\it-03-code\\01-main\\02.dm-checksheet\\api\\dmchecksheetapi\\dmchecksheetapi\\services\\checksheetitemservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|solutionrelative:dmchecksheetapi\\services\\checksheetitemservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|d:\\it-03-code\\01-main\\02.dm-checksheet\\api\\dmchecksheetapi\\dmchecksheetapi\\controllers\\checksheetitemcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|solutionrelative:dmchecksheetapi\\controllers\\checksheetitemcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|d:\\it-03-code\\01-main\\02.dm-checksheet\\api\\dmchecksheetapi\\dmchecksheetapi\\repositories\\implementation\\checksheetrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|solutionrelative:dmchecksheetapi\\repositories\\implementation\\checksheetrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|d:\\it-03-code\\01-main\\02.dm-checksheet\\api\\dmchecksheetapi\\dmchecksheetapi\\services\\checksheetservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|solutionrelative:dmchecksheetapi\\services\\checksheetservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|d:\\it-03-code\\01-main\\02.dm-checksheet\\api\\dmchecksheetapi\\dmchecksheetapi\\controllers\\checksheetcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|solutionrelative:dmchecksheetapi\\controllers\\checksheetcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|d:\\it-03-code\\01-main\\02.dm-checksheet\\api\\dmchecksheetapi\\dmchecksheetapi\\repositories\\interface\\ichecksheetitemrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|solutionrelative:dmchecksheetapi\\repositories\\interface\\ichecksheetitemrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|d:\\it-03-code\\01-main\\02.dm-checksheet\\api\\dmchecksheetapi\\dmchecksheetapi\\models\\dto\\checkresult\\createresultdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -55,48 +171,12 @@
       "RelativeMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|solutionrelative:dmchecksheetapi\\models\\dto\\userdto\\userdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|d:\\it-03-code\\01-main\\02.dm-checksheet\\api\\dmchecksheetapi\\dmchecksheetapi\\controllers\\resultactioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|solutionrelative:dmchecksheetapi\\controllers\\resultactioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|d:\\it-03-code\\01-main\\02.dm-checksheet\\api\\dmchecksheetapi\\dmchecksheetapi\\models\\domain\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|solutionrelative:dmchecksheetapi\\models\\domain\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|d:\\it-03-code\\01-main\\02.dm-checksheet\\api\\dmchecksheetapi\\dmchecksheetapi\\controllers\\checksheetitemcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|solutionrelative:dmchecksheetapi\\controllers\\checksheetitemcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|d:\\it-03-code\\01-main\\02.dm-checksheet\\api\\dmchecksheetapi\\dmchecksheetapi\\controllers\\checksheetdevicecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|solutionrelative:dmchecksheetapi\\controllers\\checksheetdevicecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|d:\\it-03-code\\01-main\\02.dm-checksheet\\api\\dmchecksheetapi\\dmchecksheetapi\\controllers\\devicecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|solutionrelative:dmchecksheetapi\\controllers\\devicecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|d:\\it-03-code\\01-main\\02.dm-checksheet\\api\\dmchecksheetapi\\dmchecksheetapi\\mapping\\automapperprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|solutionrelative:dmchecksheetapi\\mapping\\automapperprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|d:\\it-03-code\\01-main\\02.dm-checksheet\\api\\dmchecksheetapi\\dmchecksheetapi\\repositories\\implementation\\checksheetitemrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|solutionrelative:dmchecksheetapi\\repositories\\implementation\\checksheetitemrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|d:\\it-03-code\\01-main\\02.dm-checksheet\\api\\dmchecksheetapi\\dmchecksheetapi\\repositories\\implementation\\checksheetdevicerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|solutionrelative:dmchecksheetapi\\repositories\\implementation\\checksheetdevicerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|d:\\it-03-code\\01-main\\02.dm-checksheet\\api\\dmchecksheetapi\\dmchecksheetapi\\services\\checksheetdeviceservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|solutionrelative:dmchecksheetapi\\services\\checksheetdeviceservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|d:\\it-03-code\\01-main\\02.dm-checksheet\\api\\dmchecksheetapi\\dmchecksheetapi\\repositories\\implementation\\resultactionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|solutionrelative:dmchecksheetapi\\repositories\\implementation\\resultactionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|d:\\it-03-code\\01-main\\02.dm-checksheet\\api\\dmchecksheetapi\\dmchecksheetapi\\repositories\\interface\\iresultactionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|solutionrelative:dmchecksheetapi\\repositories\\interface\\iresultactionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|d:\\it-03-code\\01-main\\02.dm-checksheet\\api\\dmchecksheetapi\\dmchecksheetapi\\dmchecksheetapi.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}",
@@ -111,32 +191,8 @@
       "RelativeMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|solutionrelative:dmchecksheetapi\\models\\dto\\checkresult\\updateresultisconfirmngdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|d:\\it-03-code\\01-main\\02.dm-checksheet\\api\\dmchecksheetapi\\dmchecksheetapi\\models\\dto\\checkresult\\resultbysheetcodeanddatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|solutionrelative:dmchecksheetapi\\models\\dto\\checkresult\\resultbysheetcodeanddatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|d:\\it-03-code\\01-main\\02.dm-checksheet\\api\\dmchecksheetapi\\dmchecksheetapi\\models\\domain\\checkresult.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|solutionrelative:dmchecksheetapi\\models\\domain\\checkresult.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|d:\\it-03-code\\01-main\\02.dm-checksheet\\api\\dmchecksheetapi\\dmchecksheetapi\\repositories\\interface\\ichecksheetdevicerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|solutionrelative:dmchecksheetapi\\repositories\\interface\\ichecksheetdevicerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|d:\\it-03-code\\01-main\\02.dm-checksheet\\api\\dmchecksheetapi\\dmchecksheetapi\\models\\dto\\checksheetdevice\\checksheetdevicedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|solutionrelative:dmchecksheetapi\\models\\dto\\checksheetdevice\\checksheetdevicedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|d:\\it-03-code\\01-main\\02.dm-checksheet\\api\\dmchecksheetapi\\dmchecksheetapi\\models\\dto\\checkresult\\resulttodaydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|solutionrelative:dmchecksheetapi\\models\\dto\\checkresult\\resulttodaydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|d:\\it-03-code\\01-main\\02.dm-checksheet\\api\\dmchecksheetapi\\dmchecksheetapi\\models\\dto\\checkresult\\updateresultdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|solutionrelative:dmchecksheetapi\\models\\dto\\checkresult\\updateresultdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|d:\\it-03-code\\01-main\\02.dm-checksheet\\api\\dmchecksheetapi\\dmchecksheetapi\\models\\dto\\checkresult\\resultconfirmbydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|solutionrelative:dmchecksheetapi\\models\\dto\\checkresult\\resultconfirmbydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|d:\\it-03-code\\01-main\\02.dm-checksheet\\api\\dmchecksheetapi\\dmchecksheetapi\\models\\dto\\checkresult\\resultapprovebydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -147,16 +203,8 @@
       "RelativeMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|solutionrelative:dmchecksheetapi\\models\\dto\\resultaction\\resultactionngdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|d:\\it-03-code\\01-main\\02.dm-checksheet\\api\\dmchecksheetapi\\dmchecksheetapi\\services\\resultactionservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|solutionrelative:dmchecksheetapi\\services\\resultactionservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|d:\\it-03-code\\01-main\\02.dm-checksheet\\api\\dmchecksheetapi\\dmchecksheetapi\\models\\dto\\resultaction\\resultactiondto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|solutionrelative:dmchecksheetapi\\models\\dto\\resultaction\\resultactiondto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|d:\\it-03-code\\01-main\\02.dm-checksheet\\api\\dmchecksheetapi\\dmchecksheetapi\\repositories\\implementation\\checksheetrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|solutionrelative:dmchecksheetapi\\repositories\\implementation\\checksheetrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|d:\\it-03-code\\01-main\\02.dm-checksheet\\api\\dmchecksheetapi\\dmchecksheetapi\\models\\domain\\resultaction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -183,10 +231,6 @@
       "RelativeMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|solutionrelative:dmchecksheetapi\\models\\domain\\classbase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|d:\\it-03-code\\01-main\\02.dm-checksheet\\api\\dmchecksheetapi\\dmchecksheetapi\\models\\domain\\devicemst.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|solutionrelative:dmchecksheetapi\\models\\domain\\devicemst.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|d:\\it-03-code\\01-main\\02.dm-checksheet\\api\\dmchecksheetapi\\dmchecksheetapi\\models\\dto\\registerrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|solutionrelative:dmchecksheetapi\\models\\dto\\registerrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -199,24 +243,8 @@
       "RelativeMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|solutionrelative:dmchecksheetapi\\models\\domain\\checksheetdevice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|d:\\it-03-code\\01-main\\02.dm-checksheet\\api\\dmchecksheetapi\\dmchecksheetapi\\repositories\\implementation\\devicerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|solutionrelative:dmchecksheetapi\\repositories\\implementation\\devicerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|d:\\it-03-code\\01-main\\02.dm-checksheet\\api\\dmchecksheetapi\\dmchecksheetapi\\services\\checksheetservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|solutionrelative:dmchecksheetapi\\services\\checksheetservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|d:\\it-03-code\\01-main\\02.dm-checksheet\\api\\dmchecksheetapi\\dmchecksheetapi\\models\\domain\\checksheetmst.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|solutionrelative:dmchecksheetapi\\models\\domain\\checksheetmst.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|d:\\it-03-code\\01-main\\02.dm-checksheet\\api\\dmchecksheetapi\\dmchecksheetapi\\repositories\\interface\\idevicerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|solutionrelative:dmchecksheetapi\\repositories\\interface\\idevicerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|d:\\it-03-code\\01-main\\02.dm-checksheet\\api\\dmchecksheetapi\\dmchecksheetapi\\services\\devicesevices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|solutionrelative:dmchecksheetapi\\services\\devicesevices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|d:\\it-03-code\\01-main\\02.dm-checksheet\\api\\dmchecksheetapi\\dmchecksheetapi\\models\\dto\\device\\updatedevicedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -225,14 +253,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|d:\\it-03-code\\01-main\\02.dm-checksheet\\api\\dmchecksheetapi\\dmchecksheetapi\\models\\dto\\checksheetitem\\itemdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|solutionrelative:dmchecksheetapi\\models\\dto\\checksheetitem\\itemdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|d:\\it-03-code\\01-main\\02.dm-checksheet\\api\\dmchecksheetapi\\dmchecksheetapi\\repositories\\interface\\ichecksheetitemrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|solutionrelative:dmchecksheetapi\\repositories\\interface\\ichecksheetitemrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|d:\\it-03-code\\01-main\\02.dm-checksheet\\api\\dmchecksheetapi\\dmchecksheetapi\\services\\checksheetitemservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|solutionrelative:dmchecksheetapi\\services\\checksheetitemservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{8F840A62-0C50-4305-98DC-BA0B3083879D}|DMCheckSheetAPI\\DMCheckSheetAPI.csproj|d:\\it-03-code\\01-main\\02.dm-checksheet\\api\\dmchecksheetapi\\dmchecksheetapi\\models\\dto\\checksheet\\createsheetdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -298,7 +318,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 221,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Bookmark",
@@ -310,65 +330,52 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "AuthController.cs",
-              "DocumentMoniker": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Controllers\\AuthController.cs",
-              "RelativeDocumentMoniker": "DMCheckSheetAPI\\Controllers\\AuthController.cs",
-              "ToolTip": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Controllers\\AuthController.cs",
-              "RelativeToolTip": "DMCheckSheetAPI\\Controllers\\AuthController.cs",
-              "ViewState": "AgIAAEkAAAAAAAAAAADwvzIAAABEAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "ResultsApproveConfirmeMonthDTO.cs",
+              "DocumentMoniker": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Models\\DTO\\CheckResult\\ResultsApproveConfirmeMonthDTO.cs",
+              "RelativeDocumentMoniker": "DMCheckSheetAPI\\Models\\DTO\\CheckResult\\ResultsApproveConfirmeMonthDTO.cs",
+              "ToolTip": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Models\\DTO\\CheckResult\\ResultsApproveConfirmeMonthDTO.cs",
+              "RelativeToolTip": "DMCheckSheetAPI\\Models\\DTO\\CheckResult\\ResultsApproveConfirmeMonthDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAxAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-10T01:50:34.827Z",
+              "WhenOpened": "2025-05-09T02:14:14.146Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
               "Title": "CheckResultController.cs",
               "DocumentMoniker": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Controllers\\CheckResultController.cs",
               "RelativeDocumentMoniker": "DMCheckSheetAPI\\Controllers\\CheckResultController.cs",
               "ToolTip": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Controllers\\CheckResultController.cs",
               "RelativeToolTip": "DMCheckSheetAPI\\Controllers\\CheckResultController.cs",
-              "ViewState": "AgIAAEoAAAAAAAAAAAAAwGUAAABPAAAAAAAAAA==",
+              "ViewState": "AgIAAHgAAAAAAAAAAAAiwIMAAABlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-25T02:04:02.409Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "CreateResultDTO.cs",
-              "DocumentMoniker": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Models\\DTO\\CheckResult\\CreateResultDTO.cs",
-              "RelativeDocumentMoniker": "DMCheckSheetAPI\\Models\\DTO\\CheckResult\\CreateResultDTO.cs",
-              "ToolTip": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Models\\DTO\\CheckResult\\CreateResultDTO.cs",
-              "RelativeToolTip": "DMCheckSheetAPI\\Models\\DTO\\CheckResult\\CreateResultDTO.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAARAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-25T01:13:10.883Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "CheckResultServices.cs",
               "DocumentMoniker": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Services\\CheckResultServices.cs",
               "RelativeDocumentMoniker": "DMCheckSheetAPI\\Services\\CheckResultServices.cs",
               "ToolTip": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Services\\CheckResultServices.cs",
               "RelativeToolTip": "DMCheckSheetAPI\\Services\\CheckResultServices.cs",
-              "ViewState": "AgIAAD4AAAAAAAAAAAA7wFEAAABKAAAAAAAAAA==",
+              "ViewState": "AgIAAFcAAAAAAAAAAAAAwGoAAABWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-24T09:28:21.209Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "ICheckResultRepository.cs",
               "DocumentMoniker": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Repositories\\Interface\\ICheckResultRepository.cs",
               "RelativeDocumentMoniker": "DMCheckSheetAPI\\Repositories\\Interface\\ICheckResultRepository.cs",
               "ToolTip": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Repositories\\Interface\\ICheckResultRepository.cs",
               "RelativeToolTip": "DMCheckSheetAPI\\Repositories\\Interface\\ICheckResultRepository.cs",
-              "ViewState": "AgIAAAcAAAAAAAAAAAA9wBIAAAAsAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwBYAAABjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-24T07:08:31.801Z",
               "EditorCaption": ""
@@ -381,27 +388,415 @@
               "RelativeDocumentMoniker": "DMCheckSheetAPI\\Repositories\\Implementation\\CheckResultRepository.cs",
               "ToolTip": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Repositories\\Implementation\\CheckResultRepository.cs",
               "RelativeToolTip": "DMCheckSheetAPI\\Repositories\\Implementation\\CheckResultRepository.cs",
-              "ViewState": "AgIAAHYAAAAAAAAAAADwv5UAAAChAAAAAAAAAA==",
+              "ViewState": "AgIAACsBAAAAAAAAAAAiwLYAAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-24T07:34:43.947Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
+              "Title": "ResultTodayDTO.cs",
+              "DocumentMoniker": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Models\\DTO\\CheckResult\\ResultTodayDTO.cs",
+              "RelativeDocumentMoniker": "DMCheckSheetAPI\\Models\\DTO\\CheckResult\\ResultTodayDTO.cs",
+              "ToolTip": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Models\\DTO\\CheckResult\\ResultTodayDTO.cs",
+              "RelativeToolTip": "DMCheckSheetAPI\\Models\\DTO\\CheckResult\\ResultTodayDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-23T03:00:27.507Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ResultBySheetCodeAndDateDTO.cs",
+              "DocumentMoniker": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Models\\DTO\\CheckResult\\ResultBySheetCodeAndDateDTO.cs",
+              "RelativeDocumentMoniker": "DMCheckSheetAPI\\Models\\DTO\\CheckResult\\ResultBySheetCodeAndDateDTO.cs",
+              "ToolTip": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Models\\DTO\\CheckResult\\ResultBySheetCodeAndDateDTO.cs",
+              "RelativeToolTip": "DMCheckSheetAPI\\Models\\DTO\\CheckResult\\ResultBySheetCodeAndDateDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-17T10:43:36.553Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "ICheckSheetDeviceRepository.cs",
+              "DocumentMoniker": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Repositories\\Interface\\ICheckSheetDeviceRepository.cs",
+              "RelativeDocumentMoniker": "DMCheckSheetAPI\\Repositories\\Interface\\ICheckSheetDeviceRepository.cs",
+              "ToolTip": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Repositories\\Interface\\ICheckSheetDeviceRepository.cs",
+              "RelativeToolTip": "DMCheckSheetAPI\\Repositories\\Interface\\ICheckSheetDeviceRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-06T08:18:52.584Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "DeviceRepository.cs",
+              "DocumentMoniker": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Repositories\\Implementation\\DeviceRepository.cs",
+              "RelativeDocumentMoniker": "DMCheckSheetAPI\\Repositories\\Implementation\\DeviceRepository.cs",
+              "ToolTip": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Repositories\\Implementation\\DeviceRepository.cs",
+              "RelativeToolTip": "DMCheckSheetAPI\\Repositories\\Implementation\\DeviceRepository.cs",
+              "ViewState": "AgIAABEAAAAAAAAAAAAWwDgAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-22T02:58:48.38Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "IDeviceRepository.cs",
+              "DocumentMoniker": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Repositories\\Interface\\IDeviceRepository.cs",
+              "RelativeDocumentMoniker": "DMCheckSheetAPI\\Repositories\\Interface\\IDeviceRepository.cs",
+              "ToolTip": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Repositories\\Interface\\IDeviceRepository.cs",
+              "RelativeToolTip": "DMCheckSheetAPI\\Repositories\\Interface\\IDeviceRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-22T03:00:29.82Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "DeviceSevices.cs",
+              "DocumentMoniker": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Services\\DeviceSevices.cs",
+              "RelativeDocumentMoniker": "DMCheckSheetAPI\\Services\\DeviceSevices.cs",
+              "ToolTip": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Services\\DeviceSevices.cs",
+              "RelativeToolTip": "DMCheckSheetAPI\\Services\\DeviceSevices.cs",
+              "ViewState": "AgIAAB8AAAAAAAAAAAAqwDUAAAA8AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-22T02:58:39.982Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "DeviceController.cs",
+              "DocumentMoniker": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Controllers\\DeviceController.cs",
+              "RelativeDocumentMoniker": "DMCheckSheetAPI\\Controllers\\DeviceController.cs",
+              "ToolTip": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Controllers\\DeviceController.cs",
+              "RelativeToolTip": "DMCheckSheetAPI\\Controllers\\DeviceController.cs",
+              "ViewState": "AgIAADQAAAAAAAAAAAAiwEcAAABLAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-22T02:58:32.527Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "CheckSheetDeviceDTO.cs",
+              "DocumentMoniker": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Models\\DTO\\CheckSheetDevice\\CheckSheetDeviceDTO.cs",
+              "RelativeDocumentMoniker": "DMCheckSheetAPI\\Models\\DTO\\CheckSheetDevice\\CheckSheetDeviceDTO.cs",
+              "ToolTip": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Models\\DTO\\CheckSheetDevice\\CheckSheetDeviceDTO.cs",
+              "RelativeToolTip": "DMCheckSheetAPI\\Models\\DTO\\CheckSheetDevice\\CheckSheetDeviceDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-08T02:38:53.445Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "CheckSheetDeviceRepository.cs",
+              "DocumentMoniker": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Repositories\\Implementation\\CheckSheetDeviceRepository.cs",
+              "RelativeDocumentMoniker": "DMCheckSheetAPI\\Repositories\\Implementation\\CheckSheetDeviceRepository.cs",
+              "ToolTip": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Repositories\\Implementation\\CheckSheetDeviceRepository.cs",
+              "RelativeToolTip": "DMCheckSheetAPI\\Repositories\\Implementation\\CheckSheetDeviceRepository.cs",
+              "ViewState": "AgIAACwAAAAAAAAAAAASwCoAAABIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-06T08:20:25.574Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "CheckSheetDeviceServices.cs",
+              "DocumentMoniker": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Services\\CheckSheetDeviceServices.cs",
+              "RelativeDocumentMoniker": "DMCheckSheetAPI\\Services\\CheckSheetDeviceServices.cs",
+              "ToolTip": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Services\\CheckSheetDeviceServices.cs",
+              "RelativeToolTip": "DMCheckSheetAPI\\Services\\CheckSheetDeviceServices.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAA6AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-06T08:18:33.866Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "CheckSheetDeviceController.cs",
+              "DocumentMoniker": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Controllers\\CheckSheetDeviceController.cs",
+              "RelativeDocumentMoniker": "DMCheckSheetAPI\\Controllers\\CheckSheetDeviceController.cs",
+              "ToolTip": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Controllers\\CheckSheetDeviceController.cs",
+              "RelativeToolTip": "DMCheckSheetAPI\\Controllers\\CheckSheetDeviceController.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAQwBcAAABVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-06T08:38:47.957Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "DeviceMST.cs",
+              "DocumentMoniker": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Models\\Domain\\DeviceMST.cs",
+              "RelativeDocumentMoniker": "DMCheckSheetAPI\\Models\\Domain\\DeviceMST.cs",
+              "ToolTip": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Models\\Domain\\DeviceMST.cs",
+              "RelativeToolTip": "DMCheckSheetAPI\\Models\\Domain\\DeviceMST.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABYAAAA0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-22T02:57:24.328Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "ResultActionRepository.cs",
+              "DocumentMoniker": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Repositories\\Implementation\\ResultActionRepository.cs",
+              "RelativeDocumentMoniker": "DMCheckSheetAPI\\Repositories\\Implementation\\ResultActionRepository.cs",
+              "ToolTip": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Repositories\\Implementation\\ResultActionRepository.cs",
+              "RelativeToolTip": "DMCheckSheetAPI\\Repositories\\Implementation\\ResultActionRepository.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAmwCwAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-25T05:46:37.75Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "IResultActionRepository.cs",
+              "DocumentMoniker": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Repositories\\Interface\\IResultActionRepository.cs",
+              "RelativeDocumentMoniker": "DMCheckSheetAPI\\Repositories\\Interface\\IResultActionRepository.cs",
+              "ToolTip": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Repositories\\Interface\\IResultActionRepository.cs",
+              "RelativeToolTip": "DMCheckSheetAPI\\Repositories\\Interface\\IResultActionRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwBAAAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-25T05:43:38.394Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "ResultActionServices.cs",
+              "DocumentMoniker": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Services\\ResultActionServices.cs",
+              "RelativeDocumentMoniker": "DMCheckSheetAPI\\Services\\ResultActionServices.cs",
+              "ToolTip": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Services\\ResultActionServices.cs",
+              "RelativeToolTip": "DMCheckSheetAPI\\Services\\ResultActionServices.cs",
+              "ViewState": "AgIAACYAAAAAAAAAAAAiwD8AAABFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-25T06:15:04.067Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "ResultActionController.cs",
+              "DocumentMoniker": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Controllers\\ResultActionController.cs",
+              "RelativeDocumentMoniker": "DMCheckSheetAPI\\Controllers\\ResultActionController.cs",
+              "ToolTip": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Controllers\\ResultActionController.cs",
+              "RelativeToolTip": "DMCheckSheetAPI\\Controllers\\ResultActionController.cs",
+              "ViewState": "AgIAAEcAAAAAAAAAAAAIwFkAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-25T06:32:21.592Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "20250506062845_add pro confirmedMonthBy into result.cs",
+              "DocumentMoniker": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Migrations\\20250506062845_add pro confirmedMonthBy into result.cs",
+              "RelativeDocumentMoniker": "DMCheckSheetAPI\\Migrations\\20250506062845_add pro confirmedMonthBy into result.cs",
+              "ToolTip": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Migrations\\20250506062845_add pro confirmedMonthBy into result.cs",
+              "RelativeToolTip": "DMCheckSheetAPI\\Migrations\\20250506062845_add pro confirmedMonthBy into result.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-06T06:28:45.237Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "ResultConfirmByDTO.cs",
+              "DocumentMoniker": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Models\\DTO\\CheckResult\\ResultConfirmByDTO.cs",
+              "RelativeDocumentMoniker": "DMCheckSheetAPI\\Models\\DTO\\CheckResult\\ResultConfirmByDTO.cs",
+              "ToolTip": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Models\\DTO\\CheckResult\\ResultConfirmByDTO.cs",
+              "RelativeToolTip": "DMCheckSheetAPI\\Models\\DTO\\CheckResult\\ResultConfirmByDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-25T01:37:06.508Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "CheckResult.cs",
+              "DocumentMoniker": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Models\\Domain\\CheckResult.cs",
+              "RelativeDocumentMoniker": "DMCheckSheetAPI\\Models\\Domain\\CheckResult.cs",
+              "ToolTip": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Models\\Domain\\CheckResult.cs",
+              "RelativeToolTip": "DMCheckSheetAPI\\Models\\Domain\\CheckResult.cs",
+              "ViewState": "AgIAAB4AAAAAAAAAAAA3wCkAAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-24T07:13:15.985Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "CheckSheetItemRepository.cs",
+              "DocumentMoniker": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Repositories\\Implementation\\CheckSheetItemRepository.cs",
+              "RelativeDocumentMoniker": "DMCheckSheetAPI\\Repositories\\Implementation\\CheckSheetItemRepository.cs",
+              "ToolTip": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Repositories\\Implementation\\CheckSheetItemRepository.cs",
+              "RelativeToolTip": "DMCheckSheetAPI\\Repositories\\Implementation\\CheckSheetItemRepository.cs",
+              "ViewState": "AgIAAHIAAAAAAAAAAAAqwIsAAAALAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-24T04:08:36.441Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "ResultActionMonthDTO.cs",
+              "DocumentMoniker": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Models\\DTO\\ResultAction\\ResultActionMonthDTO.cs",
+              "RelativeDocumentMoniker": "DMCheckSheetAPI\\Models\\DTO\\ResultAction\\ResultActionMonthDTO.cs",
+              "ToolTip": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Models\\DTO\\ResultAction\\ResultActionMonthDTO.cs",
+              "RelativeToolTip": "DMCheckSheetAPI\\Models\\DTO\\ResultAction\\ResultActionMonthDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-06T03:16:42.393Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "CheckSheetRowDTO.cs",
+              "DocumentMoniker": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Models\\DTO\\CheckSheetRowDTO.cs",
+              "RelativeDocumentMoniker": "DMCheckSheetAPI\\Models\\DTO\\CheckSheetRowDTO.cs",
+              "ToolTip": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Models\\DTO\\CheckSheetRowDTO.cs",
+              "RelativeToolTip": "DMCheckSheetAPI\\Models\\DTO\\CheckSheetRowDTO.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAuwAYAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-05T04:17:55.355Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "CheckSheetItemServices.cs",
+              "DocumentMoniker": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Services\\CheckSheetItemServices.cs",
+              "RelativeDocumentMoniker": "DMCheckSheetAPI\\Services\\CheckSheetItemServices.cs",
+              "ToolTip": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Services\\CheckSheetItemServices.cs",
+              "RelativeToolTip": "DMCheckSheetAPI\\Services\\CheckSheetItemServices.cs",
+              "ViewState": "AgIAAAEAAAAAAAAAAAAswBUAAAA3AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-24T04:23:52.737Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Program.cs",
+              "RelativeDocumentMoniker": "DMCheckSheetAPI\\Program.cs",
+              "ToolTip": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Program.cs",
+              "RelativeToolTip": "DMCheckSheetAPI\\Program.cs",
+              "ViewState": "AgIAADkAAAAAAAAAAAAAAEIAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-05T02:39:07.364Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "CheckSheetItemController.cs",
+              "DocumentMoniker": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Controllers\\CheckSheetItemController.cs",
+              "RelativeDocumentMoniker": "DMCheckSheetAPI\\Controllers\\CheckSheetItemController.cs",
+              "ToolTip": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Controllers\\CheckSheetItemController.cs",
+              "RelativeToolTip": "DMCheckSheetAPI\\Controllers\\CheckSheetItemController.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAABcAAABAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-24T04:41:41.909Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "CheckSheetRepository.cs",
+              "DocumentMoniker": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Repositories\\Implementation\\CheckSheetRepository.cs",
+              "RelativeDocumentMoniker": "DMCheckSheetAPI\\Repositories\\Implementation\\CheckSheetRepository.cs",
+              "ToolTip": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Repositories\\Implementation\\CheckSheetRepository.cs",
+              "RelativeToolTip": "DMCheckSheetAPI\\Repositories\\Implementation\\CheckSheetRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-22T04:20:00.477Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "CheckSheetServices.cs",
+              "DocumentMoniker": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Services\\CheckSheetServices.cs",
+              "RelativeDocumentMoniker": "DMCheckSheetAPI\\Services\\CheckSheetServices.cs",
+              "ToolTip": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Services\\CheckSheetServices.cs",
+              "RelativeToolTip": "DMCheckSheetAPI\\Services\\CheckSheetServices.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAiwBUAAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-22T04:39:04.585Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
               "Title": "CheckSheetController.cs",
               "DocumentMoniker": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Controllers\\CheckSheetController.cs",
               "RelativeDocumentMoniker": "DMCheckSheetAPI\\Controllers\\CheckSheetController.cs",
               "ToolTip": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Controllers\\CheckSheetController.cs",
               "RelativeToolTip": "DMCheckSheetAPI\\Controllers\\CheckSheetController.cs",
-              "ViewState": "AgIAABUAAAAAAAAAAAA5wEgAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAABcAAABCAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-22T04:08:49.676Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 33,
+              "Title": "ICheckSheetItemRepository.cs",
+              "DocumentMoniker": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Repositories\\Interface\\ICheckSheetItemRepository.cs",
+              "RelativeDocumentMoniker": "DMCheckSheetAPI\\Repositories\\Interface\\ICheckSheetItemRepository.cs",
+              "ToolTip": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Repositories\\Interface\\ICheckSheetItemRepository.cs",
+              "RelativeToolTip": "DMCheckSheetAPI\\Repositories\\Interface\\ICheckSheetItemRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-24T04:08:19.432Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 34,
+              "Title": "CreateResultDTO.cs",
+              "DocumentMoniker": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Models\\DTO\\CheckResult\\CreateResultDTO.cs",
+              "RelativeDocumentMoniker": "DMCheckSheetAPI\\Models\\DTO\\CheckResult\\CreateResultDTO.cs",
+              "ToolTip": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Models\\DTO\\CheckResult\\CreateResultDTO.cs",
+              "RelativeToolTip": "DMCheckSheetAPI\\Models\\DTO\\CheckResult\\CreateResultDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-25T01:13:10.883Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 35,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "DMCheckSheetAPI\\Controllers\\AuthController.cs",
+              "ToolTip": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "DMCheckSheetAPI\\Controllers\\AuthController.cs",
+              "ViewState": "AgIAAEkAAAAAAAAAAADwvzIAAABEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-10T01:50:34.827Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 39,
               "Title": "UserReposiory.cs",
               "DocumentMoniker": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Repositories\\Implementation\\UserReposiory.cs",
               "RelativeDocumentMoniker": "DMCheckSheetAPI\\Repositories\\Implementation\\UserReposiory.cs",
@@ -413,7 +808,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 41,
               "Title": "UserDTO.cs",
               "DocumentMoniker": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Models\\DTO\\UserDTO\\UserDTO.cs",
               "RelativeDocumentMoniker": "DMCheckSheetAPI\\Models\\DTO\\UserDTO\\UserDTO.cs",
@@ -425,7 +820,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 38,
               "Title": "UsersServices.cs",
               "DocumentMoniker": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Services\\UsersServices.cs",
               "RelativeDocumentMoniker": "DMCheckSheetAPI\\Services\\UsersServices.cs",
@@ -437,7 +832,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 42,
               "Title": "User.cs",
               "DocumentMoniker": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Models\\Domain\\User.cs",
               "RelativeDocumentMoniker": "DMCheckSheetAPI\\Models\\Domain\\User.cs",
@@ -449,7 +844,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 40,
               "Title": "IUserReposiory.cs",
               "DocumentMoniker": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Repositories\\Interface\\IUserReposiory.cs",
               "RelativeDocumentMoniker": "DMCheckSheetAPI\\Repositories\\Interface\\IUserReposiory.cs",
@@ -461,7 +856,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 37,
               "Title": "UsersController.cs",
               "DocumentMoniker": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Controllers\\UsersController.cs",
               "RelativeDocumentMoniker": "DMCheckSheetAPI\\Controllers\\UsersController.cs",
@@ -469,12 +864,11 @@
               "RelativeToolTip": "DMCheckSheetAPI\\Controllers\\UsersController.cs",
               "ViewState": "AgIAABAAAAAAAAAAAAAkwCAAAABaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-03T04:19:35.475Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-03T04:19:35.475Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 36,
               "Title": "ChangePasswordRequest.cs",
               "DocumentMoniker": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Models\\DTO\\ChangePasswordRequest.cs",
               "RelativeDocumentMoniker": "DMCheckSheetAPI\\Models\\DTO\\ChangePasswordRequest.cs",
@@ -482,60 +876,11 @@
               "RelativeToolTip": "DMCheckSheetAPI\\Models\\DTO\\ChangePasswordRequest.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-04T01:21:26.903Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-04T01:21:26.903Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "CheckSheetDeviceController.cs",
-              "DocumentMoniker": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Controllers\\CheckSheetDeviceController.cs",
-              "RelativeDocumentMoniker": "DMCheckSheetAPI\\Controllers\\CheckSheetDeviceController.cs",
-              "ToolTip": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Controllers\\CheckSheetDeviceController.cs",
-              "RelativeToolTip": "DMCheckSheetAPI\\Controllers\\CheckSheetDeviceController.cs",
-              "ViewState": "AgIAACYAAAAAAAAAAAAIwD8AAABYAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-06T08:38:47.957Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "ResultActionController.cs",
-              "DocumentMoniker": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Controllers\\ResultActionController.cs",
-              "RelativeDocumentMoniker": "DMCheckSheetAPI\\Controllers\\ResultActionController.cs",
-              "ToolTip": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Controllers\\ResultActionController.cs",
-              "RelativeToolTip": "DMCheckSheetAPI\\Controllers\\ResultActionController.cs",
-              "ViewState": "AgIAAA0AAAAAAAAAAAAiwE4AAABPAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-25T06:32:21.592Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "CheckSheetItemController.cs",
-              "DocumentMoniker": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Controllers\\CheckSheetItemController.cs",
-              "RelativeDocumentMoniker": "DMCheckSheetAPI\\Controllers\\CheckSheetItemController.cs",
-              "ToolTip": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Controllers\\CheckSheetItemController.cs",
-              "RelativeToolTip": "DMCheckSheetAPI\\Controllers\\CheckSheetItemController.cs",
-              "ViewState": "AgIAACkAAAAAAAAAAAAwwD4AAABMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-24T04:41:41.909Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "DeviceController.cs",
-              "DocumentMoniker": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Controllers\\DeviceController.cs",
-              "RelativeDocumentMoniker": "DMCheckSheetAPI\\Controllers\\DeviceController.cs",
-              "ToolTip": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Controllers\\DeviceController.cs",
-              "RelativeToolTip": "DMCheckSheetAPI\\Controllers\\DeviceController.cs",
-              "ViewState": "AgIAADQAAAAAAAAAAAAiwEsAAAA7AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-22T02:58:32.527Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 43,
               "Title": "AutoMapperProfile.cs",
               "DocumentMoniker": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Mapping\\AutoMapperProfile.cs",
               "RelativeDocumentMoniker": "DMCheckSheetAPI\\Mapping\\AutoMapperProfile.cs",
@@ -547,67 +892,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "CheckSheetItemRepository.cs",
-              "DocumentMoniker": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Repositories\\Implementation\\CheckSheetItemRepository.cs",
-              "RelativeDocumentMoniker": "DMCheckSheetAPI\\Repositories\\Implementation\\CheckSheetItemRepository.cs",
-              "ToolTip": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Repositories\\Implementation\\CheckSheetItemRepository.cs",
-              "RelativeToolTip": "DMCheckSheetAPI\\Repositories\\Implementation\\CheckSheetItemRepository.cs",
-              "ViewState": "AgIAAGgAAAAAAAAAAAAgwIgAAABPAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-24T04:08:36.441Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 20,
-              "Title": "CheckSheetDeviceRepository.cs",
-              "DocumentMoniker": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Repositories\\Implementation\\CheckSheetDeviceRepository.cs",
-              "RelativeDocumentMoniker": "DMCheckSheetAPI\\Repositories\\Implementation\\CheckSheetDeviceRepository.cs",
-              "ToolTip": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Repositories\\Implementation\\CheckSheetDeviceRepository.cs",
-              "RelativeToolTip": "DMCheckSheetAPI\\Repositories\\Implementation\\CheckSheetDeviceRepository.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAA3wDMAAAA1AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-06T08:20:25.574Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 21,
-              "Title": "CheckSheetDeviceServices.cs",
-              "DocumentMoniker": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Services\\CheckSheetDeviceServices.cs",
-              "RelativeDocumentMoniker": "DMCheckSheetAPI\\Services\\CheckSheetDeviceServices.cs",
-              "ToolTip": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Services\\CheckSheetDeviceServices.cs",
-              "RelativeToolTip": "DMCheckSheetAPI\\Services\\CheckSheetDeviceServices.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAqwBAAAAA6AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-06T08:18:33.866Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 23,
-              "Title": "IResultActionRepository.cs",
-              "DocumentMoniker": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Repositories\\Interface\\IResultActionRepository.cs",
-              "RelativeDocumentMoniker": "DMCheckSheetAPI\\Repositories\\Interface\\IResultActionRepository.cs",
-              "ToolTip": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Repositories\\Interface\\IResultActionRepository.cs",
-              "RelativeToolTip": "DMCheckSheetAPI\\Repositories\\Interface\\IResultActionRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAoAAAA3AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-25T05:43:38.394Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 22,
-              "Title": "ResultActionRepository.cs",
-              "DocumentMoniker": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Repositories\\Implementation\\ResultActionRepository.cs",
-              "RelativeDocumentMoniker": "DMCheckSheetAPI\\Repositories\\Implementation\\ResultActionRepository.cs",
-              "ToolTip": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Repositories\\Implementation\\ResultActionRepository.cs",
-              "RelativeToolTip": "DMCheckSheetAPI\\Repositories\\Implementation\\ResultActionRepository.cs",
-              "ViewState": "AgIAAFEAAAAAAAAAAAAmwCUAAAAwAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-25T05:46:37.75Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 45,
               "Title": "appsettings.json",
               "DocumentMoniker": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\appsettings.json",
               "RelativeDocumentMoniker": "DMCheckSheetAPI\\appsettings.json",
@@ -619,7 +904,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 44,
               "Title": "DMCheckSheetAPI.http",
               "DocumentMoniker": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\DMCheckSheetAPI.http",
               "RelativeDocumentMoniker": "DMCheckSheetAPI\\DMCheckSheetAPI.http",
@@ -631,7 +916,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 46,
               "Title": "UpdateResultIsConfirmNGDTO.cs",
               "DocumentMoniker": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Models\\DTO\\CheckResult\\UpdateResultIsConfirmNGDTO.cs",
               "RelativeDocumentMoniker": "DMCheckSheetAPI\\Models\\DTO\\CheckResult\\UpdateResultIsConfirmNGDTO.cs",
@@ -643,19 +928,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
-              "Title": "ResultBySheetCodeAndDateDTO.cs",
-              "DocumentMoniker": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Models\\DTO\\CheckResult\\ResultBySheetCodeAndDateDTO.cs",
-              "RelativeDocumentMoniker": "DMCheckSheetAPI\\Models\\DTO\\CheckResult\\ResultBySheetCodeAndDateDTO.cs",
-              "ToolTip": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Models\\DTO\\CheckResult\\ResultBySheetCodeAndDateDTO.cs",
-              "RelativeToolTip": "DMCheckSheetAPI\\Models\\DTO\\CheckResult\\ResultBySheetCodeAndDateDTO.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-17T10:43:36.553Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 71,
+              "DocumentIndex": 76,
               "Title": "20250424044952_add field isconfirmng into checkresult.cs",
               "DocumentMoniker": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Migrations\\20250424044952_add field isconfirmng into checkresult.cs",
               "RelativeDocumentMoniker": "DMCheckSheetAPI\\Migrations\\20250424044952_add field isconfirmng into checkresult.cs",
@@ -667,55 +940,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
-              "Title": "CheckResult.cs",
-              "DocumentMoniker": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Models\\Domain\\CheckResult.cs",
-              "RelativeDocumentMoniker": "DMCheckSheetAPI\\Models\\Domain\\CheckResult.cs",
-              "ToolTip": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Models\\Domain\\CheckResult.cs",
-              "RelativeToolTip": "DMCheckSheetAPI\\Models\\Domain\\CheckResult.cs",
-              "ViewState": "AgIAABoAAAAAAAAAAAAAwCgAAAA5AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-24T07:13:15.985Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 30,
-              "Title": "CheckSheetDeviceDTO.cs",
-              "DocumentMoniker": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Models\\DTO\\CheckSheetDevice\\CheckSheetDeviceDTO.cs",
-              "RelativeDocumentMoniker": "DMCheckSheetAPI\\Models\\DTO\\CheckSheetDevice\\CheckSheetDeviceDTO.cs",
-              "ToolTip": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Models\\DTO\\CheckSheetDevice\\CheckSheetDeviceDTO.cs",
-              "RelativeToolTip": "DMCheckSheetAPI\\Models\\DTO\\CheckSheetDevice\\CheckSheetDeviceDTO.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAARAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-08T02:38:53.445Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 29,
-              "Title": "ICheckSheetDeviceRepository.cs",
-              "DocumentMoniker": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Repositories\\Interface\\ICheckSheetDeviceRepository.cs",
-              "RelativeDocumentMoniker": "DMCheckSheetAPI\\Repositories\\Interface\\ICheckSheetDeviceRepository.cs",
-              "ToolTip": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Repositories\\Interface\\ICheckSheetDeviceRepository.cs",
-              "RelativeToolTip": "DMCheckSheetAPI\\Repositories\\Interface\\ICheckSheetDeviceRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAcAAAAsAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-06T08:18:52.584Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 31,
-              "Title": "ResultTodayDTO.cs",
-              "DocumentMoniker": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Models\\DTO\\CheckResult\\ResultTodayDTO.cs",
-              "RelativeDocumentMoniker": "DMCheckSheetAPI\\Models\\DTO\\CheckResult\\ResultTodayDTO.cs",
-              "ToolTip": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Models\\DTO\\CheckResult\\ResultTodayDTO.cs",
-              "RelativeToolTip": "DMCheckSheetAPI\\Models\\DTO\\CheckResult\\ResultTodayDTO.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAApAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-23T03:00:27.507Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 32,
+              "DocumentIndex": 47,
               "Title": "UpdateResultDTO.cs",
               "DocumentMoniker": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Models\\DTO\\CheckResult\\UpdateResultDTO.cs",
               "RelativeDocumentMoniker": "DMCheckSheetAPI\\Models\\DTO\\CheckResult\\UpdateResultDTO.cs",
@@ -727,19 +952,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 33,
-              "Title": "ResultConfirmByDTO.cs",
-              "DocumentMoniker": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Models\\DTO\\CheckResult\\ResultConfirmByDTO.cs",
-              "RelativeDocumentMoniker": "DMCheckSheetAPI\\Models\\DTO\\CheckResult\\ResultConfirmByDTO.cs",
-              "ToolTip": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Models\\DTO\\CheckResult\\ResultConfirmByDTO.cs",
-              "RelativeToolTip": "DMCheckSheetAPI\\Models\\DTO\\CheckResult\\ResultConfirmByDTO.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-25T01:37:06.508Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 34,
+              "DocumentIndex": 48,
               "Title": "ResultApproveByDTO.cs",
               "DocumentMoniker": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Models\\DTO\\CheckResult\\ResultApproveByDTO.cs",
               "RelativeDocumentMoniker": "DMCheckSheetAPI\\Models\\DTO\\CheckResult\\ResultApproveByDTO.cs",
@@ -751,7 +964,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 35,
+              "DocumentIndex": 49,
               "Title": "ResultActionNGDTO.cs",
               "DocumentMoniker": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Models\\DTO\\ResultAction\\ResultActionNGDTO.cs",
               "RelativeDocumentMoniker": "DMCheckSheetAPI\\Models\\DTO\\ResultAction\\ResultActionNGDTO.cs",
@@ -763,19 +976,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 36,
-              "Title": "ResultActionServices.cs",
-              "DocumentMoniker": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Services\\ResultActionServices.cs",
-              "RelativeDocumentMoniker": "DMCheckSheetAPI\\Services\\ResultActionServices.cs",
-              "ToolTip": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Services\\ResultActionServices.cs",
-              "RelativeToolTip": "DMCheckSheetAPI\\Services\\ResultActionServices.cs",
-              "ViewState": "AgIAABYAAAAAAAAAAAAtwCoAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-25T06:15:04.067Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 37,
+              "DocumentIndex": 50,
               "Title": "ResultActionDTO.cs",
               "DocumentMoniker": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Models\\DTO\\ResultAction\\ResultActionDTO.cs",
               "RelativeDocumentMoniker": "DMCheckSheetAPI\\Models\\DTO\\ResultAction\\ResultActionDTO.cs",
@@ -787,19 +988,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 38,
-              "Title": "CheckSheetRepository.cs",
-              "DocumentMoniker": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Repositories\\Implementation\\CheckSheetRepository.cs",
-              "RelativeDocumentMoniker": "DMCheckSheetAPI\\Repositories\\Implementation\\CheckSheetRepository.cs",
-              "ToolTip": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Repositories\\Implementation\\CheckSheetRepository.cs",
-              "RelativeToolTip": "DMCheckSheetAPI\\Repositories\\Implementation\\CheckSheetRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEcAAAAsAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-22T04:20:00.477Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 39,
+              "DocumentIndex": 51,
               "Title": "ResultAction.cs",
               "DocumentMoniker": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Models\\Domain\\ResultAction.cs",
               "RelativeDocumentMoniker": "DMCheckSheetAPI\\Models\\Domain\\ResultAction.cs",
@@ -811,7 +1000,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 41,
+              "DocumentIndex": 53,
               "Title": "UpdateActionDTO.cs",
               "DocumentMoniker": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Models\\DTO\\ResultAction\\UpdateActionDTO.cs",
               "RelativeDocumentMoniker": "DMCheckSheetAPI\\Models\\DTO\\ResultAction\\UpdateActionDTO.cs",
@@ -823,7 +1012,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 40,
+              "DocumentIndex": 52,
               "Title": "CreateActionDTO.cs",
               "DocumentMoniker": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Models\\DTO\\ResultAction\\CreateActionDTO.cs",
               "RelativeDocumentMoniker": "DMCheckSheetAPI\\Models\\DTO\\ResultAction\\CreateActionDTO.cs",
@@ -835,7 +1024,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 43,
+              "DocumentIndex": 55,
               "Title": "CheckSheetItemMST.cs",
               "DocumentMoniker": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Models\\Domain\\CheckSheetItemMST.cs",
               "RelativeDocumentMoniker": "DMCheckSheetAPI\\Models\\Domain\\CheckSheetItemMST.cs",
@@ -847,7 +1036,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 42,
+              "DocumentIndex": 54,
               "Title": "20250418083117_update resultaction.cs",
               "DocumentMoniker": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Migrations\\20250418083117_update resultaction.cs",
               "RelativeDocumentMoniker": "DMCheckSheetAPI\\Migrations\\20250418083117_update resultaction.cs",
@@ -859,7 +1048,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 70,
+              "DocumentIndex": 75,
               "Title": "20250417093157_Add field SheetCode table CheckResult.cs",
               "DocumentMoniker": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Migrations\\20250417093157_Add field SheetCode table CheckResult.cs",
               "RelativeDocumentMoniker": "DMCheckSheetAPI\\Migrations\\20250417093157_Add field SheetCode table CheckResult.cs",
@@ -871,7 +1060,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 44,
+              "DocumentIndex": 56,
               "Title": "ClassBase.cs",
               "DocumentMoniker": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Models\\Domain\\ClassBase.cs",
               "RelativeDocumentMoniker": "DMCheckSheetAPI\\Models\\Domain\\ClassBase.cs",
@@ -883,19 +1072,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 45,
-              "Title": "DeviceMST.cs",
-              "DocumentMoniker": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Models\\Domain\\DeviceMST.cs",
-              "RelativeDocumentMoniker": "DMCheckSheetAPI\\Models\\Domain\\DeviceMST.cs",
-              "ToolTip": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Models\\Domain\\DeviceMST.cs",
-              "RelativeToolTip": "DMCheckSheetAPI\\Models\\Domain\\DeviceMST.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAABUAAAA1AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-22T02:57:24.328Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 69,
+              "DocumentIndex": 74,
               "Title": "20250410022823_add fullName.cs",
               "DocumentMoniker": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Migrations\\20250410022823_add fullName.cs",
               "RelativeDocumentMoniker": "DMCheckSheetAPI\\Migrations\\20250410022823_add fullName.cs",
@@ -907,7 +1084,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 46,
+              "DocumentIndex": 57,
               "Title": "RegisterRequest.cs",
               "DocumentMoniker": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Models\\DTO\\RegisterRequest.cs",
               "RelativeDocumentMoniker": "DMCheckSheetAPI\\Models\\DTO\\RegisterRequest.cs",
@@ -919,7 +1096,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 47,
+              "DocumentIndex": 58,
               "Title": "CheckSheetDbContext.cs",
               "DocumentMoniker": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Data\\CheckSheetDbContext.cs",
               "RelativeDocumentMoniker": "DMCheckSheetAPI\\Data\\CheckSheetDbContext.cs",
@@ -931,7 +1108,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 48,
+              "DocumentIndex": 59,
               "Title": "CheckSheetDevice.cs",
               "DocumentMoniker": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Models\\Domain\\CheckSheetDevice.cs",
               "RelativeDocumentMoniker": "DMCheckSheetAPI\\Models\\Domain\\CheckSheetDevice.cs",
@@ -943,31 +1120,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 49,
-              "Title": "DeviceRepository.cs",
-              "DocumentMoniker": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Repositories\\Implementation\\DeviceRepository.cs",
-              "RelativeDocumentMoniker": "DMCheckSheetAPI\\Repositories\\Implementation\\DeviceRepository.cs",
-              "ToolTip": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Repositories\\Implementation\\DeviceRepository.cs",
-              "RelativeToolTip": "DMCheckSheetAPI\\Repositories\\Implementation\\DeviceRepository.cs",
-              "ViewState": "AgIAABkAAAAAAAAAAAAqwBIAAAA6AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-22T02:58:48.38Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 50,
-              "Title": "CheckSheetServices.cs",
-              "DocumentMoniker": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Services\\CheckSheetServices.cs",
-              "RelativeDocumentMoniker": "DMCheckSheetAPI\\Services\\CheckSheetServices.cs",
-              "ToolTip": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Services\\CheckSheetServices.cs",
-              "RelativeToolTip": "DMCheckSheetAPI\\Services\\CheckSheetServices.cs",
-              "ViewState": "AgIAACoAAAAAAAAAAAAowC4AAAAgAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-22T04:39:04.585Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 51,
+              "DocumentIndex": 60,
               "Title": "CheckSheetMST.cs",
               "DocumentMoniker": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Models\\Domain\\CheckSheetMST.cs",
               "RelativeDocumentMoniker": "DMCheckSheetAPI\\Models\\Domain\\CheckSheetMST.cs",
@@ -979,43 +1132,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 53,
-              "Title": "DeviceSevices.cs",
-              "DocumentMoniker": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Services\\DeviceSevices.cs",
-              "RelativeDocumentMoniker": "DMCheckSheetAPI\\Services\\DeviceSevices.cs",
-              "ToolTip": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Services\\DeviceSevices.cs",
-              "RelativeToolTip": "DMCheckSheetAPI\\Services\\DeviceSevices.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAAACIAAAA+AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-22T02:58:39.982Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 52,
-              "Title": "IDeviceRepository.cs",
-              "DocumentMoniker": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Repositories\\Interface\\IDeviceRepository.cs",
-              "RelativeDocumentMoniker": "DMCheckSheetAPI\\Repositories\\Interface\\IDeviceRepository.cs",
-              "ToolTip": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Repositories\\Interface\\IDeviceRepository.cs",
-              "RelativeToolTip": "DMCheckSheetAPI\\Repositories\\Interface\\IDeviceRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAkAAAAYAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-22T03:00:29.82Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 57,
-              "Title": "CheckSheetItemServices.cs",
-              "DocumentMoniker": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Services\\CheckSheetItemServices.cs",
-              "RelativeDocumentMoniker": "DMCheckSheetAPI\\Services\\CheckSheetItemServices.cs",
-              "ToolTip": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Services\\CheckSheetItemServices.cs",
-              "RelativeToolTip": "DMCheckSheetAPI\\Services\\CheckSheetItemServices.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAcwBoAAABDAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-24T04:23:52.737Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 54,
+              "DocumentIndex": 61,
               "Title": "UpdateDeviceDTO.cs",
               "DocumentMoniker": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Models\\DTO\\Device\\UpdateDeviceDTO.cs",
               "RelativeDocumentMoniker": "DMCheckSheetAPI\\Models\\DTO\\Device\\UpdateDeviceDTO.cs",
@@ -1027,19 +1144,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 56,
-              "Title": "ICheckSheetItemRepository.cs",
-              "DocumentMoniker": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Repositories\\Interface\\ICheckSheetItemRepository.cs",
-              "RelativeDocumentMoniker": "DMCheckSheetAPI\\Repositories\\Interface\\ICheckSheetItemRepository.cs",
-              "ToolTip": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Repositories\\Interface\\ICheckSheetItemRepository.cs",
-              "RelativeToolTip": "DMCheckSheetAPI\\Repositories\\Interface\\ICheckSheetItemRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAgAAAAdAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-24T04:08:19.432Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 55,
+              "DocumentIndex": 62,
               "Title": "ItemDTO.cs",
               "DocumentMoniker": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Models\\DTO\\CheckSheetItem\\ItemDTO.cs",
               "RelativeDocumentMoniker": "DMCheckSheetAPI\\Models\\DTO\\CheckSheetItem\\ItemDTO.cs",
@@ -1051,7 +1156,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 59,
+              "DocumentIndex": 64,
               "Title": "UpdateSheetDTO.cs",
               "DocumentMoniker": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Models\\DTO\\CheckSheet\\UpdateSheetDTO.cs",
               "RelativeDocumentMoniker": "DMCheckSheetAPI\\Models\\DTO\\CheckSheet\\UpdateSheetDTO.cs",
@@ -1063,7 +1168,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 58,
+              "DocumentIndex": 63,
               "Title": "CreateSheetDTO.cs",
               "DocumentMoniker": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Models\\DTO\\CheckSheet\\CreateSheetDTO.cs",
               "RelativeDocumentMoniker": "DMCheckSheetAPI\\Models\\DTO\\CheckSheet\\CreateSheetDTO.cs",
@@ -1075,7 +1180,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 65,
+              "DocumentIndex": 70,
               "Title": "20250327084935_update checkListItem cancelFlagggg.cs",
               "DocumentMoniker": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Migrations\\20250327084935_update checkListItem cancelFlagggg.cs",
               "RelativeDocumentMoniker": "DMCheckSheetAPI\\Migrations\\20250327084935_update checkListItem cancelFlagggg.cs",
@@ -1087,7 +1192,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 61,
+              "DocumentIndex": 66,
               "Title": "CreateItemDTO.cs",
               "DocumentMoniker": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Models\\DTO\\CheckSheetItem\\CreateItemDTO.cs",
               "RelativeDocumentMoniker": "DMCheckSheetAPI\\Models\\DTO\\CheckSheetItem\\CreateItemDTO.cs",
@@ -1099,7 +1204,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 60,
+              "DocumentIndex": 65,
               "Title": "UpdateItemDTO.cs",
               "DocumentMoniker": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Models\\DTO\\CheckSheetItem\\UpdateItemDTO.cs",
               "RelativeDocumentMoniker": "DMCheckSheetAPI\\Models\\DTO\\CheckSheetItem\\UpdateItemDTO.cs",
@@ -1111,7 +1216,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 66,
+              "DocumentIndex": 71,
               "Title": "20250327082602_update checkListItem cancelFlaggg.cs",
               "DocumentMoniker": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Migrations\\20250327082602_update checkListItem cancelFlaggg.cs",
               "RelativeDocumentMoniker": "DMCheckSheetAPI\\Migrations\\20250327082602_update checkListItem cancelFlaggg.cs",
@@ -1123,7 +1228,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 67,
+              "DocumentIndex": 72,
               "Title": "20250327032927_update checkListItem cancelFlag.cs",
               "DocumentMoniker": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Migrations\\20250327032927_update checkListItem cancelFlag.cs",
               "RelativeDocumentMoniker": "DMCheckSheetAPI\\Migrations\\20250327032927_update checkListItem cancelFlag.cs",
@@ -1135,7 +1240,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 68,
+              "DocumentIndex": 73,
               "Title": "20250327022849_update checkListItem.cs",
               "DocumentMoniker": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Migrations\\20250327022849_update checkListItem.cs",
               "RelativeDocumentMoniker": "DMCheckSheetAPI\\Migrations\\20250327022849_update checkListItem.cs",
@@ -1147,7 +1252,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 62,
+              "DocumentIndex": 67,
               "Title": "ICheckSheetRepository.cs",
               "DocumentMoniker": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Repositories\\Interface\\ICheckSheetRepository.cs",
               "RelativeDocumentMoniker": "DMCheckSheetAPI\\Repositories\\Interface\\ICheckSheetRepository.cs",
@@ -1159,7 +1264,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 63,
+              "DocumentIndex": 68,
               "Title": "CreateDeviceDTO.cs",
               "DocumentMoniker": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Models\\DTO\\Device\\CreateDeviceDTO.cs",
               "RelativeDocumentMoniker": "DMCheckSheetAPI\\Models\\DTO\\Device\\CreateDeviceDTO.cs",
@@ -1171,7 +1276,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 64,
+              "DocumentIndex": 69,
               "Title": "DeviceDTO.cs",
               "DocumentMoniker": "D:\\IT-03-Code\\01-MAIN\\02.DM-CheckSheet\\API\\DMCheckSheetAPI\\DMCheckSheetAPI\\Models\\DTO\\Device\\DeviceDTO.cs",
               "RelativeDocumentMoniker": "DMCheckSheetAPI\\Models\\DTO\\Device\\DeviceDTO.cs",

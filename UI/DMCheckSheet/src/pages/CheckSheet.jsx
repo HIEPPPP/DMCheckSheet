@@ -21,6 +21,8 @@ import {
 } from "../services/checkResultServices";
 import {
   createResultAction,
+  deleteResultAction,
+  deleteResultActionByResultID,
   getResultActionByResultId,
   updateResultAction,
   updateResultActionByResultId,
@@ -50,16 +52,18 @@ const CheckSheet = () => {
   const [openSnackbar, setOpenSnackbar] = useState(false);
   const [disabledItems, setDisabledItems] = useState({});
 
+  const [isLocked, setIsLocked] = useState(false);
+
   // Context
   const { refreshStatus } = useStatus();
 
   // Roles
   const roles = user?.auth?.roles || [];
-  const isAdmin = roles.includes("Admin");
+  // const isAdmin = roles.includes("Admin");
   const isChecker = roles.includes("Checker");
-  const isReChecker = roles.includes("ReChecker");
-  const isConfirmer = roles.includes("Confirmer");
-  const isApprover = roles.includes("Approver");
+  // const isReChecker = roles.includes("ReChecker");
+  // const isConfirmer = roles.includes("Confirmer");
+  // const isApprover = roles.includes("Approver");
 
   // Base info builder
   const getBaseInfo = () => ({
@@ -156,11 +160,16 @@ const CheckSheet = () => {
 
   // Initial load or create results once per day
   useEffect(() => {
-    if (!sheetDevice.sheetCode) return;
-    const today = new Date().toISOString().slice(0, 10);
+    // 1) Chưa có sheetCode hoặc chưa load items => dừng
+    if (!sheetDevice.sheetCode || data.length === 0) return;
+
+    // 2) Nếu đã init rồi => dừng (không gọi createResults nữa)
+    if (initialized) return;
+
     const initAsync = async () => {
       setLoading(true);
       try {
+        const today = new Date().toISOString().slice(0, 10);
         const existing = await getResultsBySheetAndDate(
           sheetDevice.sheetCode,
           sheetDevice.deviceCode,
@@ -168,6 +177,21 @@ const CheckSheet = () => {
         );
 
         if (existing && existing.length > 0) {
+          // nếu bất kỳ r.confirmedBy nào != null => khóa toàn bộ sheet
+          const locked = existing.some((r) => !!r.confirmedBy);
+          if (locked) {
+            setIsLocked(true);
+            // vẫn build map/values để hiển thị data, nhưng dừng ở đây không tạo mới
+            const map = existing.reduce((acc, r) => {
+              acc[r.itemId] = r.resultId;
+              return acc;
+            }, {});
+            setResultMap(map);
+            setValues(
+              existing.reduce((acc, r) => ({ ...acc, [r.itemId]: r.value }), {})
+            );
+            return; // thoát init, không cho thao tác
+          }
           // 1) Build map itemId → resultId
           const map = existing.reduce((acc, r) => {
             acc[r.itemId] = r.resultId;
@@ -255,6 +279,13 @@ const CheckSheet = () => {
     };
     try {
       await updateResult(resultId, payload);
+
+      // const action = await getResultActionByResultId(resultId);
+      // if (action != null) {
+      // Xóa dữ liệu trong result action
+      await deleteResultActionByResultID(resultId);
+      // }
+
       // console.log(" updateResult succeeded");
     } catch (err) {
       console.error(` updateResult ${resultId} failed:`, err);
@@ -449,92 +480,107 @@ const CheckSheet = () => {
   if (loading) return <p>Đang tải dữ liệu...</p>;
 
   return (
-    <div className="p-4 space-y-6">
-      <header>
-        <h1 className="text-3xl font-bold">{sheetDevice.sheetName}</h1>
-        <div className="flex justify-between mt-4">
-          <div>
-            <p>
-              Mã thiết bị: <strong>{sheetDevice.deviceCode}</strong>
-            </p>
-            <p>Tên thiết bị: {sheetDevice.deviceName}</p>
-          </div>
-          <p>Người kiểm tra: {user.auth.fullName}</p>
-        </div>
-      </header>
-      {groupedData.map((parent) => (
-        <section key={parent.itemId} className="border rounded-xl shadow p-4">
-          <h2 className="font-semibold mb-2">{parent.content}</h2>
-          <div className="space-y-3 pl-4">
-            {parent.children.map((child) => renderNested(child))}
-          </div>
-        </section>
-      ))}
-
-      <div className="flex justify-center">
-        {!isChecker ? (
-          <Button
-            variant="contained"
-            color="primary"
-            disabled={!isComplete}
-            onClick={handleConfirm}
-          >
-            Xác nhận
-          </Button>
-        ) : (
-          <Button
-            variant="contained"
-            color="primary"
-            disabled={!isComplete}
-            onClick={handleComplete}
-          >
-            Chuyển hướng
-          </Button>
-        )}
-      </div>
-
-      {openDialogFor !== null && (
-        <NgInfoConfirmDialog
-          open
-          anchorEl={anchorEl}
-          item={data.find((i) => i.itemId === openDialogFor)}
-          onSave={handleSaveNgDetail}
-          onClose={handleCancelNg}
-          onConfirm={handleConfirmNG}
-          roles={roles}
-          ngDetail={ngDetails[openDialogFor] || {}}
-        />
-      )}
-
-      {openDialogNGInfo !== null && (
-        <NgInfoDialog
-          open
-          anchorEl={anchorEl}
-          item={data.find((i) => i.itemId === openDialogNGInfo)}
-          resultId={resultMap[openDialogNGInfo]}
-          ngDetail={ngDetails[openDialogNGInfo] || {}}
-          onClose={() => {
-            setOpenDialogNGInfo(null);
-            setAnchorEl(null);
-          }}
-        />
-      )}
-
-      <Snackbar
-        open={openSnackbar}
-        autoHideDuration={1000}
-        onClose={() => setOpenSnackbar(false)}
-        anchorOrigin={{ vertical: "top", horizontal: "right" }}
-      >
-        <Alert
-          onClose={() => setOpenSnackbar(false)}
-          severity="success"
-          sx={{ width: "100%" }}
-          variant="filled"
-        >
-          Hoàn tất kiểm tra! Đang chuyển hướng...
+    <div>
+      {isLocked && (
+        <Alert severity="info">
+          Phiếu kiểm tra này đã được xác nhận, bạn không thể thao tác thêm.
         </Alert>
-      </Snackbar>
+      )}
+      <div
+        className={`p-4 space-y-6 relative ${
+          isLocked ? "pointer-events-none opacity-50" : ""
+        }`}
+      >
+        <header>
+          <h1 className="text-3xl font-bold">{sheetDevice.sheetName}</h1>
+          <div className="flex justify-between mt-4">
+            <div>
+              <p>
+                Mã thiết bị: <strong>{sheetDevice.deviceCode}</strong>
+              </p>
+              <p>Tên thiết bị: {sheetDevice.deviceName}</p>
+            </div>
+            <p>Người kiểm tra: {user.auth.fullName}</p>
+          </div>
+        </header>
+
+        {groupedData.map((parent) => (
+          <section
+            key={parent.itemId}
+            className="border rounded-xl shadow p-4 mb-6"
+          >
+            <h2 className="font-semibold mb-2">{parent.content}</h2>
+            <div className="space-y-3 pl-4">
+              {parent.children.map((child) => renderNested(child))}
+            </div>
+          </section>
+        ))}
+
+        <div className="flex justify-center">
+          {!isChecker ? (
+            <Button
+              variant="contained"
+              color="primary"
+              disabled={!isComplete}
+              onClick={handleConfirm}
+            >
+              Xác nhận
+            </Button>
+          ) : (
+            <Button
+              variant="contained"
+              color="primary"
+              disabled={!isComplete}
+              onClick={handleComplete}
+            >
+              Chuyển hướng
+            </Button>
+          )}
+        </div>
+
+        {openDialogFor !== null && (
+          <NgInfoConfirmDialog
+            open
+            anchorEl={anchorEl}
+            item={data.find((i) => i.itemId === openDialogFor)}
+            onSave={handleSaveNgDetail}
+            onClose={handleCancelNg}
+            onConfirm={handleConfirmNG}
+            roles={roles}
+            ngDetail={ngDetails[openDialogFor] || {}}
+          />
+        )}
+
+        {openDialogNGInfo !== null && (
+          <NgInfoDialog
+            open
+            anchorEl={anchorEl}
+            item={data.find((i) => i.itemId === openDialogNGInfo)}
+            resultId={resultMap[openDialogNGInfo]}
+            ngDetail={ngDetails[openDialogNGInfo] || {}}
+            onClose={() => {
+              setOpenDialogNGInfo(null);
+              setAnchorEl(null);
+            }}
+          />
+        )}
+
+        <Snackbar
+          open={openSnackbar}
+          autoHideDuration={1000}
+          onClose={() => setOpenSnackbar(false)}
+          anchorOrigin={{ vertical: "top", horizontal: "right" }}
+        >
+          <Alert
+            onClose={() => setOpenSnackbar(false)}
+            severity="success"
+            sx={{ width: "100%" }}
+            variant="filled"
+          >
+            Hoàn tất kiểm tra! Đang chuyển hướng...
+          </Alert>
+        </Snackbar>
+      </div>
     </div>
   );
 };

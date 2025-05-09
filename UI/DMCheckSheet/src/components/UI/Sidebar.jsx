@@ -20,6 +20,7 @@ import {
   Assignment,
   ContentPasteOutlined,
   DoneAllOutlined,
+  FactCheckOutlined,
   OpenInFullOutlined,
   SdCardAlertOutlined,
   SourceOutlined,
@@ -50,6 +51,15 @@ const Sidebar = () => {
 
   const token = localStorage.getItem("token");
 
+  // Roles
+  const roles = user?.auth?.roles || [];
+  // const isAdmin = roles.includes("Admin");
+  // const isChecker = roles.includes("Checker");
+  // const isConfirmer = roles.includes("Confirmer");
+  const isConfirmerMonth = roles.includes("ConfirmerMonth");
+  const isApprover = roles.includes("Approver");
+  const isConFirmerMonthORApprover = isConfirmerMonth || isApprover;
+
   let isAdmin = false;
 
   if (token) {
@@ -74,7 +84,12 @@ const Sidebar = () => {
       path: "/deviceNeeded",
       icon: <CgFileDocument size={22} />,
     },
-    { name: "PDF", path: "/pdf", icon: <BsFilePdf size={22} /> },
+    { name: "Sheet Data", path: "/pdf", icon: <BsFilePdf size={22} /> },
+    {
+      name: "Approve - Confirm",
+      path: "/approve",
+      icon: <FactCheckOutlined size={22} />,
+    },
     {
       name: "NG Update",
       path: "/resultAction",
@@ -105,11 +120,11 @@ const Sidebar = () => {
       path: "/checkSheetItemMST",
       icon: <SourceOutlined size={22} />,
     },
-    {
-      name: "Result",
-      path: "/checkListItemMST",
-      icon: <DoneAllOutlined size={22} />,
-    },
+    // {
+    //   name: "Result",
+    //   path: "/checkListItemMST",
+    //   icon: <DoneAllOutlined size={22} />,
+    // },
     // { name: "Settings", path: "/settings", icon: <FiSettings size={22} /> },
     { name: "User Management", path: "/users", icon: <FiUsers size={22} /> },
   ];
@@ -143,31 +158,39 @@ const Sidebar = () => {
 
         {/* Menu chính */}
         <ul className="mt-4 space-y-2">
-          {menuItems.map((item) => (
-            <li key={item.name}>
-              <NavLink
-                to={item.path}
-                className={({ isActive }) =>
-                  `flex items-center p-3 rounded-lg transition-all duration-300 ease-in-out ${
-                    isActive
-                      ? "bg-[#009DDC] text-white"
-                      : "hover:bg-[#E0E0E0] text-[#333]"
-                  }`
-                }
-              >
-                <div className="w-10 flex justify-center flex-shrink-0">
-                  {item.icon}
-                </div>
-                <span
-                  className={`ml-2 transition-all duration-300 overflow-hidden whitespace-nowrap ${
-                    isOpen ? "opacity-100" : "opacity-0"
-                  }`}
+          {menuItems
+            // Lọc luôn những item không phải “Approve - Confirm” hoặc chỉ giữ “Approve - Confirm” khi có quyền
+            .filter(
+              (item) =>
+                item.name !== "Approve - Confirm" ||
+                isConFirmerMonthORApprover ||
+                isAdmin
+            )
+            .map((item) => (
+              <li key={item.name}>
+                <NavLink
+                  to={item.path}
+                  className={({ isActive }) =>
+                    `flex items-center p-3 rounded-lg transition-all duration-300 ease-in-out ${
+                      isActive
+                        ? "bg-[#009DDC] text-white"
+                        : "hover:bg-[#E0E0E0] text-[#333]"
+                    }`
+                  }
                 >
-                  {item.name}
-                </span>
-              </NavLink>
-            </li>
-          ))}
+                  <div className="w-10 flex justify-center flex-shrink-0">
+                    {item.icon}
+                  </div>
+                  <span
+                    className={`ml-2 transition-all duration-300 overflow-hidden whitespace-nowrap ${
+                      isOpen ? "opacity-100" : "opacity-0"
+                    }`}
+                  >
+                    {item.name}
+                  </span>
+                </NavLink>
+              </li>
+            ))}
         </ul>
 
         {/* Khoảng cách để tách phần Admin */}

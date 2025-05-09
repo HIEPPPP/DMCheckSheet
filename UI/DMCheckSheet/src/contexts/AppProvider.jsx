@@ -4,10 +4,14 @@ import { UserProvider } from "./UserContext";
 
 const AppProvider = ({ children }) => {
   return (
+    // <AuthProvider>
+    //   <UserProvider>
+    //     <StatusProvider>{children}</StatusProvider>
+    //   </UserProvider>
+    // </AuthProvider>
+
     <AuthProvider>
-      <UserProvider>
-        <StatusProvider>{children}</StatusProvider>
-      </UserProvider>
+      <UserProvider>{children}</UserProvider>
     </AuthProvider>
   );
 };

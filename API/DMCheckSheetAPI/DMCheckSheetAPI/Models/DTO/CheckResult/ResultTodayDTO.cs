@@ -13,6 +13,7 @@
         public string? Value { get; set; }
         public DateTime? CheckedDate { get; set; }
         public string? CheckedBy { get; set; }
+        public string? ConfirmedBy { get; set; }
         public int ItemId { get; set; }
         public string? ItemContent { get; set; }
         public string? DataType { get; set; }

@@ -40,12 +40,20 @@ namespace DMCheckSheetAPI.Controllers
             return action != null ? Ok(new ApiResponse<ResultActionDTO>(200, "Success", action))
                                   : NotFound(new ApiResponse<string>(404, "Action not found"));
         }
+        
 
         [HttpGet("resultNG")]
         public async Task<IActionResult> GetListActionNG()
         {
             var actions = await resultActionServices.GetListActionNG();
             return Ok(new ApiResponse<List<ResultActionNGDTO>>(200, "Success", actions));
+        }
+
+        [HttpGet("resultActionMonth")]
+        public async Task<IActionResult> GetlistActionMonth(string sheetCode, string deviceCode, DateTime month)
+        {
+            var actions = await resultActionServices.GetlistActionMonth(sheetCode, deviceCode, month);
+            return Ok(new ApiResponse<List<ResultActionMonthDTO>>(200, "Success", actions));
         }
 
         [HttpPost]
@@ -78,5 +86,14 @@ namespace DMCheckSheetAPI.Controllers
             return deletedAction != null ? Ok(new ApiResponse<ResultAction>(200, "Deleted action", deletedAction))
                                          : NotFound(new ApiResponse<string>(404, "Action not found"));
         }
+
+        [HttpDelete("{resultId}/resultId")]
+        public async Task<IActionResult> DeleteActionByResultId(int resultId)
+        {
+            var deletedAction = await resultActionServices.DeleteActionByResultId(resultId);
+            return deletedAction != null ? Ok(new ApiResponse<ResultAction>(200, "Deleted action", deletedAction))
+                                         : NotFound(new ApiResponse<string>(404, "Action not found"));
+        }
+
     }
 }

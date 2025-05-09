@@ -58,7 +58,7 @@ const ItemChildFormDialog = ({
           <InputLabel id="data-type-label">Kiểu dữ liệu</InputLabel>
           <Select
             labelId="data-type-label"
-            value={formData.dataType ?? ""}
+            value={formData.dataType ?? null}
             onChange={(e) =>
               setFormData({ ...formData, dataType: e.target.value })
             }

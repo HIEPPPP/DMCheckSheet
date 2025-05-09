@@ -50,8 +50,9 @@ namespace DMCheckSheetAPI.Repositories.Implementation
             existDevice.Frequency = device.Frequency;
             existDevice.DeviceName = device.DeviceName;
             existDevice.DeviceCode = device.DeviceCode;
-            existDevice.UpdateBy = device.DeviceCode;            
+            existDevice.UpdateAt = device.UpdateAt;            
             existDevice.UpdateBy = device.UpdateBy;
+            existDevice.IsConfirm = device.IsConfirm;
             await context.SaveChangesAsync();
             return existDevice;
         }

@@ -20,6 +20,7 @@ namespace DMCheckSheetAPI.Models.Domain
 
         [StringLength(500)]
         public string Location { get; set; } = null!;
+        public bool IsConfirm { get; set; } = false;
 
         public int Frequency { get; set; } = 1;
         public bool CancelFlag { get; set; } = false;

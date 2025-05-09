@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using DMCheckSheetAPI.Models.Domain;
+using DMCheckSheetAPI.Models.DTO;
 using DMCheckSheetAPI.Models.DTO.CheckResult;
 using DMCheckSheetAPI.Repositories.Interface;
 
@@ -54,16 +55,20 @@ namespace DMCheckSheetAPI.Services
             return await checkResultRepository.DeleteAsync(id);
         }
 
-        public async Task<List<CheckResult>> EditConfirmBy(List<ResultConfirmByDTO> resultConfirmByDTOs) 
+        public async Task<List<CheckResult>> EditConfirmBy(List<ResultConfirmByDTO> resultConfirmByDTOs)
         {
             var resultDomain = mapper.Map<List<CheckResult>>(resultConfirmByDTOs);
             return await checkResultRepository.EditConfirmBy(resultDomain);
         }
 
-        public async Task<List<CheckResult>> EditApproveBy(List<ResultApproveByDTO> resultApproveByDTOs)
+        public async Task<CheckResult?> EditApproveBy(string sheetCode, string deviceCode, DateTime today, string username)
         {
-            var resultDomain = mapper.Map<List<CheckResult>>(resultApproveByDTOs);
-            return await checkResultRepository.EditApproveBy(resultDomain);
+            return await checkResultRepository.EditApproveBy(sheetCode, deviceCode, today, username);
+        }
+
+        public async Task<CheckResult?> EditConfirmedMonth(string sheetCode, string deviceCode, DateTime month, string username)
+        {
+            return await checkResultRepository.EditConfirmMonth(sheetCode, deviceCode, month, username);
         }
 
         public async Task<List<ResultTodayDTO>> GetListResultToday(DateTime today)
@@ -80,6 +85,26 @@ namespace DMCheckSheetAPI.Services
         public async Task<CheckResult?> GetResultBySheetDeviceToday(string sheetCode, string deviceCode, DateTime today)
         {
             return await checkResultRepository.GetResultBySheetDeviceToday(sheetCode, deviceCode, today);
+        }
+
+        public async Task<List<CheckSheetRowDTO>> GetCheckSheetRows(string sheetCode, string deviceCode, DateTime monthref)
+        {
+            return await checkResultRepository.GetCheckSheetRows(sheetCode, deviceCode, monthref);
+        }
+
+        public async Task<CheckResult?> GetApprovedByMonth(string sheetCode, string deviceCode, DateTime month)
+        {
+            return await checkResultRepository.GetApprovedByMonth(sheetCode, deviceCode, month);
+        }
+
+        public async Task<CheckResult?> GetConfirmedByMonth(string sheetCode, string deviceCode, DateTime month)
+        {
+            return await checkResultRepository.GetApprovedByMonth(sheetCode, deviceCode, month);
+        }
+
+        public async Task<List<ResultsApproveConfirmeMonthDTO>> GetResultsApproveConfirmeMonths(DateTime month)
+        {
+            return await checkResultRepository.GetResultsApproveConfirmeMonths(month);
         }
     }
 }

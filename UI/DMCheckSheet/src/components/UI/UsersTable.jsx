@@ -80,7 +80,7 @@ const UsersTable = ({ users = [], onEdit, onDelete }) => {
           </TableHead>
           <TableBody>
             {paginatedUsers.map((user, index) => (
-              <TableRow key={user.id}>
+              <TableRow key={user.id} className="hover:bg-gray-100">
                 <TableCell>{index + 1}</TableCell>
                 <TableCell>{user.userName}</TableCell>
                 <TableCell>{user.fullName}</TableCell>

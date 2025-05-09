@@ -156,9 +156,66 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "resultApproveByDTOs",
-        "Type": "System.Collections.Generic.List\u00601[[DMCheckSheetAPI.Models.DTO.CheckResult.ResultApproveByDTO, DMCheckSheetAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
-        "IsRequired": true
+        "Name": "sheetCode",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "deviceCode",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "month",
+        "Type": "System.DateTime",
+        "IsRequired": false
+      },
+      {
+        "Name": "username",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DMCheckSheetAPI.Controllers.CheckResultController",
+    "Method": "GetApprovedByMonth",
+    "RelativePath": "api/CheckResult/approvedByMonth",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "sheetCode",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "deviceCode",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "month",
+        "Type": "System.DateTime",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DMCheckSheetAPI.Controllers.CheckResultController",
+    "Method": "GetResultsApproveConfirmeMonths",
+    "RelativePath": "api/CheckResult/approvedConfirmedMonth",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "month",
+        "Type": "System.DateTime",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []
@@ -217,6 +274,32 @@
   },
   {
     "ContainingType": "DMCheckSheetAPI.Controllers.CheckResultController",
+    "Method": "GetCheckSheetRows",
+    "RelativePath": "api/CheckResult/checkSheetRow",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "sheetCode",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "deviceCode",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "monthref",
+        "Type": "System.DateTime",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DMCheckSheetAPI.Controllers.CheckResultController",
     "Method": "ResultConfirm",
     "RelativePath": "api/CheckResult/confirm",
     "HttpMethod": "PUT",
@@ -227,6 +310,63 @@
         "Name": "resultConfirmByDTOs",
         "Type": "System.Collections.Generic.List\u00601[[DMCheckSheetAPI.Models.DTO.CheckResult.ResultConfirmByDTO, DMCheckSheetAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DMCheckSheetAPI.Controllers.CheckResultController",
+    "Method": "GetConfirmedByMonth",
+    "RelativePath": "api/CheckResult/confirmedByMonth",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "sheetCode",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "deviceCode",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "month",
+        "Type": "System.DateTime",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DMCheckSheetAPI.Controllers.CheckResultController",
+    "Method": "ResultConfirmedMonth",
+    "RelativePath": "api/CheckResult/confirmedMonth",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "sheetCode",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "deviceCode",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "month",
+        "Type": "System.DateTime",
+        "IsRequired": false
+      },
+      {
+        "Name": "username",
+        "Type": "System.String",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []
@@ -770,6 +910,48 @@
         "Name": "updateActionDTO",
         "Type": "DMCheckSheetAPI.Models.DTO.ResultAction.UpdateActionDTO",
         "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DMCheckSheetAPI.Controllers.ResultActionController",
+    "Method": "DeleteActionByResultId",
+    "RelativePath": "api/ResultAction/{resultId}/resultId",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "resultId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DMCheckSheetAPI.Controllers.ResultActionController",
+    "Method": "GetlistActionMonth",
+    "RelativePath": "api/ResultAction/resultActionMonth",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "sheetCode",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "deviceCode",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "month",
+        "Type": "System.DateTime",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []

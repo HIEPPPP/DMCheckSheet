@@ -110,7 +110,7 @@ const ItemFormDialog = ({ open, onClose, formData, setFormData, onSave }) => {
 
         {/* Order Number Field */}
         <TextField
-          label="Vị trí"
+          label="Thứ tự hiển thị"
           fullWidth
           margin="dense"
           type="number"
@@ -133,7 +133,7 @@ const ItemFormDialog = ({ open, onClose, formData, setFormData, onSave }) => {
             onChange={handleChange("dataType")}
             label="Kiểu dữ liệu"
           >
-            <MenuItem value="">-- Chọn kiểu dữ liệu --</MenuItem>
+            <MenuItem value={null}>-- Chọn kiểu dữ liệu --</MenuItem>
             <MenuItem value="BOOLEAN">BOOLEAN</MenuItem>
             <MenuItem value="TEXT">TEXT</MenuItem>
             <MenuItem value="NUMBER">NUMBER</MenuItem>

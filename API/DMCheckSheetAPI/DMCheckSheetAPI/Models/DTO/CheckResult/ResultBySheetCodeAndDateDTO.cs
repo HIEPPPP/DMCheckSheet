@@ -6,5 +6,6 @@
         public int ResultId { get; set; }
         public string? Value { get; set; }
         public bool IsConfirmNG { get; set; }
+        public string? ConfirmedBy { get; set; }
     }
 }

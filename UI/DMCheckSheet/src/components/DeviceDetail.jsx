@@ -1,6 +1,7 @@
 // DeviceDetail.jsx
 import React from "react";
 import { Box, Typography, Divider } from "@mui/material";
+import { blue } from "@mui/material/colors";
 
 const DeviceDetail = ({ device }) => (
   <Box className="bg-white rounded-xl shadow-lg p-6 w-80">
@@ -56,14 +57,22 @@ const DeviceDetail = ({ device }) => (
       <Typography variant="subtitle2" className="text-gray-500">
         Người kiểm tra:
       </Typography>
-      <Typography variant="body2" className="text-gray-800 font-medium">
+      <Typography
+        variant="body2"
+        className="text-gray-800"
+        sx={{ fontWeight: 600 }}
+      >
         {device.checkedBy || "-"}
       </Typography>
 
       <Typography variant="subtitle2" className="text-gray-500">
         Người xác nhận:
       </Typography>
-      <Typography variant="body2" className="text-gray-800 font-medium">
+      <Typography
+        variant="body2"
+        className="text-gray-800 font-medium"
+        sx={{ fontWeight: 600 }}
+      >
         {device.confirmedBy || "-"}
       </Typography>
     </Box>
