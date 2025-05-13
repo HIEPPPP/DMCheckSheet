@@ -274,6 +274,53 @@
   },
   {
     "ContainingType": "DMCheckSheetAPI.Controllers.CheckResultController",
+    "Method": "GetCheckSheetCols",
+    "RelativePath": "api/CheckResult/checkSheetCol",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "sheetCode",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "deviceCode",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "month",
+        "Type": "System.DateTime",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DMCheckSheetAPI.Controllers.CheckResultController",
+    "Method": "GetCheckSheetCols",
+    "RelativePath": "api/CheckResult/checkSheetColTop10",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "sheetCode",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "deviceCode",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DMCheckSheetAPI.Controllers.CheckResultController",
     "Method": "GetCheckSheetRows",
     "RelativePath": "api/CheckResult/checkSheetRow",
     "HttpMethod": "GET",

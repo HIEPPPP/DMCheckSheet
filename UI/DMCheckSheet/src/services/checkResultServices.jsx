@@ -192,3 +192,25 @@ export const getListResultApprovedConfirmedMonth = async (month) => {
     return handleError(error);
   }
 };
+
+export const getCheckSheetCols = async (sheetCode, deviceCode, month) => {
+  try {
+    const res = await apiClient.get(
+      `/checkSheetCol?sheetCode=${sheetCode}&deviceCode=${deviceCode}&month=${month}`
+    );
+    return res.data.data;
+  } catch (error) {
+    return handleError(error);
+  }
+};
+
+export const getCheckSheetColsTop10 = async (sheetCode, deviceCode) => {
+  try {
+    const res = await apiClient.get(
+      `/checkSheetColTop10?sheetCode=${sheetCode}&deviceCode=${deviceCode}`
+    );
+    return res.data.data;
+  } catch (error) {
+    return handleError(error);
+  }
+};

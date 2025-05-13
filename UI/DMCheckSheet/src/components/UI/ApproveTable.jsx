@@ -109,7 +109,12 @@ const ApproveTable = ({
 
           <TableBody>
             {filtered.map((cd, i) => (
-              <TableRow key={cd.sheetCode + cd.deviceCode + i} hover>
+              <TableRow
+                key={cd.sheetCode + cd.deviceCode + i}
+                hover
+                onClick={() => onEdit(cd)}
+                className="cursor-pointer"
+              >
                 <TableCell>{i + 1}</TableCell>
                 <TableCell>{cd.sheetName}</TableCell>
                 <TableCell>{cd.deviceName}</TableCell>

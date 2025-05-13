@@ -6,6 +6,7 @@ import {
   approveResult,
   confirmedMonthResult,
   getApprovedByMonth,
+  getCheckSheetCols,
   getCheckSheetRows,
   getConfirmedByMonth,
   getListResultApprovedConfirmedMonth,
@@ -14,16 +15,20 @@ import Pdf from "../components/UI/Pdf";
 import { getListResultActionMonth } from "../services/resultActionServices";
 import { AuthContext } from "../contexts/AuthContext";
 import Notification from "../components/Notification";
+import PdfNeeded from "../components/UI/PdfNeeded";
 
 const Approve = () => {
   const [deviceCode, setDeviceCode] = useState("");
+  const [deviceName, setDeviceName] = useState("");
   const [sheetCode, setSheetCode] = useState("");
   const [sheetName, setSheetName] = useState("");
   const [monthRef, setMonthRef] = useState("");
   const [checkSheetDevice, setCheckSheetDevice] = useState([]);
   const [action, setAction] = useState("");
   const [rows, setRows] = useState([]);
+  const [cols, setCols] = useState([]);
   const [showPdf, setShowPdf] = useState(false);
+  const [pdfMode, setPdfMode] = useState(null);
 
   const [approvedBy, setApproveBy] = useState("");
   const isApproved = !!approvedBy; // true nếu đã được phê duyệt
@@ -63,17 +68,19 @@ const Approve = () => {
     const fetchData = async () => {
       if (!deviceCode || !sheetCode || !monthRef) return;
       const monthDate = monthRef + "-01";
-      const [res, actions, approver, confirmer] = await Promise.all([
+      const [res, actions, approver, confirmer, res2] = await Promise.all([
         getCheckSheetRows(sheetCode, deviceCode, monthDate),
         getListResultActionMonth(sheetCode, deviceCode, monthDate),
         getApprovedByMonth(sheetCode, deviceCode, monthDate),
         getConfirmedByMonth(sheetCode, deviceCode, monthDate),
+        getCheckSheetCols(sheetCode, deviceCode, monthDate),
       ]);
       setRows(res || []);
       setAction(actions || []);
       setApproveBy(approver?.approvedBy);
       setConfirmedMonthBy(confirmer?.confirmedMonthBy);
       setShowPdf(true);
+      setCols(res2 || []); // Lưu cols vào state
     };
 
     fetchData();
@@ -87,11 +94,21 @@ const Approve = () => {
   };
 
   const handleViewPdf = (cd) => {
+    console.log("cd", cd);
+
     setDeviceCode(cd.deviceCode);
+    setDeviceName(cd.deviceName);
     setSheetCode(cd.sheetCode);
     setSheetName(cd.sheetName);
     // xóa đi để useEffect bật lại
     setShowPdf(false);
+
+    // Chọn mode dựa vào frequency
+    if (cd.frequency === 1) {
+      setPdfMode("standard");
+    } else {
+      setPdfMode("needed");
+    }
   };
   // Gọi API khi nhấn Tìm kiếm
   // const handleViewPdf = async (cd) => {
@@ -203,16 +220,29 @@ const Approve = () => {
                 </Button>
               </div>
             </div>
-            <Pdf
-              rows={rows}
-              daysInMonth={daysInMonth}
-              deviceCode={deviceCode}
-              sheetName={sheetName}
-              monthLabel={monthRef}
-              actions={action}
-              approvedBy={approvedBy}
-              confirmedMonthBy={confirmedMonthBy}
-            />
+            {pdfMode === "standard" ? (
+              <Pdf
+                rows={rows}
+                daysInMonth={daysInMonth}
+                deviceCode={deviceCode}
+                sheetName={sheetName}
+                monthLabel={monthRef}
+                actions={action}
+                approvedBy={approvedBy}
+                confirmedMonthBy={confirmedMonthBy}
+              />
+            ) : (
+              <PdfNeeded
+                cols={cols}
+                daysInMonth={daysInMonth}
+                deviceCode={deviceCode}
+                deviceName={deviceName}
+                sheetName={sheetName}
+                monthLabel={monthRef}
+                approvedBy={approvedBy}
+                confirmedMonthBy={confirmedMonthBy}
+              />
+            )}
           </div>
         ) : (
           <div className="flex justify-center items-center h-185 text-gray-400 border rounded-sm bg-white p-10 shadow-xl">

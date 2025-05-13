@@ -48,7 +48,7 @@ const DeviceNeeded = () => {
         (item) => item.sheetCode === sheetCode && item.deviceCode === deviceCode
       );
       exists
-        ? navigate(`/checkSheet/${deviceCode}-${sheetCode}`)
+        ? navigate(`/checkSheetUsage/${deviceCode}-${sheetCode}`)
         : alert("Không tìm thấy mã QR này");
     } else {
       alert("Vui lòng nhập mã QR hợp lệ");

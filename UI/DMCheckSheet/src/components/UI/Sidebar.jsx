@@ -84,7 +84,7 @@ const Sidebar = () => {
       path: "/deviceNeeded",
       icon: <CgFileDocument size={22} />,
     },
-    { name: "Sheet Data", path: "/pdf", icon: <BsFilePdf size={22} /> },
+    // { name: "Sheet Data", path: "/pdf", icon: <BsFilePdf size={22} /> },
     {
       name: "Approve - Confirm",
       path: "/approve",

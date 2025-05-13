@@ -51,7 +51,7 @@ const CheckSheet = () => {
   const [resultMap, setResultMap] = useState({});
   const [openSnackbar, setOpenSnackbar] = useState(false);
   const [disabledItems, setDisabledItems] = useState({});
-
+  const [checkedByUser, setCheckedByUser] = useState("");
   const [isLocked, setIsLocked] = useState(false);
 
   // Context
@@ -192,6 +192,8 @@ const CheckSheet = () => {
             );
             return; // thoát init, không cho thao tác
           }
+          // Lần tái mở phiếu trong ngày — dùng checkedBy của bản ghi cũ
+          setCheckedByUser(existing[0].checkedBy);
           // 1) Build map itemId → resultId
           const map = existing.reduce((acc, r) => {
             acc[r.itemId] = r.resultId;
@@ -220,9 +222,10 @@ const CheckSheet = () => {
             value: "",
           }));
 
-          // Giả định API trả về mảng các đối tượng vừa tạo, có resultId
+          // Lần đầu check trong ngày
           const created = await createResults(toCreate);
-
+          // Lưu lại checkedBy
+          setCheckedByUser(user.auth.username);
           // Build map từ mảng created
           const map = created.reduce((acc, r) => {
             acc[r.itemId] = r.resultId;
@@ -426,6 +429,13 @@ const CheckSheet = () => {
       confirmedBy: user.auth.username,
     }));
 
+    // Người xác nhận phải khác người kiểm tra
+    if (user.auth.username === checkedByUser) {
+      setError("Người xác nhận không được là người kiểm tra.");
+      setTimeout(() => navigate("/dashboard"), 3000);
+      return;
+    }
+
     try {
       // 2) Gọi API batch
       await confirmResult(toConfirm);
@@ -435,6 +445,7 @@ const CheckSheet = () => {
     } catch (err) {
       console.error("Confirm results failed:", err);
       setError("Xác nhận thất bại, vui lòng thử lại.");
+      setTimeout(() => navigate("/dashboard"), 3000);
     }
   };
 
@@ -477,10 +488,11 @@ const CheckSheet = () => {
   };
 
   if (error) return <p className="text-red-500">{error}</p>;
-  if (loading) return <p>Đang tải dữ liệu...</p>;
+  if (loading)
+    return <p className="font-bold text-center">Đang tải dữ liệu...</p>;
 
   return (
-    <div>
+    <div className="overflow-auto">
       {isLocked && (
         <Alert severity="info">
           Phiếu kiểm tra này đã được xác nhận, bạn không thể thao tác thêm.

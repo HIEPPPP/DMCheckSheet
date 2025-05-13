@@ -1,6 +1,7 @@
 ﻿using DMCheckSheetAPI.Models.Domain;
 using DMCheckSheetAPI.Models.DTO;
 using DMCheckSheetAPI.Models.DTO.CheckResult;
+using System.Threading.Tasks;
 
 namespace DMCheckSheetAPI.Repositories.Interface
 {
@@ -23,5 +24,7 @@ namespace DMCheckSheetAPI.Repositories.Interface
         Task<List<ResultsApproveConfirmeMonthDTO>> GetResultsApproveConfirmeMonths(DateTime month);
         Task<CheckResult?> GetApprovedByMonth(string sheetCode, string deviceCode, DateTime month);
         Task<CheckResult?> GetConfirmedByMonth(string sheetCode, string deviceCode, DateTime month);
+        Task<List<CheckSheetColDTO>> GetCheckSheetCols(string sheetCode, string deviceCode, DateTime month);
+        Task<List<CheckSheetColDTO>> GetCheckSheetColsTop10(string sheetCode, string deviceCode);
     }
 }

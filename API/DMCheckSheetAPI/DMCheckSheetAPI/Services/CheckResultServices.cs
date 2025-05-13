@@ -106,5 +106,15 @@ namespace DMCheckSheetAPI.Services
         {
             return await checkResultRepository.GetResultsApproveConfirmeMonths(month);
         }
+
+        public async Task<List<CheckSheetColDTO>> GetCheckSheetCols(string sheetCode, string deviceCode, DateTime month)
+        {
+            return await checkResultRepository.GetCheckSheetCols(sheetCode, deviceCode, month);
+        }
+
+        public async Task<List<CheckSheetColDTO>> GetCheckSheetColsTop10(string sheetCode, string deviceCode)
+        {
+            return await checkResultRepository.GetCheckSheetColsTop10(sheetCode, deviceCode);
+        }
     }
 }

@@ -139,5 +139,19 @@ namespace DMCheckSheetAPI.Controllers
             var results = await checkResultServices.GetResultsApproveConfirmeMonths(month);
             return Ok(new ApiResponse<List<ResultsApproveConfirmeMonthDTO>>(200, "Success", results));
         }
+
+        [HttpGet("checkSheetCol")]
+        public async Task<IActionResult> GetCheckSheetCols([FromQuery] string sheetCode, [FromQuery] string deviceCode, [FromQuery] DateTime month)
+        {
+            var result = await checkResultServices.GetCheckSheetCols(sheetCode, deviceCode, month);
+            return Ok(new ApiResponse<List<CheckSheetColDTO>>(200, "Success", result));
+        }
+
+        [HttpGet("checkSheetColTop10")]
+        public async Task<IActionResult> GetCheckSheetCols([FromQuery] string sheetCode, [FromQuery] string deviceCode)
+        {
+            var result = await checkResultServices.GetCheckSheetColsTop10(sheetCode, deviceCode);
+            return Ok(new ApiResponse<List<CheckSheetColDTO>>(200, "Success", result));
+        }
     }
 }

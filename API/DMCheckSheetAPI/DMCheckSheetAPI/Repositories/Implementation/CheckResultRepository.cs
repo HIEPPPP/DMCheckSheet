@@ -326,7 +326,7 @@ namespace DMCheckSheetAPI.Repositories.Implementation
                                 DeviceName,
                                 SheetCode,
                                 DeviceCode,
-
+                                Frequency,
                                 -- Nếu có ít nhất 1 bản ghi trong tháng có ApprovedBy != NULL thì trả về 1 (TRUE), ngược lại 0 (FALSE)
                                 MAX(CASE WHEN ApprovedBy IS NOT NULL THEN 1 ELSE 0 END) 
                                   AS IsApproved,
@@ -338,7 +338,7 @@ namespace DMCheckSheetAPI.Repositories.Implementation
                             WHERE CheckedDate >= @MonthRef
                               AND CheckedDate <  DATEADD(MONTH, 1, @MonthRef)
                             GROUP BY
-                                SheetName, DeviceName, SheetCode, DeviceCode
+                                SheetName, DeviceName, SheetCode, DeviceCode, Frequency
                             ;";
             return await context.Database.SqlQueryRaw<ResultsApproveConfirmeMonthDTO>(
                                query,
@@ -346,5 +346,171 @@ namespace DMCheckSheetAPI.Repositories.Implementation
                            ).ToListAsync();
         }
 
+        public async Task<List<CheckSheetColDTO>> GetCheckSheetCols(string sheetCode, string deviceCode, DateTime month)
+        {
+            string query = @"WITH raw AS
+                            (
+                                SELECT
+                                  CAST(cr.CheckedDate AS date) AS Ngay,
+                                  cr.CheckedDate,
+                                  cr.Value,
+                                  cr.CheckedBy,
+                                  cr.ConfirmedBy,
+                                  -- Làm sạch nhưng vẫn giữ nguyên khoảng trắng để thử LIKE
+                                  REPLACE(REPLACE(csi.Content, CHAR(13), ''), CHAR(10), '') AS CleanContent
+                                FROM CheckResults cr
+                                INNER JOIN CheckSheetItemMST csi
+                                  ON cr.ItemId = csi.ItemId
+                                INNER JOIN CheckSheetMST cs
+                                  ON csi.SheetId = cs.SheetId
+                                WHERE cs.SheetCode  = @SheetCode
+                                  AND cr.DeviceCode = @DeviceCode
+                                  AND cr.CheckedDate >= @MonthRef
+                                  AND cr.CheckedDate <  DATEADD(MONTH,1,@MonthRef)
+                                  AND csi.DataType  IS NOT NULL
+                            ),
+                            pivoted AS
+                            (
+                                SELECT
+                                  Ngay,
+                                  MIN(CheckedDate)                                                            AS FileTime,
+                                  MAX(CASE WHEN CleanContent LIKE N'%Số lượng nhập vào%'   THEN Value       END) AS QtyEnter,
+                                  MAX(CASE WHEN CleanContent LIKE N'%Tổng số sau nhập%'    THEN Value       END) AS TotalEnter,
+                                  MAX(CASE WHEN CleanContent LIKE N'%Số lượng lấy ra%'     THEN Value       END) AS QtyOut,
+                                  MAX(CASE WHEN CleanContent LIKE N'%Tổng số còn lại%'     THEN Value       END) AS TotalRemaining
+                                FROM raw
+                                GROUP BY Ngay
+                            ),
+                            last_confirm AS
+                            (
+                                SELECT Ngay, ConfirmedBy
+                                FROM
+                                (
+                                  SELECT
+                                    Ngay,
+                                    ConfirmedBy,
+                                    ROW_NUMBER() OVER(PARTITION BY Ngay ORDER BY CheckedDate DESC) AS rn
+                                  FROM raw
+                                  WHERE CleanContent LIKE N'%Tổng số sau nhập%'
+                                ) t
+                                WHERE rn = 1
+                            ),
+                            last_checked AS
+                            (
+                                SELECT Ngay, CheckedBy
+                                FROM
+                                (
+                                  SELECT
+                                    Ngay,
+                                    CheckedBy,
+                                    ROW_NUMBER() OVER(PARTITION BY Ngay ORDER BY CheckedDate DESC) AS rn
+                                  FROM raw
+                                  WHERE CleanContent LIKE N'%Tổng số còn lại%'
+                                ) t
+                                WHERE rn = 1
+                            )
+
+                            SELECT
+                              p.FileTime,
+                              p.QtyEnter,
+                              p.TotalEnter,
+                              lc.ConfirmedBy,
+                              p.QtyOut,
+                              p.TotalRemaining,
+                              lch.CheckedBy,
+                              'DM'              AS Department
+                            FROM pivoted p
+                            LEFT JOIN last_confirm lc ON lc.Ngay = p.Ngay
+                            LEFT JOIN last_checked lch ON lch.Ngay = p.Ngay
+                            ORDER BY p.FileTime;";
+            return await context.Database.SqlQueryRaw<CheckSheetColDTO>(
+                               query,
+                               new SqlParameter("@SheetCode", sheetCode),
+                               new SqlParameter("@DeviceCode", deviceCode),
+                               new SqlParameter("@MonthRef", month)
+                           ).ToListAsync();
+        }
+
+        public async Task<List<CheckSheetColDTO>> GetCheckSheetColsTop10(string sheetCode, string deviceCode)
+        {
+            string query = @"WITH raw AS
+                            (
+                                SELECT
+                                  CAST(cr.CheckedDate AS date) AS Ngay,
+                                  cr.CheckedDate,
+                                  cr.Value,
+                                  cr.CheckedBy,
+                                  cr.ConfirmedBy,
+                                  -- Làm sạch nhưng vẫn giữ nguyên khoảng trắng để thử LIKE
+                                  REPLACE(REPLACE(csi.Content, CHAR(13), ''), CHAR(10), '') AS CleanContent
+                                FROM CheckResults cr
+                                INNER JOIN CheckSheetItemMST csi
+                                  ON cr.ItemId = csi.ItemId
+                                INNER JOIN CheckSheetMST cs
+                                  ON csi.SheetId = cs.SheetId
+                                WHERE cs.SheetCode  = @SheetCode
+                                  AND cr.DeviceCode = @DeviceCode                                  
+                                  AND csi.DataType  IS NOT NULL
+                            ),
+                            pivoted AS
+                            (
+                                SELECT
+                                  Ngay,
+                                  MIN(CheckedDate)                                                            AS FileTime,
+                                  MAX(CASE WHEN CleanContent LIKE N'%Số lượng nhập vào%'   THEN Value       END) AS QtyEnter,
+                                  MAX(CASE WHEN CleanContent LIKE N'%Tổng số sau nhập%'    THEN Value       END) AS TotalEnter,
+                                  MAX(CASE WHEN CleanContent LIKE N'%Số lượng lấy ra%'     THEN Value       END) AS QtyOut,
+                                  MAX(CASE WHEN CleanContent LIKE N'%Tổng số còn lại%'     THEN Value       END) AS TotalRemaining
+                                FROM raw
+                                GROUP BY Ngay
+                            ),
+                            last_confirm AS
+                            (
+                                SELECT Ngay, ConfirmedBy
+                                FROM
+                                (
+                                  SELECT
+                                    Ngay,
+                                    ConfirmedBy,
+                                    ROW_NUMBER() OVER(PARTITION BY Ngay ORDER BY CheckedDate DESC) AS rn
+                                  FROM raw
+                                  WHERE CleanContent LIKE N'%Tổng số sau nhập%'
+                                ) t
+                                WHERE rn = 1
+                            ),
+                            last_checked AS
+                            (
+                                SELECT Ngay, CheckedBy
+                                FROM
+                                (
+                                  SELECT
+                                    Ngay,
+                                    CheckedBy,
+                                    ROW_NUMBER() OVER(PARTITION BY Ngay ORDER BY CheckedDate DESC) AS rn
+                                  FROM raw
+                                  WHERE CleanContent LIKE N'%Tổng số còn lại%'
+                                ) t
+                                WHERE rn = 1
+                            )
+
+                            SELECT TOP(10)
+                              p.FileTime,
+                              p.QtyEnter,
+                              p.TotalEnter,
+                              lc.ConfirmedBy,
+                              p.QtyOut,
+                              p.TotalRemaining,
+                              lch.CheckedBy,
+                              'DM'              AS Department
+                            FROM pivoted p
+                            LEFT JOIN last_confirm lc ON lc.Ngay = p.Ngay
+                            LEFT JOIN last_checked lch ON lch.Ngay = p.Ngay
+                            ORDER BY p.FileTime DESC;";
+            return await context.Database.SqlQueryRaw<CheckSheetColDTO>(
+                               query,
+                               new SqlParameter("@SheetCode", sheetCode),
+                               new SqlParameter("@DeviceCode", deviceCode)
+                           ).ToListAsync();
+        }
     }
 }

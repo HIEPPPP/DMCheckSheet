@@ -176,7 +176,7 @@ function Device() {
 
   return (
     <div className="">
-      <div className="flex justify-around gap-5">
+      <div className="flex justify-between gap-5 px-4">
         <div className="">
           <SearchBar value={searchTerm} onChange={setSearchTerm} />
           <div className="flex gap-2 mt-2 float-end items-center">
