@@ -1,19 +1,15 @@
-// Device.jsx
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useEffect, useState, useCallback, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import { Button, Popover } from "@mui/material";
-import { Html5QrcodeScanner } from "html5-qrcode";
-
+import { Button, IconButton, Popover, Alert } from "@mui/material";
+import { Html5Qrcode } from "html5-qrcode";
 import SearchBar from "./SearchBar";
 import DeviceCard from "./DeviceCard";
 import DeviceDetail from "./DeviceDetail";
 import {
-  CheckBoxOutlineBlank,
   CheckBoxOutlineBlankRounded,
   CheckBoxRounded,
   QrCode,
-  VisibilityOffTwoTone,
-  VisibilityTwoTone,
+  Close,
 } from "@mui/icons-material";
 import { getListCheckSheetDevices } from "../services/checkSheetDeviceServices";
 import {
@@ -23,95 +19,17 @@ import {
 
 function Device() {
   const [showScanner, setShowScanner] = useState(false);
+  const [scannerError, setScannerError] = useState("");
   const [checkSheetDevices, setCheckSheetDevices] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [anchorEl, setAnchorEl] = useState(null);
   const [selectedDevice, setSelectedDevice] = useState(null);
-
   const [showConfirmer, setShowConfirmer] = useState(false);
   const [resultMap, setResultMap] = useState({});
+  const scannerRef = useRef(null);
   const navigate = useNavigate();
 
-  // Fetch devices
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        const res = await getListCheckSheetDevices();
-        if (Array.isArray(res)) {
-          setCheckSheetDevices(res.filter((item) => item.frequency === 1));
-        }
-      } catch (err) {
-        console.error("Lỗi fetch checkSheetDevices:", err);
-      }
-    }
-    fetchData();
-  }, []);
-
-  useEffect(() => {
-    if (!showConfirmer) {
-      // khi tắt chế độ xem confirmer thì clear map
-      setResultMap({});
-      return;
-    }
-    async function fetchResultsToday() {
-      try {
-        const today = new Date().toISOString().split("T")[0];
-        // Giả sử API này trả về mảng [{ deviceCode, sheetCode, confirmedBy, ... }]
-        const results = await getResultToDay(today);
-        const map = {};
-        results.forEach((r) => {
-          const key = `${r.deviceCode}-${r.sheetCode}`;
-          map[key] = r.confirmedBy;
-        });
-        setResultMap(map);
-      } catch (err) {
-        console.error("Lỗi fetch results today:", err);
-      }
-    }
-    fetchResultsToday();
-  }, [showConfirmer]);
-
-  // Filtered list based on search term
-  const filteredDevices = checkSheetDevices.filter((device) => {
-    const term = searchTerm.toLowerCase();
-    return (
-      device.deviceName?.toLowerCase().includes(term) ||
-      device.deviceCode?.toLowerCase().includes(term) ||
-      device.sheetCode?.toLowerCase().includes(term) ||
-      device.sheetName?.toLowerCase().includes(term)
-    );
-  });
-
-  // Open device detail
-  const handleOpen = async (device, event) => {
-    setAnchorEl(event.currentTarget);
-    const today = new Date().toISOString().split("T")[0];
-
-    try {
-      const result = await getResultBySheetDeviceToday(
-        device.deviceCode,
-        device.sheetCode,
-        today
-      );
-      console.log("Result:", result);
-
-      setSelectedDevice({
-        ...device,
-        checkedBy: result?.checkedBy || "",
-        confirmedBy: result?.confirmedBy || "",
-      });
-    } catch (err) {
-      console.error("Lỗi fetch result:", err);
-      setSelectedDevice(device);
-    }
-  };
-
-  const handleClose = () => {
-    setSelectedDevice(null);
-    setAnchorEl(null);
-  };
-
-  // QR scanner logic
+  // scan handler must be defined before starting scanner
   const handleScannedCode = useCallback(
     (decodedText) => {
       const parts = decodedText.split("-");
@@ -129,45 +47,152 @@ function Device() {
     [checkSheetDevices, navigate]
   );
 
+  // Fetch devices
   useEffect(() => {
-    if (!showScanner) return;
+    (async () => {
+      try {
+        const res = await getListCheckSheetDevices();
+        if (Array.isArray(res)) {
+          setCheckSheetDevices(res.filter((item) => item.frequency === 1));
+        }
+      } catch (err) {
+        console.error("Lỗi fetch checkSheetDevices:", err);
+      }
+    })();
+  }, []);
 
-    const scanner = new Html5QrcodeScanner(
-      "qr-reader",
-      { fps: 10, qrbox: 250 },
-      false
+  // Confirmer toggle
+  useEffect(() => {
+    if (!showConfirmer) {
+      setResultMap({});
+      return;
+    }
+    (async () => {
+      try {
+        const today = new Date().toISOString().split("T")[0];
+        const results = await getResultToDay(today);
+        const map = {};
+        results.forEach((r) => {
+          map[`${r.deviceCode}-${r.sheetCode}`] = r.confirmedBy;
+        });
+        setResultMap(map);
+      } catch (err) {
+        console.error("Lỗi fetch results today:", err);
+      }
+    })();
+  }, [showConfirmer]);
+
+  // Filter devices by search
+  const filteredDevices = checkSheetDevices.filter((device) => {
+    const term = searchTerm.toLowerCase();
+    return (
+      device.deviceName?.toLowerCase().includes(term) ||
+      device.deviceCode?.toLowerCase().includes(term) ||
+      device.sheetCode?.toLowerCase().includes(term) ||
+      device.sheetName?.toLowerCase().includes(term)
     );
+  });
 
-    scanner.render(
-      (decodedText) => {
-        handleScannedCode(decodedText);
-        scanner.clear().catch(() => {});
+  // Open detail popover
+  const handleOpen = async (device, event) => {
+    setAnchorEl(event.currentTarget);
+    const today = new Date().toISOString().split("T")[0];
+    try {
+      const result = await getResultBySheetDeviceToday(
+        device.deviceCode,
+        device.sheetCode,
+        today
+      );
+      setSelectedDevice({
+        ...device,
+        checkedBy: result?.checkedBy || "",
+        confirmedBy: result?.confirmedBy || "",
+      });
+    } catch (err) {
+      console.error("Lỗi fetch result:", err);
+      setSelectedDevice(device);
+    }
+  };
+
+  const handleClose = () => {
+    setSelectedDevice(null);
+    setAnchorEl(null);
+  };
+
+  // Start/stop scanner
+  const startScanner = useCallback(async () => {
+    setScannerError("");
+    const qrRegionId = "qr-reader";
+    let html5Qrcode;
+    try {
+      html5Qrcode = new Html5Qrcode(qrRegionId);
+      scannerRef.current = html5Qrcode;
+    } catch (err) {
+      console.error("Không thể tạo instance Html5Qrcode:", err);
+      setScannerError(
+        "Trình duyệt không hỗ trợ camera hoặc không thể khởi tạo scanner."
+      );
+      setShowScanner(false);
+      return;
+    }
+
+    try {
+      // Try environment facing camera
+      await html5Qrcode.start(
+        { facingMode: { exact: "environment" } },
+        { fps: 10, qrbox: { width: 250, height: 250 } },
+        (decodedText) => {
+          html5Qrcode.stop().catch(() => {});
+          setShowScanner(false);
+          handleScannedCode(decodedText);
+        },
+        (error) => {} // silent
+      );
+    } catch (err) {
+      console.warn(
+        "Không thể khởi động máy quét environment, thử fallback:",
+        err
+      );
+      try {
+        await html5Qrcode.start(
+          { facingMode: "environment" },
+          { fps: 10, qrbox: { width: 250, height: 250 } },
+          (decodedText) => {
+            html5Qrcode.stop().catch(() => {});
+            setShowScanner(false);
+            handleScannedCode(decodedText);
+          }
+        );
+      } catch (err2) {
+        console.error("Không thể khởi động máy quét:", err2);
+        setScannerError(
+          "Không thể truy cập camera. Vui lòng kiểm tra quyền camera."
+        );
         setShowScanner(false);
-      },
-      (error) => console.warn("Scan error:", error)
-    );
+      }
+    }
+  }, [handleScannedCode]);
 
-    return () => {
-      scanner.clear().catch(() => {});
-    };
-  }, [showScanner, handleScannedCode]);
+  useEffect(() => {
+    if (showScanner) {
+      startScanner();
+    } else {
+      try {
+        scannerRef.current?.stop()?.catch(() => {});
+      } catch {}
+    }
+  }, [showScanner, startScanner]);
 
   const handleToggleConfirm = async () => {
-    // newState là giá trị của showConfirmer sẽ được cập nhật
     const newState = !showConfirmer;
     setShowConfirmer(newState);
-
     try {
       const res = await getListCheckSheetDevices();
       if (!Array.isArray(res)) return;
-
-      // Khi newState === true: chỉ lấy item.isConfirm === true
-      // Khi newState === false: lấy tất cả (chỉ tách theo frequency)
       const filtered = res.filter(
         (item) =>
           item.frequency === 1 && (newState ? item.isConfirm === true : true)
       );
-
       setCheckSheetDevices(filtered);
     } catch (err) {
       console.error("Lỗi fetch checkSheetDevices:", err);
@@ -175,20 +200,18 @@ function Device() {
   };
 
   return (
-    <div className="">
+    <div>
       <div className="flex justify-between gap-5 px-4">
-        <div className="">
+        <div>
           <SearchBar value={searchTerm} onChange={setSearchTerm} />
           <div className="flex gap-2 mt-2 float-end items-center">
             <p className="text-gray-600 font-bold">Cần xác nhận</p>
             {showConfirmer ? (
-              // <VisibilityTwoTone onClick={handleToggleConfirm} />
               <CheckBoxRounded
                 onClick={handleToggleConfirm}
                 sx={{ fontSize: 35, color: "#2196F3" }}
               />
             ) : (
-              // <VisibilityOffTwoTone onClick={handleToggleConfirm} />
               <CheckBoxOutlineBlankRounded
                 onClick={handleToggleConfirm}
                 sx={{ fontSize: 35, color: "#2196F3" }}
@@ -199,19 +222,40 @@ function Device() {
         <Button
           variant="outlined"
           color="info"
-          onClick={() => setShowScanner(true)}
+          onClick={() => {
+            setScannerError("");
+            setShowScanner((prev) => !prev);
+          }}
+          startIcon={<QrCode />}
         >
-          <QrCode className="mr-3" />
-          <span className="font-bold text-3xl">CHECK</span>
+          <span className="font-bold text-xl">
+            {showScanner ? "TẮT SCAN" : "CHECK"}
+          </span>
         </Button>
       </div>
 
-      {showScanner && (
-        <div className="mt-5">
+      {scannerError && (
+        <div className="mt-4 px-4">
+          <Alert severity="error" onClose={() => setScannerError("")}>
+            {" "}
+            {scannerError}{" "}
+          </Alert>
+        </div>
+      )}
+
+      {showScanner && !scannerError && (
+        <div className="mt-5 relative">
           <div
             id="qr-reader"
-            style={{ width: "300px", height: "300px", margin: "auto" }}
+            className="mx-auto"
+            style={{ width: 300, height: 300 }}
           />
+          <IconButton
+            onClick={() => setShowScanner(false)}
+            sx={{ position: "absolute", top: 0, right: "calc(50% - 150px)" }}
+          >
+            <Close />
+          </IconButton>
         </div>
       )}
 

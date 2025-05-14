@@ -338,8 +338,7 @@
               "RelativeToolTip": "DMCheckSheetAPI\\Repositories\\Implementation\\CheckResultRepository.cs",
               "ViewState": "AgIAADgBAAAAAAAAAADwv1YBAABUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-24T07:34:43.947Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-24T07:34:43.947Z"
             },
             {
               "$type": "Document",
@@ -351,8 +350,7 @@
               "RelativeToolTip": "DMCheckSheetAPI\\Controllers\\AuthController.cs",
               "ViewState": "AgIAAEkAAAAAAAAAAADwvzIAAABEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-10T01:50:34.827Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-10T01:50:34.827Z"
             },
             {
               "$type": "Document",
@@ -364,8 +362,7 @@
               "RelativeToolTip": "DMCheckSheetAPI\\Controllers\\CheckSheetController.cs",
               "ViewState": "AgIAAAwAAAAAAAAAAAAAABcAAABCAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-22T04:08:49.676Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-22T04:08:49.676Z"
             },
             {
               "$type": "Document",
@@ -390,8 +387,7 @@
               "RelativeToolTip": "DMCheckSheetAPI\\Services\\CheckResultServices.cs",
               "ViewState": "AgIAAFgAAAAAAAAAAAAkwGoAAABOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-24T09:28:21.209Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-24T09:28:21.209Z"
             },
             {
               "$type": "Document",
@@ -403,8 +399,7 @@
               "RelativeToolTip": "DMCheckSheetAPI\\appsettings.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-04-26T01:30:07.562Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-26T01:30:07.562Z"
             },
             {
               "$type": "Document",
@@ -416,8 +411,7 @@
               "RelativeToolTip": "DMCheckSheetAPI\\Repositories\\Interface\\ICheckResultRepository.cs",
               "ViewState": "AgIAAAwAAAAAAAAAAAA9wBcAAAAzAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-24T07:08:31.801Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-24T07:08:31.801Z"
             },
             {
               "$type": "Document",
@@ -429,8 +423,7 @@
               "RelativeToolTip": "DMCheckSheetAPI\\Models\\DTO\\CheckSheetColDTO.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-12T07:50:46.15Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-12T07:50:46.15Z"
             },
             {
               "$type": "Document",
@@ -538,8 +531,7 @@
               "RelativeToolTip": "DMCheckSheetAPI\\Repositories\\Implementation\\CheckSheetDeviceRepository.cs",
               "ViewState": "AgIAACwAAAAAAAAAAAASwCoAAABIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-06T08:20:25.574Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-06T08:20:25.574Z"
             },
             {
               "$type": "Document",
@@ -587,8 +579,7 @@
               "RelativeToolTip": "DMCheckSheetAPI\\Repositories\\Implementation\\ResultActionRepository.cs",
               "ViewState": "AgIAABAAAAAAAAAAAAAmwCwAAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-25T05:46:37.75Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-25T05:46:37.75Z"
             },
             {
               "$type": "Document",
@@ -720,8 +711,7 @@
               "RelativeToolTip": "DMCheckSheetAPI\\Program.cs",
               "ViewState": "AgIAADkAAAAAAAAAAAAAAEIAAAApAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-05T02:39:07.364Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-05T02:39:07.364Z"
             },
             {
               "$type": "Document",
@@ -733,8 +723,7 @@
               "RelativeToolTip": "DMCheckSheetAPI\\Controllers\\CheckSheetItemController.cs",
               "ViewState": "AgIAAA8AAAAAAAAAAAAAABcAAABAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-24T04:41:41.909Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-24T04:41:41.909Z"
             },
             {
               "$type": "Document",
@@ -806,8 +795,7 @@
               "RelativeToolTip": "DMCheckSheetAPI\\Models\\DTO\\UserDTO\\UserDTO.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAqwAIAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-03T04:04:44.208Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-03T04:04:44.208Z"
             },
             {
               "$type": "Document",
@@ -915,8 +903,7 @@
               "RelativeToolTip": "DMCheckSheetAPI\\Migrations\\20250424044952_add field isconfirmng into checkresult.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-24T04:49:52.524Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-24T04:49:52.524Z"
             },
             {
               "$type": "Document",
@@ -1024,8 +1011,7 @@
               "RelativeToolTip": "DMCheckSheetAPI\\Migrations\\20250418083117_update resultaction.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-18T08:31:18.018Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-18T08:31:18.018Z"
             },
             {
               "$type": "Document",

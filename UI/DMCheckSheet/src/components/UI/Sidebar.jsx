@@ -36,7 +36,7 @@ import { getAuthData } from "../../services/authService";
 import { jwtDecode } from "jwt-decode";
 import { CgFileDocument } from "react-icons/cg";
 import { AuthContext } from "../../contexts/AuthContext";
-import { Avatar } from "@mui/material";
+import { useTheme, useMediaQuery, Avatar } from "@mui/material";
 
 const Sidebar = () => {
   // const user = {
@@ -44,10 +44,13 @@ const Sidebar = () => {
   //   role: "Administrator",
   //   avatar: "https://i.pravatar.cc/40", // Ảnh đại diện ngẫu nhiên
   // };
+
+  const theme = useTheme();
+  const isTabletOrSmaller = useMediaQuery(theme.breakpoints.down("md"));
   const user = useContext(AuthContext);
   const fullName = user.auth.fullName;
   const username = user.auth.username;
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(!isTabletOrSmaller);
 
   const token = localStorage.getItem("token");
 
@@ -59,6 +62,10 @@ const Sidebar = () => {
   const isConfirmerMonth = roles.includes("ConfirmerMonth");
   const isApprover = roles.includes("Approver");
   const isConFirmerMonthORApprover = isConfirmerMonth || isApprover;
+
+  useEffect(() => {
+    setIsOpen(!isTabletOrSmaller);
+  }, [isTabletOrSmaller]);
 
   let isAdmin = false;
 
